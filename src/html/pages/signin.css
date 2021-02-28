@@ -41,6 +41,36 @@ main {
   border-top-right-radius: 0;
 }
 
-.form-signin label {
-    text-align: start;
+.form-signin > label {
+  color: grey;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.form-signin .forgot-password-container {
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+/* options separator */
+.options-separator {
+  width: 95%;
+  max-width: 19.5em;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.options-separator::before, .options-separator::after {
+  display: block;
+  content: '';
+  flex-grow: 1;
+  height: 2px;
+  background-color: #bfbfbf;
+}
+.options-separator .divider-text {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 1em .825em;
+  white-space: nowrap;
 }
