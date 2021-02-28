@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Trade-a-Bid | Sign In</title>
+        <title>Trade-a-Bid | Sign Up</title>
 
         <!-- Bootstrap Responsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">    
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="signin.css">
+        <link rel="stylesheet" href="signup.css">
     </head>
 
     <body class="bg-dark">
@@ -63,20 +63,22 @@
             </nav>
         </header>
 
-        <!-- Sign in -->
+        <!-- Sign up -->
         <main class="bg-light">
             <div class="container-lg text-center">
-                <form class="form-signin">
-                    <h1 class="mb-3">Sign In</h1>
-                    <label for="inputEmail" class="sr-only float-start">Email/Username</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="" required="" autofocus="">
+                <form class="form-signup">
+                    <h1 class="mb-3">Sign Up</h1>
+                    <label for="inputName" class="sr-only float-start">Name</label>
+                    <input type="text" id="inputName" class="form-control" placeholder="" required autofocus="">
+                    <label for="inputEmail" class="sr-only float-start">Email</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="" required autofocus="">
+                    <label for="inputPhone" class="sr-only float-start">Phone Number</label>
+                    <input type="phone" id="inputPhone" class="form-control" placeholder="" required>
                     <label for="inputPassword" class="sr-only float-start">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="" required="">
-
-                    <div class="forgot-password-container ">
-                        <a href="#" class="text-secondary">Forgot password?</a>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="" required>
+                    <label for="confirmation" class="sr-only float-start">Comfirm Password</label>
+                    <input type="password" id="confirmation" class="form-control" placeholder="" required>
+                    <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign Up</button>
                 </form>
 
                  <div class="options-separator">
@@ -88,9 +90,11 @@
                     Sign in with GitHub
                 </button>
 
-                <section class="m-2">
-                    <a href="#" class="text-secondary">Dont have an account?</a>
-                </section>
+                <div class="m-2 text-secondary mt-3">
+                    <p>Already have an account?
+                        <a href="#" class="text-secondary fw-bold">Sign in <i class="bi bi-arrow-right"></i></a>
+                    </p>
+                </div>
             </div>
         </main>
 
