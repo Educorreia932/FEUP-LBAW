@@ -1,13 +1,13 @@
 let colors = {
     red: "#ff0000",
-    blue: "#0000ff"
+    blue: "#0000ff",
+    yellow: "#ffff00"
 }
 
 let data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['12:33', '12:45', '13:50', '15:05', '16:07', '16:55', '20:01'],
     datasets: [
         {
-            label: 'My First dataset',
             backgroundColor: colors.red,
             borderColor: colors.red,
             fill: false,
@@ -16,9 +16,10 @@ let data = {
                 5,
                 10,
                 20,
-                30,
-                45,
-                55
+                35,
+                50,
+                55,
+                57
             ],
         }, 
     ]
@@ -27,7 +28,6 @@ let data = {
 let options = {
     responsive: true,
     title: {
-        display: true,
         text: 'Chart.js Line Chart - Logarithmic'
     },
     scales: {
@@ -36,7 +36,6 @@ let options = {
         }],
         yAxes: [{
             display: true,
-            type: 'logarithmic',
         }]
     },
 }
