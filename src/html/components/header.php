@@ -48,7 +48,7 @@
                         
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                                 <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                                <li><a class="dropdown-item" href="settings.html">Settings</a></li>
+                                <li><a class="dropdown-item" href="settings-account.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="">Sign out</a></li>
                             </ul>
                         </li>

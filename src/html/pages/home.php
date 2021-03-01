@@ -11,7 +11,7 @@ $stylesheets = array();
     <?php site_head('Home', $stylesheets); ?>
 
     <body>
-        <?php site_header(NULL, "page_home"); ?>
+        <?php site_header("Foo Fighters", "page_home"); ?>
 
         <main class="flex-shrink-0 bg-light">
             <!-- Carousel div -->
