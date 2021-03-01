@@ -16,7 +16,7 @@
 
         <!-- Included stylesheets -->
         <?php foreach($stylesheets as $stylesheet) {?>
-            <link rel="stylesheet" href="<?=$stylesheet?>">
+            <link rel="stylesheet" href="../css/<?=$stylesheet?>">
         <?php } ?>
     </head>
 <?php } ?>
