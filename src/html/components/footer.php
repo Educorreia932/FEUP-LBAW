@@ -11,9 +11,7 @@
 
             <div class="col d-flex flex-column text-light align-items-end m-1">
                 <a>About</a>
-                <a>Contacts</a>
                 <a>FAQ</a>
-                <a>Statistics</a>
             </div>
         </div>
     </footer>
