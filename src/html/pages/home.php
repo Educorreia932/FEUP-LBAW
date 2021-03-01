@@ -1,91 +1,18 @@
+<?php
+include_once("../components/head.php");
+include_once("../components/header.php");
+include_once("../components/footer.php");
+
+$stylesheets = array();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Trade-a-Bid | Home</title>
+    <?php site_head('Home', $stylesheets); ?>
 
-        <!-- Bootstrap Responsive -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- Bootstrap CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="../css/style.css">
-    </head>
+    <body>
+        <?php site_header(NULL, "page_home"); ?>
 
-    <body class="bg-dark">
-        <style>
-            .carousel-item > img {
-                height: 25em;
-            }
-            
-            .carousel-item::before {
-                background: linear-gradient(0deg, rgba(70, 70, 70, 0.596) 30%, #ffffffc4 100%)
-            }
-        </style>
-
-        <header class="navbar navbar-expand-md navbar-dark py-2">
-            <nav class="container-fluid flex-wrap flex-md-nowrap mx-0" aria-label="Main Navigation">
-                <img class="navbar-brand p-0" src="../../static/logo.svg" width="60" height="60" alt="Trade-a-Bid">
-                <a class="navbar-brand p-0 me-md-3 mx-auto fs-4" aria-label="Trade-a-Bid" href="/">Trade-a-Bid</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteHeader" aria-controls="siteHeader" aria-expanded="false" aria-label="Toggle Navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse ps-2 ps-md-0" id="siteHeader">
-                    <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <div class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
-                            <span class="d-block d-md-none text-secondary text-capitalize header-section-title">Auctions</span>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="" href="auction.html">Auctions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="" href="">Sell Item</a>
-                            </li>
-                        </div>
-                    </ul>
-
-                    <hr class="d-md-none text-white-50">
-
-                    <ul class="navbar-nav flex-row ms-md-auto me-md-4">
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link px-2" href="#">Sign in</a>
-                        </li>
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2" href="#">Sign up</a>
-                        </li>
-                        <!-- <li class="d-none d-md-flex nav-item dropdown">
-                            <button class="btn btn-dark dropdown-toggle" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>Carlos Pereira</span>
-                                <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                            </button>
-                        
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                                <li><a class="dropdown-item" href="settings.html">Settings</a></li>
-                                <li><a class="dropdown-item" href="">Sign out</a></li>
-                            </ul>
-                        </li>
-                        <div class="d-flex d-md-none flex-wrap flex-row w-100">
-                            <li class="nav-item col-12">
-                                <i class="bi bi-person-circle navbar-text" style="font-size: 1.2rem;"></i>
-                                <span class="navbar-text">Carlos Pereira</span>
-                            </li>
-                            <li class="nav-item col-6"><a class="nav-link" href="profile.html">Profile</a></li>
-                            <li class="nav-item col-6"><a class="nav-link" href="settings.html">Settings</a></li>
-                            <li class="nav-item col-12"><a class="nav-link" href="">Sign out</a></li>
-                        </div> -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
-        <!-- Main -->
         <main class="flex-shrink-0 bg-light">
             <!-- Carousel div -->
             <div class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);' >
@@ -199,25 +126,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
-        <footer class="container-fluid mt-auto py-2">
-            <div class="row">
-                <div class="ms-2 col">
-                    <div class="row align-items-center justify-content-start">
-                        <img class="col-auto" src="../../static/logo.svg" height="60">
-                        <h4 class="col-6 text-light">Trade-a-Bid</h4>
-                    </div>
-                    <span class="row text-muted">&copy; Copyright 2021 Trade-a-Bid. All rights reserved</span>
-                </div>
-    
-                <div class="col d-flex flex-column text-light align-items-end m-1">
-                    <a>About</a>
-                    <a>Contacts</a>
-                    <a>FAQ</a>
-                    <a>Statistics</a>
-                </div>
-            </div>
-        </footer>
-
+        <?php site_footer(); ?>
     </body>
-</html>
+</hmtl>
