@@ -63,10 +63,10 @@
                         </div>
                     <?php } else { ?>
                         <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link px-2" href="#">Sign in</a>
+                            <a class="nav-link px-2" href="signin.php">Sign in</a>
                         </li>
                         <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2" href="#">Sign up</a>
+                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2" href="signup.php">Sign up</a>
                         </li>
                     <?php } ?>
                 </ul>
