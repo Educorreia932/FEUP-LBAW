@@ -21,7 +21,7 @@ $stylesheets = array();
                         <div id="carouselExampleControls" class="carousel slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block w-100" alt="...">
+                                <img src="https://media.discordapp.net/attachments/688060677214044186/814885151988777030/images.png" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
                                 <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block w-100" alt="...">
@@ -38,6 +38,9 @@ $stylesheets = array();
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
+                        </div>
+                        <div class="text-md-center text-center  mt-3  mb-3">
+                                <button class="btn btn-outline-secondary btn-block text-end" type="submit">Upload Image</button>
                         </div>
                     </div>
                     <!-- form col -->
@@ -58,20 +61,25 @@ $stylesheets = array();
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
                                     <label for="inputValue" class="sr-only">Start value</label>
-                                    <input type="number" step="0.01" id="inputValue" class="form-control" required>
+                                    <div class="input-group">
+                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
                                     <label for="endDate" class="sr-only">Ending on</label>
                                     <input type="date" id="endDate" class="form-control">
                                 </div>
-                                <div class="form-group col-sm-6 mt-3">
-                                    <label for="inputCategory" class="sr-only">Category</label>
-                                    <select class="form-control" id="inputCategory">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </select>
+                                <div class="col-sm-6 mt-3">
+                                    <label  for="inputCategory">Category</label>
+                                    <div class="input-group mb-3 col-sm-6">
+                                        <select class="form-select" id="inputCategory">
+                                            <option selected>Choose...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-md-end text-center  mt-3  mb-3">

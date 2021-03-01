@@ -10,7 +10,7 @@
 <html lang="en">
     <?php site_head('Sign Up', $stylesheets); ?>
 
-    <body>
+    <body class="d-flex flex-column" style="min-height: 100vh;">
         <?php site_header(NULL, "page_signup"); ?>
 
         <!-- Sign up -->
@@ -28,7 +28,7 @@
                     <input type="password" id="inputPassword" class="form-control" placeholder="" required>
                     <label for="confirmation" class="sr-only float-start">Comfirm Password</label>
                     <input type="password" id="confirmation" class="form-control" placeholder="" required>
-                    <div class="d-flex flex-row terms-of-service mt-2">
+                    <div class="d-flex flex-row align-items-baseline text-start mt-2">
                         <input type="checkbox" id="termsCheckbox" class="me-2" value="" required>
                         <label for="termsCheckbox"> I have read and agree with this site's
                             <a href="#">terms of service</a>
