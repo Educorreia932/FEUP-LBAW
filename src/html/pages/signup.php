@@ -14,7 +14,7 @@
         <?php site_header(NULL, "page_signup"); ?>
 
         <!-- Sign up -->
-        <main class="mb-auto">
+        <main class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
                 <form class="form-signup">
                     <h1 class="mb-3">Sign Up</h1>
@@ -28,7 +28,7 @@
                     <input type="password" id="inputPassword" class="form-control" placeholder="" required>
                     <label for="confirmation" class="sr-only float-start">Comfirm Password</label>
                     <input type="password" id="confirmation" class="form-control" placeholder="" required>
-                    <div class="d-flex flex-row terms-of-service">
+                    <div class="d-flex flex-row terms-of-service mt-2">
                         <input type="checkbox" id="termsCheckbox" class="me-2" value="" required>
                         <label for="termsCheckbox"> I have read and agree with this site's
                             <a href="#">terms of service</a>
@@ -46,7 +46,7 @@
                     Sign up with GitHub
                 </button>
 
-                <div class="m-2 text-secondary mt-3">
+                <div class="m-2 text-secondary mt-3 mb-5">
                     <p>Already have an account?
                         <a href="signin.php" class="text-secondary fw-bold">Sign in <i class="bi bi-arrow-right"></i></a>
                     </p>
