@@ -8,17 +8,11 @@ $stylesheets = array();
 
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <?php site_head('Home', $stylesheets); ?>
 
 <body>
     <?php site_header("Foo Fighters", "page_auction"); ?>
-
-    <style>
-        .carousel-item>img {
-            height: 25em;
-        }
-    </style>
 
     <script defer src="../js/auction.js"></script>
 
@@ -106,175 +100,27 @@ $stylesheets = array();
 
                 <div class="col">
                     <div id="bid-history" class="overflow-auto" style="max-height: 20em">
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
+                        <?php
+                        for ($i = 0; $i < 10; $i++) {
+                        ?>
+
+                            <div class="row container m-1">
+                                <div class="col-10 d-flex justify-content-between border">
+                                    <p class="m-0">666.66&euro;</p>
+                                    <div class="d-flex">
+                                        <p class="m-0">Local Whale</p>
+                                        <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    2 sec. ago
                                 </div>
                             </div>
 
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
-                        <div class="row container m-1">
-                            <div class="col-10 d-flex justify-content-between border">
-                                <p class="m-0">666.66&euro;</p>
-                                <div class="d-flex">
-                                    <p class="m-0">Local Whale</p>
-                                    <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                2 sec. ago
-                            </div>
-                        </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
 

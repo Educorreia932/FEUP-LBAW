@@ -13,6 +13,10 @@
     margin-left: -10px;
 }
 
+.carousel-item > img {
+    height: 25em;
+}
+
 ::-webkit-scrollbar {
     border-radius: 15px;
     width: 0.5em;

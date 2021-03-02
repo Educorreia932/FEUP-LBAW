@@ -38,6 +38,9 @@ let options = {
             display: true,
         }]
     },
+    legend: {
+        display: false
+    },
 }
 
 let config = {
