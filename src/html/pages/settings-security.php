@@ -16,8 +16,8 @@ $stylesheets = array(
 
         <?php site_header("Foo Fighters", "page_settings"); ?>
 
-        <div class="container-fluid" style="flex:auto;">
-            <div class="row">
+        <div class="container-fluid" style="flex:auto; height: 0">
+            <div class="row h-100">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                     <div class="position-sticky pt-3">
                     
