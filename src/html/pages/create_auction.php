@@ -20,7 +20,7 @@ $stylesheets = array();
                     <div class="col-md-5"> 
                         <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                            
+                                <!-- images are inserted here through js -->
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#uploadPreview"  data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -33,7 +33,7 @@ $stylesheets = array();
                         </div>
 
                         <div class="col-12 text-center">
-                            <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+                            <form id="imageUpload" enctype="multipart/form-data" method="post" action="#">
                                 <div class="form-group w-50 m-auto">
                                     <label class="form-label" for="imageFile">Choose the images you wish to upload</label>
                                     <input type="file" class="form-control" id="imageFile" />
@@ -43,7 +43,7 @@ $stylesheets = array();
                         <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                     </div>
                     <!-- form col -->
-                    <div class="col-md-5 pt-3"> 
+                    <div class="col-md-5 pt-3 text-black-50 fs-5"> 
                         <form class="form-auction">
                             <div class="row">
                                 <div class="form-group col-md-12 mt-3">
