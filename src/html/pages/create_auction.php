@@ -39,9 +39,16 @@ $stylesheets = array();
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-                        <div class="text-md-center text-center  mt-3  mb-3">
-                                <button class="btn btn-outline-secondary btn-block text-end" type="submit">Upload Image</button>
+
+                        <div class="col-12 text-center">
+                            <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+                                <div class="form-group w-50 m-auto">
+                                    <label class="form-label" for="imageFile">Choose the images you wish to upload</label>
+                                    <input type="file" class="form-control" id="imageFile" />
+                                </div>
+                            </form>
                         </div>
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                     </div>
                     <!-- form col -->
                     <div class="col-md-5 pt-3"> 
@@ -57,7 +64,10 @@ $stylesheets = array();
                                 </div> 
                                 <div class="form-group col-sm-6 mt-3">
                                     <label for="startDate" class="sr-only">Starting on</label>
-                                    <input type="date" id="startDate" class="form-control">
+                                    <div class="input-group">
+                                        <input type="date" id="startDate" class="form-control">
+                                        <input type="time" id="startTime" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
                                     <label for="inputValue" class="sr-only">Start value</label>
@@ -68,7 +78,10 @@ $stylesheets = array();
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
                                     <label for="endDate" class="sr-only">Ending on</label>
-                                    <input type="date" id="endDate" class="form-control">
+                                    <div class="input-group">
+                                        <input type="date" id="endDate" class="form-control">
+                                        <input type="time" id="endTime" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="col-sm-6 mt-3">
                                     <label  for="inputCategory">Category</label>
@@ -93,4 +106,5 @@ $stylesheets = array();
 
         <?php site_footer(); ?>
     </body>
+    <script src="../js/upload-images.js"></script>
 </hmtl>
