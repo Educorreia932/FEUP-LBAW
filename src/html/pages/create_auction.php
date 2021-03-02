@@ -18,14 +18,15 @@ $stylesheets = array();
                 <div class="row g-3 align-items-center">
                     <!-- gallery col -->
                     <div class="col-md-5"> 
-                        <div id="carouselExampleControls" class="carousel slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
+                        <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
+                            
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#uploadPreview"  data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#uploadPreview"  data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
@@ -79,9 +80,11 @@ $stylesheets = array();
                                     <div class="input-group mb-3 col-sm-6">
                                         <select class="form-select" id="inputCategory">
                                             <option selected>Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option value="1">Game</option>
+                                            <option value="2">Software</option>
+                                            <option value="3">eBook</option>
+                                            <option value="4">Music</option>
+                                            <option value="5">Services</option>
                                         </select>
                                     </div>
                                 </div>
