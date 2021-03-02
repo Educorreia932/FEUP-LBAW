@@ -1,22 +1,41 @@
-const uploadBtn = document.getElementById('imageFile');
+const uploadFile = document.getElementById('imageFile');
 
-uploadBtn.addEventListener('change', handleImage)
+uploadFile.addEventListener('change', handleImage)
+
+var active = false;
 
 function handleImage() {
-    var input = this;
 
-    var fileName = input.files[0].name;
+    var fileName = this.files[0].name;
     console.log('File name: ' + fileName);
-    console.log(this.value);
 
-    let carousel = document.querySelector('.carousel-inner');
-
-    let item = document.createElement('div')
-    item.className = 'carousel-item';
     let img = document.createElement('img');
     img.className = 'd-block w-100';
-    img.src = this.value;
-    item.appendChild(img);
 
-    carousel.appendChild(item);
+    if (this.files) {
+        const fileReader = new FileReader();
+
+        fileReader.addEventListener("load", function () {
+            // convert image to base64 encoded string
+            img.setAttribute("src", this.result);
+            console.log(this.result);
+        });
+        fileReader.readAsDataURL(this.files[0]);
+
+        let carousel = document.querySelector('.carousel-inner');
+
+        let item = document.createElement('div')
+
+        item.className = 'carousel-item';
+        if (!active) {
+            item.className = 'carousel-item active';
+            active = true;
+        }
+        
+        img.src = this.value;
+        item.appendChild(img);
+
+        carousel.appendChild(item);
+    }
+    
 }

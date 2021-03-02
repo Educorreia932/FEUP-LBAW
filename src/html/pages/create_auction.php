@@ -20,15 +20,6 @@ $stylesheets = array();
                     <div class="col-md-5"> 
                         <div id="carouselExampleControls" class="carousel slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <img src="https://media.discordapp.net/attachments/688060677214044186/814885151988777030/images.png" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block w-100" alt="...">
-                                </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
