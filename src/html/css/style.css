@@ -6,6 +6,10 @@
     background-color: var(--light-grey);
 }
 
+.hover-border:hover {
+    border-left: 1px solid black;
+}
+
 .header-section-title {
     font-size: smaller;
     position: absolute;

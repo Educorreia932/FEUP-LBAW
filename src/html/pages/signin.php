@@ -17,7 +17,7 @@
 
         <!-- Sign in -->
         <div class="container-fluid" style="flex:auto;">
-            <main>
+            <main class="d-flex align-items-center justify-content-center">
                 <div class="container-lg text-center">
                     <form class="form-signin">
                         <h1 class="mb-3">Sign In</h1>

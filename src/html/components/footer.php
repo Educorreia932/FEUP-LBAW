@@ -9,9 +9,15 @@
                 <span class="row text-muted">&copy; Copyright 2021 Trade-a-Bid. All rights reserved</span>
             </div>
 
-            <div class="col d-flex flex-column text-light align-items-end m-1">
-                <a>About</a>
-                <a>FAQ</a>
+            <div class="navbar navbar-dark col d-flex flex-column align-items-end text-end">    
+                <ul class="navbar-nav">
+                    <li class="navbar-item">
+                        <a class="nav-link" href="../pages/faq.php">FAQ</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" href="../pages/about.php">About</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </footer>
