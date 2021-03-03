@@ -4,3 +4,8 @@
     margin-top: -10px;
     margin-left: -10px;
 }
+
+.avatar-large {
+    width: 300px;
+    height: 300px;
+}
