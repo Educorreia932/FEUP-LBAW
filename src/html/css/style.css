@@ -36,3 +36,8 @@
     background-color: lightgray;
     border-radius: 5px;
 }
+
+.auction-entry img {
+    height: 10em;
+    width: 10em;
+}

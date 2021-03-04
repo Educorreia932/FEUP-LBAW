@@ -14,13 +14,6 @@ $stylesheets = array(
 <?php site_head("Dashboard", $stylesheets); ?>
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
-    <style>
-        .auction-entry img {
-            height: 10em;
-            width: 10em;
-        }
-    </style>
-
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
     <div class="container-fluid" style="flex:auto;">
