@@ -16,7 +16,7 @@ $stylesheets = array(
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
-    <div class="container-fluid" style="flex: auto; height: 0">
+    <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
             <nav class="col-md-3 col-lg-2 bg-light sidebar">
                 <h4>Category</h4>
@@ -111,8 +111,12 @@ $stylesheets = array(
                     <?php
                         include_once(__DIR__ . "/../components/auction_entry.php");
 
-                        for ($i = 0; $i < 5; $i++)
-                            draw_auction_entry(6.66);
+                        for ($i = 0; $i < 5; $i++) {
+                            draw_auction_entry(6.04, 5.01);
+
+                            if ($i < 4)
+                                echo "<hr>";
+                        }
                     ?>
                 </div>
             </main>
