@@ -1,25 +1,25 @@
 let colors = {
-    red: "#ff0000",
-    blue: "#0000ff",
+    line: "#0D6EFD",
+    points: "#0A2FB3",
     yellow: "#ffff00"
 }
 
 let data = {
-    labels: ['12:33', '12:45', '13:50', '15:05', '16:07', '16:55', '20:01'],
+    labels: ['26/02 00:00', '03/03 12:45', '3/03 13:50', '03/03 15:05', '3/03 16:07', '3/03 16:55', '3/03 17:50', '3/03 19:00', '3/03 20:23'],
     datasets: [
         {
-            backgroundColor: colors.red,
-            borderColor: colors.red,
+            backgroundColor: colors.points,
+            borderColor: colors.line,
             fill: false,
-            steppedLine: true,
             data: [
-                5,
-                10,
-                20,
-                35,
-                50,
-                55,
-                57
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180
             ],
         }, 
     ]
