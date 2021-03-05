@@ -2,6 +2,7 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/auction_components.php");
 
 $stylesheets = array();
 ?>
@@ -15,12 +16,14 @@ $stylesheets = array();
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
     <script defer src="../js/auction.js"></script>
+    <script defer src="../js/bookmark.js"></script>
+    <script defer src="../js/tooltip_initializer.js"></script>
 
     <main>
-        <section class="bg-light">
-            <div class="row m-0 p-0">
+        <section class="container-fluid bg-light">
+            <div class="row">
                 <!-- Product images -->
-                <div id="product-images" class="carousel slide col-sm-6" data-bs-ride="carousel">
+                <div id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#product-images" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -29,15 +32,15 @@ $stylesheets = array();
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block mx-auto" alt="...">
+                            <img class="d-block m-auto" src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" alt="...">
                         </div>
 
                         <div class="carousel-item">
-                            <img src="https://media.discordapp.net/attachments/688060677214044186/814885658422149180/dda7bsd-6a60b5b7-9eca-4c20-b582-5e6d1126f2ce.png?width=692&height=676" class="d-block mx-auto" alt="...">
+                            <img class="d-block m-auto" src="https://media.discordapp.net/attachments/688060677214044186/814885658422149180/dda7bsd-6a60b5b7-9eca-4c20-b582-5e6d1126f2ce.png?width=692&height=676" alt="...">
                         </div>
 
                         <div class="carousel-item">
-                            <img src="https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg" class="d-block mx-auto" alt="...">
+                            <img class="d-block m-auto" src="https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg" alt="...">
                         </div>
                     </div>
 
@@ -53,79 +56,107 @@ $stylesheets = array();
                 </div>
 
                 <!-- Auction information -->
-                <div id="auction-information" class="col-sm-6 row py-4">
-                    <div class="col-sm-6 d-flex flex-column justify-content-between">
-                        <!-- Product information -->
-                        <div id="product-information">
-                            <h3>Product title</h3>
-                            <p>Product description</p>
+                <div id="auction-information" class="col-md my-4 d-flex flex-column justify-content-between">
+                    <!-- Product information -->
+                    <div class="row" id="product-information">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Hollow Knight Steam Key</h2>
+                            <button type="button" class="btn auction-bookmark">
+                                <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
+                            </button>
+                        </div>
+                        <p class="text-overflow-ellipsis">Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
+                            <h3 class="d-sm-none">Seller</h3>
+                            <a href="#" class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
+                                Hirohiko Araki
+                                <i class="bi bi-person-circle mx-1" style="font-size: 1.2rem;"></i>
+                            </a>
                         </div>
 
-                        <div>
+                        <div class="col-sm-8 col-xl-6 order-sm-1">
                             <h3>Bids</h3>
-                            <p>Starting bid 15.00&euro;</p>
-                            <p>Current bid 666.66&euro;</p>
+                            <div class="row">
+                                <div class="col d-flex flex-column">
+                                    <span>Current bid</span>
+                                    <h4>180.00 &euro;</h4>
+                                </div>
+                                <div class="col d-flex flex-column">
+                                    <span>Next bid starts at</span>
+                                    <h4>181.00 &euro;</h4>
+                                </div>
+                            </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">&euro;</span>
                                 </div>
-                                <input type="number" class="form-control" placeholder="Enter bid value">
+                                <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min="181">
                                 <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col d-flex flex-column justify-content-between">
-                        <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
-                        <p class="p-0 m-0" type="button" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-align: right">
-                            <span>Auction Creator</span>
-                            <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Remaining time -->
-        <div class="text-center card inline-block p-0">
-            <p>20m 39s remaining</p>
-        </div>
-
-        <section class="bg-light">
+        <section class="container-fluid p-4">
             <div class="row">
-                <h4 class="m-0 p-0">Bid History</h4>
+                <span class="d-flex align-items-end">
+                    <h3 class="m-0 p-0">Auction Details</h3>
+                </span>
+                <hr class="my-1">
 
-                <hr>
+                <?php
+                    auction_detail("Time remaining", "24 minutes 39 seconds", true);
+                    auction_detail("Duration", "1 week");
 
-                <div class="col">
-                    <div id="bid-history" class="overflow-auto" style="max-height: 20em">
-                        <?php
-                        for ($i = 0; $i < 10; $i++) {
-                        ?>
+                    auction_detail("Bidders", "3 different bidders", true);
+                    auction_detail("Total Bids", "7 bids");
 
-                            <div class="row container m-1">
-                                <div class="col-10 d-flex justify-content-between border">
-                                    <p class="m-0">666.66&euro;</p>
-                                    <div class="d-flex">
-                                        <p class="m-0">Local Whale</p>
-                                        <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
-                                    </div>
-                                </div>
+                    auction_detail("Starting Bid", "75.00 €", true);
+                    auction_detail("Mandatory Bid Increment", "1.00 €");
+                    auction_detail("Average Bid Increment", "15.00 €");
+                ?>
+            </div>
+        </section>
 
-                                <div class="col">
-                                    2 sec. ago
-                                </div>
-                            </div>
+        <section class="container-fluid p-4">
+            <div class="row d-flex flex-row">
+                <span class="d-flex align-items-end">
+                    <h3 class="m-0 p-0">Bid History</h3>
+                    <a class="ms-2" style="font-size: smaller;" href="../pages/auction_details.php">See more</a>
+                </span>
+                <hr class="my-1">
 
-                        <?php
-                        }
-                        ?>
-                    </div>
+                <div class="row col-lg-7 order-lg-2 d-flex flex-column justify-content-center">
+                    <canvas class="mt-4" id="bid-history-chart"></canvas>
                 </div>
 
-                <div class="col">
-                    <canvas id="bid-history-chart"></canvas>
+                <div class="row col-lg-5 order-lg-1">
+                    <table id="bid-history" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Bidder</th>
+                            <th scope="col">Bid</th>
+                            <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                bid_table_entry("Me", 180, "20 sec");
+
+                                for ($i = 0; $i < 6; $i++) {
+                                    bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
+                                }
+
+                                bid_table_entry("Starting Bid", 75, "1 week");
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
