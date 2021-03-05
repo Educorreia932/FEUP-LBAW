@@ -15,7 +15,7 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
                         <i class="bi bi-circle-fill align-middle text-success" style="font-size: 0.5em;"></i>
                     </h4>
                     <p class="text-muted">Created by <a class="text-decoration-none link-dark" href="user_profile.php">carlospereira</a></p>
-                    
+
                     <!-- Bids -->
                     <div class="row">
                         <div class="col d-flex flex-column">
@@ -52,13 +52,17 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
             if (!$bookmarked) {
             ?>
 
-                <i class="bi bi-bookmark-plus" style="font-size: 2em"></i>
+                <div class="auction-bookmark">
+                    <i class="bi bi-bookmark-plus" style="font-size: 2em"></i>
+                </div>
 
             <?php
             } else {
             ?>
 
-                <i class="bi bi-bookmark-check-fill" style="font-size: 2em"></i>
+                <div class="auction-bookmark">
+                    <i class="bi bi-bookmark-minus-fill" style="font-size: 2em"></i>
+                </div>
 
             <?php
             }

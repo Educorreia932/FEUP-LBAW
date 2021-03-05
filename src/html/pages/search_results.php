@@ -18,6 +18,7 @@ $stylesheets = array(
 
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
     <script defer src="../js/search_results.js"></script>
+    <script defer src="../js/bookmark.js"></script>
 
     <style>
         .noUi-connect {
