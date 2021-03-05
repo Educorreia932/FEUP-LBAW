@@ -21,25 +21,25 @@ $stylesheets = array(
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                     <div class="position-sticky pt-3">
                     
-                    <h4>Settings</h4>
+                        <h4>Settings</h4>
 
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./settings-account.php">
-                            Account
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="./settings-privacy.php">
-                            Privacy & Notifications
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link active" href="./settings-security.php">
-                            Security
-                        </a>
-                        </li>
-                    </ul>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./settings-account.php">
+                                Account
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="./settings-privacy.php">
+                                Privacy & Notifications
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link active" href="./settings-security.php">
+                                Security
+                            </a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
 

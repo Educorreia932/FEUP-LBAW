@@ -1,0 +1,432 @@
+/* X-Small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    /* ------------------ BEGIN SIZING ------------------*/
+    /* Width */
+    .w-sm-25 {
+        width: 25%!important;
+    }
+    .w-sm-50 {
+        width: 50%!important;
+    }
+    .w-sm-75 {
+        width: 75%!important;
+    }
+    .w-sm-100 {
+        width: 100%!important;
+    }
+
+    .mw-sm-25 {
+        max-width: 25%!important;
+    }
+    .mw-sm-50 {
+        max-width: 50%!important;
+    }
+    .mw-sm-75 {
+        max-width: 75%!important;
+    }
+    .mw-sm-100 {
+        max-width: 100%!important;
+    }
+
+    .min-vw-sm-25 {
+        min-width: 25vh!important;
+    }
+    .min-vw-sm-50 {
+        min-width: 50vh!important;
+    }
+    .min-vw-sm-75 {
+        min-width: 75vh!important;
+    }
+    .min-vw-sm-100 {
+        min-width: 100vh!important;
+    }
+
+    /* Height */
+    .h-sm-25 {
+        height: 25%!important;
+    }
+    .h-sm-50 {
+        height: 50%!important;
+    }
+    .h-sm-75 {
+        height: 75%!important;
+    }
+    .h-sm-100 {
+        height: 100%!important;
+    }
+
+    .mh-sm-25 {
+        max-height: 25%!important;
+    }
+    .mh-sm-50 {
+        max-height: 50%!important;
+    }
+    .mh-sm-75 {
+        max-height: 75%!important;
+    }
+    .mh-sm-100 {
+        max-height: 100%!important;
+    }
+
+    .min-vh-sm-25 {
+        min-height: 25vh!important;
+    }
+    .min-vh-sm-50 {
+        min-height: 50vh!important;
+    }
+    .min-vh-sm-75 {
+        min-height: 75vh!important;
+    }
+    .min-vh-sm-100 {
+        min-height: 100vh!important;
+    }
+
+    /* ------------------- END SIZING -------------------*/
+}
+ 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+     /* ------------------ BEGIN SIZING ------------------*/
+    /* Width */
+    .w-md-25 {
+        width: 25%!important;
+    }
+    .w-md-50 {
+        width: 50%!important;
+    }
+    .w-md-75 {
+        width: 75%!important;
+    }
+    .w-md-100 {
+        width: 100%!important;
+    }
+
+    .mw-md-25 {
+        max-width: 25%!important;
+    }
+    .mw-md-50 {
+        max-width: 50%!important;
+    }
+    .mw-md-75 {
+        max-width: 75%!important;
+    }
+    .mw-md-100 {
+        max-width: 100%!important;
+    }
+
+    .min-vw-md-25 {
+        min-width: 25vh!important;
+    }
+    .min-vw-md-50 {
+        min-width: 50vh!important;
+    }
+    .min-vw-md-75 {
+        min-width: 75vh!important;
+    }
+    .min-vw-md-100 {
+        min-width: 100vh!important;
+    }
+
+    /* Height */
+    .h-md-25 {
+        height: 25%!important;
+    }
+    .h-md-50 {
+        height: 50%!important;
+    }
+    .h-md-75 {
+        height: 75%!important;
+    }
+    .h-md-100 {
+        height: 100%!important;
+    }
+
+    .mh-md-25 {
+        max-height: 25%!important;
+    }
+    .mh-md-50 {
+        max-height: 50%!important;
+    }
+    .mh-md-75 {
+        max-height: 75%!important;
+    }
+    .mh-md-100 {
+        max-height: 100%!important;
+    }
+
+    .min-vh-md-25 {
+        min-height: 25vh!important;
+    }
+    .min-vh-md-50 {
+        min-height: 50vh!important;
+    }
+    .min-vh-md-75 {
+        min-height: 75vh!important;
+    }
+    .min-vh-md-100 {
+        min-height: 100vh!important;
+    }
+
+    /* ------------------- END SIZING -------------------*/
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    /* ------------------ BEGIN SIZING ------------------*/
+    /* Width */
+    .w-lg-25 {
+        width: 25%!important;
+    }
+    .w-lg-50 {
+        width: 50%!important;
+    }
+    .w-lg-75 {
+        width: 75%!important;
+    }
+    .w-lg-100 {
+        width: 100%!important;
+    }
+
+    .mw-lg-25 {
+        max-width: 25%!important;
+    }
+    .mw-lg-50 {
+        max-width: 50%!important;
+    }
+    .mw-lg-75 {
+        max-width: 75%!important;
+    }
+    .mw-lg-100 {
+        max-width: 100%!important;
+    }
+
+    .min-vw-lg-25 {
+        min-width: 25vh!important;
+    }
+    .min-vw-lg-50 {
+        min-width: 50vh!important;
+    }
+    .min-vw-lg-75 {
+        min-width: 75vh!important;
+    }
+    .min-vw-lg-100 {
+        min-width: 100vh!important;
+    }
+
+    /* Height */
+    .h-lg-25 {
+        height: 25%!important;
+    }
+    .h-lg-50 {
+        height: 50%!important;
+    }
+    .h-lg-75 {
+        height: 75%!important;
+    }
+    .h-lg-100 {
+        height: 100%!important;
+    }
+
+    .mh-lg-25 {
+        max-height: 25%!important;
+    }
+    .mh-lg-50 {
+        max-height: 50%!important;
+    }
+    .mh-lg-75 {
+        max-height: 75%!important;
+    }
+    .mh-lg-100 {
+        max-height: 100%!important;
+    }
+
+    .min-vh-lg-25 {
+        min-height: 25vh!important;
+    }
+    .min-vh-lg-50 {
+        min-height: 50vh!important;
+    }
+    .min-vh-lg-75 {
+        min-height: 75vh!important;
+    }
+    .min-vh-lg-100 {
+        min-height: 100vh!important;
+    }
+
+    /* ------------------- END SIZING -------------------*/
+}
+ 
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    /* ------------------ BEGIN SIZING ------------------*/
+    /* Width */
+    .w-xl-25 {
+        width: 25%!important;
+    }
+    .w-xl-50 {
+        width: 50%!important;
+    }
+    .w-xl-75 {
+        width: 75%!important;
+    }
+    .w-xl-100 {
+        width: 100%!important;
+    }
+
+    .mw-xl-25 {
+        max-width: 25%!important;
+    }
+    .mw-xl-50 {
+        max-width: 50%!important;
+    }
+    .mw-xl-75 {
+        max-width: 75%!important;
+    }
+    .mw-xl-100 {
+        max-width: 100%!important;
+    }
+
+    .min-vw-xl-25 {
+        min-width: 25vh!important;
+    }
+    .min-vw-xl-50 {
+        min-width: 50vh!important;
+    }
+    .min-vw-xl-75 {
+        min-width: 75vh!important;
+    }
+    .min-vw-xl-100 {
+        min-width: 100vh!important;
+    }
+
+    /* Height */
+    .h-xl-25 {
+        height: 25%!important;
+    }
+    .h-xl-50 {
+        height: 50%!important;
+    }
+    .h-xl-75 {
+        height: 75%!important;
+    }
+    .h-xl-100 {
+        height: 100%!important;
+    }
+
+    .mh-xl-25 {
+        max-height: 25%!important;
+    }
+    .mh-xl-50 {
+        max-height: 50%!important;
+    }
+    .mh-xl-75 {
+        max-height: 75%!important;
+    }
+    .mh-xl-100 {
+        max-height: 100%!important;
+    }
+
+    .min-vh-xl-25 {
+        min-height: 25vh!important;
+    }
+    .min-vh-xl-50 {
+        min-height: 50vh!important;
+    }
+    .min-vh-xl-75 {
+        min-height: 75vh!important;
+    }
+    .min-vh-xl-100 {
+        min-height: 100vh!important;
+    }
+
+    /* ------------------- END SIZING -------------------*/
+}
+ 
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    /* ------------------ BEGIN SIZING ------------------*/
+    /* Width */
+    .w-xxl-25 {
+        width: 25%!important;
+    }
+    .w-xxl-50 {
+        width: 50%!important;
+    }
+    .w-xxl-75 {
+        width: 75%!important;
+    }
+    .w-xxl-100 {
+        width: 100%!important;
+    }
+
+    .mw-xxl-25 {
+        max-width: 25%!important;
+    }
+    .mw-xxl-50 {
+        max-width: 50%!important;
+    }
+    .mw-xxl-75 {
+        max-width: 75%!important;
+    }
+    .mw-xxl-100 {
+        max-width: 100%!important;
+    }
+
+    .min-vw-xxl-25 {
+        min-width: 25vh!important;
+    }
+    .min-vw-xxl-50 {
+        min-width: 50vh!important;
+    }
+    .min-vw-xxl-75 {
+        min-width: 75vh!important;
+    }
+    .min-vw-xxl-100 {
+        min-width: 100vh!important;
+    }
+
+    /* Height */
+    .h-xxl-25 {
+        height: 25%!important;
+    }
+    .h-xxl-50 {
+        height: 50%!important;
+    }
+    .h-xxl-75 {
+        height: 75%!important;
+    }
+    .h-xxl-100 {
+        height: 100%!important;
+    }
+
+    .mh-xxl-25 {
+        max-height: 25%!important;
+    }
+    .mh-xxl-50 {
+        max-height: 50%!important;
+    }
+    .mh-xxl-75 {
+        max-height: 75%!important;
+    }
+    .mh-xxl-100 {
+        max-height: 100%!important;
+    }
+
+    .min-vh-xxl-25 {
+        min-height: 25vh!important;
+    }
+    .min-vh-xxl-50 {
+        min-height: 50vh!important;
+    }
+    .min-vh-xxl-75 {
+        min-height: 75vh!important;
+    }
+    .min-vh-xxl-100 {
+        min-height: 100vh!important;
+    }
+
+    /* ------------------- END SIZING -------------------*/
+}

@@ -6,6 +6,22 @@
     background-color: var(--light-grey);
 }
 
+/* Chrome, Safari, Edge, Opera */
+input.hide-appearence::-webkit-outer-spin-button,
+input.hide-appearence::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number].hide-appearence {
+  -moz-appearance: textfield;
+}
+
+.text-overflow-ellipsis {
+    text-overflow: ellipsis;
+}
+
 .hover-border:hover {
     border-left: 1px solid black;
 }
