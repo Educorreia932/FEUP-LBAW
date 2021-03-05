@@ -27,68 +27,78 @@ $stylesheets = array(
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-4 col-lg-3 bg-light sidebar">
-                <h4>Category</h4>
+            <nav class="col-md-4 col-lg-2 py-3 bg-light sidebar collapse" id="sidebar">
+                <div>
+                    <!-- Categories -->
+                    <div>
+                        <h4>Category</h4>
 
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active">
-                            All
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Games
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            E-Books
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Music
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Software
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Auction timeframe -->
-                <div class="my-3">
-                    <p class="text-secondary my-2">Auction timeframe</p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Scheduled
-                        </label>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active">
+                                    All
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    Games
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    E-Books
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    Music
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    Software
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                            On-going
-                        </label>
+                    <!-- Auction timeframe -->
+                    <div class="my-3">
+                        <p class="text-secondary my-2">Auction timeframe</p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Scheduled
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                On-going
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Current bid price range -->
-                <div class="my-3">
-                    <label class="text-secondary" for="price-range">Current bid</label>
+                    <!-- Current bid price range -->
+                    <div class="my-3">
+                        <label class="text-secondary" for="price-range">Current bid</label>
 
-                    <div class="d-flex">
-                        <div id="price-range-slider" class="my-5 mx-4 w-100"/>
+                        <div class="d-flex">
+                            <div id="price-range-slider" class="my-5 mx-4 w-100" />
+                        </div>
                     </div>
                 </div>
             </nav>
 
-            <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4">
+            <main class="col ms-sm-auto px-md-4">
                 <div class="d-flex flex-row py-4">
+                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+                        &gt;
+                    </button>
+
+                    <!-- Search bar -->
                     <div class="container input-group">
                         <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         <button class="input-group-text border-0" id="search-addon">
