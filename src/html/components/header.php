@@ -14,9 +14,9 @@
                 <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
                     <li class="nav-item col-6 col-md-auto">
                         <?php if ($current_page == "page_home") { ?>
-                            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
                         <?php } else {?>
-                            <a class="nav-link" href="home.php">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         <?php }?>
                     </li>
                     <div class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
@@ -30,9 +30,9 @@
                         </li>
                         <li class="nav-item">
                             <?php if ($current_page == "page_create_auction") { ?>
-                                    <a class="nav-link active" aria-current="page" href="">Sell Item</a>
+                                    <a class="nav-link active" aria-current="page" href="create_auction.php">Sell Item</a>
                             <?php } else {?>
-                                    <a class="nav-link" href="">Sell Item</a>
+                                    <a class="nav-link" href="create_auction.php">Sell Item</a>
                             <?php }?>
                         </li>
                     </div>
