@@ -24,7 +24,7 @@
 
         <!-- Included stylesheets -->
         <?php foreach ($stylesheets as $stylesheet) { ?>
-            <link rel="stylesheet" href="../css/<?= $stylesheet ?>">
+            <link rel="stylesheet" href="<?= $stylesheet ?>">
         <?php } ?>
     </head>
 <?php 

@@ -4,7 +4,7 @@ include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
 
 $stylesheets = array(
-    "../css/settings.css"
+    "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
 );
 ?>
 
@@ -16,9 +16,18 @@ $stylesheets = array(
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
+    <script defer src="../js/search_results.js"></script>
+
+    <style>
+        .noUi-connect {
+            background-color: var(--bs-primary);
+        }
+    </style>
+
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-3 col-lg-2 bg-light sidebar">
+            <nav class="col-md-4 col-lg-3 bg-light sidebar">
                 <h4>Category</h4>
 
                 <ul class="nav flex-column">
@@ -72,15 +81,13 @@ $stylesheets = array(
                 <div class="my-3">
                     <label class="text-secondary" for="price-range">Current bid</label>
 
-                    <div class="d-flex flex-row my-2">
-                        <p>0&euro;</p>
-                        <input type="range" class="form-range mx-2" id="price-range" min="0" max="200">
-                        <p>200&euro;</p>
+                    <div class="d-flex">
+                        <div id="price-range-slider" class="my-5 mx-4 w-100"/>
                     </div>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4">
                 <div class="d-flex flex-row py-4">
                     <div class="container input-group">
                         <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -109,14 +116,14 @@ $stylesheets = array(
                 <!-- Auctions -->
                 <div>
                     <?php
-                        include_once(__DIR__ . "/../components/auction_entry.php");
+                    include_once(__DIR__ . "/../components/auction_entry.php");
 
-                        for ($i = 0; $i < 5; $i++) {
-                            draw_auction_entry(6.04, 5.01);
+                    for ($i = 0; $i < 5; $i++) {
+                        draw_auction_entry(6.04, 5.01);
 
-                            if ($i < 4)
-                                echo "<hr>";
-                        }
+                        if ($i < 4)
+                            echo "<hr>";
+                    }
                     ?>
                 </div>
             </main>
