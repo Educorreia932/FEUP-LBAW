@@ -3,7 +3,7 @@
 ?>
     <head>
         <meta charset="utf-8">
-        <title>Trade-a-Bid | <?= $title ?></title>
+        <title><?= $title ?> | Trade-a-Bid</title>
 
         <!-- Page icon -->
         <link rel="icon" href="../../static/logo.svg">
@@ -21,6 +21,7 @@
 
         <!-- Default stylesheet -->
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap_extension.css">
 
         <!-- Included stylesheets -->
         <?php foreach ($stylesheets as $stylesheet) { ?>
