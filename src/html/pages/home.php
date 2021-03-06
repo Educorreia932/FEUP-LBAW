@@ -2,26 +2,24 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/auction_card.php");
 
 $stylesheets = array();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <?php site_head('Home', $stylesheets); ?>
+<?php site_head('Home', $stylesheets); ?>
 
-    <body>
-        <?php site_header("Foo Fighters", "page_home"); ?>
+<body>
+    <?php site_header("Foo Fighters", "page_home"); ?>
 
-        <main class="flex-shrink-0 bg-light">
+    <main class="flex-shrink-0 bg-light">
             <!-- Carousel div -->
             <div class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);' >
-                <div class="col-sm-3" >
-                    <h4></h4>
-                </div>
 
                 <!-- Carousel -->
-                <div id="slides" class="carousel slide col-sm-6" data-bs-ride="carousel">
+                <div id="slides" class="carousel slide offset-lg-3 col-sm-8 col-md-6" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#slides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#slides" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -60,10 +58,10 @@ $stylesheets = array();
                     </button>
                 </div>
 
-                <div class="col-sm-3" >
-                    <h4>Featured Auctions</h4>
-                    <p>Check out these featured autions!</p>
-                    <a href="#">See more <i class="bi bi-arrow-right"></i></a>
+                <div class="col my-3 mb-md-0" >
+                    <h2 class="fw-bold">Featured Auctions</h2>
+                    <p class="fs-3">Check out these <br> featured autions!</p>
+                    <a href="#" class="text-decoration-none link-secondary">See more <i class="bi bi-arrow-right"></i></a>
                 </div>   
             </div>
 
@@ -75,57 +73,56 @@ $stylesheets = array();
                 </button>
             </div>
 
+
+
             <!--second section-->
-            <section class="container py-5 bg-light">
-                <div class="row">
-                    <div class="col-md-6">
-                        <span class="d-flex flex-row">
-                            <h4 class='mb-0'>Recently viewed</h4>
-                            <a class='ms-2' href="#"> See all <i class="bi bi-arrow-right"></i></a>
-                        </span>
-                        <div class="card d-flex flex-row">
-                            <img class="card-img img-thumbnail" src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" alt="...">
-                            <img class="card-img img-thumbnail" src="https://cdn.discordapp.com/attachments/688060677214044186/814885346055028766/images.png" alt="...">
-                            <img class="card-img img-thumbnail" src="https://media.discordapp.net/attachments/688060677214044186/814885221522079744/2Q.png" alt="...">
-                        </div>
-                    </div>
-                    <div class=" col-md-6">
-                        <span class="d-flex flex-row align-items-center">
-                            <h4 class='mb-0'>Followed users</h4>
-                            <a class='ms-2' href="#"> See all <i class="bi bi-arrow-right"></i></a>
-                        </span>
-                        <div class="card d-flex flex-row">
-                            <img class="card-img img-thumbnail" src="https://media.discordapp.net/attachments/688060677214044186/814885199976333332/bb1a8785-5b0f-4394-9fc1-8c55ac2a887a.png?width=565&height=676" alt="...">
-                            <img class="card-img img-thumbnail" src="https://media.discordapp.net/attachments/688060677214044186/814885181429121080/203667346-208-k571572.png" alt="...">
-                            <img class="card-img img-thumbnail" src="https://media.discordapp.net/attachments/688060677214044186/814885151988777030/images.png" alt="...">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <span class="d-flex flex-row align-items-center">
-                            <h4 class='mb-0'>Open auctions</h4>
-                            <a class='ms-2' href="#"> See all <i class="bi bi-arrow-right"></i></a>
-                        </span>
-                        <div class="d-flex flex-row">
-                            <div class="card text-center" style="width: 10rem; background:none; border:none; margin-top:5px;">
-                                <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                 <a href="#" class="btn btn-primary">10€</a>
-                                </div>
+            <section class="py-sm-3 bg-light">
+                <div class="container">
+                    <div class="row"> <!-- top row -->
+                        <div class="col-xl-6 mt-sm-4">
+                            <hr class="d-sm-none">
+                            <span class="d-flex flex-row mb-2 align-items-center">
+                                <h4>Recent bids</h4>
+                                <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
+                            </span>
+                            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                                <?php for ($i = 0; $i < 3; $i++)
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                ?>
                             </div>
-                            <div class="card text-center" style="width: 10rem; background:none; border:none; margin-top:5px;">
-                                <img src="https://media.discordapp.net/attachments/688060677214044186/814885181429121080/203667346-208-k571572.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                 <a href="#" class="btn btn-primary">10€</a>
-                                </div>
+                        </div>
+                        <div class="col-xl-6 mt-sm-4">
+                            <hr class="d-sm-none">
+                            <span class="d-flex flex-row mb-2 align-items-center">
+                                <h4>Followed users</h4>
+
+                                <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
+                            </span>
+                            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                                <?php for ($i = 0; $i < 3; $i++)
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
+                                ?>
+                            </div>
+                        </div>
+                    </div> <!-- end of top row -->
+                    <div class="row mt-sm-4">
+                        <div class="col-lg-12">
+                        <hr class="d-sm-none">
+                            <span class="d-flex flex-row mb-2 align-items-center">
+                                <h4>Open auctions</h4>
+                                <a href="search_results.php" class="ms-2 link-secondary text-decoration-none align-items-center">See all <i class="bi bi-arrow-right"></i></a>
+                            </span>
+                            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                                <?php for ($i = 0; $i < 6; $i++)
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
-
+    </main>
         <?php site_footer(); ?>
-    </body>
+        <script src="../js/auction-card.js"></script>
+</body>
 </hmtl>

@@ -23,9 +23,9 @@
                         <span class="d-block d-md-none text-secondary text-capitalize header-section-title">Auctions</span>
                         <li class="nav-item">
                             <?php if ($current_page == "page_auctions") { ?>
-                                <a class="nav-link active" aria-current="page" href="auctions.php">Auctions</a>
+                                <a class="nav-link active" aria-current="page" href="search_results.php">Auctions</a>
                             <?php } else {?>
-                                <a class="nav-link" href="auctions.php">Auctions</a>
+                                <a class="nav-link" href="search_results.php">Auctions</a>
                             <?php }?>
                         </li>
                         <li class="nav-item">
@@ -49,7 +49,8 @@
                             </button>
                         
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="dashboard_created_auctions.php">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="user_profile.php">Profile</a></li>
                                 <li><a class="dropdown-item" href="settings-account.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="">Sign out</a></li>
                             </ul>
@@ -59,8 +60,9 @@
                                 <i class="bi bi-person-circle navbar-text" style="font-size: 1.2rem;"></i>
                                 <span class="navbar-text"><?=htmlentities($user)?></html></span>
                             </li>
-                            <li class="nav-item col-6"><a class="nav-link" href="profile.html">Profile</a></li>
-                            <li class="nav-item col-6"><a class="nav-link" href="settings.html">Settings</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="dashboard_created_auctions.php">Dashboard</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="user_profile.php">Profile</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="settings-account.php">Settings</a></li>
                             <li class="nav-item col-12"><a class="nav-link" href="">Sign out</a></li>
                         </div>
                     <?php } else { ?>

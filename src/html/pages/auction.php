@@ -160,9 +160,8 @@ $stylesheets = array();
                             <?php
                                 bid_table_entry("Me", 180, "20 sec");
 
-                                for ($i = 0; $i < 6; $i++) {
+                                for ($i = 0; $i < 6; $i++) 
                                     bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
-                                }
 
                                 bid_table_entry("Starting Bid", 75, "1 week");
                             ?>
