@@ -26,7 +26,10 @@ slider.noUiSlider.on('update', function (values, handle) {
     inputs[handle].value = values[handle];
 });
 
-inputNumber.addEventListener('change', function () {
-    html5Slider.noUiSlider.set([null, this.value]);
+inputs[0].addEventListener('change', function () {
+    slider.noUiSlider.set([this.value, null]);
 });
 
+inputs[1].addEventListener('change', function () {
+    slider.noUiSlider.set([null, this.value]);
+});
