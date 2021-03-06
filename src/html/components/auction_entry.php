@@ -46,8 +46,6 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
                 </div>
             </div>
         </div>
-
-
     </div>
 
 <?php

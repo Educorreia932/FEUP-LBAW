@@ -41,12 +41,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="settings-security.php">
+                            <a class="nav-link" href="dashboard_bookmarked.php">
                                 Bookmarked
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="settings-security.php">
+                            <a class="nav-link" href="dashboard_following.php">
                                 Following
                             </a>
                         </li>
@@ -62,8 +62,11 @@
                         <?php
                             include_once(__DIR__ . "/../components/auction_entry.php");
 
-                            for ($i = 0; $i < 5; $i++)
+                            for ($i = 0; $i < 5; $i++) {
                                 draw_auction_entry(6.66, 5.00);
+
+                                echo "<hr>";
+                            }
                         ?>
                     </div>
                 </div>

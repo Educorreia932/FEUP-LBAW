@@ -55,8 +55,11 @@ $stylesheets = array(
                         <?php
                             include_once(__DIR__ . "/../components/auction_entry.php");
 
-                            for ($i = 0; $i < 5; $i++)
+                            for ($i = 0; $i < 5; $i++) {
                                 draw_auction_entry(6.66);
+
+                                echo "<hr>";
+                            }
                         ?>
                     </div>
                 </div>
