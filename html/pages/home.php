@@ -69,7 +69,7 @@ $stylesheets = array();
             <div class="container input-group">
                 <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
                 <button class="input-group-text border-0" id="search-addon">
-                    <i class="bi bi-search"></i>
+                    <a class="link-dark" href="search_results.php"><i class="bi bi-search"></i></a>
                 </button>
             </div>
 

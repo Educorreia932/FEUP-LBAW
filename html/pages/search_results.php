@@ -58,7 +58,7 @@ $stylesheets = array(
                                 <div class="col">
                                     <?php
                                     filter_checkbox("Software", "e");
-                                    filter_checkbox("Wallpapers", "f");
+                                    filter_checkbox("Skins", "f");
                                     filter_checkbox("Others", "f");
                                     ?>
                                 </div>
@@ -71,13 +71,13 @@ $stylesheets = array(
                         <p class="text-secondary my-2">Auction Owner</p>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="owner-any" id="radio-owner-any" checked>
+                            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-any" checked>
                             <label class="form-check-label" for="radio-owner-any">
                                 Any
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="owner-followed" id="radio-owner-followed">
+                            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed">
                             <label class="form-check-label" for="radio-owner-followed">
                                 Followed Users
                             </label>
@@ -122,7 +122,7 @@ $stylesheets = array(
 
             <main class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
-                <?php breadcrumbs(array("Home", "Search Results"), array("home.php")) ?>
+                <?php breadcrumbs(array("Home", "Auctions"), array("home.php")) ?>
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
