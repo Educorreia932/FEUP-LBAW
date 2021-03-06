@@ -15,6 +15,7 @@ $stylesheets = array();
 
         <div class="container-fluid">
             <main class="flex-shrink-0">
+                <h1 class="m-4">Create an auction</h1>
                 <div class="row g-3 align-items-center">
                     <!-- gallery col -->
                     <div class="col-md-5"> 
