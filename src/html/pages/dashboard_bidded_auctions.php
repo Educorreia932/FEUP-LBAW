@@ -2,6 +2,7 @@
     include_once(__DIR__ . "/../components/head.php");
     include_once(__DIR__ . "/../components/header.php");
     include_once(__DIR__ . "/../components/footer.php");
+    include_once(__DIR__ . "/../components/auction_entry.php");
 
     $stylesheets = array(
         "../css/settings.css"
@@ -12,6 +13,8 @@
 <html lang="en">
 
 <?php site_head("Dashboard", $stylesheets); ?>
+
+<script defer src="../js/bookmark.js"></script>
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <style>
@@ -60,8 +63,6 @@
 
                     <div>
                         <?php
-                            include_once(__DIR__ . "/../components/auction_entry.php");
-
                             for ($i = 0; $i < 5; $i++) {
                                 draw_auction_entry(6.66, 5.00);
 

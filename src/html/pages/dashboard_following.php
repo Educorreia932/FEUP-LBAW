@@ -2,6 +2,8 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/user_entry.php");
+
 
 $stylesheets = array(
     "../css/settings.css"
@@ -53,8 +55,6 @@ $stylesheets = array(
 
                     <div class="container">
                         <?php
-                            include_once(__DIR__ . "/../components/user_entry.php");
-
                             for ($i = 0; $i < 5; $i++) {
                                 draw_user_entry();
 
