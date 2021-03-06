@@ -3,6 +3,7 @@ include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
 include_once(__DIR__ . "/../components/auction_entry.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array(
     "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
@@ -101,6 +102,7 @@ $stylesheets = array(
 
             <main class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
+                <?php breadcrumbs(array("Home", "Search Results"), array("home.php")) ?>
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
