@@ -2,6 +2,7 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/auction_entry.php");
 
 $stylesheets = array(
     "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
@@ -34,38 +35,23 @@ $stylesheets = array(
                     <div>
                         <h4>Category</h4>
 
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active">
-                                    All
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link">
-                                    Games
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link">
-                                    E-Books
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link">
-                                    Music
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link">
-                                    Software
-                                </a>
-                            </li>
-                        </ul>
+                        <?php
+                        filter_checkbox("All", "a");
+                        filter_checkbox("Games", "b");
+                        filter_checkbox("E-Books", "c");
+                        filter_checkbox("Music", "d");
+                        filter_checkbox("Software", "e");
+                        ?>
                     </div>
 
                     <!-- Auction timeframe -->
                     <div class="my-3">
                         <p class="text-secondary my-2">Auction timeframe</p>
+
+                        <?php
+                        filter_checkbox("Scheduled", "g");
+                        filter_checkbox("Open", "h");
+                        ?>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -127,8 +113,6 @@ $stylesheets = array(
                 <!-- Auctions -->
                 <div>
                     <?php
-                    include_once(__DIR__ . "/../components/auction_entry.php");
-
                     for ($i = 0; $i < 5; $i++) {
                         draw_auction_entry(6.04, 5.01);
 
