@@ -2,10 +2,31 @@
     include_once(__DIR__ . "/../components/head.php");
     include_once(__DIR__ . "/../components/header.php");
     include_once(__DIR__ . "/../components/footer.php");
-    include_once(__DIR__ . "/../components/auction_entry.php");
+
+    include_once(__DIR__ . "/../subpages/dashboard-subpages.php");
+
+    $subpage_main = array(
+        'dashboard_created_auctions',
+        'dashboard_bidded_auctions',
+        'dashboard_bookmarked_auctions',
+        'dashboard_followed'
+    );
+    $named = array(
+        'created_auctions' => 0,
+        'bidded_auctions' => 1,
+        'bookmarked_auctions' => 2,
+        'followed' => 3
+    );
+
+    $subpage;
+    if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
+        $subpage = $named[$_GET["subpage"]];
+    } else {
+        $subpage = 0;
+    }
 
     $stylesheets = array(
-        "../css/settings.css"
+        "../css/sidebar.css"
     );
 ?>
 
@@ -24,7 +45,7 @@
         }
     </style>
 
-    <?php site_header("Foo Fighters", "page_auction"); ?>
+    <?php site_header("Foo Fighters", "page_dashboard"); ?>
 
     <div class="container-fluid" style="flex:auto;">
         <div class="row">
@@ -34,23 +55,23 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard_created_auctions.php">
+                            <a class="nav-link <?=$subpage == 0 ? 'active' : ''?>" href="dashboard.php?subpage=created_auctions">
                                 Created Auctions
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="dashboard_bidded_auctions.php">
+                            <a class="nav-link <?=$subpage == 1 ? 'active' : ''?>" aria-current="page" href="dashboard.php?subpage=bidded_auctions">
                                 Bidded Auctions
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard_bookmarked.php">
-                                Bookmarked
+                            <a class="nav-link <?=$subpage == 2 ? 'active' : ''?>" href="dashboard.php?subpage=bookmarked_auctions">
+                                Bookmarked Auctions
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard_following.php">
-                                Following
+                            <a class="nav-link <?=$subpage == 3 ? 'active' : ''?>" href="dashboard.php?subpage=followed">
+                                Followed
                             </a>
                         </li>
                     </ul>
@@ -58,19 +79,7 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="container-fluid">
-                    <h2 class="my-4">Created Auctions</h2>
-
-                    <div>
-                        <?php
-                            for ($i = 0; $i < 5; $i++) {
-                                draw_auction_entry(6.66, 5.00);
-
-                                echo "<hr>";
-                            }
-                        ?>
-                    </div>
-                </div>
+                <?php $subpage_main[$subpage]() ?>
             </main>
         </div>
     </div>

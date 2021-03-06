@@ -9,23 +9,22 @@ include_once(__DIR__ . "/../subpages/settings-security.php");
 
 
 $settings_subpage = array('settings_account', 'settings_privacy', 'settings_security');
-$dict = array(
+$named = array(
     'account' => 0,
     'privacy' => 1,
     'security' => 2
 );
 
-
 $subpage;
-if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $dict)) {
-    $subpage = $dict[$_GET["subpage"]];
+if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
+    $subpage = $named[$_GET["subpage"]];
 } else {
     $subpage = 0;
 }
 
 
 $stylesheets = array(
-    "../css/settings.css"
+    "../css/sidebar.css"
 );
 ?>
 
