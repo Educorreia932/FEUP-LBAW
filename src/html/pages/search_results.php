@@ -3,6 +3,7 @@ include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
 include_once(__DIR__ . "/../components/auction_entry.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array(
     "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
@@ -31,20 +32,36 @@ $stylesheets = array(
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-4 col-lg-2 py-3 bg-light sidebar collapse show" id="sidebar">
+            <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse show" id="sidebar">
                 <div>
+                    <h4>Filters</h4>
+
                     <!-- Categories -->
                     <div>
-                        <h4>Category</h4>
+                        <p class="text-secondary my-2">Category</p>
 
                         <div class="master-checkbox-reverse">
                             <?php
-                            filter_checkbox("All", "a");
-                            filter_checkbox("Games", "b");
-                            filter_checkbox("E-Books", "c");
-                            filter_checkbox("Music", "d");
-                            filter_checkbox("Software", "e");
+                            filter_checkbox("All", "a", true, true);
                             ?>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <?php
+                                    filter_checkbox("Games", "b");
+                                    filter_checkbox("E-Books", "c");
+                                    filter_checkbox("Music", "d");
+                                    ?>
+                                </div>
+
+                                <div class="col">
+                                    <?php
+                                    filter_checkbox("Software", "e");
+                                    filter_checkbox("Wallpapers", "f");
+                                    filter_checkbox("Others", "f");
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -61,15 +78,32 @@ $stylesheets = array(
                     <!-- Current bid price range -->
                     <div class="my-3">
                         <label class="text-secondary" for="price-range">Current bid</label>
+                        
+                        <div class="row">
+                            <div class="d-flex">
+                                <div id="price-range-slider" class="my-2 mx-4 w-100">
+                            </div>
+                        </div>
 
-                        <div class="d-flex">
-                            <div id="price-range-slider" class="my-5 mx-4 w-100">
+                        <div class="row mb-3">
+                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                                <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
+                                <input type="text" class="form-control" id="input-number-left" aria-label="Amount (to the nearest dollar)">
+                            </div>
+
+                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                                <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
+                                <input type="text" class="form-control" id="input-number-right" aria-label="Amount (to the nearest dollar)">
+                            </div>
                         </div>
                     </div>
                 </div>
             </nav>
 
             <main class="col ms-sm-auto px-md-4">
+                <h1 class="mt-4">Search Results</h1>
+                <?php breadcrumbs(array("Home", "Search Results"), array("home.php")) ?>
+
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
                         &gt;
@@ -98,7 +132,7 @@ $stylesheets = array(
                     </div>
                 </div>
 
-                <p>Results for: <u>cyberpunk</u> (2)</p>
+                <p>Results for: <u>Foo Fighters</u> (5)</p>
 
                 <!-- Auctions -->
                 <div>

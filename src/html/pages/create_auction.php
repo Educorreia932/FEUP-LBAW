@@ -2,6 +2,7 @@
 include_once("../components/head.php");
 include_once("../components/header.php");
 include_once("../components/footer.php");
+include_once("../components/breadcrumbs.php");
 
 $stylesheets = array();
 ?>
@@ -15,6 +16,11 @@ $stylesheets = array();
 
         <div class="container-fluid">
             <main class="flex-shrink-0">
+                <div class="row m-4">
+                    <h1>Create Auction</h1>
+                    <?php breadcrumbs(array("Home", "Create Auction"), array("home.php")) ?>
+                </div>
+                
                 <div class="row g-3 align-items-center">
                     <!-- gallery col -->
                     <div class="col-md-5"> 

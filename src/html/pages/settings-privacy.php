@@ -65,7 +65,7 @@ $stylesheets = array(
                 <h3 class="mt-4 mb-2">Notifications</h3>
 
                 <div class="master-checkbox">
-                    <div class="form-check form-switch">
+                    <div class="form-check form-switch master">
                         <input class="form-check-input" type="checkbox" id="switch-notifications">
                         <label class="form-check-label" for="switch-notifications">Notifications</label>
                     </div>

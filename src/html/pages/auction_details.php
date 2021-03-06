@@ -3,6 +3,7 @@ include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
 include_once(__DIR__ . "/../components/auction_components.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array();
 ?>
@@ -10,7 +11,7 @@ $stylesheets = array();
 <!DOCTYPE html>
 <html lang="en">
 
-<?php site_head('Home', $stylesheets); ?>
+<?php site_head('JoJo Eyes of Heaven PS4 Key ~ Details', $stylesheets); ?>
 
 <body>
     <?php site_header("Foo Fighters", "page_auction"); ?>
@@ -20,10 +21,15 @@ $stylesheets = array();
     <script defer src="../js/tooltip_initializer.js"></script>
 
     <main>
+        <div class="row m-2">
+            <h1>Auction Details & Bids</h1>
+            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key", "Details"), array("home.php", "search-results.php", "auction.php")); ?>
+        </div>
+
         <section class="container-fluid p-4">
             <div class="row">
                 <span class="d-flex align-items-end">
-                    <h3 class="m-0 p-0">Hollow Knight Steam Key</h3>
+                    <h3 class="m-0 p-0">JoJo Eyes of Heaven PS4 Key</h3>
                     <a class="ms-2" style="font-size: smaller;" href="../pages/auction.php">Go back</a>
                 </span>
                 <hr class="my-1">

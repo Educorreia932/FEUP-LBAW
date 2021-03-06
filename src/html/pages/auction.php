@@ -3,6 +3,7 @@ include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
 include_once(__DIR__ . "/../components/auction_components.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array();
 ?>
@@ -10,47 +11,57 @@ $stylesheets = array();
 <!DOCTYPE html>
 <html lang="en">
 
-<?php site_head('Home', $stylesheets); ?>
+<?php site_head('JoJo Eyes of Heaven PS4 Key', $stylesheets); ?>
 
 <body>
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
     <script defer src="../js/auction.js"></script>
     <script defer src="../js/bookmark.js"></script>
-    <script defer src="../js/tooltip_initializer.js"></script>
 
     <main>
+        <div class="row m-2">
+            <h1>Auction</h1>
+            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key"), array("home.php", "search-results.php")); ?>
+        </div>
+
         <section class="container-fluid bg-light">
+
             <div class="row">
                 <!-- Product images -->
-                <div id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
+                <div id="product-images" class="carousel slide col-md-5 h-min-content" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#product-images" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#product-images" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#product-images" data-bs-slide-to="3" aria-label="Slide 4"></button>
                     </div>
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block m-auto" src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" alt="...">
+                            <img class="d-block m-auto" src="https://www.mobygames.com/images/covers/l/382051-jojo-s-bizarre-adventure-eyes-of-heaven-playstation-4-front-cover.png" alt="...">
                         </div>
 
                         <div class="carousel-item">
-                            <img class="d-block m-auto" src="https://media.discordapp.net/attachments/688060677214044186/814885658422149180/dda7bsd-6a60b5b7-9eca-4c20-b582-5e6d1126f2ce.png?width=692&height=676" alt="...">
+                            <img class="d-block m-auto" src="https://hd-tecnologia.com/imagenes/articulos/2016/06/CAP-6-Jolyne_01-800x450.jpg" alt="...">
                         </div>
 
                         <div class="carousel-item">
-                            <img class="d-block m-auto" src="https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg" alt="...">
+                            <img class="d-block m-auto" src="https://i.ytimg.com/vi/6MFccQc1eBE/maxresdefault.jpg" alt="...">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="d-block m-auto" src="https://i.ytimg.com/vi/tZd48sRoxj8/maxresdefault.jpg" alt="...">
                         </div>
                     </div>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#product-images" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon handle-background" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
 
                     <button class="carousel-control-next" type="button" data-bs-target="#product-images" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon handle-background" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
@@ -60,12 +71,12 @@ $stylesheets = array();
                     <!-- Product information -->
                     <div class="row" id="product-information">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h2>Hollow Knight Steam Key</h2>
+                            <h2>JoJo Eyes of Heaven PS4 Key</h2>
                             <button type="button" class="btn auction-bookmark">
                                 <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
                             </button>
                         </div>
-                        <p class="text-overflow-ellipsis">Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.</p>
+                        <p class="text-overflow-ellipsis">Eyes of Heaven is designed to be a 3D action brawler with tag-team elements set in large arenas based on locations in the JoJo's Bizarre Adventure manga. Players may pick a single character to control in a large environment, as well as a second character that may be controlled by either a CPU or second human player to fight the enemy team for a 2v2 battle. Certain match-ups contain special animations and dialogue between two characters, mostly between allies in the form of unique combination attacks such as the Dual Combos (デュアルコンボ, Dyuaru Konbo) and Dual Heat Attacks (デュアルヒートアタック, Dyuaru Hīto Attaku), though provide no discernible bonuses or advantages in battle.</p>
                     </div>
 
                     <div class="row">
