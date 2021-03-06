@@ -2,6 +2,8 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/user_entry.php");
+
 
 $stylesheets = array(
     "../css/settings.css"
@@ -49,11 +51,15 @@ $stylesheets = array(
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="container-fluid">
-                    <h2 class="my-4">Created Auctions</h2>
+                    <h2 class="my-4">Following</h2>
 
-                    <div>
+                    <div class="container">
                         <?php
+                            for ($i = 0; $i < 5; $i++) {
+                                draw_user_entry();
 
+                                echo "<hr>";
+                            }
                         ?>
                     </div>
                 </div>

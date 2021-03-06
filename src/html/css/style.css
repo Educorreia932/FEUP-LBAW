@@ -42,18 +42,18 @@ input[type=number].hide-appearence {
     height: 25em;
 }
 
-::-webkit-scrollbar {
+#bid-history ::-webkit-scrollbar {
     border-radius: 15px;
     width: 0.5em;
     height: 0.5em;
 }
 
-::-webkit-scrollbar-track {
+#bid-history ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 1px;
 }
 
-::-webkit-scrollbar-thumb {
+#bid-history ::-webkit-scrollbar-thumb {
     background-color: lightgray;
     border-radius: 5px;
 }
