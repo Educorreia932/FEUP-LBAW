@@ -51,7 +51,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                                 <li><a class="dropdown-item" href="dashboard_created_auctions.php">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="user_profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="settings-account.php">Settings</a></li>
+                                <li><a class="dropdown-item" href="settings.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="">Sign out</a></li>
                             </ul>
                         </li>
@@ -62,7 +62,7 @@
                             </li>
                             <li class="nav-item col-6"><a class="nav-link" href="dashboard_created_auctions.php">Dashboard</a></li>
                             <li class="nav-item col-6"><a class="nav-link" href="user_profile.php">Profile</a></li>
-                            <li class="nav-item col-6"><a class="nav-link" href="settings-account.php">Settings</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="settings.php">Settings</a></li>
                             <li class="nav-item col-12"><a class="nav-link" href="">Sign out</a></li>
                         </div>
                     <?php } else { ?>
