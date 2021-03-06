@@ -8,21 +8,13 @@ include_once(__DIR__ . "/../subpages/search_results-auctions.php");
 include_once(__DIR__ . "/../subpages/search_results-users.php");
 
 
-$breadcrumbs = array('Auctions', 'Users');
-$filters_section = array('search_results_auctions_filters', 'search_results_users_filters');
-$results_section = array('search_results_auctions_results', 'search_results_users_results');
-$named = array(
-    'auctions' => 0,
-    'users' => 1
+$breadcrumbs = array(
+    'auctions' => 'Auctions',
+    'users' => 'Users'
 );
 
-$subpage;
-if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
-    $subpage = $named[$_GET["subpage"]];
-} else {
-    $subpage = 0;
-}
-
+$named = array('auctions', 'users');
+$subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'auctions';
 
 $stylesheets = array(
     "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
@@ -56,12 +48,14 @@ $stylesheets = array(
 
                     <ul class="nav flex-column mb-4">
                         <li class="nav-item">
-                        <a class="nav-link <?=$subpage == 0 ? 'active' : ''?>" aria-current="page" href="./search_results.php?subpage=auctions">
+                        <a class="nav-link <?=$subpage == 'auctions' ? 'active' : ''?>" aria-current="page"
+                            href="<?=$subpage == 'auctions' ? '#' : './search_results.php?subpage=auctions'?>">
                             Auctions
                         </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link <?=$subpage == 1 ? 'active' : ''?>" href="./search_results.php?subpage=users">
+                        <a class="nav-link <?=$subpage == 'users' ? 'active' : ''?>"
+                            href="<?=$subpage == 'users' ? '#' : './search_results.php?subpage=users'?>">
                             Users
                         </a>
                         </li>
@@ -69,7 +63,7 @@ $stylesheets = array(
 
                     <h4>Filters</h4>
 
-                    <?php $filters_section[$subpage](); ?>
+                    <?php call_user_func_array('search_results_' . $subpage . '_filters', array()); ?>
                 </div>
             </nav>
 
@@ -93,14 +87,11 @@ $stylesheets = array(
                     <!-- Sort criteria -->
                     <div class="d-none d-md-flex nav-item dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Best Match
+                            Sort By
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown">
-                            <li><a class="dropdown-item" href="#">Bid: Highest</a></li>
-                            <li><a class="dropdown-item" href="#">Bid: Lowest</a></li>
-                            <li><a class="dropdown-item" href="#">Time: Most Recent</a></li>
-                            <li><a class="dropdown-item" href="#">Time: Finishing Soon</a></li>
+                            <?php call_user_func_array('search_results_' . $subpage . '_ordering', array()); ?>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +99,7 @@ $stylesheets = array(
                 <p>Results for: <u>Foo Fighters</u> (5)</p>
 
                 <!-- Results -->
-                <?php $results_section[$subpage](); ?>
+                <?php call_user_func_array('search_results_' . $subpage . '_results', array()); ?>
 
             </main>
         </div>

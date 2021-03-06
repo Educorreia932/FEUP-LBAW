@@ -1,6 +1,12 @@
 <?php
 include_once(__DIR__ . "/../components/auction_entry.php");
 
+function search_results_auctions_ordering() { ?>
+    <li><a class="dropdown-item" href="#">Bid Price</a></li>
+    <li><a class="dropdown-item" href="#">Remaining Time</a></li>
+    <li><a class="dropdown-item" href="#">Creation Date</a></li>
+    <li><a class="dropdown-item" href="#">Bidders</a></li>
+<?php }
 
 function search_results_auctions_filters() { ?>
     <script defer src="../js/search_results.js"></script>

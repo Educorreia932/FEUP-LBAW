@@ -49,7 +49,7 @@
                             </button>
                         
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href="dashboard_created_auctions.php">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="user_profile.php">Profile</a></li>
                                 <li><a class="dropdown-item" href="settings.php">Settings</a></li>
                                 <li><a class="dropdown-item" href="">Sign out</a></li>
@@ -60,7 +60,7 @@
                                 <i class="bi bi-person-circle navbar-text" style="font-size: 1.2rem;"></i>
                                 <span class="navbar-text"><?=htmlentities($user)?></html></span>
                             </li>
-                            <li class="nav-item col-6"><a class="nav-link" href="dashboard_created_auctions.php">Dashboard</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
                             <li class="nav-item col-6"><a class="nav-link" href="user_profile.php">Profile</a></li>
                             <li class="nav-item col-6"><a class="nav-link" href="settings.php">Settings</a></li>
                             <li class="nav-item col-12"><a class="nav-link" href="">Sign out</a></li>
