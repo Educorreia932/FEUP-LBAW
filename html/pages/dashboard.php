@@ -2,28 +2,21 @@
     include_once(__DIR__ . "/../components/head.php");
     include_once(__DIR__ . "/../components/header.php");
     include_once(__DIR__ . "/../components/footer.php");
+    include_once(__DIR__ . "/../components/general_components.php");
+
 
     include_once(__DIR__ . "/../subpages/dashboard-subpages.php");
 
-    $subpage_main = array(
-        'dashboard_created_auctions',
-        'dashboard_bidded_auctions',
-        'dashboard_bookmarked_auctions',
-        'dashboard_followed'
-    );
-    $named = array(
-        'created_auctions' => 0,
-        'bidded_auctions' => 1,
-        'bookmarked_auctions' => 2,
-        'followed' => 3
-    );
 
-    $subpage;
-    if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
-        $subpage = $named[$_GET["subpage"]];
-    } else {
-        $subpage = 0;
-    }
+    $href = 'dashboard.php';
+    $named = array(
+        'created_auctions',
+        'bidded_auctions',
+        'bookmarked_auctions',
+        'followed'
+    );
+    $subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'created_auctions';
+
 
     $stylesheets = array(
         "../css/sidebar.css"
@@ -54,32 +47,18 @@
                     <h4>Dashboard</h4>
 
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 0 ? 'active' : ''?>" href="dashboard.php?subpage=created_auctions">
-                                Created Auctions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 1 ? 'active' : ''?>" aria-current="page" href="dashboard.php?subpage=bidded_auctions">
-                                Bidded Auctions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 2 ? 'active' : ''?>" href="dashboard.php?subpage=bookmarked_auctions">
-                                Bookmarked Auctions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 3 ? 'active' : ''?>" href="dashboard.php?subpage=followed">
-                                Followed
-                            </a>
-                        </li>
+                        <?php
+                            sidebar_anchor($subpage, 'created_auctions', 'Created Auctions', $href);
+                            sidebar_anchor($subpage, 'bidded_auctions', 'Bidded Auctions', $href);
+                            sidebar_anchor($subpage, 'bookmarked_auctions', 'Bookmarked Auctions', $href);
+                            sidebar_anchor($subpage, 'followed', 'Followed', $href);
+                        ?>
                     </ul>
                 </div>
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <?php $subpage_main[$subpage]() ?>
+                <?php call_user_func_array('dashboard_' . $subpage, array()); ?>
             </main>
         </div>
     </div>

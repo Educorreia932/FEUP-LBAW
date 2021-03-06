@@ -1,25 +1,27 @@
 <?php
-include_once(__DIR__ . "/../components/head.php");
-include_once(__DIR__ . "/../components/header.php");
-include_once(__DIR__ . "/../components/footer.php");
-include_once(__DIR__ . "/../components/breadcrumbs.php");
+    include_once(__DIR__ . "/../components/head.php");
+    include_once(__DIR__ . "/../components/header.php");
+    include_once(__DIR__ . "/../components/footer.php");
+    include_once(__DIR__ . "/../components/breadcrumbs.php");
+    include_once(__DIR__ . "/../components/general_components.php");
 
-include_once(__DIR__ . "/../subpages/search_results-auctions.php");
-include_once(__DIR__ . "/../subpages/search_results-users.php");
+    include_once(__DIR__ . "/../subpages/search_results-auctions.php");
+    include_once(__DIR__ . "/../subpages/search_results-users.php");
 
 
-$breadcrumbs = array(
-    'auctions' => 'Auctions',
-    'users' => 'Users'
-);
+    $breadcrumbs = array(
+        'auctions' => 'Auctions',
+        'users' => 'Users'
+    );
 
-$named = array('auctions', 'users');
-$subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'auctions';
+    $href = 'search_results.php';
+    $named = array('auctions', 'users');
+    $subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'auctions';
 
-$stylesheets = array(
-    "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
-    "../css/sidebar.css"
-);
+    $stylesheets = array(
+        "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
+        "../css/sidebar.css"
+    );
 ?>
 
 <!DOCTYPE html>
@@ -47,18 +49,10 @@ $stylesheets = array(
                     <h4>Search for</h4>
 
                     <ul class="nav flex-column mb-4">
-                        <li class="nav-item">
-                        <a class="nav-link <?=$subpage == 'auctions' ? 'active' : ''?>" aria-current="page"
-                            href="<?=$subpage == 'auctions' ? '#' : './search_results.php?subpage=auctions'?>">
-                            Auctions
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link <?=$subpage == 'users' ? 'active' : ''?>"
-                            href="<?=$subpage == 'users' ? '#' : './search_results.php?subpage=users'?>">
-                            Users
-                        </a>
-                        </li>
+                        <?php
+                            sidebar_anchor($subpage, 'auctions', 'Auctions', $href);
+                            sidebar_anchor($subpage, 'users', 'Users', $href);
+                        ?>
                     </ul>
 
                     <h4>Filters</h4>

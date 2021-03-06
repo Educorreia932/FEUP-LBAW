@@ -2,25 +2,21 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/general_components.php");
+
 
 include_once(__DIR__ . "/../subpages/settings-account.php");
 include_once(__DIR__ . "/../subpages/settings-privacy.php");
 include_once(__DIR__ . "/../subpages/settings-security.php");
 
 
-$settings_subpage = array('settings_account', 'settings_privacy', 'settings_security');
+$href = 'settings.php';
 $named = array(
-    'account' => 0,
-    'privacy' => 1,
-    'security' => 2
+    'account',
+    'privacy',
+    'security'
 );
-
-$subpage;
-if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
-    $subpage = $named[$_GET["subpage"]];
-} else {
-    $subpage = 0;
-}
+$subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'account';
 
 
 $stylesheets = array(
@@ -44,27 +40,17 @@ $stylesheets = array(
                         <h4>Settings</h4>
 
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 0 ? 'active' : ''?>" aria-current="page" href="./settings.php?subpage=account">
-                                Account
-                            </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 1 ? 'active' : ''?>" href="./settings.php?subpage=privacy">
-                                Privacy & Notifications
-                            </a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link <?=$subpage == 2 ? 'active' : ''?>" href="./settings.php?subpage=security">
-                                Security
-                            </a>
-                            </li>
+                            <?php
+                                sidebar_anchor($subpage, 'account', 'Account', $href);
+                                sidebar_anchor($subpage, 'privacy', 'Privacy & Notifications', $href);
+                                sidebar_anchor($subpage, 'security', 'Security', $href);
+                            ?>
                         </ul>
                     </div>
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <?php $settings_subpage[$subpage]() ?>
+                    <?php call_user_func_array('settings_' . $subpage, array()); ?>
                 </main>
             </div>
         </div>
