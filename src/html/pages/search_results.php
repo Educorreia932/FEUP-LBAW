@@ -23,6 +23,7 @@ $stylesheets = array(
     <script defer src="../js/search_results.js"></script>
     <script defer src="../js/bookmark.js"></script>
     <script defer src="../js/master_checkboxes.js"></script>
+    <script defer src="../js/screen_size_toggle_collapse.js"></script>
 
     <style>
         .noUi-connect {
@@ -32,7 +33,7 @@ $stylesheets = array(
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse show" id="sidebar">
+            <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
                 <div>
                     <h4>Filters</h4>
 
