@@ -2,7 +2,7 @@
     <header class="navbar navbar-expand-md navbar-dark bg-dark py-2">
         <nav class="container-fluid flex-wrap flex-md-nowrap mx-0" aria-label="Main Navigation">
             <a class="navbar-brand p-0 me-md-3 mx-auto fs-4" aria-label="Trade-a-Bid" href="/">
-                <img src="../../static/logo.svg" width="60" height="60" alt="Trade-a-Bid">
+                <img src="../static/logo.svg" width="60" height="60" alt="Trade-a-Bid">
                 <span>Trade-a-Bid</span>
             </a>
 

@@ -28,7 +28,7 @@ $stylesheets = array();
                 </div>
                 
                 <div class="col-md-8 px-0">
-                    <img class="img-fluid" style="max-height: 30em;" src="../../static/jlopes.png" alt="...">
+                    <img class="img-fluid" style="max-height: 30em;" src="../static/jlopes.png" alt="...">
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ $stylesheets = array();
 
             <div class="row my-4 bg-light-grey">
                 <div class="col-md-8 px-0">
-                    <img class="img-fluid" style="max-height: 30em;" src="../../static/lbaw_offices.png" alt="...">
+                    <img class="img-fluid" style="max-height: 30em;" src="../static/lbaw_offices.png" alt="...">
                 </div>
                 <div class="col-md-4 d-flex flex-column align-items-center justify-content-center text-center">
                     <h3>Our offices</h3>

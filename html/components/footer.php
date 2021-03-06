@@ -3,7 +3,7 @@
         <div class="row">
             <div class="ms-2 col">
                 <a href="/" class="row align-items-center justify-content-start text-decoration-none">
-                    <img class="col-auto" src="../../static/logo.svg" height="60">
+                    <img class="col-auto" src="../static/logo.svg" height="60">
                     <h4 class="col-6 text-light">Trade-a-Bid</h4>
                 </a>
                 <span class="row text-muted">&copy; Copyright 2021 Trade-a-Bid. All rights reserved</span>
