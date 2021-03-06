@@ -77,9 +77,23 @@ $stylesheets = array(
                     <!-- Current bid price range -->
                     <div class="my-3">
                         <label class="text-secondary" for="price-range">Current bid</label>
+                        
+                        <div class="row">
+                            <div class="d-flex">
+                                <div id="price-range-slider" class="my-2 mx-4 w-100">
+                            </div>
+                        </div>
 
-                        <div class="d-flex">
-                            <div id="price-range-slider" class="my-5 mx-4 w-100">
+                        <div class="row mb-3">
+                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                                <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
+                                <input type="text" class="form-control" id="input-number-left" aria-label="Amount (to the nearest dollar)">
+                            </div>
+
+                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                                <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
+                                <input type="text" class="form-control" id="input-number-right" aria-label="Amount (to the nearest dollar)">
+                            </div>
                         </div>
                     </div>
                 </div>
