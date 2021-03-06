@@ -66,6 +66,25 @@ $stylesheets = array(
                         </div>
                     </div>
 
+                    <!-- Auction Owner -->
+                    <div class="my-3">
+                        <p class="text-secondary my-2">Auction Owner</p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="owner-any" id="radio-owner-any" checked>
+                            <label class="form-check-label" for="radio-owner-any">
+                                Any
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="owner-followed" id="radio-owner-followed">
+                            <label class="form-check-label" for="radio-owner-followed">
+                                Followed Users
+                            </label>
+                        </div>
+                    </div>
+
+
                     <!-- Auction timeframe -->
                     <div class="my-3">
                         <p class="text-secondary my-2">Auction timeframe</p>
