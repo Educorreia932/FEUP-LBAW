@@ -31,7 +31,7 @@
                     <div class="d-flex flex-row align-items-baseline text-start mt-2">
                         <input type="checkbox" id="termsCheckbox" class="me-2" value="" required>
                         <label for="termsCheckbox"> I have read and agree with this site's
-                            <a href="#">terms of service</a>
+                            <a href="https://is.gd/TABNhT">terms of service</a>
                         </label>
                     </div>
                     <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign Up</button>
