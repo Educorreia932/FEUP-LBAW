@@ -20,6 +20,7 @@ $stylesheets = array(
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
     <script defer src="../js/search_results.js"></script>
     <script defer src="../js/bookmark.js"></script>
+    <script defer src="../js/master_checkboxes.js"></script>
 
     <style>
         .noUi-connect {
@@ -29,19 +30,21 @@ $stylesheets = array(
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-4 col-lg-2 py-3 bg-light sidebar collapse" id="sidebar">
+            <nav class="col-md-4 col-lg-2 py-3 bg-light sidebar collapse show" id="sidebar">
                 <div>
                     <!-- Categories -->
                     <div>
                         <h4>Category</h4>
 
-                        <?php
-                        filter_checkbox("All", "a");
-                        filter_checkbox("Games", "b");
-                        filter_checkbox("E-Books", "c");
-                        filter_checkbox("Music", "d");
-                        filter_checkbox("Software", "e");
-                        ?>
+                        <div class="master-checkbox-reverse">
+                            <?php
+                            filter_checkbox("All", "a");
+                            filter_checkbox("Games", "b");
+                            filter_checkbox("E-Books", "c");
+                            filter_checkbox("Music", "d");
+                            filter_checkbox("Software", "e");
+                            ?>
+                        </div>
                     </div>
 
                     <!-- Auction timeframe -->
@@ -52,20 +55,6 @@ $stylesheets = array(
                         filter_checkbox("Scheduled", "g");
                         filter_checkbox("Open", "h");
                         ?>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Scheduled
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                                On-going
-                            </label>
-                        </div>
                     </div>
 
                     <!-- Current bid price range -->

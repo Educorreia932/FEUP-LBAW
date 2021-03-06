@@ -14,7 +14,7 @@ $stylesheets = array(
 
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
-    <script defer src="../js/settings-switches.js"></script>
+    <script defer src="../js/master_checkboxes.js"></script>
 
     <?php site_header("Foo Fighters", "page_settings"); ?>
 
@@ -64,7 +64,7 @@ $stylesheets = array(
 
                 <h3 class="mt-4 mb-2">Notifications</h3>
 
-                <div>
+                <div class="master-checkbox">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="switch-notifications">
                         <label class="form-check-label" for="switch-notifications">Notifications</label>
@@ -88,7 +88,5 @@ $stylesheets = array(
 
     <?php site_footer(); ?>
 </body>
-
-<script src="../js/settings-switches.js"></script>
 
 </html>
