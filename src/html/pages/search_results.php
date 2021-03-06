@@ -31,20 +31,36 @@ $stylesheets = array(
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
-            <nav class="col-md-4 col-lg-2 py-3 bg-light sidebar collapse show" id="sidebar">
+            <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse show" id="sidebar">
                 <div>
+                    <h4>Filters</h4>
+
                     <!-- Categories -->
                     <div>
-                        <h4>Category</h4>
+                        <p class="text-secondary my-2">Category</p>
 
                         <div class="master-checkbox-reverse">
                             <?php
-                            filter_checkbox("All", "a");
-                            filter_checkbox("Games", "b");
-                            filter_checkbox("E-Books", "c");
-                            filter_checkbox("Music", "d");
-                            filter_checkbox("Software", "e");
+                            filter_checkbox("All", "a", true, true);
                             ?>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <?php
+                                    filter_checkbox("Games", "b");
+                                    filter_checkbox("E-Books", "c");
+                                    filter_checkbox("Music", "d");
+                                    ?>
+                                </div>
+
+                                <div class="col">
+                                    <?php
+                                    filter_checkbox("Software", "e");
+                                    filter_checkbox("Wallpapers", "f");
+                                    filter_checkbox("Others", "f");
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -70,6 +86,8 @@ $stylesheets = array(
             </nav>
 
             <main class="col ms-sm-auto px-md-4">
+                <h1 class="mt-4">Search Results</h1>
+
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
                         &gt;
@@ -98,7 +116,7 @@ $stylesheets = array(
                     </div>
                 </div>
 
-                <p>Results for: <u>cyberpunk</u> (2)</p>
+                <p>Results for: <u>Foo Fighters</u> (5)</p>
 
                 <!-- Auctions -->
                 <div>

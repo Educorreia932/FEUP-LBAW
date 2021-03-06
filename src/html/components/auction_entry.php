@@ -53,8 +53,8 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
 <?php
 }
 
-function filter_checkbox($name, $id, $checked = false) { ?>
-    <div class="form-check">
+function filter_checkbox($name, $id, $checked = false, $master = false) { ?>
+    <div class="form-check <?=$master ? "master" : ""?>">
         <input class="form-check-input" type="checkbox" id="<?=$id?>" <?=$checked ? "checked" : ""?>>
         <label class="form-check-label" for="<?=$id?>">
             <?= $name?>
