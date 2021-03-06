@@ -17,6 +17,7 @@ $stylesheets = array(
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
+    <!-- https://refreshless.com/nouislider/ -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
     <script defer src="../js/search_results.js"></script>
     <script defer src="../js/bookmark.js"></script>
@@ -53,7 +54,7 @@ $stylesheets = array(
 
                         <?php
                         filter_checkbox("Scheduled", "g");
-                        filter_checkbox("Open", "h");
+                        filter_checkbox("Open", "h", true);
                         ?>
                     </div>
 
@@ -62,7 +63,7 @@ $stylesheets = array(
                         <label class="text-secondary" for="price-range">Current bid</label>
 
                         <div class="d-flex">
-                            <div id="price-range-slider" class="my-5 mx-4 w-100" />
+                            <div id="price-range-slider" class="my-5 mx-4 w-100">
                         </div>
                     </div>
                 </div>
