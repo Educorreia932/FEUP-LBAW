@@ -18,7 +18,7 @@ $stylesheets = array();
             <main class="flex-shrink-0">
                 <div class="row m-4">
                     <h1>Create Auction</h1>
-                    <?php breadcrumbs(array("Home", "Create Auction"), array("home.php")) ?>
+                    <?php breadcrumbs(array("Home", "Auctions", "Create Auction"), array("home.php", "search_results.php")) ?>
                 </div>
                 
                 <div class="row g-3 align-items-center">
