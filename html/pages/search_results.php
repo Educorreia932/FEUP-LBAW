@@ -2,27 +2,44 @@
 include_once(__DIR__ . "/../components/head.php");
 include_once(__DIR__ . "/../components/header.php");
 include_once(__DIR__ . "/../components/footer.php");
-include_once(__DIR__ . "/../components/auction_entry.php");
 include_once(__DIR__ . "/../components/breadcrumbs.php");
+
+include_once(__DIR__ . "/../subpages/search_results-auctions.php");
+include_once(__DIR__ . "/../subpages/search_results-users.php");
+
+
+$breadcrumbs = array('Auctions', 'Users');
+$filters_section = array('search_results_auctions_filters', 'search_results_users_filters');
+$results_section = array('search_results_auctions_results', 'search_results_users_results');
+$named = array(
+    'auctions' => 0,
+    'users' => 1
+);
+
+$subpage;
+if (isset($_GET["subpage"]) && array_key_exists($_GET["subpage"], $named)) {
+    $subpage = $named[$_GET["subpage"]];
+} else {
+    $subpage = 0;
+}
+
 
 $stylesheets = array(
     "https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css",
+    "../css/sidebar.css"
 );
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<?php site_head("Dashboard", $stylesheets); ?>
+<?php site_head($breadcrumbs[$subpage], $stylesheets); ?>
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
     <?php site_header("Foo Fighters", "page_auction"); ?>
 
     <!-- https://refreshless.com/nouislider/ -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>
-    <script defer src="../js/search_results.js"></script>
-    <script defer src="../js/bookmark.js"></script>
-    <script defer src="../js/master_checkboxes.js"></script>
     <script defer src="../js/screen_size_toggle_collapse.js"></script>
 
     <style>
@@ -35,94 +52,30 @@ $stylesheets = array(
         <div class="row h-100">
             <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
                 <div>
+                    <h4>Search for</h4>
+
+                    <ul class="nav flex-column mb-4">
+                        <li class="nav-item">
+                        <a class="nav-link <?=$subpage == 0 ? 'active' : ''?>" aria-current="page" href="./search_results.php?subpage=auctions">
+                            Auctions
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link <?=$subpage == 1 ? 'active' : ''?>" href="./search_results.php?subpage=users">
+                            Users
+                        </a>
+                        </li>
+                    </ul>
+
                     <h4>Filters</h4>
 
-                    <!-- Categories -->
-                    <div>
-                        <p class="text-secondary my-2">Category</p>
-
-                        <div class="master-checkbox-reverse">
-                            <?php
-                            filter_checkbox("All", "a", true, true);
-                            ?>
-                            
-                            <div class="row">
-                                <div class="col">
-                                    <?php
-                                    filter_checkbox("Games", "b");
-                                    filter_checkbox("E-Books", "c");
-                                    filter_checkbox("Music", "d");
-                                    ?>
-                                </div>
-
-                                <div class="col">
-                                    <?php
-                                    filter_checkbox("Software", "e");
-                                    filter_checkbox("Skins", "f");
-                                    filter_checkbox("Others", "f");
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Auction Owner -->
-                    <div class="my-3">
-                        <p class="text-secondary my-2">Auction Owner</p>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-any" checked>
-                            <label class="form-check-label" for="radio-owner-any">
-                                Any
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed">
-                            <label class="form-check-label" for="radio-owner-followed">
-                                Followed Users
-                            </label>
-                        </div>
-                    </div>
-
-
-                    <!-- Auction timeframe -->
-                    <div class="my-3">
-                        <p class="text-secondary my-2">Auction timeframe</p>
-
-                        <?php
-                        filter_checkbox("Scheduled", "g");
-                        filter_checkbox("Open", "h", true);
-                        ?>
-                    </div>
-
-                    <!-- Current bid price range -->
-                    <div class="my-3">
-                        <label class="text-secondary" for="price-range">Current bid</label>
-                        
-                        <div class="row">
-                            <div class="d-flex">
-                                <div id="price-range-slider" class="my-2 mx-4 w-100">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
-                                <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
-                                <input type="text" class="form-control" id="input-number-left" aria-label="Amount (to the nearest dollar)">
-                            </div>
-
-                            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
-                                <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
-                                <input type="text" class="form-control" id="input-number-right" aria-label="Amount (to the nearest dollar)">
-                            </div>
-                        </div>
-                    </div>
+                    <?php $filters_section[$subpage](); ?>
                 </div>
             </nav>
 
             <main class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
-                <?php breadcrumbs(array("Home", "Auctions"), array("home.php")) ?>
+                <?php breadcrumbs(array("Home", $breadcrumbs[$subpage]), array("home.php")) ?>
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
@@ -154,17 +107,9 @@ $stylesheets = array(
 
                 <p>Results for: <u>Foo Fighters</u> (5)</p>
 
-                <!-- Auctions -->
-                <div>
-                    <?php
-                    for ($i = 0; $i < 5; $i++) {
-                        draw_auction_entry(6.04, 5.01);
+                <!-- Results -->
+                <?php $results_section[$subpage](); ?>
 
-                        if ($i < 4)
-                            echo "<hr>";
-                    }
-                    ?>
-                </div>
             </main>
         </div>
     </div>
