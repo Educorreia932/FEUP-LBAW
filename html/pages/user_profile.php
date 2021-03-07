@@ -1,7 +1,8 @@
 <?php
-include_once("../components/head.php");
-include_once("../components/header.php");
-include_once("../components/footer.php");
+include_once(__DIR__ . "/../components/head.php");
+include_once(__DIR__ . "/../components/header.php");
+include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/auction_card.php");
 
 $stylesheets = array();
 ?>
@@ -13,10 +14,10 @@ $stylesheets = array();
     <body class="d-flex flex-column" style="min-height: 100vh;">
         <?php site_header('Foo Fighters', NULL); ?>
         <main>
-            <div class="m-2 m-md-0 mt-4">
-                <div class="offset-md-2 col-md-8 row border-md border-3 rounded-3" style="min-height: 300px;">
+            <div class="m-2 mt-4 m-md-0 mt-md-4">
+                <div class="offset-md-2 col-md-8 row border border-3 rounded-3" style="min-height: 300px;">
                     <div class="col-md d-flex justify-content-center">
-                        <img class="img-thumbnail" style="width:300px; height: 300px; object-fit: cover;" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="F.F.">
+                        <img class="avatar-large" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="F.F.">
                     </div>
                     <div class="ps-2 pt-2 col-md d-flex">
                         <div class="d-flex flex-column mb-4">
@@ -74,6 +75,23 @@ $stylesheets = array();
 
                 <div class="offset-md-2 col-md-8 mt-2">
                     <h2 class="fs-bold">Created Auctions</h2>
+
+                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                                    "Waifu Wars STEAM Key", "42", "3w",
+                                        "https://cdn.akamai.steamstatic.com/steam/apps/923830/header.jpg?t=1569138289", "Waifu Wars ONLINE") ?>
+                                        
+                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                    "Hatoful Boyfriend STEAM Key", "302", "3d",
+                                    "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend") ?>
+
+                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                    "War of the Human Tanks - ALTeR STEAM Key", "13", "14h",
+                                    "https://cdn.akamai.steamstatic.com/steam/apps/301920/header.jpg?t=1597504699", "War of the Human Tanks - ALTeR") ?>
+                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                    "[CS:GO] Karambit Case Hardened Factory New", "534450", "2m",
+                                    "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New") ?>
+                    </div>
                 </div>
             </div>
         </main>
