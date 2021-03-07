@@ -1,7 +1,7 @@
-let slider = document.getElementById("price-range-slider")
+let slider = document.getElementById("rating-range-slider")
 
 noUiSlider.create(slider, {
-    start: [0, 500],
+    start: [0, 100000],
     connect: true,
     range: {
         // Starting at 500, step the value by 500,
@@ -33,24 +33,3 @@ inputs[0].addEventListener('change', function () {
 inputs[1].addEventListener('change', function () {
     slider.noUiSlider.set([null, this.value]);
 });
-
-
-
-// Auction Owner Radio
-let input_text = document.getElementById("radio-owner-user-input");
-let input_radio_div = document.getElementById("auction-owner-radios");
-
-input_radio_div.addEventListener('change', function(e) {
-    let target = e.target;
-    switch (target.id) {
-        case 'radio-owner-user':
-            input_text.disabled = false;
-            break;
-        case 'radio-owner-user-input':
-            break;
-        default:
-            input_text.disabled = true;
-            break;
-    }
-});
-

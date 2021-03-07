@@ -68,7 +68,7 @@ $stylesheets = array();
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
-                                    <label for="inputValue" class="sr-only">Start value</label>
+                                    <label for="inputValue" class="sr-only">Starting Bid</label>
                                     <div class="input-group">
                                         <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
                                         <span class="input-group-text">€</span>
