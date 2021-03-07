@@ -46,6 +46,8 @@ input_radio_div.addEventListener('change', function(e) {
         case 'radio-owner-user':
             input_text.disabled = false;
             break;
+        case 'radio-owner-user-input':
+            break;
         default:
             input_text.disabled = true;
             break;

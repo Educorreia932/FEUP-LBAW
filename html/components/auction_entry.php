@@ -3,7 +3,7 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
 {
 ?>
 
-    <div class="row auction-entry py-3 pe-md-2">
+    <div class="row auction-entry py-3 pe-md-2 hover-highlight">
         <!-- Product image -->
         <div class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
             <img class="img-thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/81oYI%2BemsAL._SL1500_.jpg">        

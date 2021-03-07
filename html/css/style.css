@@ -1,5 +1,6 @@
 :root {
     --light-grey: #f5f5f5;
+    --hightlight-grey: #ececec;
 }
 
 .bg-light-grey {
@@ -16,6 +17,36 @@ input.hide-appearence::-webkit-inner-spin-button {
 .handle-background {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
+}
+
+.hover-right {
+    transition: 0.5;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+
+.hover-right:hover {
+    transform: translate(10px);
+}
+
+.hover-scale {
+    transition: 0.5;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+
+.hover-scale:hover {
+    transform: scale(1.075, 1.075);
+}
+
+.hover-highlight {
+    transition: 0.5;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+
+.hover-highlight:hover {
+    background-color: var(--hightlight-grey);
 }
 
 /* Firefox */
