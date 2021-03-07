@@ -80,34 +80,16 @@ $stylesheets = array();
             </div>
 
             <div class="row m-4">
-                <h3>Contact us</h3>
+                <h3>Meet our Team</h3>
 
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col"><i class="bi bi-github"></i> Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>Eduardo Correia</td>
-                        <td><a href="https://github.com/Educorreia932">@Educorreia932</a></td>
-                        </tr>
-                        <tr>
-                        <td>Ivo Saavedra</td>
-                        <td><a href="https://github.com/ivSaav">@ivSaav</a></td>
-                        </tr>
-                        <tr>
-                        <td>Telmo Baptista</td>
-                        <td><a href="https://github.com/Telmooo">@Telmooo</a></td>
-                        </tr>
-                        <tr>
-                        <td>Tiago Silva</td>
-                        <td><a href="https://github.com/tiagodusilva">@tiagodusilva</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="d-flex flex-row align-items-stretch justify-content-between overflow-auto">
+                <?php
+                    team_card("Eduardo Correia", "Educorreia932", "https://github.com/Educorreia932", "../static/team/skelizard.png");
+                    team_card("Ivo Saavedra", "ivSaav", "https://github.com/ivSaav", "../static/team/i_haz_bucket.png");
+                    team_card("Telmo Baptista", "Telmooo", "https://github.com/Telmooo", "../static/team/toilmo.png");
+                    team_card("Tiago Silva", "tiagodusilva", "https://github.com/tiagodusilva", "../static/team/homelessBanjoGuy.png");
+                ?>
+                </div>
             </div>
         </main>
 
@@ -115,3 +97,26 @@ $stylesheets = array();
 
     </body>
 </html>
+
+
+<?php function team_card($name, $username, $github, $img) { ?> 
+    <div class="d-flex flex-column justify-content-between" style="min-width: 160px;">
+        <div>
+            <div style="width: 140px; height: 140px;">
+                <img src="<?=$img?>" class="h-100 w-100" style="border-radius: 50%; object-fit: cover;">
+            </div>
+
+            <div class="mb-2">
+                <h2 class="m-0"><?=$name?></h2>
+                <span>@<?=$username?></span>
+            </div>
+            <h6>Developer & Designer</h6>
+        </div>
+        <p>
+            <a class="btn btn-secondary" href="<?=$github?>">
+                <i class="bi bi-github me-1"></i>
+                View Profile »
+            </a>
+        </p>
+      </div>
+<?php } ?>
