@@ -30,7 +30,7 @@
 <?php site_head($breadcrumbs[$subpage], $stylesheets); ?>
 
 <body class="d-flex flex-column" style="min-height: 100vh;">
-    <?php site_header("Foo Fighters", "page_auction"); ?>
+    <?php site_header("Foo Fighters", "page_search_" . $subpage); ?>
 
     <!-- https://refreshless.com/nouislider/ -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js" integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg==" crossorigin="anonymous"></script>

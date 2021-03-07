@@ -22,10 +22,17 @@
                     <div class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
                         <span class="d-block d-md-none text-secondary text-capitalize header-section-title">Auctions</span>
                         <li class="nav-item">
-                            <?php if ($current_page == "page_auctions") { ?>
-                                <a class="nav-link active" aria-current="page" href="search_results.php">Auctions</a>
+                            <?php if ($current_page == "page_search_auctions") { ?>
+                                <a class="nav-link active" aria-current="page" href="search_results.php?subpage=auctions">Auctions</a>
                             <?php } else {?>
-                                <a class="nav-link" href="search_results.php">Auctions</a>
+                                <a class="nav-link" href="search_results.php?subpage=auctions">Auctions</a>
+                            <?php }?>
+                        </li>
+                        <li class="nav-item">
+                            <?php if ($current_page == "page_search_users") { ?>
+                                <a class="nav-link active" aria-current="page" href="search_results.php?subpage=users">Users</a>
+                            <?php } else {?>
+                                <a class="nav-link" href="search_results.php?subpage=users">Users</a>
                             <?php }?>
                         </li>
                         <li class="nav-item">
