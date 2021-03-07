@@ -19,10 +19,9 @@ function search_results_users_filters() { ?>
             <div class="row">
                 <div class="col">
                     <?php
-                    filter_checkbox("Has auctions", "b");
+                        filter_checkbox("Has auctions", "b");
                     ?>
                 </div>
-
             </div>
         </div>
     </div>
@@ -48,7 +47,7 @@ function search_results_users_filters() { ?>
 
     <!-- Current bid price range -->
     <div class="my-3">
-        <label class="text-secondary" for="rating-range">User Rating</label>
+        <label class="text-secondary" for="rating-range">User Rating (%)</label>
         
         <div class="row">
             <div class="d-flex">

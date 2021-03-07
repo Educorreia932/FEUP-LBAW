@@ -1,8 +1,8 @@
 <?php
-include_once("../components/head.php");
-include_once("../components/header.php");
-include_once("../components/footer.php");
-include_once("../components/breadcrumbs.php");
+include_once(__DIR__ . "/../components/head.php");
+include_once(__DIR__ . "/../components/header.php");
+include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array();
 ?>

@@ -22,7 +22,7 @@ $stylesheets = array();
     <main>
         <div class="row m-2">
             <h1>Auction</h1>
-            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key"), array("home.php", "search-results.php")); ?>
+            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key"), array("home.php", "search_results.php")); ?>
         </div>
 
         <section class="container-fluid bg-light">
@@ -72,9 +72,15 @@ $stylesheets = array();
                     <div class="row" id="product-information">
                         <div class="d-flex justify-content-between align-items-center">
                             <h2>JoJo Eyes of Heaven PS4 Key</h2>
-                            <button type="button" class="btn hover-scale auction-bookmark">
-                                <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
-                            </button>
+                            <div>
+                                <button type="button" class="btn hover-scale">
+                                    <i class="bi bi-exclamation-triangle" style="font-size: 2.5em; text-align: right"></i>
+                                </button>
+                                <button type="button" class="btn hover-scale auction-bookmark">
+                                    <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
+                                </button>
+                            </div>
+
                         </div>
                         <p class="text-overflow-ellipsis">Eyes of Heaven is designed to be a 3D action brawler with tag-team elements set in large arenas based on locations in the JoJo's Bizarre Adventure manga. Players may pick a single character to control in a large environment, as well as a second character that may be controlled by either a CPU or second human player to fight the enemy team for a 2v2 battle. Certain match-ups contain special animations and dialogue between two characters, mostly between allies in the form of unique combination attacks such as the Dual Combos (デュアルコンボ, Dyuaru Konbo) and Dual Heat Attacks (デュアルヒートアタック, Dyuaru Hīto Attaku), though provide no discernible bonuses or advantages in battle.</p>
                     </div>
@@ -122,15 +128,15 @@ $stylesheets = array();
                 <hr class="my-1">
 
                 <?php
-                    auction_detail("Time remaining", "24 minutes 39 seconds", true);
-                    auction_detail("Duration", "1 week");
+                auction_detail("Time remaining", "24 minutes 39 seconds", true);
+                auction_detail("Duration", "1 week");
 
-                    auction_detail("Bidders", "3 different bidders", true);
-                    auction_detail("Total Bids", "7 bids");
+                auction_detail("Bidders", "3 different bidders", true);
+                auction_detail("Total Bids", "7 bids");
 
-                    auction_detail("Starting Bid", "75.00 €", true);
-                    auction_detail("Mandatory Bid Increment", "1.00 €");
-                    auction_detail("Average Bid Increment", "15.00 €");
+                auction_detail("Starting Bid", "75.00 €", true);
+                auction_detail("Mandatory Bid Increment", "1.00 €");
+                auction_detail("Average Bid Increment", "15.00 €");
                 ?>
             </div>
         </section>
@@ -151,19 +157,19 @@ $stylesheets = array();
                     <table id="bid-history" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                            <th scope="col">Bidder</th>
-                            <th scope="col">Bid</th>
-                            <th scope="col">Date</th>
+                                <th scope="col">Bidder</th>
+                                <th scope="col">Bid</th>
+                                <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                bid_table_entry("Me", 180, "20 sec");
+                            bid_table_entry("Me", 180, "20 sec");
 
-                                for ($i = 0; $i < 6; $i++) 
-                                    bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
+                            for ($i = 0; $i < 6; $i++)
+                                bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
 
-                                bid_table_entry("Starting Bid", 75, "1 week");
+                            bid_table_entry("Starting Bid", 75, "1 week");
                             ?>
                         </tbody>
                     </table>

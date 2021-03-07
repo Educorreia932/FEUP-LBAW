@@ -94,7 +94,6 @@
 
                 <!-- Results -->
                 <?php call_user_func_array('search_results_' . $subpage . '_results', array()); ?>
-
             </main>
         </div>
     </div>

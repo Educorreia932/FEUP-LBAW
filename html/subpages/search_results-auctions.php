@@ -83,7 +83,7 @@ function search_results_auctions_filters() { ?>
 
     <!-- Current bid price range -->
     <div class="my-3">
-        <label class="text-secondary" for="price-range">Current bid</label>
+        <label class="text-secondary" for="price-range">Current bid (€)</label>
         
         <div class="row">
             <div class="d-flex">

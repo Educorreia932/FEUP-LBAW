@@ -18,6 +18,7 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
                     </h4>
                     <span class="text-muted">Created by <a class="text-decoration-none link-dark" href="user_profile.php">carlospereira</a></span>
                 </div>
+                
                 <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
                     <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
                 </button>
