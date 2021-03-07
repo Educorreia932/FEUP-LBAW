@@ -30,16 +30,18 @@ function search_results_users_filters() { ?>
     
     <!-- Followed / All Users -->
     <div class="my-3">
+        <p class="text-secondary my-2">Shown Users</p>
+
         <div class="form-check">
             <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-any" checked>
             <label class="form-check-label" for="radio-owner-any">
-                All Users
+                All
             </label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed">
             <label class="form-check-label" for="radio-owner-followed">
-                Followed Users
+                Followed Only
             </label>
         </div>
     </div>

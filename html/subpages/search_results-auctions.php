@@ -43,7 +43,7 @@ function search_results_auctions_filters() { ?>
     </div>
 
     <!-- Auction Owner -->
-    <div class="my-3">
+    <div class="my-3" id="auction-owner-radios">
         <p class="text-secondary my-2">Auction Owner</p>
 
         <div class="form-check">
@@ -57,6 +57,16 @@ function search_results_auctions_filters() { ?>
             <label class="form-check-label" for="radio-owner-followed">
                 Followed Users
             </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-user">
+            <label class="form-check-label" for="radio-owner-user">
+                Specific User
+            </label>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="radio-owner-user-at">@</span>
+            <input type="text" id="radio-owner-user-input" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="radio-owner-user-at" disabled>
         </div>
     </div>
 

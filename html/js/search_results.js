@@ -33,3 +33,22 @@ inputs[0].addEventListener('change', function () {
 inputs[1].addEventListener('change', function () {
     slider.noUiSlider.set([null, this.value]);
 });
+
+
+
+// Auction Owner Radio
+let input_text = document.getElementById("radio-owner-user-input");
+let input_radio_div = document.getElementById("auction-owner-radios");
+
+input_radio_div.addEventListener('change', function(e) {
+    let target = e.target;
+    switch (target.id) {
+        case 'radio-owner-user':
+            input_text.disabled = false;
+            break;
+        default:
+            input_text.disabled = true;
+            break;
+    }
+});
+

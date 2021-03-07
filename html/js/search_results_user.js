@@ -1,7 +1,7 @@
 let slider = document.getElementById("rating-range-slider")
 
 noUiSlider.create(slider, {
-    start: [0, 500],
+    start: [0, 100000],
     connect: true,
     range: {
         // Starting at 500, step the value by 500,
