@@ -72,7 +72,7 @@ $stylesheets = array();
                     <div class="row" id="product-information">
                         <div class="d-flex justify-content-between align-items-center">
                             <h2>JoJo Eyes of Heaven PS4 Key</h2>
-                            <button type="button" class="btn auction-bookmark">
+                            <button type="button" class="btn hover-scale auction-bookmark">
                                 <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
                             </button>
                         </div>

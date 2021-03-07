@@ -3,7 +3,7 @@ function draw_user_entry()
 {
 ?>
 
-    <div class="row py-3 pe-md-2">
+    <div class="row py-3 pe-md-2 hover-highlight rounded-3">
         <!-- User profile picture -->
         <div class="col-lg col-md-4 col-sm">
             <a href="user_profile.php"><img src="https://thispersondoesnotexist.com/image" class="img-thumbnail"></a>
