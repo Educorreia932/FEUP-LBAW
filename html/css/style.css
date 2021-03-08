@@ -63,12 +63,8 @@ input[type=number].hide-appearence {
     width: 10em;
 }
 
-.avatar-small {
-    width: 40px;
-    height: 40px;
-}
-
-.avatar-medium {
-    width: 100px;
-    height: 100px;
+.profile-avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }

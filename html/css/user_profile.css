@@ -1,0 +1,28 @@
+.user-details .btn.follow.btn-danger:hover {
+    background-color: #fff;
+    color: var(--bs-red);
+}
+
+.user-description {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.user-description .description-toggler[aria-expanded="false"] + #user-description.collapse {
+    display: block;
+    height: 157.5px!important;
+    overflow: hidden;
+}
+
+.user-description .description-toggler[aria-expanded="false"] + #user-description.collapsing {
+    height: 157.5px!important;
+}
+
+
+.user-description a.collapsed:after {
+    content: 'Show more';
+}
+
+.user-description a:not(.collapsed):after {
+    content: 'Show less';
+}
