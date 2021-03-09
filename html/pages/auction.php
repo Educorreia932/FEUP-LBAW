@@ -128,15 +128,15 @@ $stylesheets = array();
                 <hr class="my-1">
 
                 <?php
-                auction_detail("Time remaining", "24 minutes 39 seconds", true);
-                auction_detail("Duration", "1 week");
+                    auction_detail("Time remaining", "24 minutes 39 seconds", true);
+                    auction_detail("Duration", "1 week");
 
-                auction_detail("Bidders", "3 different bidders", true);
-                auction_detail("Total Bids", "7 bids");
+                    auction_detail("Bidders", "3 different bidders", true);
+                    auction_detail("Total Bids", "7 bids");
 
-                auction_detail("Starting Bid", "75.00 €", true);
-                auction_detail("Mandatory Bid Increment", "1.00 €");
-                auction_detail("Average Bid Increment", "15.00 €");
+                    auction_detail("Starting Bid", "75.00 €", true);
+                    auction_detail("Mandatory Bid Increment", "1.00 €");
+                    auction_detail("Average Bid Increment", "15.00 €");
                 ?>
             </div>
         </section>
@@ -164,18 +164,38 @@ $stylesheets = array();
                         </thead>
                         <tbody>
                             <?php
-                            bid_table_entry("Me", 180, "20 sec");
+                                bid_table_entry("Me", 180, "20 sec");
 
-                            for ($i = 0; $i < 6; $i++)
+                                for ($i = 0; $i < 6; $i++)
                                 bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
 
-                            bid_table_entry("Starting Bid", 75, "1 week");
+                                bid_table_entry("Starting Bid", 75, "1 week");
                             ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Report user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <?php site_footer(); ?>
