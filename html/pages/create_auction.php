@@ -1,8 +1,8 @@
 <?php
-include_once("../components/head.php");
-include_once("../components/header.php");
-include_once("../components/footer.php");
-include_once("../components/breadcrumbs.php");
+include_once(__DIR__ . "/../components/head.php");
+include_once(__DIR__ . "/../components/header.php");
+include_once(__DIR__ . "/../components/footer.php");
+include_once(__DIR__ . "/../components/breadcrumbs.php");
 
 $stylesheets = array();
 ?>
@@ -23,7 +23,7 @@ $stylesheets = array();
                 
                 <div class="row g-3 align-items-center">
                     <!-- gallery col -->
-                    <div class="col-md-5"> 
+                    <div class="col-lg-5"> 
                         <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <!-- images are inserted here through js -->
@@ -49,7 +49,7 @@ $stylesheets = array();
                         <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                     </div>
                     <!-- form col -->
-                    <div class="col-md-5 pt-3 text-black-50 fs-5"> 
+                    <div class="col-lg-5 pt-3 text-black-50 fs-5"> 
                         <form class="form-auction">
                             <div class="row">
                                 <div class="form-group col-md-12 mt-3">
@@ -68,7 +68,7 @@ $stylesheets = array();
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
-                                    <label for="inputValue" class="sr-only">Start value</label>
+                                    <label for="inputValue" class="sr-only">Starting Bid</label>
                                     <div class="input-group">
                                         <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
                                         <span class="input-group-text">€</span>
@@ -86,11 +86,12 @@ $stylesheets = array();
                                     <div class="input-group mb-3 col-sm-6">
                                         <select class="form-select" id="inputCategory">
                                             <option selected>Choose...</option>
-                                            <option value="1">Game</option>
+                                            <option value="1">Games</option>
                                             <option value="2">Software</option>
                                             <option value="3">eBook</option>
                                             <option value="4">Music</option>
-                                            <option value="5">Services</option>
+                                            <option value="5">Skins</option>
+                                            <option value="6">Other</option>
                                         </select>
                                     </div>
                                 </div>

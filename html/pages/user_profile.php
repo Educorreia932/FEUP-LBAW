@@ -18,7 +18,7 @@ $stylesheets = array('../css/user_profile.css');
     <body class="d-flex flex-column" style="min-height: 100vh;">
         <?php site_header('Foo Fighters', NULL); ?>
         <main class="mb-4">
-            <div class="row m-2 fs-4">
+            <div class="row m-2">
                 <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search-results.php")); ?>
             </div>
 
@@ -42,16 +42,16 @@ $stylesheets = array('../css/user_profile.css');
                         <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
                             <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
                                 <!-- OTHERS' PROFILE -->
-                                <a class="p-0 link-dark text-decoration-none" href="search_results.php">
+                                <a class="p-0 link-dark text-decoration-none hover-scale" href="search_results.php">
                                     <i class="bi bi-shop"></i>
                                     <span>Open Auctions</span>
                                 </a>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal" class="btn ms-2 p-0">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal" class="btn ms-2 p-0 hover-scale">
                                     <i class="bi bi-flag-fill text-danger"></i>
                                     <span>Report user</span>
                                 </button>
                                 <!-- OWN PROFILE -->
-                                <!-- <a class="p-0 link-dark text-decoration-none" href="settings-account.php">
+                                <!-- <a class="p-0 link-dark text-decoration-none hover-scale" href="settings-account.php">
                                     <i class="bi bi-gear"></i>
                                     Edit Profile
                                 </a> -->
@@ -69,7 +69,7 @@ $stylesheets = array('../css/user_profile.css');
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <h2 class="fs-bold">Feedback</h2>
-                        <table id="bid-history" class="table table-striped table-hover">
+                        <table id="bid-history" class="table">
                             <thead>
                                 <tr>
                                 <th scope="col"></th>

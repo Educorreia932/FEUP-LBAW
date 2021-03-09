@@ -3,11 +3,11 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
 {
 ?>
 
-    <div class="row auction-entry py-3 pe-md-2">
+    <div class="row auction-entry py-3 pe-md-2 hover-highlight rounded-3">
         <!-- Product image -->
-        <div class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+        <a href="auction.php" class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
             <img class="img-thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/81oYI%2BemsAL._SL1500_.jpg">        
-        </div>
+        </a>
 
         <div class="col-md d-flex flex-column justify-content-between">
             <div class="d-flex justify-content-between align-items-center">
@@ -18,7 +18,8 @@ function draw_auction_entry($current_bid, $personal_bid = null, $bookmarked = fa
                     </h4>
                     <span class="text-muted">Created by <a class="text-decoration-none link-dark" href="user_profile.php">carlospereira</a></span>
                 </div>
-                <button type="button" class="btn auction-bookmark p-0 align-self-start">
+                
+                <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
                     <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
                 </button>
             </div>
@@ -61,5 +62,15 @@ function filter_checkbox($name, $id, $checked = false, $master = false) { ?>
 <?php 
 }
 
+function filter_radio($label, $name, $id, $checked = false, $disabled = false) { ?>
 
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="<?= $name ?>" id="<?= $id ?>" <?= $checked ? "checked" : "" ?> <?= $disabled ? "disabled" : "" ?>>
+        <label class="form-check-label" for="<?= $id ?>">
+            <?= $label ?>
+        </label>
+    </div>
+
+<?php 
+}
 ?>
