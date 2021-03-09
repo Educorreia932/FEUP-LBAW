@@ -73,7 +73,7 @@ $stylesheets = array();
                     <div class="row justify-content-md-end">
                         <div class="ps-4 ps-md-0 col-md-5 text-md-center">
                             <h5>Brain Cells Lost</h5>
-                            <h6>100 %<h6>
+                            <h6>100 %</h6>
                         </div>
                     </div>
                 </div>

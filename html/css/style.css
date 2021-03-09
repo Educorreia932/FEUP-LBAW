@@ -93,3 +93,9 @@ input[type=number].hide-appearence {
     height: 10em;
     width: 10em;
 }
+
+.profile-avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
