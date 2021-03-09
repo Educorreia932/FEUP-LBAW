@@ -13,23 +13,24 @@ $stylesheets = array('../css/user_profile.css');
     <?php site_head("Foo Fighter's Profile", $stylesheets); ?>
 
     <script defer src="../js/user_profile.js"></script>
+    <script defer src="../js/auction-card.js"></script>
 
     <body class="d-flex flex-column" style="min-height: 100vh;">
         <?php site_header('Foo Fighters', NULL); ?>
-        <main>
+        <main class="mb-4">
             <div class="row m-2 fs-4">
                 <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search-results.php")); ?>
             </div>
 
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="d-flex flex-row border border-4">
-                        <div class="col-8 user-details d-flex flex-row">
-                            <div class="profile-avatar m-3">
+                    <div class="d-flex flex-column flex-md-row border border-4">
+                        <div class="col-12 col-md-8 user-details d-flex flex-column flex-md-row align-items-center align-items-md-start">
+                            <div class="profile-avatar m-0 m-md-3">
                                 <img width="200" height="200" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="F.F.">
                             </div>
 
-                            <div class="d-flex flex-column mt-5 ps-2 me-2">
+                            <div class="col-12 col-md-4 d-flex flex-column mt-md-5 ps-2 me-2">
                                 <h2 class="fw-bold">Foo Fighters</h2>
                                 <span class="fst-italic mb-2">@ffighters</span>
                                 <button type="button" class="follow btn btn-outline-danger">
@@ -38,15 +39,15 @@ $stylesheets = array('../css/user_profile.css');
                                 </button>
                             </div> 
                         </div>
-                        <div class="user-details-side d-flex flex-column align-items-end ms-2 w-100">
-                            <div class="user-actions mt-1 mb-2">
+                        <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
+                            <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
                                 <!-- OTHERS' PROFILE -->
                                 <a class="p-0 link-dark text-decoration-none" href="search_results.php">
                                     <i class="bi bi-shop"></i>
                                     <span>Open Auctions</span>
                                 </a>
-                                <button type="button" class="btn ms-2 p-0">
-                                    <i class="bi bi-flag-fill"></i>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal" class="btn ms-2 p-0">
+                                    <i class="bi bi-flag-fill text-danger"></i>
                                     <span>Report user</span>
                                 </button>
                                 <!-- OWN PROFILE -->
@@ -66,7 +67,7 @@ $stylesheets = array('../css/user_profile.css');
 
             <div class="container mt-4">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <h2 class="fs-bold">Feedback</h2>
                         <table id="bid-history" class="table table-striped table-hover">
                             <thead>
@@ -103,7 +104,7 @@ $stylesheets = array('../css/user_profile.css');
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-6 d-flex flex-column justify-content-center">
+                    <div class="col col-md-6 d-flex flex-column justify-content-center">
                         <h2 class="fs-bold">Insights</h2>
     
                         <div class="container border border-3 p-0">
@@ -145,91 +146,45 @@ $stylesheets = array('../css/user_profile.css');
                                 "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New") ?>
                 </div>
             </div>
-
-
-            <!-- <div class="m-2 mt-4 m-md-0 mt-md-4">
-                <div class="offset-md-2 col-md-8 row border border-3 rounded-3" style="min-height: 300px;">
-                    <div class="col-md d-flex justify-content-center">
-                        <img class="avatar-large" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="F.F.">
-                    </div>
-                    <div class="ps-2 pt-2 col-md d-flex">
-                        <div class="d-flex flex-column mb-4">
-                            <h2 class="fw-bold">Foo Fighters</h2>
-                            <span class="fst-italic">@ffighters</span>
-                            <span class="mt-auto">Joined on 23 feb 2020</span>
-                        </div>
-                        <div class="ms-auto">
-                            <button type="button" class="btn p-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="offset-md-2 col-md-4 mt-2">
-                    <h2 class="fs-bold">Feedback</h2>
-                    <table id="bid-history" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Total</th>
-                            <th scope="col">6 months</th>
-                            <th scope="col">Last month</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle text-success" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                    </svg>
-                                </td>
-                                <td>23</td>
-                                <td>19</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle text-danger" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                    </svg>
-                                </td>
-                                <td>6</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="offset-md-2 col-md-8 mt-2">
-                    <h2 class="fs-bold">Created Auctions</h2>
-
-                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                                    "Waifu Wars STEAM Key", "42", "3w",
-                                        "https://cdn.akamai.steamstatic.com/steam/apps/923830/header.jpg?t=1569138289", "Waifu Wars ONLINE") ?>
-                                        
-                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                    "Hatoful Boyfriend STEAM Key", "302", "3d",
-                                    "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend") ?>
-
-                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                    "War of the Human Tanks - ALTeR STEAM Key", "13", "14h",
-                                    "https://cdn.akamai.steamstatic.com/steam/apps/301920/header.jpg?t=1597504699", "War of the Human Tanks - ALTeR") ?>
-                        <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                    "[CS:GO] Karambit Case Hardened Factory New", "534450", "2m",
-                                    "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New") ?>
-                    </div>
-                </div>
-            </div> -->
         </main>
 
         <?php site_footer() ?>
+
+        <!-- Modal -->
+        <div class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="report-user-modal-title">Report Foo Fighters</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <label for="inputCategory" class="fw-bold">Reason</label>
+                        <div class="mb-3">
+                            <select class="form-select" id="inputCategory">
+                                <option selected>Choose...</option>
+                                <option value="1">Fraud</option>
+                                <option value="2">Improper profile image</option>
+                                <option value="3">Improper username</option>
+                                <option value="4">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="report-reason" class="form-label fw-bold">Description</label>
+                            <textarea class="form-control" id="report-reason" rows="6"></textarea>
+                            <span class="input-group-text text-wrap">Elaborate the reason to report this user, so we can analyze the case better.</span>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Report</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>
