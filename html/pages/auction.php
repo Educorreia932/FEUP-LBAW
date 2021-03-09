@@ -73,7 +73,7 @@ $stylesheets = array();
                         <div class="d-flex justify-content-between align-items-center">
                             <h2>JoJo Eyes of Heaven PS4 Key</h2>
                             <div>
-                                <button type="button" class="btn hover-scale">
+                                <button type="button" class="btn hover-scale" data-bs-toggle="modal" data-bs-target="#report-modal">
                                     <i class="bi bi-exclamation-triangle" style="font-size: 2.5em; text-align: right"></i>
                                 </button>
                                 <button type="button" class="btn hover-scale auction-bookmark">
@@ -177,21 +177,34 @@ $stylesheets = array();
             </div>
         </section>
 
-        <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Report user</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title">Report auction</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
                     <div class="modal-body">
-                        
+                        <div class="mb-3">
+                            <select class="form-select" id="">
+                                <option selected>Choose...</option>
+                                <option value="1">Fraudaulent auction</option>
+                                <option value="2">Improper product picutres</option>
+                                <option value="3">Improper auction title</option>
+                                <option value="4">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea class="form-control" id="report-reason" rows="6"></textarea>
+                            <span class="input-group-text text-wrap">Elaborate the reason to report this auction, so we can analyze the case better.</span>
+                        </div>
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Report</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
