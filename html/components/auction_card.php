@@ -1,4 +1,4 @@
-<?php function auction_card_template($class, $title, $price, $remaining_time, $img_src, $img_alt) { ?>
+<?php function auction_card_template($class, $title, $price, $remaining_time, $img_src) { ?>
 
         <a href="auction.php" class="card text-decoration-none link-dark text-wrap hover-scale <?=$class?>" style="width: 12rem;">
             <img class="card-img-top w-100" style="object-fit: cover; height: 11rem;" src=<?=$img_src?> alt="F.F.">

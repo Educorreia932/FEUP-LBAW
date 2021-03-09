@@ -87,7 +87,9 @@ $stylesheets = array();
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                        "Hatoful Boyfriend STEAM Key", "302", "3d",
+                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend") ?>
                                 ?>
                             </div>
                         </div>
@@ -100,7 +102,7 @@ $stylesheets = array();
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Apex Memes", 18.02, "5d", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
                                 ?>
                             </div>
                         </div>
@@ -114,7 +116,7 @@ $stylesheets = array();
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 6; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Jojo and the Boys", "102.23", "1w", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
                                 ?>
                             </div>
                         </div>
