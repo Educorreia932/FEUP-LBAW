@@ -5,17 +5,17 @@
     include_once(__DIR__ . "/../components/general_components.php");
 
 
-    include_once(__DIR__ . "/../subpages/dashboard-subpages.php");
+    include_once(__DIR__ . "/../subpages/dashboard-admin-subpages.php");
 
 
-    $href = 'dashboard.php';
+    $href = 'dashboard-admin.php';
     $named = array(
-        'created_auctions',
-        'bidded_auctions',
-        'bookmarked_auctions',
-        'followed'
+        'user_management',
+        'reported_users',
+        'auction_management',
+        'reported_auctions'
     );
-    $subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'created_auctions';
+    $subpage = isset($_GET["subpage"]) && in_array($_GET["subpage"], $named) ? $_GET["subpage"] : 'user_management';
 
 
     $stylesheets = array(
@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php site_head("Dashboard", $stylesheets); ?>
+<?php site_head("Admin Dashboard", $stylesheets); ?>
 
 <script defer src="../js/bookmark.js"></script>
 
@@ -44,14 +44,13 @@
         <div class="row h-100">
             <nav id="sidebar-menu" class="col-md-3 col-lg-2 bg-light sidebar">
                 <div class="position-sticky pt-3">
-                    <h4>Dashboard</h4>
-
+                    <h4>Admin Dashboard</h4>
                     <ul class="nav flex-column">
                         <?php
-                            sidebar_anchor($subpage, 'created_auctions', 'Created Auctions', $href);
-                            sidebar_anchor($subpage, 'bidded_auctions', 'Bidded Auctions', $href);
-                            sidebar_anchor($subpage, 'bookmarked_auctions', 'Bookmarked Auctions', $href);
-                            sidebar_anchor($subpage, 'followed', 'Followed', $href);
+                            sidebar_anchor($subpage, 'user_management', 'User Management', $href);
+                            sidebar_anchor($subpage, 'reported_users', 'Reported Users', $href);
+                            sidebar_anchor($subpage, 'auction_management', 'Auction Management', $href);
+                            sidebar_anchor($subpage, 'reported_auctions', 'Reported Auctions', $href);
                         ?>
                     </ul>
                 </div>
