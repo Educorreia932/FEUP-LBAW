@@ -96,7 +96,7 @@ $stylesheets = array();
                         <div class="col-xl-6 mt-sm-4">
                             <hr class="d-sm-none">
                             <span class="d-flex flex-row mb-2 align-items-center">
-                                <h4>Followed users</h4>
+                                <h4>Followed users' Auctions</h4>
 
                                 <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
                             </span>
