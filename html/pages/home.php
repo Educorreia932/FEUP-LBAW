@@ -66,7 +66,7 @@ $stylesheets = array();
             </div>
 
             <!-- Search bar -->
-            <div class="container input-group">
+            <div class="container input-group w-75 w-lg-50">
                 <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
                 <button class="input-group-text border-0" id="search-addon">
                     <a class="link-dark" href="search_results.php"><i class="bi bi-search"></i></a>
@@ -89,7 +89,7 @@ $stylesheets = array();
                                 <?php for ($i = 0; $i < 3; $i++)
                                     auction_card_template("me-sm-3 mb-3 mb-sm-0",
                                         "Hatoful Boyfriend STEAM Key", "302", "3d",
-                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend") ?>
+                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend")
                                 ?>
                             </div>
                         </div>
