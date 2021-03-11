@@ -37,7 +37,6 @@ $stylesheets = array();
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-
                         <div class="col-12 text-center">
                             <form id="imageUpload" enctype="multipart/form-data" method="post" action="#">
                                 <div class="form-group w-50 m-auto">
@@ -68,20 +67,27 @@ $stylesheets = array();
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
-                                    <label for="inputValue" class="sr-only">Starting Bid</label>
-                                    <div class="input-group">
-                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
-                                        <span class="input-group-text">€</span>
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6 mt-3">
                                     <label for="endDate" class="sr-only">Ending on</label>
                                     <div class="input-group">
                                         <input type="date" id="endDate" class="form-control">
                                         <input type="time" id="endTime" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-sm-6 mt-3">
+                                <div class="form-group col-sm-4 mt-3">
+                                    <label for="inputValue" class="sr-only">Starting Bid</label>
+                                    <div class="input-group">
+                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 mt-3">
+                                    <label for="inputIncr" class="sr-only">Increment</label>
+                                    <div class="input-group">
+                                        <input type="text" id="inputIncr" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mt-3">
                                     <label  for="inputCategory">Category</label>
                                     <div class="input-group mb-3 col-sm-6">
                                         <select class="form-select" id="inputCategory">
