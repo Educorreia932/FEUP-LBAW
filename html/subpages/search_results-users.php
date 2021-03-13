@@ -83,7 +83,7 @@ function search_results_users_filters() { ?>
 
 
 function search_results_users_results() {?>
-    <div>
+    <div class="mb-4">
         <?php
             $jojo_json = file_get_contents("../static/profile_img/jojo_img.json");
 
