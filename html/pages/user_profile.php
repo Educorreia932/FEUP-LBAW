@@ -19,7 +19,7 @@ $stylesheets = array('../css/user_profile.css');
         <?php site_header('Foo Fighters', NULL); ?>
         <main class="mb-4">
             <div class="row m-2">
-                <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search-results.php")); ?>
+                <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search_results.php?subpage=users")); ?>
             </div>
 
             <div class="container">
@@ -53,12 +53,12 @@ $stylesheets = array('../css/user_profile.css');
                                 <!-- OWN PROFILE -->
                                 <!-- <a class="p-0 link-dark text-decoration-none hover-scale" href="settings-account.php">
                                     <i class="bi bi-gear"></i>
-                                    Edit Profile
+                                    <span>Edit Profile</span>
                                 </a> -->
                             </div>
                             <div class="user-description d-flex flex-column-reverse w-100">
                                 <a role="button" class="collapsed description-toggler" data-bs-toggle="collapse" href="#user-description" aria-expanded="false" aria-controls="user-description"></a>
-                                <p class="collapse mb-1" id="user-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Videamus animi partes, quarum est conspectus illustrior; Ea, quae dialectici nunc tradunt et docent, nonne ab illis instituta sunt aut inventa sunt? Duo Reges: constructio interrete. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Hoc est non dividere, sed frangere. Effluit igitur voluptas corporis et prima quaeque avolat saepiusque relinquit causam paenitendi quam recordandi.</p>
+                                <p class="collapse mb-1" id="user-description">Originally Foo Fighters (Often shortened to FF) was a sentient mass of plankton given intelligence by Pucci to function as a guard for some important discs. But after Jolyne Kujo showed mercy after beating her, FF chose to take over a dead girl's body and help her find him. Foo Fighters is deeply curious (Since she's plankton and new to human life) and is very willing to try new things. As she hangs out with Jolyne and friends, she comes to deeply value her intellect. But she pushes her fear of losing it aside to sacrifice herself, saving Annasui and Jotaro's stand disc.</p>
                             </div>
                         </div>
                     </div>

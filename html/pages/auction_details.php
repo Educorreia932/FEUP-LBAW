@@ -23,7 +23,7 @@ $stylesheets = array();
     <main>
         <div class="row m-2">
             <h1>Auction Details & Bids</h1>
-            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key", "Details"), array("home.php", "search-results.php", "auction.php")); ?>
+            <?php breadcrumbs(array("Home", "Auctions", "JoJo Eyes of Heaven PS4 Key", "Details"), array("home.php", "search_results.php", "auction.php")); ?>
         </div>
 
         <section class="container-fluid p-4">

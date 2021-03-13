@@ -85,12 +85,17 @@ function search_results_users_filters() { ?>
 function search_results_users_results() {?>
     <div>
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            draw_user_entry();
+            $jojo_json = file_get_contents("../static/profile_img/jojo_img.json");
 
-            if ($i < 4)
-                echo "<hr>";
-        }
+            $jojo = json_decode($jojo_json, true);
+
+            for ($i = 0; $i < 20; $i++) {
+                $user = rand(0, sizeof($jojo));
+                $random_date = date("d M Y", mt_rand(1, rand()));
+                draw_user_entry($jojo[$user]["alt"], $random_date, $jojo[$user]["src"], rand(0, 500),rand(0, 1) == 1);
+                if ($i != 19)
+                    echo "<hr>";
+            }
         ?>
     </div>
 <?php } ?>
