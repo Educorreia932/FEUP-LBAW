@@ -19,7 +19,7 @@ $stylesheets = array('../css/user_profile.css');
         <?php site_header('Foo Fighters', NULL); ?>
         <main class="mb-4">
             <div class="row m-2">
-                <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search-results.php")); ?>
+                <?php breadcrumbs(array("Home", "Users", "Me"), array("home.php", "search_results.php?subpage=users")); ?>
             </div>
 
             <div class="container">

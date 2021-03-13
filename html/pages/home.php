@@ -61,12 +61,12 @@ $stylesheets = array();
                 <div class="col my-3 mb-md-0" >
                     <h2 class="fw-bold">Featured Auctions</h2>
                     <p class="fs-3">Check out these <br> featured autions!</p>
-                    <a href="#" class="text-decoration-none link-secondary">See more <i class="bi bi-arrow-right"></i></a>
+                    <a href="search_results.php" class="text-decoration-none link-secondary">See more <i class="bi bi-arrow-right"></i></a>
                 </div>   
             </div>
 
             <!-- Search bar -->
-            <div class="container input-group w-75 w-lg-50">
+            <div class="container input-group w-100 w-sm-75 w-xl-50 w-xxl-25">
                 <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
                 <button class="input-group-text border-0" id="search-addon">
                     <a class="link-dark" href="search_results.php"><i class="bi bi-search"></i></a>

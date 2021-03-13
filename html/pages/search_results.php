@@ -90,8 +90,6 @@
                     </div>
                 </div>
 
-                <p>Results for: <u>Foo Fighters</u> (5)</p>
-
                 <!-- Results -->
                 <?php call_user_func_array('search_results_' . $subpage . '_results', array()); ?>
             </main>

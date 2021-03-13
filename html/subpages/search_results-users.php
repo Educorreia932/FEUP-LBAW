@@ -85,12 +85,25 @@ function search_results_users_filters() { ?>
 function search_results_users_results() {?>
     <div>
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            draw_user_entry();
+            $jojo_json = file_get_contents("../static/profile_img/jojo_img.json");
 
-            if ($i < 4)
-                echo "<hr>";
-        }
+            $jojo = json_decode($jojo_json, true);
+
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], true);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], true);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], true);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], true);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], true);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], false);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], false);
+            echo "<hr>";
+            draw_user_entry("Foo Fighters", "10 feb 2020", $jojo[rand(0, sizeof($jojo))], false);
         ?>
     </div>
 <?php } ?>
