@@ -27,24 +27,15 @@ $stylesheets = array();
                     </div>
                     
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://i.kym-cdn.com/photos/images/newsfeed/001/532/021/a33.png" class="d-block mx-auto" alt="...">
-                            <div class="carousel-caption">
-                                <h1 class="display-2">4.84&euro;</h1>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://media.discordapp.net/attachments/688060677214044186/814885658422149180/dda7bsd-6a60b5b7-9eca-4c20-b582-5e6d1126f2ce.png?width=692&height=676" class="d-block mx-auto" alt="...">
-                            <div class="carousel-caption">
-                                <h1 class="display-2">23.22&euro;</h1>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg" class="d-block mx-auto" alt="...">
-                            <div class="carousel-caption">
-                                <h1 class="display-2">18.21&euro;</h1>
-                            </div>
-                        </div>
+                        <a class="carousel-item active" href="auction.php">
+                            <img src="https://www.mobygames.com/images/covers/l/615072-the-talos-principle-nintendo-switch-front-cover.jpg" class="d-block mx-auto" alt="...">
+                        </a>
+                        <a class="carousel-item" href="auction.php">
+                            <img src="https://www.mobygames.com/images/covers/l/382051-jojo-s-bizarre-adventure-eyes-of-heaven-playstation-4-front-cover.png" class="d-block mx-auto" alt="...">
+                        </a>
+                        <a class="carousel-item" href="auction.php">
+                            <img src="https://apunkatorrents.net/wp-content/uploads/2018/08/Lagoon-Lounge-The-Poisonous-Fountain-cover.jpg" class="d-block mx-auto" alt="...">
+                        </a>
                     </div>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#slides" data-bs-slide="prev">
