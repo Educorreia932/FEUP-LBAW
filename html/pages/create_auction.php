@@ -23,7 +23,7 @@ $stylesheets = array();
                 
                 <div class="row g-3 align-items-center">
                     <!-- gallery col -->
-                    <div class="col-md-5"> 
+                    <div class="col-lg-5"> 
                         <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6  m-auto mt-3" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <!-- images are inserted here through js -->
@@ -37,7 +37,6 @@ $stylesheets = array();
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-
                         <div class="col-12 text-center">
                             <form id="imageUpload" enctype="multipart/form-data" method="post" action="#">
                                 <div class="form-group w-50 m-auto">
@@ -49,7 +48,7 @@ $stylesheets = array();
                         <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                     </div>
                     <!-- form col -->
-                    <div class="col-md-5 pt-3 text-black-50 fs-5"> 
+                    <div class="col-lg-5 pt-3 text-black-50 fs-5"> 
                         <form class="form-auction">
                             <div class="row">
                                 <div class="form-group col-md-12 mt-3">
@@ -68,29 +67,37 @@ $stylesheets = array();
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-6 mt-3">
-                                    <label for="inputValue" class="sr-only">Starting Bid</label>
-                                    <div class="input-group">
-                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
-                                        <span class="input-group-text">€</span>
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-6 mt-3">
                                     <label for="endDate" class="sr-only">Ending on</label>
                                     <div class="input-group">
                                         <input type="date" id="endDate" class="form-control">
                                         <input type="time" id="endTime" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-sm-6 mt-3">
+                                <div class="form-group col-sm-4 mt-3">
+                                    <label for="inputValue" class="sr-only">Starting Bid</label>
+                                    <div class="input-group">
+                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 mt-3">
+                                    <label for="inputIncr" class="sr-only">Increment</label>
+                                    <div class="input-group">
+                                        <input type="number" id="inputIncr" class="form-control hide-appearence" placeholder="0.01" min="0.01" step="0.25" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 mt-3">
                                     <label  for="inputCategory">Category</label>
                                     <div class="input-group mb-3 col-sm-6">
                                         <select class="form-select" id="inputCategory">
                                             <option selected>Choose...</option>
-                                            <option value="1">Game</option>
+                                            <option value="1">Games</option>
                                             <option value="2">Software</option>
                                             <option value="3">eBook</option>
                                             <option value="4">Music</option>
-                                            <option value="5">Services</option>
+                                            <option value="5">Skins</option>
+                                            <option value="6">Other</option>
                                         </select>
                                     </div>
                                 </div>

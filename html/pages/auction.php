@@ -12,6 +12,7 @@ $stylesheets = array();
 <html lang="en">
 
 <?php site_head('JoJo Eyes of Heaven PS4 Key', $stylesheets); ?>
+<script src="../js/edit-auction-modal.js" defer></script>
 
 <body>
     <?php site_header("Foo Fighters", "page_auction"); ?>
@@ -70,14 +71,19 @@ $stylesheets = array();
                 <div id="auction-information" class="col-md my-4 d-flex flex-column justify-content-between">
                     <!-- Product information -->
                     <div class="row" id="product-information">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h2>JoJo Eyes of Heaven PS4 Key</h2>
-                            <div>
+                        <div class="row">
+                            <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">JoJo Eyes of Heaven PS4 Key</h2>
+                            <div class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
                                 <button type="button" class="btn hover-scale" data-bs-toggle="modal" data-bs-target="#report-modal">
                                     <i class="bi bi-exclamation-triangle" style="font-size: 2.5em; text-align: right"></i>
                                 </button>
                                 <button type="button" class="btn hover-scale auction-bookmark">
                                     <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
+                                </button>
+
+                                <!-- button for editing auction information (only for the user who created it) -->                                
+                                <button type="button" class="btn hover-scale" data-bs-toggle="modal" data-bs-target="#edit-modal">
+                                    <i class="bi bi-pencil" style="font-size: 2.5em; text-align: right"></i>
                                 </button>
                             </div>
 
@@ -176,6 +182,79 @@ $stylesheets = array();
                 </div>
             </div>
         </section>
+
+        <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLable">Edit Auction</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="row">
+                                <div class="form-group col-md-12 mt-3">
+                                    <label for="inputName" class="sr-only">Auction Name</label>
+                                    <input type="text" id="inputName" class="form-control" required>
+                                </div>
+                                <div class="form-group col-md-12 mt-3">
+                                    <label for="inputDescription" class="sr-only">Auction Description</label>
+                                    <textarea class="form-control" rows="4" id="inputDescription"></textarea>
+                                </div> 
+                                <div class="form-group col-sm-12 mt-3">
+                                    <label for="startDate" class="sr-only">Starting on</label>
+                                    <div class="input-group">
+                                        <input type="date" id="startDate" class="form-control">
+                                        <input type="time" id="startTime" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 mt-3">
+                                    <label for="endDate" class="sr-only">Ending on</label>
+                                    <div class="input-group">
+                                        <input type="date" id="endDate" class="form-control">
+                                        <input type="time" id="endTime" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 mt-3">
+                                    <label for="inputValue" class="sr-only">Starting Bid</label>
+                                    <div class="input-group">
+                                        <input type="text" id="inputValue" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 mt-3">
+                                    <label for="inputIncr" class="sr-only">Increment</label>
+                                    <div class="input-group">
+                                        <input type="text" id="inputIncr" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mt-3">
+                                    <label  for="inputCategory">Category</label>
+                                    <div class="input-group mb-3 col-sm-6">
+                                        <select class="form-select" id="inputCategory">
+                                            <option selected>Choose...</option>
+                                            <option value="1">Games</option>
+                                            <option value="2">Software</option>
+                                            <option value="3">eBook</option>
+                                            <option value="4">Music</option>
+                                            <option value="5">Skins</option>
+                                            <option value="6">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
 
         <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
             <div class="modal-dialog" role="document">

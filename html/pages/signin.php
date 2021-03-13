@@ -3,7 +3,7 @@
     include_once(__DIR__ . "/../components/header.php");
     include_once(__DIR__ . "/../components/footer.php");
     
-    $stylesheets = array("authentication.css");
+    $stylesheets = array("../css/authentication.css");
 ?>
 
 <!DOCTYPE html>

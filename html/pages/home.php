@@ -61,12 +61,12 @@ $stylesheets = array();
                 <div class="col my-3 mb-md-0" >
                     <h2 class="fw-bold">Featured Auctions</h2>
                     <p class="fs-3">Check out these <br> featured autions!</p>
-                    <a href="#" class="text-decoration-none link-secondary">See more <i class="bi bi-arrow-right"></i></a>
+                    <a href="search_results.php" class="text-decoration-none link-secondary">See more <i class="bi bi-arrow-right"></i></a>
                 </div>   
             </div>
 
             <!-- Search bar -->
-            <div class="container input-group">
+            <div class="container input-group w-100 w-sm-75 w-xl-50 w-xxl-25">
                 <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
                 <button class="input-group-text border-0" id="search-addon">
                     <a class="link-dark" href="search_results.php"><i class="bi bi-search"></i></a>
@@ -87,20 +87,22 @@ $stylesheets = array();
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0",
+                                        "Hatoful Boyfriend STEAM Key", "302", "3d",
+                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend")
                                 ?>
                             </div>
                         </div>
                         <div class="col-xl-6 mt-sm-4">
                             <hr class="d-sm-none">
                             <span class="d-flex flex-row mb-2 align-items-center">
-                                <h4>Followed users</h4>
+                                <h4>Followed users' Auctions</h4>
 
                                 <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Apex Memes", 18.02, "5d", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
                                 ?>
                             </div>
                         </div>
@@ -114,7 +116,7 @@ $stylesheets = array();
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                                 <?php for ($i = 0; $i < 6; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Jojo and the Boys", "102.23", "1w", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
                                 ?>
                             </div>
                         </div>
