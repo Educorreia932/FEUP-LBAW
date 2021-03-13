@@ -257,7 +257,7 @@ $stylesheets = array();
 
 
         <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Report auction</h5>
@@ -282,8 +282,8 @@ $stylesheets = array();
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Report</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Report</button>
                     </div>
                 </div>
             </div>
