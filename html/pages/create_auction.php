@@ -83,7 +83,7 @@ $stylesheets = array();
                                 <div class="form-group col-sm-4 mt-3">
                                     <label for="inputIncr" class="sr-only">Increment</label>
                                     <div class="input-group">
-                                        <input type="text" id="inputIncr" class="form-control" placeholder="0.00" aria-label="euro amount (with dot and two decimal places)">
+                                        <input type="number" id="inputIncr" class="form-control hide-appearence" placeholder="0.01" min="0.01" step="0.25" aria-label="euro amount (with dot and two decimal places)">
                                         <span class="input-group-text">€</span>
                                     </div>
                                 </div>
