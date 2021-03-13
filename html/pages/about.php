@@ -22,13 +22,13 @@ $stylesheets = array();
                         <p>It's a website.</p>
                     </blockquote>
                     <figcaption class="blockquote-footer">
-                        João Correia Lopes in <cite title="Source Title">LBAW</cite>
+                        João Correia Lopes & Sérgio Nunes in <cite title="Source Title">LBAW</cite>
                     </figcaption>
                     </figure>
                 </div>
                 
                 <div class="col-md-8 px-0">
-                    <img class="img-fluid" style="max-height: 30em;" src="../static/jlopes.png" alt="...">
+                    <img class="img-fluid" style="max-height: 30em;" src="../static/lbaw.png" alt="...">
                 </div>
             </div>
 
