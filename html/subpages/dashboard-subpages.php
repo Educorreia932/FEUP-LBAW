@@ -104,11 +104,24 @@ function dashboard_followed() { ?>
 
         <div class="container">
             <?php
-                for ($i = 0; $i < 5; $i++) {
-                    draw_user_entry();
-
-                    echo "<hr>";
-                }
+                // $user_name, $joined, $image, $rating, $is_following=false
+                draw_user_entry("Jotaro Kujo", "12 feb 2020", 
+                    "https://static.jojowiki.com/images/c/cd/latest/20201002224021/Jotaro6Av.png", "1567", $is_following=true);
+                echo "<hr>";
+                draw_user_entry("Narciso Anasui", "27 jul 2020", 
+                    "https://static.jojowiki.com/images/7/7d/latest/20200101224047/AnasuiAv.png", "312", $is_following=true);
+                echo "<hr>";
+                draw_user_entry("Weather Report", "4 aug 2020", 
+                    "https://static.jojowiki.com/images/0/09/latest/20191015215105/WeatherReportAV.png", "45", $is_following=true);
+                echo "<hr>";
+                draw_user_entry("Ermes Costello", "9 oct 2020", 
+                    "https://static.jojowiki.com/images/6/6c/latest/20200101160830/ErmesAv.png", "128", $is_following=true);
+                echo "<hr>";
+                draw_user_entry("Jolyne Cujoh", "8 mar 2021", 
+                    "https://static.jojowiki.com/images/3/3a/latest/20191221120242/JolyneAv.png", "4508", $is_following=true);
+                echo "<hr>";
+                draw_user_entry("Emporio Alnino", "27 may 2020", 
+                    "https://static.jojowiki.com/images/b/b4/latest/20200102224413/EmporioAv.png", "156", $is_following=true);
             ?>
         </div>
     </div>
