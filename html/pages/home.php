@@ -86,10 +86,13 @@ $stylesheets = array();
                                 <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                        "Hatoful Boyfriend STEAM Key", "302", "3d",
-                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend")
+                                <?php
+                                    auction_card_template("Antichamber STEAM Key", "2.05", "2d",
+                                        "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg", "Antichamber Cover");
+                                    auction_card_template("Hatoful Boyfriend STEAM Key", "20.13", "7h",
+                                        "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend Cover");
+                                    auction_card_template("The Talos Principle STEAM Key", "17.80", "21h",
+                                        "https://www.mobygames.com/images/covers/l/615072-the-talos-principle-nintendo-switch-front-cover.jpg", "The Talos Principle Cover");
                                 ?>
                             </div>
                         </div>
@@ -101,8 +104,13 @@ $stylesheets = array();
                                 <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">See all <i class="bi bi-arrow-right"></i></a>
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                <?php for ($i = 0; $i < 3; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Apex Memes", 18.02, "5d", "https://media.discordapp.net/attachments/688060677214044186/817438841442664448/apex_memes.jpg")
+                                <?php
+                                    auction_card_template("Hollow Knight STEAM key", 18.02, "45m",
+                                        "https://www.mobygames.com/images/covers/l/487280-hollow-knight-nintendo-switch-front-cover.jpg", "Hollow Knight Cover Art");
+                                    auction_card_template("Hades STEAM Key", 18.02, "5h",
+                                        "https://www.mobygames.com/images/covers/l/684522-hades-nintendo-switch-front-cover.jpg", "Hades Cover Art");
+                                    auction_card_template("Celeste STEAM key", 18.02, "15m",
+                                        "https://www.mobygames.com/images/covers/l/452220-celeste-playstation-4-front-cover.jpg", "Celeste Cover Art");
                                 ?>
                             </div>
                         </div>
@@ -115,8 +123,19 @@ $stylesheets = array();
                                 <a href="search_results.php" class="ms-2 link-secondary text-decoration-none align-items-center">See all <i class="bi bi-arrow-right"></i></a>
                             </span>
                             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                                <?php for ($i = 0; $i < 6; $i++)
-                                    auction_card_template("me-sm-3 mb-3 mb-sm-0", "Jojo and the Boys", "102.23", "1w", "https://pm1.narvii.com/7609/d580c27415c4d4daba66954dd4e5a439d3578069r1-750-725v2_hq.jpg")
+                                <?php
+                                    auction_card_template("Lagoon Lounge : The Poisonous Fountain", "2.23", "3h",
+                                        "https://apunkatorrents.net/wp-content/uploads/2018/08/Lagoon-Lounge-The-Poisonous-Fountain-cover.jpg", "Lagoon Lounge : The Poisonous Fountain Cover Art");
+                                    auction_card_template("JoJo Eyes of Heaven PS4 Key", "181.00", "1d", 
+                                        "https://www.mobygames.com/images/covers/l/382051-jojo-s-bizarre-adventure-eyes-of-heaven-playstation-4-front-cover.png", "JoJo Eyes of Heaven Cover");
+                                    auction_card_template("Stone Free - Jim Hendrix", "102.23", "7d",
+                                        "https://cdn.discordapp.com/attachments/808268891091501067/820312137838755870/iu.png", "Stone Free - Jim Hendrix Cover");
+                                    auction_card_template("NieR: Automata STEAM Key", "25.48", "40m",
+                                        "https://www.mobygames.com/images/covers/l/414543-nier-automata-playstation-4-front-cover.jpg", "NieR: Automata Cover");
+                                    auction_card_template("[CS:GO] Karambit Case Hardened Factory New", "534450", "31d",
+                                        "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New");
+                                    auction_card_template("Foo Fighters - Greatest Hits MP3", "21.73", "2d",
+                                            "https://images-na.ssl-images-amazon.com/images/I/81oYI%2BemsAL._SL1500_.jpg", "Foo Fighters - Greatest Hits MP3 Cover");
                                 ?>
                             </div>
                         </div>

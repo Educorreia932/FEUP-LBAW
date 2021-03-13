@@ -130,20 +130,16 @@ $stylesheets = array('../css/user_profile.css');
             <div class="container mt-4">
                 <h2 class="fs-bold">Created Auctions</h2>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                    <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                                "Waifu Wars STEAM Key", "42", "3w",
-                                    "https://cdn.akamai.steamstatic.com/steam/apps/923830/header.jpg?t=1569138289", "Waifu Wars ONLINE") ?>
-                                    
-                    <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                "Hatoful Boyfriend STEAM Key", "302", "3d",
-                                "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend") ?>
-
-                    <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                "War of the Human Tanks - ALTeR STEAM Key", "13", "14h",
-                                "https://cdn.akamai.steamstatic.com/steam/apps/301920/header.jpg?t=1597504699", "War of the Human Tanks - ALTeR") ?>
-                    <?php auction_card_template("me-sm-3 mb-3 mb-sm-0",
-                                "[CS:GO] Karambit Case Hardened Factory New", "534450", "2m",
-                                "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New") ?>
+                    <?php
+                        auction_card_template("Waifu Wars STEAM Key", "42", "3w",
+                                    "https://cdn.akamai.steamstatic.com/steam/apps/923830/header.jpg?t=1569138289", "Waifu Wars ONLINE");
+                        auction_card_template("Hatoful Boyfriend STEAM Key", "302", "3d",
+                                "https://cdn.akamai.steamstatic.com/steam/apps/310080/header.jpg?t=1568675771", "Hatoful Boyfriend");
+                        auction_card_template("War of the Human Tanks - ALTeR STEAM Key", "13", "14h",
+                                "https://cdn.akamai.steamstatic.com/steam/apps/301920/header.jpg?t=1597504699", "War of the Human Tanks - ALTeR");
+                        auction_card_template("[CS:GO] Karambit Case Hardened Factory New", "534450", "2m",
+                                "http://i.gyazo.com/95ffbc8aa53f506e289c85647040002d.png", "Karambit Case Hardened Factory New");
+                    ?>
                 </div>
             </div>
         </main>
