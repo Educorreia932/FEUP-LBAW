@@ -71,11 +71,10 @@ $stylesheets = array();
                 <div id="auction-information" class="col-md my-4 d-flex flex-column justify-content-between">
                     <!-- Product information -->
                     <div class="row" id="product-information">
-                        <!-- <div class="d-flex flex-column-reverse flex-xl-row justify-content-between align-items-center"> -->
                         <div class="row">
                             <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">JoJo Eyes of Heaven PS4 Key</h2>
                             <div class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
-                                <button type="button" class="btn hover-scale">
+                                <button type="button" class="btn hover-scale" data-bs-toggle="modal" data-bs-target="#report-modal">
                                     <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
                                     <span>Report auction</span>
                                 </button>
@@ -138,15 +137,15 @@ $stylesheets = array();
                 <hr class="my-1">
 
                 <?php
-                auction_detail("Time remaining", "24 minutes 39 seconds", true);
-                auction_detail("Duration", "1 week");
+                    auction_detail("Time remaining", "24 minutes 39 seconds", true);
+                    auction_detail("Duration", "1 week");
 
-                auction_detail("Bidders", "3 different bidders", true);
-                auction_detail("Total Bids", "7 bids");
+                    auction_detail("Bidders", "3 different bidders", true);
+                    auction_detail("Total Bids", "7 bids");
 
-                auction_detail("Starting Bid", "75.00 €", true);
-                auction_detail("Mandatory Bid Increment", "1.00 €");
-                auction_detail("Average Bid Increment", "15.00 €");
+                    auction_detail("Starting Bid", "75.00 €", true);
+                    auction_detail("Mandatory Bid Increment", "1.00 €");
+                    auction_detail("Average Bid Increment", "15.00 €");
                 ?>
             </div>
         </section>
@@ -174,12 +173,12 @@ $stylesheets = array();
                         </thead>
                         <tbody>
                             <?php
-                            bid_table_entry("Me", 180, "20 sec");
+                                bid_table_entry("Me", 180, "20 sec");
 
-                            for ($i = 0; $i < 6; $i++)
+                                for ($i = 0; $i < 6; $i++)
                                 bid_table_entry($i % 2 == 0 ? 'Y**p' : 'a**U', 15 + (10 - $i) * 15, strval($i + 1) . " hour");
 
-                            bid_table_entry("Starting Bid", 75, "1 week");
+                                bid_table_entry("Starting Bid", 75, "1 week");
                             ?>
                         </tbody>
                     </table>
@@ -259,6 +258,39 @@ $stylesheets = array();
         </div>
         
 
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Report auction</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <select class="form-select" id="">
+                                <option selected>Choose...</option>
+                                <option value="1">Fraudaulent auction</option>
+                                <option value="2">Improper product picutres</option>
+                                <option value="3">Improper auction title</option>
+                                <option value="4">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea class="form-control" id="report-reason" rows="6"></textarea>
+                            <span class="input-group-text text-wrap">Elaborate the reason to report this auction, so we can analyze the case better.</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <?php site_footer(); ?>
