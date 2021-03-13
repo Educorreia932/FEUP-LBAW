@@ -119,7 +119,7 @@ $stylesheets = array();
                                         "https://apunkatorrents.net/wp-content/uploads/2018/08/Lagoon-Lounge-The-Poisonous-Fountain-cover.jpg", "Lagoon Lounge : The Poisonous Fountain Cover Art");
                                     auction_card_template("JoJo Eyes of Heaven PS4 Key", "181.00", "1d", 
                                         "https://www.mobygames.com/images/covers/l/382051-jojo-s-bizarre-adventure-eyes-of-heaven-playstation-4-front-cover.png", "JoJo Eyes of Heaven Cover");
-                                    auction_card_template("Stone Free - Jim Hendrix", "102.23", "7d",
+                                    auction_card_template("Stone Free - Jimi Hendrix", "102.23", "7d",
                                         "https://cdn.discordapp.com/attachments/808268891091501067/820312137838755870/iu.png", "Stone Free - Jim Hendrix Cover");
                                     auction_card_template("NieR: Automata STEAM Key", "25.48", "40m",
                                         "https://www.mobygames.com/images/covers/l/414543-nier-automata-playstation-4-front-cover.jpg", "NieR: Automata Cover");
