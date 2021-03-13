@@ -76,15 +76,16 @@ $stylesheets = array();
                             <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">JoJo Eyes of Heaven PS4 Key</h2>
                             <div class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
                                 <button type="button" class="btn hover-scale">
-                                    <i class="bi bi-exclamation-triangle" style="font-size: 2.5em; text-align: right"></i>
+                                    <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
+                                    <span>Report auction</span>
                                 </button>
                                 <button type="button" class="btn hover-scale auction-bookmark">
-                                    <i class="bi bi-bookmark-plus" style="font-size: 2.5em; text-align: right"></i>
+                                    <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
                                 </button>
 
                                 <!-- button for editing auction information (only for the user who created it) -->                                
                                 <button type="button" class="btn hover-scale" data-bs-toggle="modal" data-bs-target="#edit-modal">
-                                    <i class="bi bi-pencil" style="font-size: 2.5em; text-align: right"></i>
+                                    <i class="bi bi-pencil" style="font-size: 1.5em; text-align: right"></i>
                                 </button>
                             </div>
 
@@ -95,9 +96,11 @@ $stylesheets = array();
                     <div class="row">
                         <div class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
                             <h3 class="d-sm-none">Seller</h3>
-                            <a href="#" class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
-                                Hirohiko Araki
-                                <i class="bi bi-person-circle mx-1" style="font-size: 1.2rem;"></i>
+                            <a href="user_profile.php" class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
+                                <span class="ms-3 ms-sm-0 me-0 me-sm-3">Hirohiko Araki</span>
+                                <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                    <img style="border-radius:50%;" width="40" height="40" src="https://static.jojowiki.com/images/d/d4/latest/20200101165640/HolHorseAv.png" alt="Profile Image">
+                                </div>
                             </a>
                         </div>
 
