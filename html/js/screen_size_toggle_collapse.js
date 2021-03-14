@@ -6,4 +6,7 @@ if (mediaQuery.matches) {
   // Then trigger an alert
   let sidebar = document.getElementById('sidebar');
   sidebar.classList.add("show");
+
+  let btn_sidebar = document.getElementById('btn-sidebar');
+  btn_sidebar.ariaExpanded = true;
 }
