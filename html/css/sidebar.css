@@ -17,11 +17,3 @@
     color: #007bff;
     border-left: 1px solid black;
 }
-
-#btn-sidebar[aria-expanded=false]::after {
-    content: '\003E';
-}
-
-#btn-sidebar[aria-expanded=true]::after {
-    content: '\003C';
-}
