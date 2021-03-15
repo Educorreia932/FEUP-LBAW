@@ -66,8 +66,8 @@
                 <?php breadcrumbs(array("Home", $breadcrumbs[$subpage]), array("home.php")) ?>
 
                 <div class="d-flex flex-row py-4">
-                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
-                        &gt;
+                    <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="false">
+                        <i class="bi bi-caret-right-fill"></i>
                     </button>
 
                     <!-- Search bar -->

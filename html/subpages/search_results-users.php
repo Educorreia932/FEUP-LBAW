@@ -92,7 +92,7 @@ function search_results_users_results() {?>
             for ($i = 0; $i < 20; $i++) {
                 $user = rand(0, sizeof($jojo));
                 $random_date = date("d M Y", mt_rand(1, rand()));
-                draw_user_entry($jojo[$user]["alt"], $random_date, $jojo[$user]["src"], rand(0, 500),rand(0, 1) == 1);
+                draw_user_entry($jojo[$user]["alt"], str_replace(' ', '_', strtolower(substr($jojo[$user]["alt"], 0, min(strlen($jojo[$user]["alt"]), 10)))), $random_date, $jojo[$user]["src"], rand(0, 500),rand(0, 1) == 1);
                 if ($i != 19)
                     echo "<hr>";
             }
