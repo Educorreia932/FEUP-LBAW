@@ -55,9 +55,11 @@
                         </button>
 
                         <li class="d-none d-md-flex nav-item dropdown px-1">                        
-                            <button class="btn btn-dark dropdown-toggle" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span><?=htmlentities($user)?></span>
-                                <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
+                            <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="me-2"><?=htmlentities($user)?></span>
+                                <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                    <img style="border-radius:50%;" width="40" height="40" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="Profile Image">
+                                </div>
                             </button>
                         
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
@@ -69,13 +71,14 @@
                         </li>
                         <div class="d-flex d-md-none flex-wrap flex-row w-100">
                             <li class="nav-item col-12 d-flex justify-content-between">
-                                <div>
-                                    <i class="bi bi-person-circle navbar-text" style="font-size: 1.2rem;"></i>
-                                    <span class="navbar-text"><?=htmlentities($user)?></html></span>
+                                <div class="col-6 d-flex align-items-center">
+                                    <div class="d-flex p-0 align-self-center" style="width: 32px; height: 32px;">
+                                        <img style="border-radius:50%;" width="32" height="32" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="Profile Image">
+                                    </div>
+                                    <span class="ms-1 navbar-text"></i> <?=htmlentities($user)?></html></span>
                                 </div>
-                                <button class="btn hover-scale position-relative align-middle me-1" type="button" data-bs-toggle="modal" data-bs-target="#notifications-modal">
-                                    <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-muted" style="font-size:xx-large;"></i>
-                                    <span class="position-absolute top-50 start-50 translate-middle text-center text-muted"  style="font-size:small; font-weight: bold;">42</span>
+                                <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button" data-bs-toggle="modal" data-bs-target="#notifications-modal">
+                                    <span class="navbar-text"><i class="bi bi-bell text-muted"></i> Notifications (42)</span>
                                 </button>
                             </li>
                             <li class="nav-item col-6"><a class="nav-link" href="settings.php">Settings</a></li>
