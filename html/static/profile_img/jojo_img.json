@@ -1,0 +1,3714 @@
+[
+	{
+		"src": "https://static.jojowiki.com/images/thumb/2/23/latest/20191212204955/JonathanAv.png/120px-JonathanAv.png",
+		"alt": "JonathanAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a7/latest/20191015214939/JonathanAvAnim.png",
+		"alt": "JonathanAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/b/b7/latest/20191212205002/WillAv.png/120px-WillAv.png",
+		"alt": "WillAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ec/latest/20191015215834/WillZeppeliAvAnim.png",
+		"alt": "WillZeppeliAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/0/00/latest/20191212205000/SpeedwagonAv.png/120px-SpeedwagonAv.png",
+		"alt": "SpeedwagonAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/31/latest/20191015214319/SpeedwagonAvAnim1.png",
+		"alt": "SpeedwagonAvAnim1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/67/latest/20200222090748/ErinaAv.png",
+		"alt": "ErinaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20191015214245/ErinaAvAnim1.png",
+		"alt": "ErinaAvAnim1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d3/latest/20200101155555/PocoAv.png",
+		"alt": "PocoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/35/latest/20191015214654/PocoAvAnim.png",
+		"alt": "PocoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/0/0a/latest/20191212204958/GeorgeIAv.png/120px-GeorgeIAv.png",
+		"alt": "GeorgeIAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0c/latest/20191015214625/GeorgeAvAnim.png",
+		"alt": "GeorgeAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/65/latest/20200101155947/TonpettyAv.png",
+		"alt": "TonpettyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191015214100/TonpettyAvAnim.png",
+		"alt": "TonpettyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/9/93/latest/20191212204957/StraizoAv.png/120px-StraizoAv.png",
+		"alt": "StraizoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8d/latest/20191015215247/StraizoAvAnim1.png",
+		"alt": "StraizoAvAnim1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/8/8f/latest/20191212204957/DireAv.png/120px-DireAv.png",
+		"alt": "DireAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/50/latest/20191015214843/DireAvAnim.png",
+		"alt": "DireAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/f/f0/latest/20191212204959/DioBrandoAv.png/120px-DioBrandoAv.png",
+		"alt": "DioBrandoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/32/latest/20191015213504/DioAvAnim1.png",
+		"alt": "DioAvAnim1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/d/d2/latest/20191212205928/BrufordAv.png/120px-BrufordAv.png",
+		"alt": "BrufordAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/da/latest/20191015214703/BrufordAvAnim.png",
+		"alt": "BrufordAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/0/07/latest/20191212205929/TarkusAv.png/120px-TarkusAv.png",
+		"alt": "TarkusAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/23/latest/20191015214524/TarkusAvAnim.png",
+		"alt": "TarkusAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/e/ed/latest/20191212205931/WangChanAv.png/120px-WangChanAv.png",
+		"alt": "WangChanAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20191015213337/WangAvAnim.png",
+		"alt": "WangAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a9/latest/20200101165043/DarioBrandoAv.png",
+		"alt": "DarioBrandoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20191015215211/DarioAvAnim.png",
+		"alt": "DarioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/a/af/latest/20191212204956/DannyAv.png/120px-DannyAv.png",
+		"alt": "DannyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20200102212940/DannyAvAnime.png",
+		"alt": "DannyAvAnime"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/5/51/latest/20191212205923/TattooAv.png/120px-TattooAv.png",
+		"alt": "TattooAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/3/3c/latest/20191213043429/TattooAvAnim.png/120px-TattooAvAnim.png",
+		"alt": "TattooAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/55/latest/20200727063648/KempoFighterAv.png",
+		"alt": "KempoFighterAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/01/latest/20200727063647/KempoFighterAvAnim.png",
+		"alt": "KempoFighterAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3d/latest/20200728095044/InspectorAv.png",
+		"alt": "InspectorAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20200728091445/InspectorAvAnim.png",
+		"alt": "InspectorAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b4/latest/20200101155541/PocoSisterAv.png",
+		"alt": "PocoSisterAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/06/latest/20191015213643/PocosisAvAnim.png",
+		"alt": "PocosisAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ec/latest/20200101161720/JackAv.png",
+		"alt": "JackAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20191015215108/JackAvAnim.png",
+		"alt": "JackAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/48/latest/20200101232734/AdamsAv.png",
+		"alt": "AdamsAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b2/latest/20191015215608/AdamsAvAnim.png",
+		"alt": "AdamsAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20200626031506/DoobieAv.png",
+		"alt": "DoobieAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20210108050408/DoobieAvAnim.png",
+		"alt": "DoobieAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/78/latest/20200101153627/MaryAv.png",
+		"alt": "MaryAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1d/latest/20200523071733/MaryAvAnim.png",
+		"alt": "MaryAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/eb/latest/20200626021944/WillFatherAv.png",
+		"alt": "WillFatherAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a6/latest/20200626021944/WillFatherAvAnim.png",
+		"alt": "WillFatherAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20200102220741/ElizabethAv.png",
+		"alt": "ElizabethAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20200626200923/ElizabethAvAnim.png",
+		"alt": "ElizabethAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/69/latest/20200102215634/MaryStuartAv.png",
+		"alt": "MaryStuartAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/72/latest/20200626200912/MaryStuartAvAnim.png",
+		"alt": "MaryStuartAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20200625022400/AztecChiefAv.png",
+		"alt": "AztecChiefAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/46/latest/20200625022400/AztecChiefAvAnim.png",
+		"alt": "AztecChiefAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/9/94/latest/20191212205924/BabyLisaLisaAv.png/120px-BabyLisaLisaAv.png",
+		"alt": "BabyLisaLisaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200102231357/BabyLisaLisaAvAnime.png",
+		"alt": "BabyLisaLisaAvAnime"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ed/latest/20191214171343/Mark_Watkin_Av.png",
+		"alt": "Mark Watkin"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/89/latest/20191214171336/77_rings_winners_Av.png",
+		"alt": "The 77 Rings Challenge Winners"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/37/latest/20200102002247/FatherStyxAv.png",
+		"alt": "Father Styx"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d5/latest/20200507205021/MaidenAv.png",
+		"alt": "Maiden"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d5/latest/20210205194427/Aztec_Tribe_Av.png",
+		"alt": "Aztec Tribe"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/07/latest/20191214171337/Bar_Woman_Av.png",
+		"alt": "Woman from Bar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/83/latest/20191214171337/Brats_Part_1_Av.png",
+		"alt": "Brats"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20191214171345/Ring_Announcer_Av.png",
+		"alt": "Ring Announcer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b0/latest/20191214171341/Joestar_Butler_Av.png",
+		"alt": "Joestar Mansion Butler"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/94/latest/20191214191254/Ogre_Street_Criminals_Av.png",
+		"alt": "Ogre Street Criminals"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5b/latest/20191214171347/Vagrants_Av.png",
+		"alt": "Vagrants"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/90/latest/20191214171345/Police_Zombie_Av.png",
+		"alt": "Police Zombie"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20191214171346/Speedwagon_Friend_Av.png",
+		"alt": "Speedwagon's Friend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ac/latest/20191214171341/Jack%27s_Date_Av.png",
+		"alt": "Jack the Ripper's Date"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d0/latest/20191214171340/Fisherman_Av.png",
+		"alt": "Fisherman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d3/latest/20191214171347/Zombie_Knights_Av.png",
+		"alt": "Zombie Knights"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/66/latest/20191214171339/Executioner_Av.png",
+		"alt": "Executioner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20191214171341/Indian_Ripple_User_Av.png",
+		"alt": "Oriental Doctor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/79/latest/20191214194025/Ceiling_Zombies_Av.png",
+		"alt": "Ceiling Zombies"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ea/latest/20191214171348/Zombie_Mothers_Av.png",
+		"alt": "Zombie Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20191214171344/Poco_father_Av.png",
+		"alt": "Poco's Dad"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20191214171342/London_Bartender_Av.png",
+		"alt": "London Bartender"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/58/latest/20191214194025/Coffin_transporters_Av.png",
+		"alt": "Coffin Transporters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20191214194025/Ship_Zombies_Av.png",
+		"alt": "Ship Zombies"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0a/latest/20191214171339/Elizabeth_mother_Av.png",
+		"alt": "Elizabeth's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20200102001653/JosephAv.png",
+		"alt": "JosephAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c1/latest/20191015215038/JosephAvAnim2.png",
+		"alt": "JosephAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/be/latest/20200101222032/CaesarMangaAv.png",
+		"alt": "CaesarMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4a/latest/20191015220114/CaesarAvAnim.png",
+		"alt": "CaesarAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0b/latest/20200101164507/LisaLisaAv.png",
+		"alt": "LisaLisaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20200830215939/LisaAvAnim2.png",
+		"alt": "LisaAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/15/latest/20200102223117/RudolVonStroheimAv.png",
+		"alt": "RudolVonStroheimAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0d/latest/20191015213958/StroheimAvAnim.png",
+		"alt": "StroheimAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/f/fc/latest/20191015215219/Speedwagon2Av.png/120px-Speedwagon2Av.png",
+		"alt": "Speedwagon2Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d0/latest/20191015215010/SpeedwagonAvAnim2.png",
+		"alt": "SpeedwagonAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bf/latest/20200101163857/MessinaMangaAv.png",
+		"alt": "MessinaMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20191015215421/MessinaAvAnim.png",
+		"alt": "MessinaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c6/latest/20200101222626/LogginsMangaAv.png",
+		"alt": "LogginsMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5d/latest/20191015213206/LogginsAvAnim.png",
+		"alt": "LogginsAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a7/latest/20200101214150/Erina2Av.png",
+		"alt": "Erina2Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4c/latest/20191015215916/ErinaAvAnim2.png",
+		"alt": "ErinaAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/7/71/latest/20191015215020/SmokeyBrownAv.png/120px-SmokeyBrownAv.png",
+		"alt": "SmokeyBrownAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/48/latest/20191015212816/SmokeyAvAnim.png",
+		"alt": "SmokeyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8a/latest/20200222084646/SuziQAv.png",
+		"alt": "SuziQAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/85/latest/20191015215427/SuziAvAnim2.png",
+		"alt": "SuziAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/07/latest/20200112070048/KarsAv.png",
+		"alt": "KarsAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e0/latest/20191015215319/KarsAvAnim.png",
+		"alt": "KarsAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/38/latest/20200102220726/EsidisiAv.png",
+		"alt": "EsidisiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/83/latest/20191015215515/EsidisiAvAnim.png",
+		"alt": "EsidisiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/73/latest/20200102220836/WamuuAv.png",
+		"alt": "WamuuAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/24/latest/20191015214422/WamuuAvAnim.png",
+		"alt": "WamuuAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/68/latest/20200101225158/SantanaAv.png",
+		"alt": "SantanaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8a/latest/20191015215650/SantanaAvAnim.png",
+		"alt": "SantanaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/19/latest/20200102215933/Straizo2Av.png",
+		"alt": "Straizo2Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c3/latest/20191015214012/StraizoAvAnim2.png",
+		"alt": "StraizoAvAnim2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20200102212926/DonovanMangaAv.png",
+		"alt": "DonovanMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8d/latest/20191015212742/DonovanAvAnim.png",
+		"alt": "DonovanAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1a/latest/20200101235532/WiredBeckMangaAv.png",
+		"alt": "WiredBeckMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cd/latest/20191015213346/WiredBeckAvAnim.png",
+		"alt": "WiredBeckAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20200101233430/MarkMangaAv.png",
+		"alt": "MarkMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/69/latest/20191015214223/MarkAvAnim.png",
+		"alt": "MarkAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1f/latest/20200102214750/MarioZeppeliAv.png",
+		"alt": "MarioZeppeliAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20191015213023/MarioAvAnim.png",
+		"alt": "MarioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/33/latest/20191015220037/GeorgeJoestarIIAv.png",
+		"alt": "GeorgeJoestarIIAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d6/latest/20200102230710/GeorgeJoestarII2AvAnime.png",
+		"alt": "GeorgeJoestarII2AvAnime"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3c/latest/20191214173017/Bruto_Av.png",
+		"alt": "Bruto"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9a/latest/20191214173013/Straizo_Disciples_Av.png",
+		"alt": "Straizo's Disciples"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20191214173026/Mummy_Av.png",
+		"alt": "Mummy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20191214173010/SPW_Excavators_Av.png",
+		"alt": "SPW Excavators"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0d/latest/20191214173010/Soda_Seller_Av.png",
+		"alt": "Coco Cola Seller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/82/latest/20191214173028/NY_Cops_Av.png",
+		"alt": "New York Police Officers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f6/latest/20191214173011/SPW_Plane_Hijackers_Av.png",
+		"alt": "SPW Plane Hijackers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/97/latest/20191214173011/SPW_Pilot_Av.png",
+		"alt": "SPW Plane Pilot"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/44/latest/20191214173022/Impatient_Driver_Av.png",
+		"alt": "Impatient Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b6/latest/20191214173017/Brass_Knuckle_Gangster_Av.png",
+		"alt": "Brass Knuckles Gangster"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20191214173025/Mafioso_BT_Av.png",
+		"alt": "Mafioso"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fc/latest/20191214173018/Bruto_gf_Av.png",
+		"alt": "Bruto's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/04/latest/20191214173008/Reporter_BT_Av.png",
+		"alt": "Female Reporter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a8/latest/20210205195232/Stroheim%27s_Dog_Av.png",
+		"alt": "Stroheim's Dog"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fa/latest/20191214173027/Nazi_Doctor_Av.png",
+		"alt": "Nazi Doctors"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8f/latest/20191214173019/Courageous_Mexican_Kid_Av.png",
+		"alt": "Courageous Mexican Child"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6f/latest/20191214173026/Mexican_Thugs_Av.png",
+		"alt": "Mexican Thugs"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200102212407/VampirePrisonerAv.png",
+		"alt": "Vampire Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/93/latest/20191214173027/Nazi_Gatekeepers_Av.png",
+		"alt": "Nazi Gatekeepers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/57/latest/20191214173020/Fat_Santana_Host_Av.png",
+		"alt": "Santana's Body Host"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/20/latest/20191214173009/Santana_Victims_Av.png",
+		"alt": "Santana's Nazi Victims"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ce/latest/20210205195232/Nazi_Researcher_Av.png",
+		"alt": "Nazi Researcher"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a3/latest/20191214173009/Rome_Hotel_Waiter_Av.png",
+		"alt": "Rome Hotel Waiter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20191214173019/Caesar%27s_Date_Av.png",
+		"alt": "Caesar's Date"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2c/latest/20191214173021/Hypnotized_Girl_Av.png",
+		"alt": "Hypnotized Girl"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4c/latest/20191214173028/Nazi_Officer_Av.png",
+		"alt": "Nazi Officer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a3/latest/20191214173016/Wamuu_Victims_Av.png",
+		"alt": "Wamuu's Nazi Victims"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/81/latest/20191214173008/Ripple_Clan_Boy_Av.png",
+		"alt": "Ripple Clan"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4f/latest/20191214173025/Mark_Girlfriend_Av.png",
+		"alt": "Mark's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1f/latest/20191214173023/Joseph%27s_Doctor_Av.png",
+		"alt": "Joseph's Doctor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f8/latest/20191214173029/Pickpocket_BT_Av.png",
+		"alt": "Nazi Spy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20191214173007/Postmaster_Av.png",
+		"alt": "Postmaster"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6f/latest/20191214173008/Puppy_saved_by_Kars_Av.png",
+		"alt": "Puppy Saved By Kars"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/36/latest/20191214173020/Drunk_Drivers_Av.png",
+		"alt": "Drunk Drivers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20191214173024/Kars_Nazi_Victims_Av.png",
+		"alt": "Kars's Nazi Victims"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e2/latest/20191214173025/Luxury_Cat_Av.png",
+		"alt": "Luxury Cat"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/98/latest/20191214173019/Caesar_Siblings_Av.png",
+		"alt": "Caesar's Siblings"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/97/latest/20191214173018/Caesar_Distant_Relative_Av.png",
+		"alt": "Caesar's Distant Relative"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/42/latest/20191214173022/Italian_Hoodlum_Av.png",
+		"alt": "Italian Hoodlum"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d9/latest/20191214173016/100_Vampires_Av.png",
+		"alt": "Kars's Vampires"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214173010/Skeleton_Heel_Stone_Warriors_Av.png",
+		"alt": "Skeleton Heel Stone Warriors"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9f/latest/20191214173017/Bad_Breath_Vampire_Av.png",
+		"alt": "Bad Breath Vampire"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/59/latest/20191214173023/Kars_Double_Av.png",
+		"alt": "Kars's Double"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/15/latest/20191214173012/SPW_Technology_Fighting_Team_Av.png",
+		"alt": "SPW Special Technology Fighting Team"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20191214173014/Stroheim_UV_Army_Av.png",
+		"alt": "Stroheim's Ultraviolet Army"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3d/latest/20191214173016/Zombie_Impostor_Av.png",
+		"alt": "Superior Officer Zombie"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bd/latest/20191214173024/Kars_Squirrel_Av.png",
+		"alt": "Kars's Squirrel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20191214173023/Japanese_Tourist_Av.png",
+		"alt": "Japanese Tourist"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a5/latest/20191015220128/JotaroAv.png",
+		"alt": "JotaroAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8f/latest/20191015215123/JotaroAvAnim3.png",
+		"alt": "JotaroAvAnim3"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c6/latest/20200126014419/OldJosephAv.png",
+		"alt": "OldJosephAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9f/latest/20191015212730/JosephAvAnim3.png",
+		"alt": "JosephAvAnim3"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/e/ec/latest/20200126014224/AvdolAv.png/120px-AvdolAv.png",
+		"alt": "AvdolAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/37/latest/20191015213131/AvdolAvAnim.png",
+		"alt": "AvdolAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20191110204756/KakyoinAv.png",
+		"alt": "KakyoinAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5c/latest/20191015220057/KakyoinAvAnim.png",
+		"alt": "KakyoinAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ee/latest/20200101230252/PolnareffAv.png",
+		"alt": "PolnareffAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/70/latest/20191015214338/PolnareffAvAnim3.png",
+		"alt": "PolnareffAvAnim3"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/77/latest/20200101161747/IggyAv.png",
+		"alt": "IggyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20191015215854/IggyAvAnim.png",
+		"alt": "IggyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b8/latest/20200102225810/HolyAv.png",
+		"alt": "HolyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f8/latest/20191015212950/HolyAvAnim.png",
+		"alt": "HolyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20200101164447/RunawayGirlAv.png",
+		"alt": "RunawayGirlAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e5/latest/20191015214920/AnneAvAnim.png",
+		"alt": "AnneAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1e/latest/20200102220107/Suzi3Av.png",
+		"alt": "Suzi3Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20191015215631/SuziAvAnim3.png",
+		"alt": "SuziAvAnim3"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/84/latest/20200101162837/RosasAv.png",
+		"alt": "RosasAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20191015215447/RosesAvAnim.png",
+		"alt": "RosesAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/d/d9/latest/20191015215118/DIOAv.png/120px-DIOAv.png",
+		"alt": "DIOAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/52/latest/20201001061313/DioAvAnim3Reveal.png",
+		"alt": "DioAvAnim3Reveal"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f5/latest/20200126011209/EnyaAv.png",
+		"alt": "EnyaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fa/latest/20191015214154/EnyaAvAnim.png",
+		"alt": "EnyaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ae/latest/20200101164932/VanillaIceAv.png",
+		"alt": "VanillaIceAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cf/latest/20191015214507/VanillaIceAvAnim.png",
+		"alt": "VanillaIceAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/18/latest/20200101154448/N%27DoulAv.png",
+		"alt": "N'DoulAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2b/latest/20191015215711/NdoulAvAnim.png",
+		"alt": "NdoulAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/96/latest/20200101154214/OingoAv.png",
+		"alt": "OingoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191015213954/OingoAvAnim.png",
+		"alt": "OingoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4a/latest/20200126011145/BoingoAv.png",
+		"alt": "BoingoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20191015214857/BoingoAvAnim.png",
+		"alt": "BoingoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/60/latest/20191015214440/AnubisMangaAv.png",
+		"alt": "AnubisMangaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/57/latest/20191015214949/AnubisAvAnim.png",
+		"alt": "AnubisAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3f/latest/20200222091432/MariahAv.png",
+		"alt": "MariahAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b8/latest/20191015213920/MariahAvAnim.png",
+		"alt": "MariahAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/44/latest/20200102213415/AlessiAv.png",
+		"alt": "AlessiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20191015214223/AlessiAvAnim.png",
+		"alt": "AlessiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20200126014904/DArbyAv.png",
+		"alt": "DArbyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/55/latest/20191015213252/DanielAvAnim.png",
+		"alt": "DanielAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/09/latest/20200126011233/PetShopAv.png",
+		"alt": "PetShopAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/07/latest/20191015213900/PetShopAvAnim.png",
+		"alt": "PetShopAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/68/latest/20191015214657/TelenceAv.png",
+		"alt": "TelenceAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20191015214542/TelenceAvAnim.png",
+		"alt": "TelenceAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d7/latest/20200101161706/KennyAv.png",
+		"alt": "KennyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1e/latest/20191015215445/KennyAvAnim.png",
+		"alt": "KennyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/05/latest/20200101230732/NukesakuAv.png",
+		"alt": "NukesakuAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20191015214251/NukesakuAvAnim.png",
+		"alt": "NukesakuAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20200101164947/GrayFlyAv.png",
+		"alt": "GrayFlyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/89/latest/20191015215701/GrayFlyAvAnim.png",
+		"alt": "GrayFlyAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/80/latest/20200102224027/TennilleAv.png",
+		"alt": "TennilleAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20191015214753/TennilleAvAnim.png",
+		"alt": "TennilleAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/37/latest/20200102213634/ForeverAv.png",
+		"alt": "ForeverAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8a/latest/20191015215858/ForeverAvAnim.png",
+		"alt": "ForeverAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/7/7c/latest/20191015214431/DevoAv.png/120px-DevoAv.png",
+		"alt": "DevoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f4/latest/20191015220153/DevoAvAnim.png",
+		"alt": "DevoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/aa/latest/20200102222239/RubberSoulAv.png",
+		"alt": "RubberSoulAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fb/latest/20191015212846/RubberSoulAvAnim.png",
+		"alt": "RubberSoulAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d4/latest/20200101165640/HolHorseAv.png",
+		"alt": "HolHorseAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d3/latest/20191015212721/HolHorseAvAnim.png",
+		"alt": "HolHorseAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/55/latest/20200102224339/GeilAv.png",
+		"alt": "GeilAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20191015214242/JGeilAvAnim.png",
+		"alt": "JGeilAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20200101162308/NenaAv.png",
+		"alt": "NenaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9d/latest/20191015215400/NenaAvAnim.png",
+		"alt": "NenaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/f/fc/latest/20191015215023/ZZAv.png/120px-ZZAv.png",
+		"alt": "ZZAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cf/latest/20191015213002/ZZAvAnim.png",
+		"alt": "ZZAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6d/latest/20200101234851/SteelyDanAv.png",
+		"alt": "SteelyDanAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a7/latest/20191015212922/SteelyDanAvAnim.png",
+		"alt": "SteelyDanAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/42/latest/20191015213845/ArabiaFatsAv.png",
+		"alt": "ArabiaFatsAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9e/latest/20191015214755/ArabiaFatsAvAnim.png",
+		"alt": "ArabiaFatsAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/67/latest/20200101230716/MannishBoyAv.png",
+		"alt": "MannishBoyAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d1/latest/20191015215141/MannishAvAnim.png",
+		"alt": "MannishAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d3/latest/20200102221644/CameoAv.png",
+		"alt": "CameoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20191015215348/CameoAvAnim.png",
+		"alt": "CameoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6f/latest/20200101161802/MidlerAv.png",
+		"alt": "MidlerAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/16/latest/20200102223240/MidlerAvAnim.png",
+		"alt": "MidlerAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/98/latest/20200101230312/ChakaAv.png",
+		"alt": "ChakaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/67/latest/20191015213340/ChakaAvAnim.png",
+		"alt": "ChakaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1f/latest/20191015213328/KhanAv.png",
+		"alt": "KhanAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3c/latest/20191015215909/KhanAvAnim.png",
+		"alt": "KhanAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2e/latest/20191015220035/MalenaAv.png",
+		"alt": "MalenaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/81/latest/20200102222511/MalenaAvAnim.png",
+		"alt": "MalenaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/e/ed/latest/20191015214401/WilsonPhillipsAv.png/120px-WilsonPhillipsAv.png",
+		"alt": "WilsonPhillipsAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20191214174135/WilsonPhillipsAvAnim.png",
+		"alt": "WilsonPhillipsAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b8/latest/20200521163140/SherryAv.png",
+		"alt": "SherryAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/03/latest/20200521163141/SherryAvAnim.png",
+		"alt": "SherryAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7c/latest/20191214174700/Pocky_Av.png",
+		"alt": "Pocky"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20191214174658/Michael%2C_Prince_and_Lionel_Av.png",
+		"alt": "Prince, Michael and Lionel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20191214174658/Moor_Family_Av.png",
+		"alt": "Moor Family"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b1/latest/20191214174652/Christian_Vander_Av.png",
+		"alt": "Christian Vander"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/71/latest/20210125225229/Chibi_%26_Buchi_Av.png",
+		"alt": "Chibi and Buchi"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/25/latest/20191214174643/Sonia_Av.png",
+		"alt": "Sonia"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2a/latest/20191214174653/Dr_Elliot_Av.png",
+		"alt": "Dr. Elliot"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fb/latest/20191214174644/Tatsuhiko_Av.png",
+		"alt": "Tatsuhiko"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/df/latest/20191214174655/Japanese_Cops_SC_Av.png",
+		"alt": "Japanese Police Officers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/98/latest/20200221074021/Jotaro_Nurse_Av.png",
+		"alt": "School Nurse"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20191214174656/Kakyoin_Parents_Av.png",
+		"alt": "Mr. and Mrs. Kakyoin"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/04/latest/20210205234249/Hong_kong_seller_Av.png",
+		"alt": "Hong Kong Seller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20210205234251/Hong_kong_waiter_manga_Av.png",
+		"alt": "Hong Kong Waiter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/22/latest/20210205234252/Hong_kong_waitress_Av.png",
+		"alt": "Hong Kong Waitress"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b7/latest/20210205234250/Hong_kong_tourists_Av.png",
+		"alt": "Hong Kong Tourists"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9c/latest/20210205234238/SingaporePolicemanManga_Av.png",
+		"alt": "Singapore Policeman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/86/latest/20210205234237/Singapore_front_desk_clerk_Av.png",
+		"alt": "Front Desk Clerk"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/99/latest/20210205234237/Singapore_coconut_manga_Av.png",
+		"alt": "Singapore Coconut Seller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d6/latest/20210205234238/Singapore_Interrogator_Av.png",
+		"alt": "Singapore Interrogator"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c8/latest/20210205234239/SPWF_Attorney_Av.png",
+		"alt": "SPW Foundation Attorney"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a3/latest/20210205234236/RubberSoulImpersonation_Av.png",
+		"alt": "Rubber Soul's Impersonation"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20191214174700/Singapore_Hotel_Bellhop_Av.png",
+		"alt": "Singapore Hotel Valet"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3e/latest/20191214174642/Singapore_Thief_Av.png",
+		"alt": "Singapore Thief"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/92/latest/20191214174647/Cable_Car_Tourists_Av.png",
+		"alt": "Cable Car Tourists"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d6/latest/20191214174650/Calcutta_Waiter_Av.png",
+		"alt": "Calcutta Waiter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/49/latest/20191214174649/Calcutta_Boy_Av.png",
+		"alt": "Little Calcuttan Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20191214174650/Calcutta_Drifter_Av.png",
+		"alt": "Calcutta Drifter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7a/latest/20191214174649/Calcutta_Beggars_Av.png",
+		"alt": "Calcutta Beggars"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/24/latest/20210205234253/Indian_tailor_Av.png",
+		"alt": "Indian Tailor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f1/latest/20210205234253/Karachi_boy_manga_Av.png",
+		"alt": "Karachi Broom Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/80/latest/20191214174657/Karachi_Jewel_guards_Av.png",
+		"alt": "Karachi Jewelry Store Guards"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20191214174646/Arab_Cessna_Pilot_Av.png",
+		"alt": "Arab Cessna Pilot"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dc/latest/20191214174647/Burqa_Woman_Av.png",
+		"alt": "Arab Villager Lady"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20210205234241/Abu_dhabi_salesman_Av.png",
+		"alt": "Car Salesman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2b/latest/20210205234242/Abu_dhabi_saleswoman_Av.png",
+		"alt": "Car Saleswoman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/85/latest/20210205234242/Arabia_camel_seller_Av.png",
+		"alt": "Camel Seller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/22/latest/20210205234238/Spw_spy_Av.png",
+		"alt": "Speedwagon Foundation Spy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/28/latest/20191214174644/SPW_Pilots_SC.png",
+		"alt": "Speedwagon Foundation Pilots"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20191214174657/Manga_Artist_Av.png",
+		"alt": "Japanese Manga Artist"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6e/latest/20210205234243/Aswan_glasses_guy_manga_Av.png",
+		"alt": "Guy with glasses"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/65/latest/20210205234243/Aswan_doctor_Av.png",
+		"alt": "Aswan Doctor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/36/latest/20191214174650/Chaka_Father_Av.png",
+		"alt": "Chaka's Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8e/latest/20191214174659/Papyrus_Seller_Av.jpg",
+		"alt": "Papyrus Seller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b7/latest/20210205234247/Edfu_civilian_Av.png",
+		"alt": "Edfu Civilian"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3c/latest/20210205234247/Edfu_police_manga_Av.png",
+		"alt": "Edfu Policeman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20191214174646/Young_Anubis_Wielder_Av.png",
+		"alt": "Young Anubis Wielder"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/48/latest/20200221074101/Old_Hag_SC_Av.png",
+		"alt": "Luxor Old Woman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/90/latest/20210205234234/Luxor_bar_owner_manga_Av.png",
+		"alt": "Luxor Bar Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20210205234235/Luxor_carpenter_manga_Av.png",
+		"alt": "Luxor Carpenter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1b/latest/20210205234235/Luxor_girls_manga_Av.png",
+		"alt": "Luxor Girls"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/20/latest/20210205234234/Luxor_big_man_manga_Av.png",
+		"alt": "Big Man"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/44/latest/20210205234248/Gizeh_bar_owner_manga_Av.png",
+		"alt": "Gizeh Barman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/32/latest/20191214174653/D%27Arby_Cat_Av.png",
+		"alt": "D'Arby's Cat"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4f/latest/20210205234246/D%27Arby_Souls_Av.jpg",
+		"alt": "D'Arby's Poker Chips"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1f/latest/20191214174653/Dealer_Boy_Av.png",
+		"alt": "Dealer Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/be/latest/20210205234245/Cairo_roof_worker_manga_Av.png",
+		"alt": "Cairo Roof Worker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a9/latest/20210205234243/Cairo_granny_manga_Av.png",
+		"alt": "Cairo Granny"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f1/latest/20210205234244/Cairo_policemen_day_manga_Av.png",
+		"alt": "Cairo Policemen"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/03/latest/20191214174645/Wealthy_Beggar_Av.png",
+		"alt": "Cairo Informant"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2e/latest/20191214174652/Chibi_%26_Buchi_Owner_Av.png",
+		"alt": "Dog-loving Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bf/latest/20210205234246/Darby_girlfriend_Av.png",
+		"alt": "Telence's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bb/latest/20210205234246/Cairo_truck_owner_manga_Av.png",
+		"alt": "Cairo Truck Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/70/latest/20210205234239/Wilson_Phillips_Defender_Av.jpg",
+		"alt": "Wilson Phillips' Defender"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20210205234236/Marble_Store_Clerk_Av.png",
+		"alt": "Marble Store Clerk"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3d/latest/20210205234244/Cairo_policemen_dio_anime_manga_Av.png",
+		"alt": "Policemen killed by DIO"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0b/latest/20210205234247/DIO%27s_Victim_Av.png",
+		"alt": "DIO's Captives"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4f/latest/20191214174643/SPW_Doctors_SC_Av.png",
+		"alt": "Speedwagon Foundation Doctors"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fc/latest/20200101224715/JosukeAv.png",
+		"alt": "JosukeAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2e/latest/20191015212909/JosukeAvAnim.png",
+		"alt": "JosukeAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20200129142912/OkuyasuAv.png",
+		"alt": "OkuyasuAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1e/latest/20191015214139/OkuyasuAvAnim.png",
+		"alt": "OkuyasuAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8b/latest/20200101162335/KoichiAv.png",
+		"alt": "KoichiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2f/latest/20200930010221/KoichiAvAnim4.png",
+		"alt": "KoichiAvAnim4"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/75/latest/20200101162816/RohanAv.png",
+		"alt": "RohanAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20191015214950/RohanAvAnim.png",
+		"alt": "RohanAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200101153651/Jotaro4Av.png",
+		"alt": "Jotaro4Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20201018044727/JotaroAvAnim4.png",
+		"alt": "JotaroAvAnim4"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9f/latest/20200101222059/HayatoAv.png",
+		"alt": "HayatoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4a/latest/20201018014703/HayatoAvAnim.png",
+		"alt": "HayatoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20200102222318/ReimiAv.png",
+		"alt": "ReimiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20200806044439/ReimiAvAnim.png",
+		"alt": "ReimiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/75/latest/20200102223103/ShigechiAv.png",
+		"alt": "ShigechiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/47/latest/20191015215543/ShigechiAvAnim.png",
+		"alt": "ShigechiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2a/latest/20200102215146/Joseph4Av.png",
+		"alt": "Joseph4Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20200928013217/JosephAvAnim4.png",
+		"alt": "JosephAvAnim4"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20200808071729/MikitakaAv.png",
+		"alt": "MikitakaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/87/latest/20200808063400/MikitakaAvAnim.png",
+		"alt": "MikitakaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20200101235542/YukakoAv.png",
+		"alt": "YukakoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/04/latest/20191015215327/YukakoAvAnim.png",
+		"alt": "YukakoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9b/latest/20200102221115/YuyaAv.png",
+		"alt": "YuyaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e7/latest/20191015215834/YuyaAvAnim.png",
+		"alt": "YuyaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3b/latest/20200808073444/TamamiAv.png",
+		"alt": "TamamiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/82/latest/20191015215654/TamamiAvAnim.png",
+		"alt": "TamamiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20200102223926/HazamadaAv.png",
+		"alt": "HazamadaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20210215205808/HazamadaAvAnim.png",
+		"alt": "HazamadaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1d/latest/20200102223959/TonioAv.png",
+		"alt": "TonioAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cd/latest/20200806025655/TonioAvAnim.png",
+		"alt": "TonioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20200101232704/AyaAv.png",
+		"alt": "AyaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d2/latest/20191015213045/AyaAvAnim.png",
+		"alt": "AyaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a2/latest/20200102223034/ShizukaAv.png",
+		"alt": "ShizukaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0d/latest/20191015212928/ShizukaAvAnim.png",
+		"alt": "ShizukaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20200102214823/ArnoldAv.png",
+		"alt": "ArnoldAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8e/latest/20191015214106/ArnoldAvAnim.png",
+		"alt": "ArnoldAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/26/latest/20200621192212/TomokoAv.png",
+		"alt": "TomokoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20200927215702/TomokoAvAnim.png",
+		"alt": "TomokoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20200102215621/RyoheiAv.png",
+		"alt": "RyoheiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20201010031842/RyoheiAvAnim.png",
+		"alt": "RyoheiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/50/latest/20200102224448/YoshihiroAv.png",
+		"alt": "YoshihiroAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/42/latest/20191015212736/YoshihiroAvAnim.png",
+		"alt": "YoshihiroAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20200102224425/GattaAv.png",
+		"alt": "GattaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20191015214451/TamaAvAnim.png",
+		"alt": "TamaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c0/latest/20200102221614/KeichoAv.png",
+		"alt": "KeichoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20200808162520/KeichoAvAnim.png",
+		"alt": "KeichoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/57/latest/20200101232748/AkiraAv.png",
+		"alt": "AkiraAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/10/latest/20191015213539/AkiraAvAnim.png",
+		"alt": "AkiraAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/a/a3/latest/20191015220143/AngeloAv.png/120px-AngeloAv.png",
+		"alt": "AngeloAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fc/latest/20201010034048/AngeloAvAnim.png",
+		"alt": "AngeloAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/89/latest/20200102215214/KenAv.png",
+		"alt": "KenAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20191015215122/OyanagiAvAnim.png",
+		"alt": "OyanagiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/48/latest/20200102220000/ToyohiroAv.png",
+		"alt": "ToyohiroAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ad/latest/20191015214555/ToyohiroAvAnim.png",
+		"alt": "ToyohiroAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/c/c2/latest/20191015214440/TerunosukeMAv.png/120px-TerunosukeMAv.png",
+		"alt": "TerunosukeMAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/10/latest/20191015212851/TerunosukeAvAnim.png",
+		"alt": "TerunosukeAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20200102222331/MasazoAv.png",
+		"alt": "MasazoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20191015212935/MazasoAvAnim.png",
+		"alt": "MazasoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/10/latest/20200102215549/MushikuiAv.png",
+		"alt": "MushikuiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/38/latest/20191015214633/MushikuiAvAnim.png",
+		"alt": "MushikuiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9d/latest/20200620000506/NotBugEatenAv.png",
+		"alt": "NotBugEatenAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5e/latest/20200620000229/NotBugEatenAvAnim.png",
+		"alt": "NotBugEatenAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c8/latest/20200101224924/ShinobuAv.png",
+		"alt": "ShinobuAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20200806011624/ShinobuAvAnim.png",
+		"alt": "ShinobuAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4d/latest/20200101234249/NijimuraFatherAv.png",
+		"alt": "NijimuraFatherAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f5/latest/20191015215957/NijimuraDadAvAnim.png",
+		"alt": "NijimuraDadAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9b/latest/20200102213445/KoichiMomAv.png",
+		"alt": "KoichiMomAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/8/89/latest/20191015214958/KoichisMomAvAnim.png/120px-KoichisMomAvAnim.png",
+		"alt": "KoichisMomAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a6/latest/20200210101306/AyanaAv.png",
+		"alt": "AyanaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0c/latest/20200101163831/AyanaAvAnim.png",
+		"alt": "AyanaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20200512222520/KosakuKawajiriAv.png",
+		"alt": "KosakuKawajiriAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d8/latest/20200512222254/KosakuAvAnim.png",
+		"alt": "KosakuAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20200621164547/JosukeSaviorAv.png",
+		"alt": "JosukeSaviorAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20200621164547/JosukeSaviorAvAnim.png",
+		"alt": "JosukeSaviorAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/84/latest/20191214175649/Police_Dog_Av.png",
+		"alt": "Police"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e8/latest/20191214175645/Masaji_Av.png",
+		"alt": "Masaji"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6a/latest/20191214175651/Sachiko_Av.png",
+		"alt": "Sachiko"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/16/latest/20191214175644/Lady_Murakami_Av.png",
+		"alt": "Lady Murakami"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e8/latest/20191214175654/Yoshioka_Av.png",
+		"alt": "Yoshioka"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/98/latest/20191214175640/Akira_Stolen_Phone_Av.png",
+		"alt": "Akira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4a/latest/20200221070832/Reiko_Yoshie_Akemi_Av.png",
+		"alt": "Reiko Yoshie Akemi Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/27/latest/20200806011017/ReikoYoshieAkemiAvAnim.png",
+		"alt": "ReikoYoshieAkemiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/76/latest/20191214175643/Kimura_Av.png",
+		"alt": "Kimura"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c7/latest/20191214180241/Minako_Av.png",
+		"alt": "Minako Okura"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cb/latest/20191214175646/Minako_Boyfriend_Av.png",
+		"alt": "Satoru Nakae"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191214175652/Sakai_Av.png",
+		"alt": "Sakai"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20191214175653/Yamashita_Av.png",
+		"alt": "Yamashita"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ce/latest/20200112075634/MasayaAv.png",
+		"alt": "Masaya Yoshizawa"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20200112075715/Hirata_Av.png",
+		"alt": "Hirata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f8/latest/20210206081313/DIUJotaro_Driver_Av.png",
+		"alt": "Jotaro's Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1e/latest/20210206081313/Tomoko%27s_Catcaller_DiU_Av.jpg",
+		"alt": "Tomoko's Catcaller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20191214175650/Robber_DU_Av.png",
+		"alt": "Robber"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/07/latest/20210206081312/Supermarket_Clerk_DiU_Av.jpg",
+		"alt": "Supermarket Clerk"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4f/latest/20191214175648/Okuyasu_Mother_Av.png",
+		"alt": "Nijimura's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d0/latest/20191214175647/Mr.Hirose.png",
+		"alt": "Mr. Hirose"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/69/latest/20191214175641/Bikers_DU_Av.png",
+		"alt": "Bikers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/66/latest/20191214175642/Class_President_Av.png",
+		"alt": "Class President"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1a/latest/20210206081313/Tonio%27s_Puppy-Manga_Av.jpg",
+		"alt": "Tonio's Puppy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214175652/SPW_Agent_Av.png",
+		"alt": "Speedwagon Foundation Agent"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6c/latest/20191214175653/SPW_Boat_Crew_Av.png",
+		"alt": "Speedwagon Foundation Ship Captain"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9c/latest/20191214175648/Old_Monk_Av.png",
+		"alt": "Old Monk"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20191214175641/Banker_DU_Av.png",
+		"alt": "Banker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214175652/Shoe_Store_Owner_Av.png",
+		"alt": "Mukade Shopkeeper"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20210206081312/Kira_Mother_Av.png",
+		"alt": "Yoshikage Kira's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e4/latest/20191214175643/Kawajiri_Cat_Av.png",
+		"alt": "Kawajiri Family Cat"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20210207125847/Renter_DU_AvManga.png",
+		"alt": "Renter DU AvManga"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/24/latest/20210207125848/Renter_DU_AvAnim.png",
+		"alt": "Renter DU AvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dc/latest/20191227091017/MoriohTouristAv.png",
+		"alt": "Morioh Tourist"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191214175645/Mikitaka_Mom_Av.png",
+		"alt": "Mikitaka's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214175651/Rude_Nurse_Av.png",
+		"alt": "Rude Nurse"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20191214175650/Rio_Neighbor_Av.png",
+		"alt": "Rio's Neighbor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/94/latest/20191214175649/Paramedic_Av.png",
+		"alt": "Paramedic"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20200101235755/GiornoAv.png",
+		"alt": "GiornoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d7/latest/20191015215128/GiornoAvAnim.png",
+		"alt": "GiornoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20191015212757/BrunoAv.png",
+		"alt": "BrunoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d4/latest/20191015215945/BrunoAvAnim.png",
+		"alt": "BrunoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9a/latest/20200101222733/LeoneAv.png",
+		"alt": "LeoneAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b8/latest/20191015214642/AbbacchioAvAnim.png",
+		"alt": "AbbacchioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/df/latest/20200102214157/GuidoAv.png",
+		"alt": "GuidoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ce/latest/20191015214513/MistaAvAnim.png",
+		"alt": "MistaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e2/latest/20200101234605/NaranciaAv.png",
+		"alt": "NaranciaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/11/latest/20191015215106/NaranciaAvAnim.png",
+		"alt": "NaranciaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f2/latest/20200102225550/FugoAv.png",
+		"alt": "FugoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dc/latest/20191015214039/FugoAvAnim.png",
+		"alt": "FugoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20200102230854/TrishAv.png",
+		"alt": "TrishAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3b/latest/20191015214632/TrishAvAnim.png",
+		"alt": "TrishAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/7/7b/latest/20191015214755/PolnareffVAAv.png/120px-PolnareffVAAv.png",
+		"alt": "PolnareffVAAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20191015214645/PolnareffAvAnim5.png",
+		"alt": "PolnareffAvAnim5"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20200102232133/CocoJumboAv.png",
+		"alt": "CocoJumboAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/19/latest/20191015213533/CocoJumboAvAnim.png",
+		"alt": "CocoJumboAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7e/latest/20200102231636/PericoloAv.png",
+		"alt": "PericoloAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/50/latest/20191015215654/PericoloAvAnim.png",
+		"alt": "PericoloAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/74/latest/20200102231507/DiavoloAv.png",
+		"alt": "DiavoloAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1a/latest/20200716205201/DiavoloAvAnim.png",
+		"alt": "DiavoloAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a8/latest/20200102225535/DoppioAv.png",
+		"alt": "DoppioAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20191015213025/DoppioAvAnim.png",
+		"alt": "DoppioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/59/latest/20200102230739/SqualoAv.png",
+		"alt": "SqualoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20191015215229/SqualoAvAnim.png",
+		"alt": "SqualoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200102232056/TizianoAv.png",
+		"alt": "TizianoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191015215629/TizianoAvAnim.png",
+		"alt": "TizianoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/63/latest/20200102231453/CarneAv.png",
+		"alt": "CarneAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/48/latest/20191015215844/CarneAvAnim.png",
+		"alt": "CarneAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20200102230555/CioccolataAv.png",
+		"alt": "CioccolataAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20191015213958/CioccolataAvAnim.png",
+		"alt": "CioccolataAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5d/latest/20200102230610/SeccoAv.png",
+		"alt": "SeccoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20200101233915/SeccoAvAnim.png",
+		"alt": "SeccoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/22/latest/20200102231612/PolpoAv.png",
+		"alt": "PolpoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/59/latest/20191015214312/PolpoAvAnim.png",
+		"alt": "PolpoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c6/latest/20200102230827/ZuccheroAv.png",
+		"alt": "ZuccheroAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d8/latest/20191015214815/ZuccheroAvAnim.png",
+		"alt": "ZuccheroAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2b/latest/20200102231559/SaleAv.png",
+		"alt": "SaleAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20191015214902/SaleAvAnim.png",
+		"alt": "SaleAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/66/latest/20200101224946/RisottoAv.png",
+		"alt": "RisottoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/76/latest/20191015213937/NeroAvAnim.png",
+		"alt": "NeroAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/40/latest/20200102225519/FormaggioAv.png",
+		"alt": "FormaggioAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/07/latest/20200102213610/FormaggioAvAnim.png",
+		"alt": "FormaggioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20200102230923/IllusoAv.png",
+		"alt": "IllusoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/73/latest/20191015215041/IllusoAvAnim.png",
+		"alt": "IllusoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6b/latest/20200102230510/ProsciuttoAv.png",
+		"alt": "ProsciuttoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191015215726/ProsciuttoAvAnim.png",
+		"alt": "ProsciuttoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/38/latest/20200102231623/PesciAv.png",
+		"alt": "PesciAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/63/latest/20191015214554/PesciAvAnim.png",
+		"alt": "PesciAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20200102225421/MeloneAv.png",
+		"alt": "MeloneAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20191015213259/MeloneAvAnim.png",
+		"alt": "MeloneAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3e/latest/20200102231440/GhiaccioAv.png",
+		"alt": "GhiaccioAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20191015215627/GhiaccioAvAnim.png",
+		"alt": "GhiaccioAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8d/latest/20200102230909/ScolippiAv.png",
+		"alt": "ScolippiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/58/latest/20191015213815/ScolippiAvAnim.png",
+		"alt": "ScolippiAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/b/bc/latest/20191015213009/KoichiVAAv.png/120px-KoichiVAAv.png",
+		"alt": "KoichiVAAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/70/latest/20191015214453/KoichiAvAnim5.png",
+		"alt": "KoichiAvAnim5"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ec/latest/20200101161309/Jotaro5Av.png",
+		"alt": "Jotaro5Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20191015215507/JotaroAvAnim5.png",
+		"alt": "JotaroAvAnim5"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0c/latest/20200102225435/LucaAv.png",
+		"alt": "LucaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bb/latest/20191015213452/LucaAvAnim.png",
+		"alt": "LucaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/4/41/latest/20191015213029/Sorbet_GelatoAV.png/120px-Sorbet_GelatoAV.png",
+		"alt": "Sorbet GelatoAV"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d8/latest/20200322085209/SorbetGelatoAvAnim.png",
+		"alt": "SorbetGelatoAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20200102232122/DonatellaAv.png",
+		"alt": "DonatellaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20191015214251/DonatellaAvAnim.png",
+		"alt": "DonatellaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20200522203500/ManXAv.png",
+		"alt": "ManXAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c2/latest/20200522203500/ManXAvAnim.png",
+		"alt": "ManXAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/55/latest/20210105235020/Giorno_Mother_Av.png",
+		"alt": "Giorno Mother Av"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/60/latest/20210109202015/GiornoMomAvAnim.png",
+		"alt": "GiornoMomAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/31/latest/20200724051536/PaoloAv.png",
+		"alt": "PaoloAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20200724051536/PaoloAvAnim.png",
+		"alt": "PaoloAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/28/latest/20200828031421/AbbacchioPartnerAv.png",
+		"alt": "AbbacchioPartnerAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2b/latest/20200828030907/AbbacchioPartnerAvAnim.png",
+		"alt": "AbbacchioPartnerAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b3/latest/20200221071258/AnitaAv.png",
+		"alt": "AnitaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/14/latest/20200625173816/AnitaAvAnim.png",
+		"alt": "AnitaAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/37/latest/20200724051535/DiavoloMotherAv.png",
+		"alt": "DiavoloMotherAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/be/latest/20200724051535/DiavoloMotherAvAnim.png",
+		"alt": "DiavoloMotherAvAnim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fa/latest/20191214182717/Antonio_Rossi_Av.png",
+		"alt": "Antonio Rossi"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20191214182715/Ms_Menini_Av.jpg",
+		"alt": "Mrs. Menini"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20191214182726/Mela_Ghirga_Av.png",
+		"alt": "Mela Ghirga"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a3/latest/20210206103658/Benedict_manga_Av.jpg",
+		"alt": "Benedict"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/54/latest/20191214182727/Monica_Ultello_Av.png",
+		"alt": "Monica Ultello"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ab/latest/20191214182714/Airport_Guards_Av.jpg",
+		"alt": "Airport Security"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9a/latest/20201028162847/GiornosAdmirersAv.png",
+		"alt": "Giorno's Admirers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20191214182724/Giorno_Stepfather_Av.png",
+		"alt": "Giorno's Stepfather"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7a/latest/20191214182730/Prison_Guard_VA_Av.png",
+		"alt": "Female Prison Officer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c4/latest/20191214182729/Old_Janitor_Av.png",
+		"alt": "Old Janitor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/79/latest/20191214182719/Capri_Truck_Driver_Av.png",
+		"alt": "Truck Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3b/latest/20200316211615/Narancia_Father_Av.png",
+		"alt": "Narancia's Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/92/latest/20191214182722/Elderly_Victim_Av.png",
+		"alt": "Elderly Victim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20210206103659/FormaggioSpider_Av.jpg",
+		"alt": "Formaggio's Spider"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a5/latest/20191214182722/Fugo_Teacher_Av.png",
+		"alt": "Teacher"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20200316210817/Abbacchio_Blackmailing_criminal_Av.png",
+		"alt": "Blackmailing Criminal"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/65/latest/20191214182740/Woman_Saved_by_Mista_Av.png",
+		"alt": "Woman Saved By Mista"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/39/latest/20191214182719/Bruno_Mother_Av.png",
+		"alt": "Bruno's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c1/latest/20191214182721/Drug_Dealers_Av.png",
+		"alt": "Drug Dealers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/46/latest/20191214182715/Coco_Jumbo_Copy_Av.jpg",
+		"alt": "Copy of Coco Jumbo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b9/latest/20200316201113/VenetianSuitManAv.jpg",
+		"alt": "Venetian Suit Man"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/96/latest/20191214182716/Venice_Maid_Av.jpg",
+		"alt": "Hotel Maid"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/64/latest/20191214182735/Sardinian_Bug_Boy.png",
+		"alt": "Bug-Catching Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214182732/Sardinia_Fortuneteller_Av.png",
+		"alt": "Sardinian Fortune Teller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/50/latest/20191214182734/Sardinia_Taxi_Av.png",
+		"alt": "Sardinian Taxi Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20191214182733/Sardinia_Soccer_Kids_Av.png",
+		"alt": "Soccer Kids"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20191214182731/Research_workers_Av.png",
+		"alt": "Natural Resources Workers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e8/latest/20191214182717/Arrow_Creator_Av.png",
+		"alt": "The Arrows' Creator"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0b/latest/20191214182721/Drunkards_Green_Day_Av.png",
+		"alt": "Drunkards"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/03/latest/20210206103658/Toy_Telephone_Girl_Manga_Av.png",
+		"alt": "Toy Telephone Girl"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1b/latest/20191214182720/Diavolo_Priest_Father_Av.png",
+		"alt": "Diavolo's Foster Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20210206103658/Crazy_hobo_manga_Av.png",
+		"alt": "Delirious Man"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/17/latest/20210206103659/Little_Girl_With_Doll_Av.png",
+		"alt": "Little Girl With Doll"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5b/latest/20210206103659/Old_Man_and_his_old_manga_Av.png",
+		"alt": "Old Man and his Dog"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20191214182722/Flowershop_Av.png",
+		"alt": "Flower Shop Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/63/latest/20191214182736/Scolippi_gf_Av.png",
+		"alt": "Scolippi's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dd/latest/20191214182739/Unlicensed_Taxi_Driver_Av.png",
+		"alt": "Unlicensed Taxi Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/63/latest/20191214182740/Yacht_Renter_Av.png",
+		"alt": "Yacht Renter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d0/latest/20191214182718/Assassination_Target_Av.png",
+		"alt": "Assassination Target"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8b/latest/20191214182720/Crushed_Woman_Anime_Av.png",
+		"alt": "Assassinated Woman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/71/latest/20191214182737/Shady_Expert_Av.png",
+		"alt": "Shady Engineer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3a/latest/20191221120242/JolyneAv.png",
+		"alt": "Jolyne Cujoh"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6c/latest/20200101160830/ErmesAv.png",
+		"alt": "Ermes Costello"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b4/latest/20200102224413/EmporioAv.png",
+		"alt": "Emporio Alnino"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cd/latest/20201002224021/Jotaro6Av.png",
+		"alt": "Jotaro Kujo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20201223183051/FF_Av.png",
+		"alt": "Foo Fighters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20200101224047/AnasuiAv.png",
+		"alt": "Narciso Anasui"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/09/latest/20191015215105/WeatherReportAV.png",
+		"alt": "Weather Report"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/46/latest/20200102230652/GwessAv.png",
+		"alt": "Gwess"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3e/latest/20200102225404/IreneAv.png",
+		"alt": "Irene"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/87/latest/20200101161734/AnakissAv.png",
+		"alt": "Anakiss"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/11/latest/20200101165909/PucciAv.png",
+		"alt": "Enrico Pucci"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5a/latest/20200102002323/DonatelloAv.png",
+		"alt": "Donatello Versus"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20200102232031/RikielAv.png",
+		"alt": "Rikiel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a7/latest/20200102232043/UngaloAv.png",
+		"alt": "Ungalo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9d/latest/20200102214225/GreenBabyAv.png",
+		"alt": "The Green Baby"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/af/latest/20191015215053/JohngalliAAv.png",
+		"alt": "Johngalli A."
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20200102231547/SportsMaxxAv.png",
+		"alt": "Sports Maxx"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e5/latest/20200101234304/MiuMiuAv.png",
+		"alt": "Miuccia Miuller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20200102215647/McQueenAV.png",
+		"alt": "Thunder McQueen"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2c/latest/20200101223225/MiraschonAv.png",
+		"alt": "Miraschon"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/52/latest/20200101222809/LangRanglerAv.png",
+		"alt": "Lang Rangler"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/00/latest/20200102230724/WestwoodAv.png",
+		"alt": "Viviano Westwood"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0d/latest/20200102230637/KenzouAv.png",
+		"alt": "Kenzou"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20200102231425/GuccioAv.png",
+		"alt": "Guccio"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9e/latest/20200101213853/D_an_G_Av.png",
+		"alt": "D an G"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/89/latest/20200930100726/DIO6Av.png",
+		"alt": "Dio Brando"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3e/latest/20200102230811/RomeoAv.png",
+		"alt": "Romeo Jisso"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20200101234552/PerlaAv.png",
+		"alt": "Perla Pucci"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4d/latest/20200101234134/LoccobaroccoAv.png",
+		"alt": "Loccobarocco"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f3/latest/20191015213028/GloriaAv.png",
+		"alt": "Gloria Costello"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20191214194102/Jolyne_Mom_Av.png",
+		"alt": "Jolyne's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/19/latest/20191214194047/Charlotte_Av.png",
+		"alt": "Charlotte"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/88/latest/20191214194043/Atroe.png",
+		"alt": "Atroe"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1f/latest/20191214194032/Savage_Garden_Av.png",
+		"alt": "Savage Garden"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ab/latest/20191214194033/Sonny_Likir_Av.png",
+		"alt": "Sonny Likir"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4a/latest/20191214194049/David_Av.png",
+		"alt": "David"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20191214194032/Ron_Av.png",
+		"alt": "Ron the Viper"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3c/latest/20210206105947/Stick_Figure_Av.png",
+		"alt": "Stick Figure"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c7/latest/20191214194106/Mickey_Mouse_Av.png",
+		"alt": "Mickey"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20191214194109/Pinocchio_Av.png",
+		"alt": "Pinocchio"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/61/latest/20191214194033/Snow_White_Av.png",
+		"alt": "Snow White and the Seven Dwarves"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/da/latest/20191214194051/Flying_Robots_Av.png",
+		"alt": "Astro Boy, Mazinger Z and Tetsujin 28-go"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7f/latest/20191214194034/Spiderman_Av.png",
+		"alt": "Spider-Man"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cb/latest/20191214194110/Prince_Charming_Av.png",
+		"alt": "Prince Charming"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a5/latest/20191214194036/Van_Gogh_Av.png",
+		"alt": "Vincent van Gogh"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20191214194036/Venus_Av.png",
+		"alt": "Venus"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20191214194108/Peter_pan_Av.png",
+		"alt": "Peter Pan and Tinkerbell"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f6/latest/20191214194030/Put_Back_Hero_Av.png",
+		"alt": "Put Back Hero"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20191214194105/McCoy_Av.png",
+		"alt": "Sergeant McCoy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0e/latest/20191214194038/Wes_Av.png",
+		"alt": "Wes Bluemarine"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b6/latest/20201110183953/MsBluemarineAv.png",
+		"alt": "Ms. Bluemarine"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6b/latest/20191214194035/Tom_Cruise_Guard_Av.png",
+		"alt": "'Tom Cruise'"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/05/latest/20191214194059/Jolyne_Co_Prisoner_Av.png",
+		"alt": "Jolyne and Ermes' Co-Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/58/latest/20191214194042/Accident_Victim_SO_Av.png",
+		"alt": "Hitchhiker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e4/latest/20191214194101/Jolyne_Lawyer_Av.png",
+		"alt": "Jolyne's Lawyer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/53/latest/20191214194100/Jolyne_Judge_Av.png",
+		"alt": "Judge in Jolyne's Trial"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3b/latest/20191214194035/Strip_Searcher_Av.png",
+		"alt": "Strip Search Staff"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/75/latest/20191214194111/Prison_Doctor_Av.png",
+		"alt": "Prison Doctor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/87/latest/20191214194112/Prison_Hairdresser_Av.png",
+		"alt": "Prison Hairdresser"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d2/latest/20191214194050/Female_Ward_Security_Av.png",
+		"alt": "Female Ward Security Staff"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dd/latest/20210206105946/Chorokichi_Av.png",
+		"alt": "Gwess's Rat"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20191214194057/Gwess_Pet_Av.png",
+		"alt": "Pi-chan"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4f/latest/20191214194044/Black_Prisoner_Av.png",
+		"alt": "Caterer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ef/latest/20191214194045/Blonde_Bully_Av.png",
+		"alt": "Blonde Bully"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8d/latest/20191214194046/Bullied_Prisoner_Av.png",
+		"alt": "Bullied Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a8/latest/20191214194113/Prison_Visit_Guard_Av.png",
+		"alt": "Prison Visit Guard"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/83/latest/20191015213054/Search_Party_Guard.png",
+		"alt": "Search Party Guard"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ce/latest/20191214194054/Foo_Fighters_Victims_Males_Av.png",
+		"alt": "Male Prisoners Killed by Foo Fighters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a8/latest/20191214194052/Foo_Fighters_Bully_Av.png",
+		"alt": "Foo Fighters' Would-be Bully"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3e/latest/20191214194048/Courtyard_Guard_Av.png",
+		"alt": "Courtyard Guard"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/65/latest/20191214194035/Surveillance_Technician_Av.png",
+		"alt": "Surveillance Technician"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/80/latest/20191214194055/Guard_Savage_Garden_01_Av.png",
+		"alt": "Prison Backyard Guard N#1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/00/latest/20191214194056/Guard_Savage_Garden_02_Av.png",
+		"alt": "Prison Backyard Guard N#2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e7/latest/20210206105946/Invisible_alligator_Av.png",
+		"alt": "Invisible Alligator"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8e/latest/20191214194030/Prostitute_Prisoner_Av.png",
+		"alt": "Prostitute Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d1/latest/20191214194042/Anasui_Girlfriend_Av.png",
+		"alt": "Anasui's Former Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5d/latest/20210206105946/Kenzou_cultists_Av.png",
+		"alt": "Kenzou's Cultists"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20191214194104/Little_Prisoner_Av.png",
+		"alt": "Little Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3d/latest/20191214194034/SPW_Doctors_SO_Av.png",
+		"alt": "Speedwagon Foundation Doctors #2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0d/latest/20191214194033/Shoplifter_Av.png",
+		"alt": "Shoplifter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4e/latest/20191214194037/Versus_Family_Av.png",
+		"alt": "Versus's Family"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2c/latest/20191214194037/Versus_Judge_Av.png",
+		"alt": "Judge In Versus's Trial"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20191214194037/Versus_Coprisoner_Av.png",
+		"alt": "Juvenile Detention Inmate"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0e/latest/20191214194031/Racist_Detective_Av.png",
+		"alt": "Racist Detective"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/57/latest/20191214194107/Nice_Tourist_Av.png",
+		"alt": "Nice Tourist"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/86/latest/20191214194058/Jolyne_Alt_Av.png",
+		"alt": "Alternate Jolyne"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20191214194103/Jotaro_Alt_Av.png",
+		"alt": "Alternate Jotaro"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b5/latest/20210206105947/AlternateErmes_AV.png",
+		"alt": "Alternate Ermes"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b1/latest/20210206105947/Alternate_Weather_Av.png",
+		"alt": "Alternate Weather"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/74/latest/20200101224749/JohnnyAv.png",
+		"alt": "Johnny Joestar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0e/latest/20200102214116/GyroAv.png",
+		"alt": "Gyro Zeppeli"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20191110203016/LucySteelAv.png",
+		"alt": "Lucy Steel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b1/latest/20200101230041/StevenSteelAv.png",
+		"alt": "Steven Steel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/00/latest/20191110203447/HotPantsAv.png",
+		"alt": "Hot Pants"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7a/latest/20200102223757/TimAv.png",
+		"alt": "Mountain Tim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ce/latest/20200101220359/DiegoAv.png",
+		"alt": "Diego Brando"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/05/latest/20200102222254/PocolocoAv.png",
+		"alt": "Pocoloco"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/77/latest/20200102220146/SoundmanAv.png",
+		"alt": "Sandman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b0/latest/20191015215204/NorisukeSBRAv.png",
+		"alt": "Norisuke Higashikata I"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/12/latest/20200203231720/FunnyValentineAv.png",
+		"alt": "Funny Valentine"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c3/latest/20200101223359/OyecomovaAv.png",
+		"alt": "Oyecomova"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0e/latest/20200101235116/PorkpiehatkidAv.png",
+		"alt": "Pork Pie Hat Kid"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ab/latest/20200102002305/FerdinandAv.png",
+		"alt": "Dr. Ferdinand"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1d/latest/20200102222226/RingoAv.png",
+		"alt": "Ringo Roadagain"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ec/latest/20200101232643/BlackmoreAv.png",
+		"alt": "Blackmore"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20200102002230/ElevenmenAv.png",
+		"alt": "Eleven Men"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f4/latest/20191015220151/MikeOAv.png",
+		"alt": "Mike O."
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/21/latest/20200102224510/WekapipoAv.png",
+		"alt": "Wekapipo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20200102222457/MagentMagentAv.png",
+		"alt": "Magent Magent"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6c/latest/20200102214254/AxlRoAv.png",
+		"alt": "Axl RO"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/65/latest/20200101235457/DiscoAv.png",
+		"alt": "D-I-S-C-O"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/88/latest/20200102221514/Diego2Av.png",
+		"alt": "Diego Brando (Parallel World)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/77/latest/20200102215243/BenjaminAv.png",
+		"alt": "Benjamin Boomboom"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d7/latest/20200101232719/AndreAv.png",
+		"alt": "Andre Boomboom"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/70/latest/20191015215120/LaBBAv.png",
+		"alt": "L.A. Boomboom"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/45/latest/20200102215607/RobinsonAv.png",
+		"alt": "Mrs. Robinson"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1d/latest/20200102220033/SugarMountainAv.png",
+		"alt": "Sugar Mountain"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5d/latest/20200101224910/ScarletValentineAv.png",
+		"alt": "Scarlet Valentine"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200101224400/JesusAv.png",
+		"alt": "Jesus"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8a/latest/20200102220821/GregorioAv.png",
+		"alt": "Gregorio Zeppeli"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a2/latest/20191015215920/GeorgeSBRAv.png",
+		"alt": "George Joestar I (Steel Ball Run)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d5/latest/20200101224116/NicholasAv.png",
+		"alt": "Nicholas Joestar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/02/latest/20191015215456/RinaAv.png",
+		"alt": "Rina Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20191015214034/DiegoMomAv.png",
+		"alt": "Diego Brando's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/55/latest/20200101162904/MarcoAv.png",
+		"alt": "Marco"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6a/latest/20200727073410/CaptainValentineAv.png",
+		"alt": "Captain Valentine"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/35/latest/20191214202142/Urmd_Avdol_Av.png",
+		"alt": "Urmd Avdul"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20200101222349/DotHanAv.png",
+		"alt": "Dot Han"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e7/latest/20191214202106/Baron_Roocatugo_Av.png",
+		"alt": "Baron Roocatugo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0c/latest/20191214202105/Gaucho_Av.jpg",
+		"alt": "Gaucho"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b4/latest/20191214202134/Mark_Becker_Av.png",
+		"alt": "Mark Becker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/16/latest/20191214202111/David_Hagen_Av.png",
+		"alt": "David Hagen"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/92/latest/20191214202135/Paul_Lucasa_Av.png",
+		"alt": "Paul Lukather"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9b/latest/20191214202106/Baba_Yaga_Av.png",
+		"alt": "Baba Yaga"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20191214202135/Nellyville_Av.png",
+		"alt": "Nellyville"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20191214202146/Sloop_John_B_Av.png",
+		"alt": "Sloop John B"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/19/latest/20191214202117/FVStroheim_Av.png",
+		"alt": "Fritz von Stroheim"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9b/latest/20200102225840/JosephArimateaAv.jpg",
+		"alt": "Joseph of Arimathea"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20191214202117/Georgie_Porgie_Av.png",
+		"alt": "Georgie Porgie"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20191214202110/Dario_SBR_Av.png",
+		"alt": "Dario"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/23/latest/20191214202105/Anne_Joestar_Av.jpg",
+		"alt": "Anne Joestar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a9/latest/20191214202109/Dannymouse_Av.png",
+		"alt": "Danny (Mouse)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7a/latest/20191214202106/Adam_Pendleton_Av.png",
+		"alt": "Adam Pendleton"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f1/latest/20191214202139/Silas_%26_Mary_Pendleton_Av.png",
+		"alt": "Silas and Mary Pendleton"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/79/latest/20191214202135/Pendleton_kids_Av.png",
+		"alt": "Pendleton Children"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/21/latest/20200102224510/WekapipoAv.png",
+		"alt": "Alternate Wekapipo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3c/latest/20210206121827/Indian_tribe_Av.jpg",
+		"alt": "Sandman's Tribe"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6f/latest/20191214202138/Sandman_Sister_Av.png",
+		"alt": "Sandman's Sister"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20210206121829/Sbr_manager_Av.jpg",
+		"alt": "Steel Ball Run Executive"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6f/latest/20191214202140/SBR_Staff_Av.png",
+		"alt": "Steel Ball Run Staff"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d2/latest/20191214202138/SBR_Thief_Av.png",
+		"alt": "Thief"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/10/latest/20210206121829/Pocoloco_friend_Av.jpg",
+		"alt": "Pocoloco's Friend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a9/latest/20191214202115/Fortuneteller_SBR_Av.png",
+		"alt": "Pocoloco's Fortune Teller"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/49/latest/20191214202139/Sheriff_Av.png",
+		"alt": "Sheriff"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/96/latest/20210206121826/Corrupt_nurse_Av.jpg",
+		"alt": "Corrupt Hospital Nurse"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20210206121827/Johnny_girlfriend_Av.jpg",
+		"alt": "Johnny's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0b/latest/20210206121828/Movie_fan_Av.jpg",
+		"alt": "Movie Fan"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e4/latest/20191214202119/Gyro_Mother_Av.png",
+		"alt": "Gyro's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20191214202134/Naples_Noble_sbr_Av.png",
+		"alt": "Neapolitan Noble"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/aa/latest/20191214202116/Fem_Prisoner_Av.png",
+		"alt": "Beautiful Prisoner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20191214202136/President_Aides_Av.png",
+		"alt": "President's Aides"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9f/latest/20191214202112/Diego_Wife_Av.png",
+		"alt": "Diego's Wife"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a5/latest/20191214202116/Farm_Worker_Av.png",
+		"alt": "Farm Worker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fe/latest/20191214202137/Ringofather_Av.png",
+		"alt": "Ringo's Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/60/latest/20191214202137/Ringomother_Av.png",
+		"alt": "Ringo's Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cd/latest/20191214202136/Ringo_Sisters_Av.png",
+		"alt": "Ringo's Sisters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9d/latest/20191214202136/Potato_Killer_Av.png",
+		"alt": "Potato Killer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20191214202118/Gyro_Girlfriend_Av.png",
+		"alt": "Gyro's Hospital Patient"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20210206121826/Wisconsin_farmer_%26_son_Av.png",
+		"alt": "Wisconsin Farmer and Son"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2e/latest/20210206121828/Notaire_Av.png",
+		"alt": "Milwaukee Notary"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20210206121827/Croupier_Av.png",
+		"alt": "Milwaukee Croupier"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c3/latest/20191214202107/Chicago_Gangster_Av.png",
+		"alt": "Milwaukee Gangsters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20191214202145/Wekapipo_Sister_Av.png",
+		"alt": "Wekapipo's Younger Sister"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a3/latest/20191214202144/Wekapipo_BroInLaw_Av.png",
+		"alt": "Wekapipo's Brother-in-law"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dd/latest/20191214202133/Hot_Pants_Brother_Av.png",
+		"alt": "Hot Pants' Brother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/47/latest/20210206121829/Three_men_valentine_Av.png",
+		"alt": "Three Assassins"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20210206121828/Philadelphia_guard_Av.png",
+		"alt": "Philadelphia Guards"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c6/latest/20191214202107/Coach_Driver_Av.png",
+		"alt": "Coach Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9a/latest/20191214202141/Train_Engineer_Av.png",
+		"alt": "Railroad Worker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b0/latest/20191214202143/Valentine_Father.png",
+		"alt": "Funny's Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c8/latest/20191214202113/Diego%27s_fans_Av.png",
+		"alt": "Diego's Fans"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20191015215205/SlowDancerAv.png",
+		"alt": "Slow Dancer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/56/latest/20191015215751/ValkyrieAv.png",
+		"alt": "Valkyrie"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fc/latest/20200829052747/SilverBulletAv.png",
+		"alt": "Silver Bullet"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e5/latest/20191214202127/Horse_Get_Up_Av.png",
+		"alt": "Gets Up"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f6/latest/20191214202128/Horse_Ghost_Av.png",
+		"alt": "Ghost Rider in the Sky"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/33/latest/20191214202129/Horse_Hey_ya_Av.png",
+		"alt": "Hey! Ya!"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f6/latest/20191214202130/Horse_Hono_Av.png",
+		"alt": "Hono"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ea/latest/20191214202126/Horse_Foxy_L_Av.png",
+		"alt": "Foxy Lady"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/19/latest/20191214202131/Horse_Little_W_Av.png",
+		"alt": "Little Wing"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/51/latest/20191214202123/Horse_Crosstown_Av.png",
+		"alt": "Crosstown Traffic"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/98/latest/20191214202124/Horse_El_Condor_Av.png",
+		"alt": "El Condor Pasa"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ab/latest/20191214202125/Horse_Euro_Express_Av.png",
+		"alt": "Europe Express"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20191214202132/Horse_No1_Av.png",
+		"alt": "#1"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20191214202133/Horse_Peg_Av.png",
+		"alt": "Peg"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20191214202132/Horse_Night_Run_Av.png",
+		"alt": "Nut Rocker"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f0/latest/20191214202122/Horse_Country_Av.png",
+		"alt": "Country Grammar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2c/latest/20191214202121/Horse_Catch_Wave_Av.png",
+		"alt": "Catch a Wave"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/46/latest/20191214202120/Horse_Black_Rose_Av.png",
+		"alt": "Black Rose"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/aa/latest/20200101160709/Josuke8Av.png",
+		"alt": "Josuke Higashikata (JoJolion)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5c/latest/20200101232055/YasuhoAv.png",
+		"alt": "Yasuho Hirose"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/20/latest/20200101161353/RaiAv.png",
+		"alt": "Rai Mamezuku"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20200101223539/NorisukeAv.png",
+		"alt": "Norisuke Higashikata IV"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/95/latest/20200329045943/JobinAv.png",
+		"alt": "Jobin Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/af/latest/20201230232955/MitsubaAv.png",
+		"alt": "Mitsuba Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20200102220849/TsurugiAv.png",
+		"alt": "Tsurugi Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/eb/latest/20191015214925/JoshuAv.png",
+		"alt": "Joshu Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b6/latest/20191015215745/HatoAv.png",
+		"alt": "Hato Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/96/latest/20200102221528/DaiyaAv.png",
+		"alt": "Daiya Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5a/latest/20200102000819/KaatoAv.png",
+		"alt": "Kaato Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/86/latest/20200102230755/KeiAv.png",
+		"alt": "Kei Nijimura"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/94/latest/20191015215821/Kira8Av.png",
+		"alt": "Yoshikage Kira (JoJolion)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/25/latest/20200101224733/JosefumiAv.png",
+		"alt": "Josefumi Kujo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/88/latest/20200101165608/KareraAv.png",
+		"alt": "Karera Sakunami"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/68/latest/20201230233600/Holy8Av.png",
+		"alt": "Holy Joestar-Kira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/73/latest/20200102232109/DamoAv.png",
+		"alt": "Tamaki Damo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/58/latest/20200101162348/YotsuyuAv.png",
+		"alt": "Yotsuyu Yagiyama"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c3/latest/20200101155909/AishoAv.png",
+		"alt": "Aisho Dainenjiyama"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/39/latest/20200101220542/DolomiteAv.png",
+		"alt": "Dolomite"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6d/latest/20210218234154/TooruAv.png",
+		"alt": "Tooru"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9e/latest/20201230233017/SatoruAv.png",
+		"alt": "SatoruAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/80/latest/20201231131133/WonderofUAv.png",
+		"alt": "WonderofUAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20200101163610/UrbanGuerrillaAv.png",
+		"alt": "Urban Guerrilla"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/52/latest/20200101161253/DoremiAv.png",
+		"alt": "Doremifasolati Do"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ac/latest/20200102222414/PoorTomAv.png",
+		"alt": "Poor Tom"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/32/latest/20210306003159/WuTomokiAv.png",
+		"alt": "Wu Tomoki"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/77/latest/20201217181714/DododoDeDadadaAv.png",
+		"alt": "Dododo De Dadada"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/87/latest/20210218165713/ObladiObladaAv.png",
+		"alt": "Obladi Oblada"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/42/latest/20201230231400/OjiroAv.png",
+		"alt": "Ojiro Sasame"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/83/latest/20201230231335/MakorinAv.png",
+		"alt": "Maako Kitani"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/11/latest/20201230231408/HairClipAv.png",
+		"alt": "Hair Clip"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/df/latest/20200101224434/IwasukeAv.png",
+		"alt": "Iwasuke"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/66/latest/20200101230026/SuzuyoAv.png",
+		"alt": "Suzuyo Hirose"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/88/latest/20200101154729/KiyomiAv.png",
+		"alt": "Kiyomi Kujo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1a/latest/20200102225952/Johnny8Av.png",
+		"alt": "Johnny Joestar"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/02/latest/20191015215456/RinaAv.png",
+		"alt": "Rina Higashikata"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8e/latest/20201229213046/GeorgeIIIAv.png",
+		"alt": "George Joestar III"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b0/latest/20191015215204/NorisukeSBRAv.png",
+		"alt": "Norisuke Higashikata I"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fb/latest/20200718015714/Lucy8Av.png",
+		"alt": "Lucy Steel"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20191214210832/Dog_Josuke_Av.jpg",
+		"alt": "Josuke (Dog)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bf/latest/20191214210844/Tomoko_Higashikata_Av.png",
+		"alt": "Tomoko"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20210206133657/Original_Yotsuyu_Yagiyama_Av.png",
+		"alt": "Minor_Characters/Part_8#Yotsuyu_Yagiyama"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dd/latest/20201230234603/Iwakiri_Av.jpg",
+		"alt": "Atsunori Iwakiri"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20191214210845/Zaihei_Av.png",
+		"alt": "Zaihei Nigatake"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1b/latest/20191214210842/Rena_Nanami_Av.png",
+		"alt": "Rena Nanami"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8b/latest/20201231010416/Mina_Av.png",
+		"alt": "Mina"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f9/latest/20200519004705/TaokaAv.jpeg",
+		"alt": "Taoka"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/97/latest/20191214210842/Security_Guard_Av.png",
+		"alt": "Hospital Security Guard"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/50/latest/20191214210837/Hat_Seller_Av.png",
+		"alt": "SBR Hat Shop Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7d/latest/20200507210510/Kidnapped_Woman_Av.png",
+		"alt": "Kidnapped Girl"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/09/latest/20191214210837/Flashback_Man_Av.png",
+		"alt": "The Man from Josuke's Memories"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7b/latest/20191214210836/Drowning_Girl_Av.png",
+		"alt": "Ojiro's Friend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c5/latest/20200221075855/Oblivious_Grandmother_Av.png",
+		"alt": "Oblivious Grandmother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d2/latest/20191214210836/Crying_Boy_Av.png",
+		"alt": "Crying Little Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c4/latest/20191214210838/Hospital_Taxi_Av.png",
+		"alt": "Hospital Taxi Driver"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20191214210843/Shakedown_Mother_Av.png",
+		"alt": "Extortive Mother and Child"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20191214210843/Shakedown_old_man_Av.png",
+		"alt": "Shakedown Road Veteran"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7f/latest/20191214210843/Shakedown_thugs_Av.png",
+		"alt": "Three Drug Dealer Thugs"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/10/latest/20191214210844/Shakedown_Woman_Av.png",
+		"alt": "Shakedown Road Carrier Girl"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/67/latest/20191214210842/Shakedown_Cops_Av.png",
+		"alt": "Shakedown Road Cops"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/ba/latest/20191214210840/Mysterious_Baby_Av.png",
+		"alt": "Mysterious Baby"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5d/latest/20191214210838/Healed_Old_Man_Av.png",
+		"alt": "The Old Man in the Wheelchair"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5c/latest/20191214210833/Aisho_gf_Av.png",
+		"alt": "Aisho's Girlfriend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/28/latest/20191214210844/Yakitori_Man_Av.png",
+		"alt": "Yakitori Shop Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/26/latest/20191214210833/Bald_Salaryman_Av.png",
+		"alt": "Bald Salaryman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20191214210844/Tourists_JJL_Av.png",
+		"alt": "Tourists"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f1/latest/20191214210834/Cab_no1_Av.png",
+		"alt": "Muneyuki"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/30/latest/20191214210840/Morioh_Police_Av.png",
+		"alt": "Morioh Police Officers"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/aa/latest/20191214210833/Bar_Owner_Av.png",
+		"alt": "Bar Owner"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cf/latest/20191214210839/Milagro_User_Av.png",
+		"alt": "Milagro Man's User"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/36/latest/20191214210835/Cab_no2_Av.png",
+		"alt": "Cab Driver #2"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8e/latest/20191214210835/Courier_Boy_Av.png",
+		"alt": "Courier Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/dd/latest/20191214210841/Old_Woman_JJL_Av.png",
+		"alt": "Mature Woman"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/df/latest/20191214210836/Female_Delinquent_Av.png",
+		"alt": "Female Delinquent"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/81/latest/20191214210838/Jogger_Av.png",
+		"alt": "Jogger"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/68/latest/20191214210834/Bicycle_Boy_Av.png",
+		"alt": "Bicycle Boy"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/06/latest/20191214210835/Cab_no3_Av.png",
+		"alt": "Cab Driver #3"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ac/latest/20191214210841/Possessed_Baby_Av.png",
+		"alt": "Baby"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b3/latest/20210206133658/Dolomite_crush_Av.png",
+		"alt": "Dolomite's Crush"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ec/latest/20191214210834/Boyscout_Bully_Av.png",
+		"alt": "Boy-scout Bully"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/67/latest/20210206133657/Jobin%27s_Bystander_Av.png",
+		"alt": "Jobin's Bystander"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/eb/latest/20210106002516/Yasuho_Father_Av.png",
+		"alt": "Yasuho's Dad"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a4/latest/20201231100638/GirlScoutLeaderAv.png",
+		"alt": "Girl Scout Leader"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8c/latest/20210206133658/BabyArms_Av.png",
+		"alt": "Mitsuba's Unborn Child"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ed/latest/20201231094948/Locacaca_Patient_Av.png",
+		"alt": "Locacaca Patient"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/f4/latest/20201231095149/TG_Receptionist_Av.png",
+		"alt": "TG Receptionist"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/86/latest/20201231010447/AngryPatientAv.png",
+		"alt": "Angry Patient"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7a/latest/20201231102601/Mother_JJL_Av.png",
+		"alt": "Mother (JJL)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0b/latest/20201231102600/Baby_JJL_Av.png",
+		"alt": "Baby (JJL)"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/85/latest/20201231004612/Poor_Tom%27s_Harlot.png",
+		"alt": "Poor Tom's Harlot"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/87/latest/20201231010511/MakorinDaughterAv.png",
+		"alt": "Maako's Daughter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d5/latest/20200417023718/Bus_Stop_MurdererAv.png",
+		"alt": "Bus Stop Murderer"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3d/latest/20200718001850/Rock_Human%27s_mother.png",
+		"alt": "Rock Human Mother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1c/latest/20200811055116/MamezukuDadAv.png",
+		"alt": "Mamezuku's Father"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6a/latest/20210206133658/Summer_camp_girls_Av.jpeg",
+		"alt": "Summer Camp Children"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/1d/latest/20210206133658/Summer_camp_instructor_Av.jpeg",
+		"alt": "Summer Camp Instructor"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/60/latest/20200225215215/RohanOneShotAv.jpg",
+		"alt": "RohanOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/6c/latest/20200331084845/RohanAvOVA.jpg",
+		"alt": "RohanAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d9/latest/20200225215313/KiraOneShotAv.jpg",
+		"alt": "Yoshikage Kira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/71/latest/20200225215214/JolyneOneShotAv.jpg",
+		"alt": "Jolyne Cujoh"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/04/latest/20200226034620/KoichiOneShotAv.jpg",
+		"alt": "KoichiOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/de/latest/20200330221104/KoichiAvOVA.png",
+		"alt": "KoichiAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2a/latest/20200226034620/OkuyasuOneShotAv.jpg",
+		"alt": "OkuyasuOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/59/latest/20200330221104/OkuyasuAvOVA.png",
+		"alt": "OkuyasuAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20200822013643/JosukeOneShotAv.jpg",
+		"alt": "JosukeOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/21/latest/20200401042130/JosukeAvOVA.png",
+		"alt": "JosukeAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c4/latest/20200226033102/TamamiOneShotAv.jpg",
+		"alt": "TamamiOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/3b/latest/20200401042914/TamamiAvOVA.png",
+		"alt": "TamamiAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a0/latest/20200226033102/AkiraOneShotAv.jpg",
+		"alt": "AkiraOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/20/latest/20200401042914/AkiraAvOVA.png",
+		"alt": "AkiraAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7c/latest/20200401042914/MikitakaAvOVA.png",
+		"alt": "Mikitaka Hazekura"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5e/latest/20200225215213/TonioOneShotAv.jpg",
+		"alt": "Tonio Trussardi"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b6/latest/20201217172410/YukakoOneShotAv.jpg",
+		"alt": "YukakoOneShotAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0c/latest/20200330221103/YukakoAvOVA.png",
+		"alt": "YukakoAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/26/latest/20200226034619/ConfessionalManAv.jpg",
+		"alt": "ConfessionalManAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d6/latest/20200330221102/ConfessionalManAvOVA.png",
+		"alt": "ConfessionalManAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/thumb/8/83/latest/20191015214410/Servant.png/120px-Servant.png",
+		"alt": "Servant"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/69/latest/20200330221102/ServantAvOVA.png",
+		"alt": "ServantAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/32/latest/20200226034618/AsianManAv.jpg",
+		"alt": "AsianManAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/6/62/latest/20200330221103/AsianManAvOVA.png",
+		"alt": "AsianManAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ea/latest/20200401040841/CornMarketWorkersAv.png",
+		"alt": "CornMarketWorkersAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d0/latest/20200401040840/CornMarketWorkersAvOVA.png",
+		"alt": "CornMarketWorkersAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c9/latest/20200330223957/ConfessDaughterAv.jpg",
+		"alt": "ConfessDaughterAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d9/latest/20200330223515/ConfessDaughterAvOVA.png",
+		"alt": "ConfessDaughterAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cf/latest/20200225215212/MinoruAv.jpg",
+		"alt": "MinoruAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d7/latest/20200401042914/MinoruAvOVA.png",
+		"alt": "MinoruAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/5b/latest/20200225215210/NaokoAv.jpg",
+		"alt": "NaokoAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d1/latest/20200214211042/NaokoAvOVA.png",
+		"alt": "NaokoAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/24/latest/20200225215209/GunpeiAv.jpg",
+		"alt": "GunpeiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/13/latest/20200214211044/GunpeiAvOVA.png",
+		"alt": "GunpeiAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/0f/latest/20200226034948/ShuichiAv.jpg",
+		"alt": "ShuichiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/32/latest/20200214211044/ShuichiAvOVA.png",
+		"alt": "ShuichiAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bc/latest/20200225215209/MutsukabezakaAv.jpg",
+		"alt": "MutsukabezakaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/43/latest/20200401043026/MutsukabezakaAvOVA.png",
+		"alt": "MutsukabezakaAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/ab/latest/20210206140429/Naokos_Daughter_Av.png",
+		"alt": "Naoko's Daughter"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/5/59/latest/20200225215212/KyokaAv.jpg",
+		"alt": "KyokaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2e/latest/20200225220023/KyokaAvOVA.jpg",
+		"alt": "KyokaAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/26/latest/20200225215210/IkkyuAv.jpg",
+		"alt": "IkkyuAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/41/latest/20200225233839/IkkyuAvOVA.jpg",
+		"alt": "IkkyuAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ea/latest/20201217170233/MaiKatahiraAv.jpg",
+		"alt": "Mai Katahira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/4/4c/latest/20201217170249/MaoKatahiraAv.jpg",
+		"alt": "Mao Katahira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/97/latest/20201218010236/ObanazawaAv.png",
+		"alt": "Obanazawa"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/99/latest/20201230232039/AkiraKatahiraAvOneshot.png",
+		"alt": "Akira Katahira"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/9a/latest/20201217170525/TomoyaAv.png",
+		"alt": "Tomoya"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/3/34/latest/20201217170557/YomaAv.jpg",
+		"alt": "YomaAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/25/latest/20200214195503/YomaAvOAV.png",
+		"alt": "YomaAvOAV"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d9/latest/20201217170201/MikaHayamuraAv.jpg",
+		"alt": "MikaHayamuraAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d8/latest/20200214195517/MikaAvOAV.png",
+		"alt": "MikaAvOAV"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/8/8d/latest/20201217171311/ModelScoutAv.png",
+		"alt": "ModelScoutAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/23/latest/20200401040835/ModelScoutAvOVA.png",
+		"alt": "ModelScoutAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20201217171349/FitnessTrainerAv.png",
+		"alt": "FitnessTrainerAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/1/15/latest/20200401040834/FitnessTrainerAvOVA.png",
+		"alt": "FitnessTrainerAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/29/latest/20201217170644/SawakiAv.png",
+		"alt": "SawakiAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a1/latest/20200401040833/SawakiAvOVA.png",
+		"alt": "SawakiAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/77/latest/20201217171659/DwayneJohnsonAv.png",
+		"alt": "DwayneJohnsonAv"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/b4/latest/20200401040838/DwayneJohnsonAvOVA.png",
+		"alt": "DwayneJohnsonAvOVA"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/9/91/latest/20200401040839/GymManagerAv.png",
+		"alt": "Gym Manager"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/2/2d/latest/20201217170742/MoonSpiritAv.png",
+		"alt": "Moon Rabbit"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7e/latest/20191015212946/Virgina.png",
+		"alt": "Virgina"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e4/latest/20201217171220/ObeseManAv.jpg",
+		"alt": "Obese Man"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fa/latest/20200822013021/NanaseAv.png",
+		"alt": "Nanase Kishibe"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e1/latest/20200822011606/RohanGrandmaAv.png",
+		"alt": "Rohan Kishibe's Grandmother"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d7/latest/20200822013136/NizaemonAv.png",
+		"alt": "Nizaemon Yamamura"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/e3/latest/20200822013021/NoguchiAv.png",
+		"alt": "Noguchi"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/e/ed/latest/20200822013020/PierreAv.png",
+		"alt": "Pierre"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/d/d4/latest/20200822013424/GaucherAv.jpg",
+		"alt": "Gaucher"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a5/latest/20210206140429/Firefighters_Louvre_Av.jpg",
+		"alt": "Firefighters"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/ca/latest/20210205143317/Prisoner_27_Av.png",
+		"alt": "Prisoner 27"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/0/08/latest/20200822190307/DolceAv.png",
+		"alt": "Dolce"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/cc/latest/20200822072405/MasagoAv.png",
+		"alt": "Masago Ayashi"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/7/7e/latest/20200513203038/Young_Woman.PNG",
+		"alt": "Masago's Friend"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/a/a8/latest/20200226033102/BucciaratiOneShotAv.jpg",
+		"alt": "Bruno Bucciarati"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/f/fd/latest/20200226033102/AbbacchioOneShotAv.jpg",
+		"alt": "Leone Abbacchio"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/b/bf/latest/20201009202851/OneShotPolpoAv.png",
+		"alt": "Polpo"
+	},
+	{
+		"src": "https://static.jojowiki.com/images/c/c4/latest/20191015212949/Unicorn.jpg",
+		"alt": "Unicorn"
+	}
+]
