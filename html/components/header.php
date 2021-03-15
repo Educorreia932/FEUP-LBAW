@@ -49,12 +49,12 @@
 
                 <ul class="navbar-nav flex-row ms-md-auto me-md-4">
                     <?php if ($user != NULL) { ?>
-                        <li class="d-none d-md-flex nav-item dropdown px-1">
-                            <button class="btn hover-scale position-relative align-middle me-1" type="button" data-bs-toggle="modal" data-bs-target="#notifications-modal">
-                                <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white" style="font-size:xx-large;"></i>
-                                <span class="position-absolute top-50 start-50 translate-middle text-center text-white"  style="font-size:small; font-weight: bold;">42</span>
-                            </button>
-                        
+                        <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4" type="button" data-bs-toggle="modal" data-bs-target="#notifications-modal">
+                            <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white" style="font-size:xx-large;"></i>
+                            <span class="position-absolute top-50 start-50 translate-middle text-center text-white"  style="font-size:small; font-weight: bold;">42</span>
+                        </button>
+
+                        <li class="d-none d-md-flex nav-item dropdown px-1">                        
                             <button class="btn btn-dark dropdown-toggle" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span><?=htmlentities($user)?></span>
                                 <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i>
