@@ -12,7 +12,7 @@ $stylesheets = array();
     <?php site_head('Create Auction', $stylesheets); ?>
 
     <body class="d-flex flex-column bg-light" style="min-height: 100vh;">
-        <?php site_header(NULL, "page_create_auction"); ?>
+        <?php site_header("Foo Fighters", "page_create_auction"); ?>
 
         <div class="container-fluid">
             <main class="flex-shrink-0">
@@ -39,9 +39,9 @@ $stylesheets = array();
                         </div>
                         <div class="col-12 text-center">
                             <form id="imageUpload" enctype="multipart/form-data" method="post" action="#">
-                                <div class="form-group w-50 m-auto">
-                                    <label class="form-label" for="imageFile">Choose the images you wish to upload</label>
-                                    <input type="file" class="form-control" id="imageFile" />
+                                <div class="form-group w-100 w-md-50 m-auto">
+                                    <label class="form-label text-secondary" for="imageFile">Choose the images you wish to upload</label>
+                                    <input  type="file" class="form-control" id="imageFile" />
                                 </div>
                             </form>
                         </div>
@@ -100,10 +100,15 @@ $stylesheets = array();
                                             <option value="6">Other</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
-                            <div class="text-md-end text-center  mt-3  mb-3">
-                                <button class="btn btn-lg btn-primary btn-block text-end" type="submit">Create Auction</button>
+                            
+                            <div class="d-flex flex-row  justify-content-end  mt-3  mb-3">
+                                <div class="mt-2 me-3 col-sm-3 form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="switch-nsfw" >
+                                    <label class="form-check-label" for="switch-nsfw">NSFW</label>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block text-end" type="submit">Create Auction</button> 
                             </div>
                         </form>
                     </div>
