@@ -1,4 +1,4 @@
-<?php function draw_user_entry($user_name, $username, $joined, $image, $rating, $is_following=false) { ?>
+<?php function draw_user_entry($name, $username, $joined, $image, $rating, $is_following=false) { ?>
     <div class="row">
         <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex justify-content-center">
             <a href="user_profile.php"><img style="border-radius: 50%;" width="120" height="120" src="<?=$image?>" alt="User image"></a>
@@ -6,7 +6,7 @@
         <div class="col-7 col-sm-9 col-lg-10">
             <div class="d-flex flex-column mb-3 mb-md-0">
                 <div class="d-flex flex-column flex-md-row">
-                    <a href="user_profile.php" class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5"><h4 class="m-0 text-truncate me-2"><?=$user_name?></h4></a>
+                    <a href="user_profile.php" class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5"><h4 class="m-0 text-truncate me-2"><?=$name?></h4></a>
                     <p class="m-0 col">(<?=$rating?> <i class="bi bi-star"></i>) <span class="text-muted"><?=$rating/5.0?>%</span></p>
                 </div>
                 <span class="fst-italic">@<?=$username?></span>
