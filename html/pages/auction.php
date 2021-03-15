@@ -232,20 +232,28 @@ $stylesheets = array();
                                         <span class="input-group-text">€</span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 mt-3">
-                                    <label  for="inputCategory">Category</label>
-                                    <div class="input-group mb-3 col-sm-6">
-                                        <select class="form-select" id="inputCategory">
-                                            <option selected>Choose...</option>
-                                            <option value="1">Games</option>
-                                            <option value="2">Software</option>
-                                            <option value="3">eBook</option>
-                                            <option value="4">Music</option>
-                                            <option value="5">Skins</option>
-                                            <option value="6">Other</option>
-                                        </select>
+                                <div class="d-flex flex-row mt-3">
+                                    <div class="col-sm-6">
+                                        <label  for="inputCategory">Category</label>
+                                        <div class="input-group mb-3 col-sm-6">
+                                            <select class="form-select" id="inputCategory">
+                                                <option selected>Choose...</option>
+                                                <option value="1">Games</option>
+                                                <option value="2">Software</option>
+                                                <option value="3">eBook</option>
+                                                <option value="4">Music</option>
+                                                <option value="5">Skins</option>
+                                                <option value="6">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="ms-3 mt-4 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="switch-nsfw" >
+                                        <label class="form-check-label" for="switch-nsfw">NSFW</label>
                                     </div>
                                 </div>
+
+                                
                             </div>
                         </form>
                     </div>
