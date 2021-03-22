@@ -1,3 +1,27 @@
+DROP TYPE IF EXISTS auction_category;
+DROP TYPE IF EXISTS auction_status;
+DROP TYPE IF EXISTS auction_report_reason;
+DROP TYPE IF EXISTS user_report_reason;
+DROP TYPE IF EXISTS notification_type;
+
+DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS auction;
+DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS bid;
+DROP TABLE IF EXISTS message_thread;
+DROP TABLE IF EXISTS message_thread_participant;
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS auction_report;
+DROP TABLE IF EXISTS user_report;
+DROP TABLE IF EXISTS rating;
+DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS bookmarked_auction;
+DROP TABLE IF EXISTS notification;
+DROP TABLE IF EXISTS auction_notification;
+DROP TABLE IF EXISTS user_notification;
+DROP TABLE IF EXISTS message_notification;
+DROP TABLE IF EXISTS auction_image;
+
 -- Types
 
 CREATE TYPE auction_category AS ENUM ( 'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Others' );
@@ -13,14 +37,23 @@ CREATE TYPE notification_type AS ENUM ( 'User Followed', 'Message Received', 'Cr
 -- Tables
 
 CREATE TABLE member (
-	id 						SERIAL PRIMARY KEY,
-	username 				TEXT NOT NULL UNIQUE,
-	email					TEXT NOT NULL UNIQUE,
-	"password"				TEXT NOT NULL,
-	"name"					TEXT NOT NULL,
-	bio						TEXT,
-	joined					TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
-	credit					MONEY NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0::MONEY)
+	id 									SERIAL PRIMARY KEY,
+	username 							TEXT UNIQUE,
+	email								TEXT UNIQUE,
+	password							TEXT,
+	name								TEXT,
+	bio									TEXT,
+	joined								TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+	credit								MONEY NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0::MONEY),
+	profile_picture						TEXT,
+	data_consent						BOOLEAN DEFAULT FALSE NOT NULL,
+	notifications 						BOOLEAN DEFAULT TRUE NOT NULL,
+	outbid_notifications 				BOOLEAN DEFAULT TRUE NOT NULL,
+	start_auction_notifications 		BOOLEAN DEFAULT TRUE NOT NULL,
+	followed_user_activity 				BOOLEAN DEFAULT TRUE NOT NULL,
+	bid_permission 						BOOLEAN DEFAULT TRUE NOT NULL,
+	sell_permission 					BOOLEAN DEFAULT TRUE NOT NULL,
+	banned 								BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 CREATE TABLE auction (
@@ -34,8 +67,9 @@ CREATE TABLE auction (
 	end_date					TIMESTAMP WITH TIME ZONE NOT NULL,
 	status						auction_status NOT NULL,
 	category					auction_category NOT NULL,
-	nsfw						BOOLEAN NOT NULL DEFAULT FALSE,	
-	CONSTRAINT increment_xor 	CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
+	nsfw						BOOLEAN NOT NULL DEFAULT FALSE,
+	seller_id					INTEGER REFERENCES member(id) NOT NULL,	
+	CONSTRAINT increment_xor_ck 	CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
 	CONSTRAINT dates_ck 		CHECK (end_date < start_date)
 );
 
@@ -65,7 +99,7 @@ CREATE TABLE message_thread_participant (
 	PRIMARY KEY (thread_id, participant_id)
 );
 
-CREATE TABLE "message" (
+CREATE TABLE message (
 	id                     SERIAL PRIMARY KEY,
 	body                   TEXT NOT NULL,
 	thread_id	           INTEGER REFERENCES message_thread(id) NOT NULL,
