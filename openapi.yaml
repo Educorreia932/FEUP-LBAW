@@ -1,0 +1,291 @@
+openapi: 3.0.0
+
+info:
+  version: "1.0"
+  title: "Trade-a-Bid"
+  description: "Web Resources Specification (A7) for Trade-a-Bid"
+  
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/lbaw2112/Trade-a-Bid/1.0
+  - url: http://lbaw2112-piu.lbaw-prod.fe.up.pt/
+    description: "Production server"
+
+externalDocs:
+  description: "Find more info here."
+  url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/eap
+  
+tags:
+  - name: "M01: Authentication and Individual Profile"
+  - name: "M02: Auctions"
+  - name: "M03: Users"
+  - name: "M04: User Administration and Static pages"
+  
+paths:
+  /login:
+    get:
+      operationId: R101
+      summary: "R101: Login Form"
+      description: "Provide login form. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui04-sign-in)"
+    post:
+      operationId: R102
+      summary: "R102: Login Action"
+      description: "Processes the login form submission. Access: PUB"
+      tags: 
+        - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:          
+                  type: string
+                  format: email
+                password:    
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        "302":
+          description: "Redirect after processing the login credentials."
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful authentication, redirecting to home page"
+                  value: "/"
+                302Error:
+                  description: "Failed to authenticate. Returning to login form"
+                  value: "/login"
+  
+  /logout:
+    post:
+      operationId: R103
+      summary: "R103: Sign-out"
+      description: "Sign-out the current authenticated user. Access: USR, ADM"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "302":
+          description: "Redict after processing sign-out"
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Sign-out successful. Redirecting to home page"
+                  value: "/"
+  
+  /register:
+    get:
+      operationId: R104
+      summary: "R104: Register Form"
+      description: "Provide a new user registration form. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI05 Sign-up](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui05-sign-up)"
+    
+    post:
+      operationId: R105
+      summary: "R105: Register new user"
+      description: "Processes the form information to register new user. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                  format: phone
+                password:
+                  type: string
+                  format: password
+                confirmationPassword:
+                  type: string
+                  format: password
+                termsService:
+                  type: boolean
+              required:
+                - name
+                - username
+                - email
+                - phone
+                - password
+                - confirmationPassword
+                - termsService
+
+      responses:
+        "302":
+          description: "Redirect after processing new user information"
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Sucessful registration. Redirecting to home page"
+                  value: "/"
+                302Error:
+                  description: "Failed registration. Redirecting back to register form"
+                  value: "/register"
+      
+
+  # /search_results:
+
+
+
+  /user/{id}:
+    get: 
+      operationId: R106
+      summary: "R106: View user profile"
+      description: "Show user profile Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      parameters: # não sei se vamos quere mudar isto
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
+  
+  /user/edit_profile:
+    get:
+      operationId: R107
+      summary: "R107: Edit user profile"
+      description: "Provide a form with the user's data to be edited Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+
+    # post:
+    #   operationId: R108
+    #   summary: "R108: Edit user profile"
+    #   description: "Processes the form information to update user information. Acess: USR"
+    #   tags:
+    #    - "M01: Authentication and Individual Profile"
+    #   requestBody:
+        
+
+  /auction/create_auction:
+    get:
+      operationId: R107
+      summary: "R107: Create auction form"
+      description: "Provide a new auction registration form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      responses:
+        "200":
+          description: "Ok. Show [UI08 Create Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui08-create-auction)"
+
+    post:
+      operationId: R108
+      summary: "R108: Create an auction"
+      description: "Processes the form information to create an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+      
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                startDate:
+                  type: string
+                  format: date
+                startTime:
+                  type: string
+                  format: time
+                endDate:
+                  type: string
+                  format: date
+                endTime:
+                  type: string
+                  format: time
+                startingBid:
+                  type: number
+                increment:
+                  type: number
+                isPercentual:
+                  type: boolean
+                category:
+                  type: string
+                nsfw:
+                  type: boolean
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - name
+                - description
+                - startDate
+                - startTime
+                - endDate
+                - endTime
+                - startingBid
+                - increment
+                - isPercentual
+                - category
+                - nsfw
+                - images
+          
+      responses:
+        "302":
+          description: 'Redirect after processing the new auction information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction created successfully. Redirect to auction page."
+                  value: "/auctions/{id}"
+                302Failure:
+                  description: "Auction couldn't be created. Redirect to create auction form."
+                  value: "/auctions/create_auction"
+  
+
+  # /auction/{id}:
+  #   get:
+  #     operationId: R109
+  #     summary: "R109: View an auction"
+  #     description: "Show"
