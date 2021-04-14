@@ -178,25 +178,162 @@ paths:
         "200":
           description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
   
-  /user/edit_profile:
+  /user/settings_account:
     get:
       operationId: R107
       summary: "R107: Edit user profile"
-      description: "Provide a form with the user's data to be edited Access: USR"
+      description: "Provide a form with the user's data to be edited. Access: USR"
       tags:
         - "M01: Authentication and Individual Profile"
       responses:
         "200":
           description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
 
-    # post:
-    #   operationId: R108
-    #   summary: "R108: Edit user profile"
-    #   description: "Processes the form information to update user information. Acess: USR"
-    #   tags:
-    #    - "M01: Authentication and Individual Profile"
-    #   requestBody:
-        
+    post:
+      operationId: R108
+      summary: "R108: Edit user profile"
+      description: "Processes the form information to update user information. Acess: USR"
+      tags:
+       - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                username: 
+                  type: string
+                email: 
+                  type: string
+                  format: email
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - name
+                - username
+                - email
+      responses:
+        "302":
+          description: 'Redirect after processing new account settings.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Account settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save settings. Redirect to profile page."
+                  value: "/user/{id}"
+
+  /user/settings_privacy:
+    get:
+      operationId: R109
+      summary: "R109: Edit privacy settings"
+      description: "Provide a form with the user's privacy settings to be edited. Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+
+    post:
+      operationId: R110
+      summary: "R110: Edit privacy settings"
+      description: "Processes the form information to update user information. Acess: USR"
+      tags:
+       - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                switch-nsf: 
+                  type: boolean
+                switch-use-data: 
+                  type: boolean
+                email: 
+                  type: string
+                switch-notifications:
+                  type: boolean
+                switch-outbid-notifications:
+                  type: boolean
+                switch-start-auction-notifications:
+                  type: boolean
+                switch-user-activity-notifications:
+                  type: boolean
+      responses:
+        "302":
+          description: 'Redirect after processing privacy settings.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Privacy settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save privacy settings. Redirect to profile page."
+                  value: "/user/{id}"
+
+  /user/settings_security:
+    get:
+      operationId: R111
+      summary: "R111: Edit security settings"
+      description: "Provide a form with passwords fields to be edited. Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+                  
+    post:
+      operationId: R112
+      summary: "R112: Edit security settings"
+      description: "Processes the form information to update user's password. Acess: USR"
+      tags:
+       - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                pwd: 
+                  type: string
+                  format: password
+                pwd-new:
+                  type: string
+                  format: password
+                pwd-confirmed:
+                  type: string
+                  format: passowrd         
+      responses:
+        "302":
+          description: 'Redirect after processing security changes.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Security settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save security settings. Redirect to profile page."
+                  value: "/user/{id}"
+
 
   /auction/create_auction:
     get:
