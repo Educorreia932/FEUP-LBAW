@@ -70,7 +70,7 @@ CREATE TABLE auction (
 	nsfw						BOOLEAN NOT NULL DEFAULT FALSE,
 	seller_id					INTEGER REFERENCES member(id) NOT NULL,	
 	CONSTRAINT increment_xor_ck 	CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
-	CONSTRAINT dates_ck 		CHECK (end_date < start_date)
+	CONSTRAINT dates_ck 		CHECK (start_date > end_date)
 );
 
 CREATE TABLE follow (
@@ -175,7 +175,6 @@ CREATE TABLE message_notification (
 
 CREATE TABLE auction_image (
 	id 					SERIAL PRIMARY KEY,
-	auction_id			INTEGER REFERENCES auction(id) NOT NULL,
-	url					TEXT NOT NULL
+	auction_id			INTEGER REFERENCES auction(id) NOT NULL
 );
 
