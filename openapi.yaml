@@ -161,19 +161,13 @@ paths:
 
 
 
-  /user/{id}:
+  /users/me:
     get: 
       operationId: R106
-      summary: "R106: View user profile"
+      summary: "R106: View your profile"
       description: "Show user profile Access: USR"
       tags:
         - "M01: Authentication and Individual Profile"
-      parameters: # não sei se vamos quere mudar isto
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
       responses:
         "200":
           description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
