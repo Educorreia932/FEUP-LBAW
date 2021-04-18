@@ -137,10 +137,9 @@ CREATE TABLE rating (
 );
 
 CREATE TABLE admin (
-    id           SERIAL PRIMARY KEY,
-    username     TEXT UNIQUE,
-    email        TEXT UNIQUE,
-    password     TEXT
+	id          SERIAL PRIMARY KEY,
+	username    TEXT UNIQUE,
+	password    TEXT
 );
 
 CREATE TABLE bookmarked_auction (
@@ -152,7 +151,7 @@ CREATE TABLE bookmarked_auction (
 CREATE TABLE notification (
     id              SERIAL PRIMARY KEY,
     type            notification_type NOT NULL,
-    time            TIMESTAMP NOT NULL,
+    time            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,,
     read            BOOLEAN NOT NULL DEFAULT FALSE,
     member_id       INTEGER REFERENCES member(id)
 );
