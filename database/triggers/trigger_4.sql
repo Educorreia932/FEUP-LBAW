@@ -1,10 +1,11 @@
+-- Trigger 4
 -- A member cannot bid in their own auction (BR01)
 
 DROP FUNCTION IF EXISTS self_bidding CASCADE;
 CREATE FUNCTION self_bidding() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT seller_id FROM auction WHERE NEW.bidder_id = auction.seller_id ) THEN
+    IF EXISTS (SELECT seller_id FROM auction WHERE NEW.bidder_id = auction.seller_id AND NEW.auction_id = auction.id ) THEN
         RAISE EXCEPTION 'A member cannot bid in their own auction.';
     END IF;
     RETURN NEW;

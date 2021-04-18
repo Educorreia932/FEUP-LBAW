@@ -1,3 +1,4 @@
+-- Trigger 3
 -- A message's author must be a participant in the thread to which the message is being sent
 
 DROP FUNCTION IF EXISTS message_sent CASCADE;

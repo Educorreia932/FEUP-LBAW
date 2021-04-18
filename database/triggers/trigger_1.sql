@@ -1,3 +1,4 @@
+-- Trigger 1
 -- There must not exist an Admin with the same username as a Member
 
 DROP FUNCTION IF EXISTS admin_member_identity CASCADE;

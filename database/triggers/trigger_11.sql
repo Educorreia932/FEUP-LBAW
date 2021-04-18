@@ -1,3 +1,4 @@
+-- Trigger 11
 -- When a user's bookmarked auction starts, a *Bookmarked Auction* notification is generated for that user
 
 DROP FUNCTION IF EXISTS bookmarked_auction_notification CASCADE;
@@ -13,7 +14,7 @@ BEGIN
     LOOP
 		IF NEW.status = "Open" AND OLD.status = "Scheduled" THEN
 			WITH notification_id AS (
-				INSERT INTO notification (notification_type, member_id)
+				INSERT INTO notification (type, member_id)
 				VALUES ('Bookmarked Auction', temprow.member_id)
 				RETURNING id 
 			)
@@ -30,4 +31,4 @@ DROP TRIGGER IF EXISTS bookmarked_auction_notification on auction CASCADE;
 CREATE TRIGGER bookmarked_auction_notification
 	AFTER UPDATE ON auction
 	FOR EACH ROW
-	EXECUTE PROCEDURE bookmarked_auction_notification()
+	EXECUTE PROCEDURE bookmarked_auction_notification();

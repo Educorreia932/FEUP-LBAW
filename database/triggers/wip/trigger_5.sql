@@ -1,3 +1,4 @@
+-- Trigger 5
 -- A user can only rate another user after they have had an interaction (BR11)
 -- Review this
 

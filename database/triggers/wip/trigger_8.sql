@@ -1,3 +1,4 @@
+-- Trigger 8
 -- When a scheduled auction begins its status changes to *Open*
 
 -- Cron job isn't for A06?

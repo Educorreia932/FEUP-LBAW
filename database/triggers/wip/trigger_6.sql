@@ -1,3 +1,4 @@
+-- Trigger 6
 -- A user can only report another user after they have had an interaction (BR12)
 
 -- Review this
