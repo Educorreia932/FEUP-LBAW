@@ -46,6 +46,7 @@ CREATE TABLE member (
 	joined								TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
 	credit								MONEY NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0::MONEY),
 	profile_picture						TEXT,
+	rating								INTEGER DEFAULT 0 NOT NULL,
 	data_consent						BOOLEAN DEFAULT FALSE NOT NULL,
 	notifications 						BOOLEAN DEFAULT TRUE NOT NULL,
 	outbid_notifications 				BOOLEAN DEFAULT TRUE NOT NULL,
@@ -69,15 +70,16 @@ CREATE TABLE auction (
 	category					auction_category NOT NULL,
 	nsfw						BOOLEAN NOT NULL DEFAULT FALSE,
 	seller_id					INTEGER REFERENCES member(id) NOT NULL,	
+	average_increment			MONEY DEFAULT 0 NOT NULL, 
 	CONSTRAINT increment_xor_ck 	CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
 	CONSTRAINT dates_ck 		CHECK (start_date > end_date)
 );
 
-CREATE TABLE follow (
-	id                         SERIAL PRIMARY KEY,       
+CREATE TABLE follow (       
 	follower_id                INTEGER REFERENCES member(id) NOT NULL,
 	followed_id                INTEGER REFERENCES member(id) NOT NULL,
-	CONSTRAINT member_ck CHECK (follower_id != followed_id)
+	CONSTRAINT member_ck CHECK (follower_id != followed_id),
+	PRIMARY KEY (follower_id, followed_id)
 );
 
 CREATE TABLE bid (
@@ -126,18 +128,19 @@ CREATE TABLE user_report (
 );
 
 CREATE TABLE rating (
-	id                   SERIAL PRIMARY KEY,
 	value                INTEGER NOT NULL,
 	ratee_id             INTEGER REFERENCES MEMBER(id) NOT NULL,
 	rater_id             INTEGER REFERENCES MEMBER(id) NOT NULL,
 	CONSTRAINT value_ck CHECK (value = -1 OR value = 1),
-	CONSTRAINT member_ck CHECK (ratee_id != rater_id)
+	CONSTRAINT member_ck CHECK (ratee_id != rater_id),
+	PRIMARY KEY (rater_id, ratee_id)
 );
 
 CREATE TABLE admin (
 	id			SERIAL PRIMARY KEY,
-	username	TEXT UNIQUE NOT NULL,
-	password	TEXT NOT NULL
+	username	TEXT UNIQUE,
+	email		TEXT UNIQUE,
+	password	TEXT
 );
 
 CREATE TABLE bookmarked_auction (
