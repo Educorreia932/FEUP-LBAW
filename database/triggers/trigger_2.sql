@@ -11,6 +11,7 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
 CREATE TRIGGER member_admin_identity
     BEFORE INSERT OR UPDATE ON member 
     FOR EACH ROW 

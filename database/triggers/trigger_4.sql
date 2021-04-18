@@ -1,5 +1,6 @@
 -- A member cannot bid in their own auction (BR01)
 
+DROP FUNCTION IF EXISTS self_bidding CASCADE;
 CREATE FUNCTION self_bidding() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -11,6 +12,7 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS self_bidding on bid CASCADE;
 CREATE TRIGGER self_bidding
     BEFORE INSERT ON bid
     FOR EACH ROW 

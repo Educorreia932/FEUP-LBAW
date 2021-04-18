@@ -1,5 +1,6 @@
 -- A message's author must be a participant in the thread to which the message is being sent
 
+DROP FUNCTION IF EXISTS message_sent CASCADE;
 CREATE FUNCTION message_sent() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -15,6 +16,7 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS message_sent on message CASCADE;
 CREATE TRIGGER message_sent
     BEFORE INSERT ON message
     FOR EACH ROW

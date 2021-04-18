@@ -2,6 +2,7 @@
 
 -- Review this
 
+DROP FUNCTION IF EXISTS report_user CASCADE;
 CREATE FUNCTION report_user() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -19,6 +20,7 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS report_user on user_report CASCADE;
 CREATE TRIGGER report_user
     BEFORE INSERT ON user_report
     FOR EACH ROW

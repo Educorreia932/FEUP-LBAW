@@ -1,5 +1,6 @@
 -- When a new auction is created, a *Created Auction* notification is generated for each user that is following that auction's creator
 
+DROP FUNCTION IF EXISTS created_auction_notification CASCADE;
 CREATE FUNCTION created_auction_notification() RETURNS TRIGGER AS
 $BODY$
 DECLARE 
@@ -19,11 +20,12 @@ BEGIN
 
 		INSERT INTO auction_notification (notification_id, auction_id)
 		VALUES (notification_id, NEW.id);
-    END LOOP;	
+    END LOOP;
 END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS created_auction_notification on auction CASCADE;
 CREATE TRIGGER created_auction_notification
     AFTER INSERT ON auction
     FOR EACH ROW

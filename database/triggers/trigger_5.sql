@@ -1,5 +1,7 @@
 -- A user can only rate another user after they have had an interaction (BR11)
 -- Review this
+
+DROP FUNCTION IF EXISTS report_user CASCADE;
 CREATE FUNCTION rate_user() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -17,6 +19,7 @@ END
 $BODY$
 LANGUAGE plpgsql;
 
+DROP TRIGGER IF EXISTS report_user on rating CASCADE;
 CREATE TRIGGER rate_user
     BEFORE INSERT ON rating
     FOR EACH ROW
