@@ -403,11 +403,7 @@ class Gen:
         return len(self.users)
 
 
-def main():
-    f = open(populateFilename, 'w', encoding="utf-8")
-    g = Gen(f, verbose=True)
-    g.gen()
-    f.close()
-
-
-main()
+f = open(populateFilename, 'w', encoding="utf-8")
+g = Gen(f, verbose=True)
+g.gen()
+f.close()
