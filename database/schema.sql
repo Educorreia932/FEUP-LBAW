@@ -1,30 +1,30 @@
-DROP TYPE IF EXISTS auction_category;
-DROP TYPE IF EXISTS auction_status;
-DROP TYPE IF EXISTS auction_report_reason;
-DROP TYPE IF EXISTS user_report_reason;
-DROP TYPE IF EXISTS notification_type;
+DROP TYPE IF EXISTS auction_category CASCADE;
+DROP TYPE IF EXISTS auction_status CASCADE;
+DROP TYPE IF EXISTS auction_report_reason CASCADE;
+DROP TYPE IF EXISTS user_report_reason CASCADE;
+DROP TYPE IF EXISTS notification_type CASCADE;
 
-DROP TABLE IF EXISTS member;
-DROP TABLE IF EXISTS auction;
-DROP TABLE IF EXISTS follow;
-DROP TABLE IF EXISTS bid;
-DROP TABLE IF EXISTS message_thread;
-DROP TABLE IF EXISTS message_thread_participant;
-DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS auction_report;
-DROP TABLE IF EXISTS user_report;
-DROP TABLE IF EXISTS rating;
-DROP TABLE IF EXISTS admin;
-DROP TABLE IF EXISTS bookmarked_auction;
-DROP TABLE IF EXISTS notification;
-DROP TABLE IF EXISTS auction_notification;
-DROP TABLE IF EXISTS user_notification;
-DROP TABLE IF EXISTS message_notification;
-DROP TABLE IF EXISTS auction_image;
+DROP TABLE IF EXISTS member CASCADE;
+DROP TABLE IF EXISTS auction CASCADE;
+DROP TABLE IF EXISTS follow CASCADE;
+DROP TABLE IF EXISTS bid CASCADE;
+DROP TABLE IF EXISTS message_thread CASCADE;
+DROP TABLE IF EXISTS message_thread_participant CASCADE;
+DROP TABLE IF EXISTS message CASCADE;
+DROP TABLE IF EXISTS auction_report CASCADE;
+DROP TABLE IF EXISTS user_report CASCADE;
+DROP TABLE IF EXISTS rating CASCADE;
+DROP TABLE IF EXISTS admin CASCADE;
+DROP TABLE IF EXISTS bookmarked_auction CASCADE;
+DROP TABLE IF EXISTS notification CASCADE;
+DROP TABLE IF EXISTS auction_notification CASCADE;
+DROP TABLE IF EXISTS user_notification CASCADE;
+DROP TABLE IF EXISTS message_notification CASCADE;
+DROP TABLE IF EXISTS auction_image CASCADE;
 
 -- Types
 
-CREATE TYPE auction_category AS ENUM ( 'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Others' );
+CREATE TYPE auction_category AS ENUM ( 'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others' );
 
 CREATE TYPE auction_status AS ENUM ( 'Active', 'Closed', 'Scheduled', 'Canceled', 'Frozen', 'Terminated' );
 
@@ -72,7 +72,7 @@ CREATE TABLE auction (
 	seller_id					INTEGER REFERENCES member(id) NOT NULL,	
 	average_increment			MONEY DEFAULT 0 NOT NULL, 
 	CONSTRAINT increment_xor_ck 	CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
-	CONSTRAINT dates_ck 		CHECK (start_date > end_date)
+	CONSTRAINT dates_ck 		CHECK (end_date > start_date)
 );
 
 CREATE TABLE follow (       

@@ -114,9 +114,15 @@ class Gen:
 
         self.outFile.write('\n\n\n\n')
         self.writeTag("RATINGS")
-        n = self.genFollows()
+        n = self.genRatings()
         if self.verbose:
             print(f"Generated {n} ratings")
+        
+        self.outFile.write('\n\n\n\n')
+        self.writeTag("BOOKMARKS")
+        n = self.genBookmarks()
+        if self.verbose:
+            print(f"Generated {n} bookmarks")
     
 
     def genFollows(self):
@@ -133,19 +139,37 @@ class Gen:
 
             self.outFile.write("\n")
         return follow_id
+    
+
+    def genBookmarks(self):
+        bookmark_id = 0
+        for u in range(0, len(self.users)):
+            bookmark_list = random.sample(range(0, len(self.auctions)), random.randint(6, 18))
+
+            for b in bookmark_list:
+                statement = f"""INSERT INTO bookmarked_auction (member_id, auction_id) VALUES ({u}, {b});\n"""
+                self.outFile.write(statement)
+                bookmark_id += 1
+
+            self.outFile.write("\n")
+        return bookmark_id
+
 
     def add_rating(self, u:int, r:int, isPositive:bool):
-        statement = f"""INSERT INTO rating (value, ratee_id, rater_id) VALUES ({u}, {r}, {1 if isPositive else -1})\n"""
+        statement = f"""INSERT INTO rating (ratee_id, rater_id, value) VALUES ({u}, {r}, {1 if isPositive else -1});\n"""
         self.outFile.write(statement)
 
     def genRatings(self):
         ratings = 0
-        for a in self.auctions:
+        for a in self.auctions.values():
+            if a['winner'] == None:
+                continue
+
             if random.random() < 0.3:
-                self.add_rating(self.auctions['seller'], self.auctions['winner'], random.randint(0, 1))
+                self.add_rating(a['seller'], a['winner'], bool(random.randint(0, 1)))
                 ratings += 1
             if random.random() < 0.3:
-                self.add_rating()
+                self.add_rating(a['winner'], a['seller'], bool(random.randint(0, 1)))
                 ratings += 1
         return ratings
 
