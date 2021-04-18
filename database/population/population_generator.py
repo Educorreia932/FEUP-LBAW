@@ -9,11 +9,12 @@ import bcrypt
 # Constants
 jojoFilename = 'jojo.json'
 steamAppsFilename = 'app_details.json'
+lusiadasFilename = 'lusiadas.txt'
 populateFilename = 'out/populate.sql'
 
 # ----------------- DATES ------------------------
 
-max_date = "2021-4-13 11:59:59"
+limit_date = "2021-4-13 11:59:59"
 
 d_format = '%Y-%m-%d %H:%M:%S'
 
@@ -34,10 +35,15 @@ def random_date(start: str, end: str, prop: float, format:str=d_format) -> str:
     return time.strftime(format, time.localtime(ptime))
 
 def random_user_date() -> str:
-    return random_date("2018-1-1 0:0:0", max_date, random.random())
+    return random_date("2018-1-1 0:0:0", limit_date, random.random())
 
-def random_auction_date(user_date, max_date=max_date) -> str:
-    return random_date(user_date, max_date, random.random())
+def random_limit_date(user_date, limit_date=limit_date) -> str:
+    return random_date(user_date, limit_date, random.random())
+
+def sum_time(t: str, interval: int, format:str=d_format) -> str:
+    stime = time.mktime(time.strptime(t, format))
+    etime = stime + interval
+    return time.strftime(format, time.localtime(etime))
 
 def random_auction_closing_date(auction_start, format=d_format):
     r = random.randint(0, 2)
@@ -51,10 +57,21 @@ def random_auction_closing_date(auction_start, format=d_format):
         1: 6,
         2: 8
     }
-    stime = time.mktime(time.strptime(auction_start, format))
-    etime = stime + (intervals[r] * random.randint(1, max_intervals[r]))
+    return sum_time(auction_start, intervals[r] * random.randint(1, max_intervals[r]), format)
 
-    return time.strftime(format, time.localtime(etime))
+def cmp_time(t1: str, t2: str, format:str=d_format) -> int:
+    time1 = time.mktime(time.strptime(t1, format))
+    time2 = time.mktime(time.strptime(t2, format))
+
+    if time1 < time2:
+        return -1
+    elif time1 > time2:
+        return 1
+    else:
+        return 0
+
+def max_date(t1: str, t2: str, format:str=d_format) -> str:
+    return t1 if cmp_time(t1, t2, format) >= 0 else t2
 
 def cmp_time_now(timeString: str, format:str=d_format) -> int:
     stime = time.mktime(time.strptime(timeString, format))
@@ -123,7 +140,47 @@ class Gen:
         n = self.genBookmarks()
         if self.verbose:
             print(f"Generated {n} bookmarks")
+        
+        self.outFile.write('\n\n\n\n')
+        self.writeTag("Messages")
+        n, n1 = self.genMessages()
+        if self.verbose:
+            print(f"Generated {n} message threads & {n1} messages")
     
+
+    def genMessages(self):
+        f = open(lusiadasFilename, 'r', encoding='utf8')
+        lusiadas = f.readlines()
+        f.close()
+
+        messageThreads = 1
+        messages = 0        
+        
+        for u1 in range(0, len(self.users) - 4):
+            threads = random.sample(range(u1 + 1, len(self.users)), random.randint(0, 2))
+            if u1 in threads:  # Make sure the owner is not included
+                threads.remove(u1)
+
+            for u2 in threads:
+                statement = f"""INSERT INTO message_thread (id) VALUES (DEFAULT);\n""" + \
+                    f"""INSERT INTO message_thread_participant (thread_id, participant_id) VALUES ({messageThreads}, {u1});\n""" + \
+                    f"""INSERT INTO message_thread_participant (thread_id, participant_id) VALUES ({messageThreads}, {u2});\n"""
+                self.outFile.write(statement)
+
+                timestamp = max_date(self.users[u1]['join_date'], self.users[u2]['join_date'])
+                timestamp = sum_time(timestamp, random.randint(3600 * 24, 3600 * 24 * 60))
+                for _ in range(0, random.randint(1, 4)):
+                    statement = f"""INSERT INTO message (thread_id, sender_id, "timestamp", body)\n\t""" + \
+                        f"""VALUES ({messageThreads}, {random.choice([u1, u2])}, {format_date(timestamp)}, '{random.choice(lusiadas).replace("'", "''")}');\n"""
+
+                    self.outFile.write(statement)
+                    timestamp = sum_time(timestamp, random.randint(60, 3600 * 8))
+                    messages += 1
+
+                self.outFile.write("\n")
+                messageThreads += 1
+
+        return messageThreads - 1, messages
 
     def genFollows(self):
         follow_id = 0
@@ -139,7 +196,7 @@ class Gen:
 
             self.outFile.write("\n")
         return follow_id
-    
+
 
     def genBookmarks(self):
         bookmark_id = 0
@@ -251,7 +308,7 @@ class Gen:
                     percent_increment_str = "'{:.2f}'".format(percent_increment)
 
                 user = self.users[random.randrange(0, len(self.users))]
-                start_date = random_auction_date(user['join_date'])
+                start_date = random_limit_date(user['join_date'])
                 end_date = random_auction_closing_date(start_date)
 
                 # TODO: Add chance of 'Canceled', 'Frozen', 'Terminated' auctions
