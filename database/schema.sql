@@ -89,8 +89,7 @@ CREATE TABLE bid (
 );
 
 CREATE TABLE message_thread (
-	id 				SERIAL PRIMARY KEY,
-	topic			TEXT
+	id 				SERIAL PRIMARY KEY
 );
 
 CREATE TABLE message_thread_participant (
