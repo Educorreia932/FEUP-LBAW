@@ -23,6 +23,8 @@ BEGIN
 				VALUES (notification_id, NEW.id);
 		END IF;
 	END LOOP;
+
+	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;

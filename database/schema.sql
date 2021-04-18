@@ -69,17 +69,10 @@ CREATE TABLE auction (
     status                          auction_status NOT NULL,
     category                        auction_category NOT NULL,
     nsfw                            BOOLEAN NOT NULL DEFAULT FALSE,
-    seller_id                       INTEGER REFERENCES member(id) NOT NULL,    
-    average_increment               MONEY DEFAULT 0 NOT NULL, 
+    seller_id                       INTEGER REFERENCES member(id) NOT NULL,
+    latest_bid                      INTEGER DEFAULT NULL,
     CONSTRAINT increment_xor_ck     CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
     CONSTRAINT dates_ck             CHECK (end_date > start_date)
-);
-
-CREATE TABLE follow (       
-    follower_id                INTEGER REFERENCES member(id) NOT NULL,
-    followed_id                INTEGER REFERENCES member(id) NOT NULL,
-    CONSTRAINT member_ck CHECK (follower_id != followed_id),
-    PRIMARY KEY (follower_id, followed_id)
 );
 
 CREATE TABLE bid (
@@ -88,6 +81,15 @@ CREATE TABLE bid (
     "date"                  TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     auction_id              INTEGER REFERENCES auction(id) NOT NULL,
     bidder_id               INTEGER REFERENCES member(id) NOT NULL
+);
+
+ALTER TABLE auction ADD CONSTRAINT bid_foreign_key FOREIGN KEY(latest_bid) REFERENCES bid(id);
+
+CREATE TABLE follow (       
+    follower_id                INTEGER REFERENCES member(id) NOT NULL,
+    followed_id                INTEGER REFERENCES member(id) NOT NULL,
+    CONSTRAINT member_ck CHECK (follower_id != followed_id),
+    PRIMARY KEY (follower_id, followed_id)
 );
 
 CREATE TABLE message_thread (
