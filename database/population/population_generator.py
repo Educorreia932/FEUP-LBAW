@@ -146,7 +146,45 @@ class Gen:
         n, n1 = self.genMessages()
         if self.verbose:
             print(f"Generated {n} message threads & {n1} messages")
+
+        self.outFile.write('\n\n\n\n')
+        self.writeTag("User Reports")
+        n = self.genUserReports()
+        if self.verbose:
+            print(f"Generated {n} user reports")
+
+        self.outFile.write('\n\n\n\n')
+        self.writeTag("Auction Reports")
+        n = self.genAuctionReports()
+        if self.verbose:
+            print(f"Generated {n} auction reports")
+
+        self.outFile.write('\n\n\n\n')
+        self.writeTag("Admins")
+        n = self.genAdmins()
+        if self.verbose:
+            print(f"Generated {n} admins")
     
+
+
+    def genAdmins(self):
+        password_1 = 'mosco'
+        passwordHash_1 = bcrypt.hashpw(bytes(password_1, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+        password_2 = 'gacha'
+        passwordHash_2 = bcrypt.hashpw(bytes(password_2, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+        password_3 = 'saav'
+        passwordHash_3 = bcrypt.hashpw(bytes(password_3, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+        password_4 = 'gizzard'
+        passwordHash_4 = bcrypt.hashpw(bytes(password_4, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+        statement = f"""INSERT INTO admin (username, password) VALUES ('iargo', '{password_1}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('toilmo', '{password_2}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('oivo', '{password_3}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('skooma', '{password_4}');\n"""
+        
+        self.outFile.write(statement)
+        self.outFile.write('\n')
+
+        return 4
 
     def genMessages(self):
         f = open(lusiadasFilename, 'r', encoding='utf8')
@@ -231,9 +269,41 @@ class Gen:
         return ratings
 
 
-    def genUserReports(self):
+    def genAuctionReports(self):
+        for auction_id in self.fakeAuctions:
+            seller_id = self.auctions[auction_id]['seller']
+            reporter = None
+            while reporter == None or reporter == seller_id:
+                reporter = random.randrange(0, len(self.users))
+            
+            timestamp = max_date(max_date(self.auctions[auction_id]['start'], self.users[seller_id]['join_date']), self.users[reporter]['join_date'])
+            timestamp = sum_time(timestamp, random.randint(200, 1400))
+
+            statement = f"""INSERT INTO auction_report (reason, description, "timestamp", reporter_id, reported_id)\n\t""" + \
+                f"""VALUES ('Fraudalent Auction', 'Attempt to sell product not released yet', {format_date(timestamp)}, {reporter}, {auction_id});\n"""
+
+            self.outFile.write(statement)
         
-        return
+        self.outFile.write("\n")
+
+        return len(self.fakeAuctions)
+    
+    def genUserReports(self):
+        n_reports = random.randint(2, 8)
+        reasons = ['Fraud', 'Improper profile image', 'Improper username', 'Other']
+        descriptions = ['Did not send product after auction ended', 'NSFW image', 'Offensive username', 'Is just ugly']
+        for _ in range(0, n_reports):
+            u1, u2 = random.sample(range(0, len(self.users)), 2)
+            report_type = random.randint(0, 3)
+            timestamp = max_date(self.users[u1]['join_date'], self.users[u2]['join_date'])
+            timestamp = sum_time(timestamp, random.randint(3600, 3600 * 24 * 8))
+            statement = f"""INSERT INTO user_report (reason, description, "timestamp", reporter_id, reported_id)\n""" + \
+                f"""VALUES ('{reasons[report_type]}', '{descriptions[report_type]}', {format_date(timestamp)}, {u1}, {u2});\n"""
+
+            self.outFile.write(statement)
+        
+        self.outFile.write("\n")
+        return n_reports
 
 
     def generate_bids(self, auction:dict):
@@ -358,11 +428,6 @@ class Gen:
 
                 auction_id += 1
         return len(self.auctions)
-    
-
-    def genAuctionReports(self):
-
-        return
 
 
     def userGen(self):
