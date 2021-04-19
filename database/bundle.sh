@@ -1,0 +1,1 @@
+rm -f init.sql && cat schema.sql > init.sql && cat triggers/*.sql >> init.sql

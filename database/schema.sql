@@ -54,7 +54,8 @@ CREATE TABLE member (
     followed_user_activity              BOOLEAN DEFAULT TRUE NOT NULL,
     bid_permission                      BOOLEAN DEFAULT TRUE NOT NULL,
     sell_permission                     BOOLEAN DEFAULT TRUE NOT NULL,
-    banned                              BOOLEAN DEFAULT FALSE NOT NULL
+    banned                              BOOLEAN DEFAULT FALSE NOT NULL,
+    ts_search                           TSVECTOR DEFAULT NULL,
 );
 
 CREATE TABLE auction (
@@ -71,6 +72,7 @@ CREATE TABLE auction (
     nsfw                            BOOLEAN NOT NULL DEFAULT FALSE,
     seller_id                       INTEGER REFERENCES member(id) NOT NULL,
     latest_bid                      INTEGER DEFAULT NULL,
+    ts_search                       TSVECTOR DEFAULT NULL,
     CONSTRAINT increment_xor_ck     CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
     CONSTRAINT dates_ck             CHECK (end_date > start_date)
 );
@@ -107,7 +109,8 @@ CREATE TABLE message (
     body                   TEXT NOT NULL,
     thread_id              INTEGER REFERENCES message_thread(id) NOT NULL,
     sender_id              INTEGER REFERENCES member(id) NOT NULL,
-    "timestamp"            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
+    "timestamp"            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    ts_search              TSVECTOR DEFAULT NULL
 );
 
 CREATE TABLE auction_report (
