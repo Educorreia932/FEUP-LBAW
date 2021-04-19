@@ -55,7 +55,7 @@ CREATE TABLE member (
     bid_permission                      BOOLEAN DEFAULT TRUE NOT NULL,
     sell_permission                     BOOLEAN DEFAULT TRUE NOT NULL,
     banned                              BOOLEAN DEFAULT FALSE NOT NULL,
-    ts_search                           TSVECTOR DEFAULT NULL,
+    ts_search                           TSVECTOR DEFAULT NULL
 );
 
 CREATE TABLE auction (

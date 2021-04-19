@@ -1,1 +1,1 @@
-rm -f init.sql && cat schema.sql > init.sql && cat triggers/*.sql >> init.sql
+rm -f init.sql && cat schema.sql > init.sql && cat indexes.sql >> init.sql && cat triggers/*.sql >> init.sql
