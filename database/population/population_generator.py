@@ -176,11 +176,11 @@ class Gen:
         passwordHash_3 = bcrypt.hashpw(bytes(password_3, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
         password_4 = 'gizzard'
         passwordHash_4 = bcrypt.hashpw(bytes(password_4, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
-        statement = f"""INSERT INTO admin (username, password) VALUES ('iargo', '{password_1}');\n""" + \
-            f"""INSERT INTO admin (username, password) VALUES ('toilmo', '{password_2}');\n""" + \
-            f"""INSERT INTO admin (username, password) VALUES ('oivo', '{password_3}');\n""" + \
-            f"""INSERT INTO admin (username, password) VALUES ('skooma', '{password_4}');\n"""
-        
+        statement = f"""INSERT INTO admin (username, password) VALUES ('iargo', '{passwordHash_1}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('toilmo', '{passwordHash_2}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('oivo', '{passwordHash_3}');\n""" + \
+            f"""INSERT INTO admin (username, password) VALUES ('skooma', '{passwordHash_4}');\n"""
+
         self.outFile.write(statement)
         self.outFile.write('\n')
 
