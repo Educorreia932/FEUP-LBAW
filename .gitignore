@@ -12,4 +12,3 @@ npm-debug.log
 yarn-error.log
 
 database/population/out
-database/init.sql
