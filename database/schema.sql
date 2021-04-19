@@ -45,7 +45,6 @@ CREATE TABLE member (
     bio                                 TEXT,
     joined                              TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     credit                              MONEY NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0::MONEY),
-    profile_picture                     TEXT,
     rating                              INTEGER DEFAULT 0 NOT NULL,
     data_consent                        BOOLEAN DEFAULT FALSE NOT NULL,
     notifications                       BOOLEAN DEFAULT TRUE NOT NULL,

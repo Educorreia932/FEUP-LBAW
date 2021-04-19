@@ -391,8 +391,8 @@ class Gen:
 
             data_consent = "TRUE" if random.random() > 0.2 else "FALSE"
 
-            insertStatement = f"""INSERT INTO member (id, username, email, password, name, bio, joined, credit, profile_picture, data_consent)\n\t""" + \
-                f"""VALUES ({i}, '{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit}::money, '{profile_picture}', {data_consent});\n"""
+            insertStatement = f"""INSERT INTO member (id, username, email, password, name, bio, joined, credit, data_consent)\n\t""" + \
+                f"""VALUES ({i}, '{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit}::money, {data_consent});\n"""
 
             self.outFile.write(insertStatement)
 
