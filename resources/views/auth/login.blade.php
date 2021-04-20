@@ -1,32 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('login') }}">
-    {{ csrf_field() }}
+<!-- Sign in -->
+<div class="container-fluid" style="flex:auto;">
+    <main class="d-flex align-items-center justify-content-center">
+        <div class="container-lg text-center">
+            <form class="form-signin">
+                <h1 class="mb-3">Sign In</h1>
+                <label for="inputEmail" class="sr-only float-start">Email/Username</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="" required="" autofocus="">
+                <label for="inputPassword" class="sr-only float-start">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="" required="">
 
-    <label for="email">E-mail</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-    @if ($errors->has('email'))
-        <span class="error">
-          {{ $errors->first('email') }}
-        </span>
-    @endif
+                <div class="forgot-password-container ">
+                    <a href="#" class="text-secondary">Forgot password?</a>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
 
-    <label for="password" >Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-        <span class="error">
-            {{ $errors->first('password') }}
-        </span>
-    @endif
+            <div class="options-separator">
+                    <span class="divider-text text-black-50">Or</span>
+            </div>
 
-    <label>
-        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-    </label>
+            <button class="btn btn-lg btn-secondary btn-block" type="button">
+                <i class=" bi bi-github"></i>
+                Sign in with GitHub
+            </button>
 
-    <button type="submit">
-        Login
-    </button>
-    <a class="button button-outline" href="{{ route('register') }}">Register</a>
-</form>
+            <div class="m-2 text-secondary mt-3">
+                <p>Dont have an account?
+                <a href="signup.php" class="text-secondary fw-bold">Sign up <i class="bi bi-arrow-right"></i></a>
+            </p>
+        </div>
+        </div>
+    </main>
+</div>
 @endsection
