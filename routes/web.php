@@ -31,6 +31,9 @@ Route::get('search', 'SearchController@search')->name('search');
 Route::get("auction", "AuctionController@show")->name("auction");
 Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
 
+// Users
+Route::get("user_profile", "UserProfileController@show")->name("user_profile");
+
 // Dashboard
 Route::get("dashboard", "DashboardController@show")->name("dashboard");
 

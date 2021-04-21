@@ -4,7 +4,7 @@
     <script src="../js/auction-card.js"></script>
 
     <!-- Featured Auctions -->
-    <div class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);'>
+    <section class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);'>
         <!-- Carousel -->
         <div id="slides" class="carousel slide offset-lg-3 col-sm-8 col-md-6" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -49,7 +49,7 @@
             <a href="search_results.php" class="text-decoration-none link-secondary">See more <i
                     class="bi bi-arrow-right"></i></a>
         </div>
-    </div>
+    </section>
 
     <!-- Search bar -->
     <section class="container input-group w-100 w-sm-75 w-xl-50 w-xxl-25">
@@ -61,63 +61,64 @@
     </section>
 
     <!-- Second section-->
-    <section class="py-sm-3 bg-light">
-        <div class="container">
-            <div class="row"> <!-- top row -->
-                <div class="col-xl-6 mt-sm-4">
-                    <hr class="d-sm-none">
-                    <span class="d-flex flex-row mb-2 align-items-center">
+    <section class="py-sm-3 bg-light container">
+        <div class="row">
+            {{-- Recent bids --}}
+            <section class="col-xl-6 mt-sm-4">
+                <hr class="d-sm-none">
+                <span class="d-flex flex-row mb-2 align-items-center">
                                 <h4>Recent bids</h4>
                                 <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">See all <i
                                         class="bi bi-arrow-right"></i></a>
                             </span>
-                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                        @include("partials.auction_card", [
-                            "title" => "Antichamber STEAM Key",
-                            "price" => 2.05,
-                            "remaining_time" => "2d",
-                            "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                        ])
-                    </div>
+                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                    @include("partials.auction_card", [
+                        "title" => "Antichamber STEAM Key",
+                        "price" => 2.05,
+                        "remaining_time" => "2d",
+                        "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
+                    ])
                 </div>
-                <div class="col-xl-6 mt-sm-4">
-                    <hr class="d-sm-none">
-                    <span class="d-flex flex-row mb-2 align-items-center">
-                                <h4>Followed users' Auctions</h4>
+            </section>
 
-                                <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">See all <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </span>
-                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                        @include("partials.auction_card", [
-                            "title" => "Antichamber STEAM Key",
-                            "price" => 2.05,
-                            "remaining_time" => "2d",
-                            "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                        ])
-                    </div>
+            {{-- Followed Users' Auctions --}}
+            <section class="col-xl-6 mt-sm-4">
+                <hr class="d-sm-none">
+                <span class="d-flex flex-row mb-2 align-items-center">
+                    <h4>Followed Users' Auctions</h4>
+                    <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">
+                        See all <i class="bi bi-arrow-right"></i>
+                    </a>
+                </span>
+                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                    @include("partials.auction_card", [
+                        "title" => "Antichamber STEAM Key",
+                        "price" => 2.05,
+                        "remaining_time" => "2d",
+                        "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
+                    ])
                 </div>
-            </div> <!-- end of top row -->
-            <div class="row mt-sm-4">
-                <div class="col-lg-12">
-                    <hr class="d-sm-none">
-                    <span class="d-flex flex-row mb-2 align-items-center">
-                        <h4>Open auctions</h4>
-                        <a href="search_results.php"
-                           class="ms-2 link-secondary text-decoration-none align-items-center">
-                            See all <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </span>
-                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                        @include("partials.auction_card", [
-                            "title" => "Antichamber STEAM Key",
-                            "price" => 2.05,
-                            "remaining_time" => "2d",
-                            "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                        ])
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
+
+        {{-- Open Auctions --}}
+        <section class="row mt-sm-4 col-lg-12">
+            <hr class="d-sm-none">
+            <span class="d-flex flex-row mb-2 align-items-center">
+                    <h4>Open auctions</h4>
+                    <a href="search_results.php"
+                       class="ms-2 link-secondary text-decoration-none align-items-center">
+                        See all <i class="bi bi-arrow-right"></i>
+                    </a>
+                </span>
+            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                @include("partials.auction_card", [
+                    "title" => "Antichamber STEAM Key",
+                    "price" => 2.05,
+                    "remaining_time" => "2d",
+                    "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
+                ])
+            </div>
+        </sec>
     </section>
 @endsection

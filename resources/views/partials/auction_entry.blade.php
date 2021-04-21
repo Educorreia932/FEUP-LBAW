@@ -1,6 +1,6 @@
 <div class="row auction-entry py-3 pe-md-2 hover-highlight rounded-3">
     <!-- Product image -->
-    <a href="auction.php" class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+    <a href="auction" class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
         <img class="img-thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/81oYI%2BemsAL._SL1500_.jpg">
     </a>
 
@@ -12,7 +12,7 @@
                     <a class="text-decoration-none link-dark" href="auction">Foo Fighters - Greatest Hits MP3</a>
                 </h4>
                 <span class="text-muted">Created by <a class="text-decoration-none link-dark"
-                                                       href="user_profile.php">ffighters</a></span>
+                                                       href="user_profile">ffighters</a></span>
             </div>
 
             <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
