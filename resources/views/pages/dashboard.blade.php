@@ -22,7 +22,7 @@
 {{--                @include("partials.dashboard_created_auctions")--}}
 {{--                @include("partials.dashboard_bidded_auctions")--}}
 {{--                @include("partials.dashboard_bookmarked_auctions")--}}
-                @include("partials.dashboard_followed")
+                @include("partials.dashboard.dashboard_followed")
             </main>
         </div>
     </div>

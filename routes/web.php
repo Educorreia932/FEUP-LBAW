@@ -37,6 +37,10 @@ Route::get("user_profile", "UserProfileController@show")->name("user_profile");
 // Dashboard
 Route::get("dashboard", "DashboardController@show")->name("dashboard");
 
+// Settings
+Route::get("settings", "SettingsController@show")->name("settings");
+
 // Other
 Route::get('about', fn() => View::make("pages/about"));
 Route::get('faq', fn() => View::make("pages/faq"));
+

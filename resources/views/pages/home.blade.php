@@ -119,6 +119,5 @@
                     "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
                 ])
             </div>
-        </sec>
-    </section>
+        </section>
 @endsection
