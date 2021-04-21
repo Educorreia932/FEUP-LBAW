@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- Chart.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script src={{ asset("js/edit-auction-modal.js") }} defer></script>
+    <script defer src={{ asset("js/auction.js") }}></script>
+    <script defer src={{ asset("js/bookmark.js") }}></script>
+
     <div class="row m-2">
         <h1>Auction</h1>
     </div>
@@ -140,12 +147,12 @@
         </div>
     </section>
 
+    {{-- Auction details --}}
     <section class="container-fluid p-4">
         <div class="row">
-        <span class="d-flex align-items-end">
-            <h3 class="m-0 p-0">Auction Details</h3>
-        </span>
-
+            <span class="d-flex align-items-end">
+                <h3 class="m-0 p-0">Auction Details</h3>
+            </span>
             <hr class="my-1">
 
             @include("partials.auction_detail", ["key" => "Time remaining", "value" => "24 minutes 39 seconds", "subgroup" => true])
@@ -158,18 +165,22 @@
         </div>
     </section>
 
+    {{-- Bid history --}}
     <section class="container-fluid p-4">
         <div class="row d-flex flex-row">
-        <span class="d-flex align-items-end">
-            <h3 class="m-0 p-0">Bid History</h3>
-            <a class="ms-2" style="font-size: smaller;" href="auction_details">See more</a>
-        </span>
+            <span class="d-flex align-items-end">
+                <h3 class="m-0 p-0">Bid History</h3>
+                <a class="ms-2" style="font-size: smaller;" href="auction_details">See more</a>
+            </span>
+
             <hr class="my-1">
 
+            {{-- Bid history chart --}}
             <div class="row col-lg-7 order-lg-2 d-flex flex-column justify-content-center">
                 <canvas class="mt-4" id="bid-history-chart"></canvas>
             </div>
 
+            {{-- Bid history table --}}
             <div class="row col-lg-5 order-lg-1">
                 <table id="bid-history" class="table table-striped table-hover">
                     <thead>
@@ -180,21 +191,20 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @include("partials.bid_table_entry", ["name" => "Me", "bid" => 180, "time" => "20 sec."])
 
-                    @include("partials.bid_table_entry", ["name" => "Me", "bid" => 180, "time" => "20 sec."])
+                        @for ($i = 0; $i < 6; $i++)
+                            @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => 15 + (10 - $i) * 15, "time" => $i + 1 . " hour"])
+                        @endfor
 
-                    @for ($i = 0; $i < 6; $i++)
-                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => 15 + (10 - $i) * 15, "time" => $i + 1 . " hour"])
-                    @endfor
-
-                    @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => 75, "time" => "1 week"])
-
+                        @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => 75, "time" => "1 week"])
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
+    {{-- Edit modal --}}
     <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -276,6 +286,7 @@
         </div>
     </div>
 
+    {{-- Report modal --}}
     <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
