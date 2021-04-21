@@ -30,6 +30,9 @@ Route::get('search', 'SearchController@search')->name('search');
 // Auctions
 Route::get("auction", "AuctionController@show")->name("auction");
 
+// Dashboard
+Route::get("dashboard", "DashboardController@show")->name("dashboard");
+
 // Other
 Route::get('about', fn() => View::make("pages/about"));
 Route::get('faq', fn() => View::make("pages/faq"));

@@ -70,12 +70,10 @@
         <h3>Meet our Team</h3>
 
         <div class="d-flex flex-row align-items-stretch justify-content-between overflow-auto">
-            <?php
-            // team_card("Eduardo Correia", "Educorreia932", "https://github.com/Educorreia932", "../static/team/skelizard.png");
-            // team_card("Ivo Saavedra", "ivSaav", "https://github.com/ivSaav", "../static/team/i_haz_bucket.png");
-            // team_card("Telmo Baptista", "Telmooo", "https://github.com/Telmooo", "../static/team/toilmo.png");
-            // team_card("Tiago Silva", "tiagodusilva", "https://github.com/tiagodusilva", "../static/team/homelessBanjoGuy.png");
-            ?>
+            @include("partials.team_card", ["name" => "Eduardo Correia", "username" => "Educorreia932", "img" => asset("images/team/skelizard.png")])
+            @include("partials.team_card", ["name" => "Ivo Saavedra", "username" => "ivSaav", "img" => asset("images/team/i_haz_bucket.png")])
+            @include("partials.team_card", ["name" => "Telmo Baptista", "username" => "Telmooo", "img" => asset("images/team/toilmo.png")])
+            @include("partials.team_card", ["name" => "Tiago Silva", "username" => "tiagodusilva", "img" => asset("images/team/homelessBanjoGuy.png")])
         </div>
     </div>
 </main>
