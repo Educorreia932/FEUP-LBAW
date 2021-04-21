@@ -24,5 +24,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+// Search
+Route::get('search', 'SearchController@search')->name('search');
+
+// Auctions
+Route::get("auction", "AuctionController@show")->name("auction");
+
+// Other
 Route::get('about', fn() => View::make("pages/about"));
 Route::get('faq', fn() => View::make("pages/faq"));

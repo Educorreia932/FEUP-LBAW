@@ -21,7 +21,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/authentication.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap_extension.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user_profile.css') }}" rel="stylesheet">
+
     <script type="text/javascript">
         // Fix for Firefox autofocus CSS bug
         // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -43,14 +48,14 @@
             <div class="collapse navbar-collapse ps-2 ps-md-0" id="siteHeader">
                 <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
                     <li class="nav-item col-6 col-md-auto">
-                        <?php 
+                        <?php
                         $current_page = "page_home";
                         $user = "Educorreia";
-                        
+
                         if ($current_page == "page_home") { ?>
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        <?php } 
-                        
+                        <?php }
+
                         else {?>
                             <a class="nav-link" href="/">Home</a>
                         <?php }?>
@@ -59,9 +64,9 @@
                         <!-- <span class="d-block d-md-none text-secondary text-capitalize header-section-title">Auctions</span> -->
                         <li class="nav-item">
                             <?php if ($current_page == "page_search_auctions") { ?>
-                                <a class="nav-link active" aria-current="page" href="search_results.php?subpage=auctions">Auctions</a>
+                                <a class="nav-link active" aria-current="page" href="search">Auctions</a>
                             <?php } else {?>
-                                <a class="nav-link" href="search_results.php?subpage=auctions">Auctions</a>
+                                <a class="nav-link" href="search">Auctions</a>
                             <?php }?>
                         </li>
                         <li class="nav-item">
@@ -90,14 +95,14 @@
                             <span class="position-absolute top-50 start-50 translate-middle text-center text-white"  style="font-size:small; font-weight: bold;">42</span>
                         </button>
 
-                        <li class="d-none d-md-flex nav-item dropdown px-1">                        
+                        <li class="d-none d-md-flex nav-item dropdown px-1">
                             <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="me-2"><?=htmlentities($user)?></span>
                                 <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                     <img style="border-radius:50%;" width="40" height="40" src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg" alt="Profile Image">
                                 </div>
                             </button>
-                        
+
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                                 <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="user_profile.php">Profile</a></li>
@@ -171,7 +176,7 @@
                 <span class="row text-muted">&copy; Copyright 2021 Trade-a-Bid. All rights reserved</span>
             </div>
 
-            <div class="navbar navbar-dark col d-flex flex-column align-items-end text-end">    
+            <div class="navbar navbar-dark col d-flex flex-column align-items-end text-end">
                 <ul class="navbar-nav">
                     <li class="navbar-item">
                         <a class="nav-link" href="faq">FAQ</a>

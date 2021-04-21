@@ -9,17 +9,19 @@ masters.forEach(master => {
     check_state.addEventListener("change", function () {
         let to_toggle = master.querySelectorAll(".form-check:not(.master) .form-check-input");
 
-        if (check_state.checked != reversed) {
+        if (check_state.checked !== reversed) {
             to_toggle.forEach(element => {
                 element.removeAttribute("disabled");
             });
-        } else {
+        }
+
+        else {
             to_toggle.forEach(element => {
                 element.setAttribute("disabled", "");
             });
         }
     });
-    
+
     let event = new Event('change');
     check_state.dispatchEvent(event);
 });

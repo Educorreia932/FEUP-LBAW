@@ -99,3 +99,7 @@ input[type=number].hide-appearence {
     height: 200px;
     border-radius: 50%;
 }
+
+.noUi-connect {
+    background-color: var(--bs-primary);
+}

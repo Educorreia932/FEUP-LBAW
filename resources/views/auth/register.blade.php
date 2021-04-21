@@ -1,39 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
+<div class="container-lg text-center">
+    <form class="form-signup">
+        <h1 class="mb-3">Sign Up</h1>
+        <label for="inputName" class="sr-only float-start">Name</label>
+        <input type="text" id="inputName" class="form-control" placeholder="" required autofocus="">
+        <label for="inputEmail" class="sr-only float-start">Email</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="" required autofocus="">
+        <label for="inputPhone" class="sr-only float-start">Phone Number</label>
+        <input type="phone" id="inputPhone" class="form-control" placeholder="" required>
+        <label for="inputPassword" class="sr-only float-start">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="" required>
+        <label for="confirmation" class="sr-only float-start">Comfirm Password</label>
+        <input type="password" id="confirmation" class="form-control" placeholder="" required>
+        <div class="d-flex flex-row align-items-baseline text-start mt-2">
+            <input type="checkbox" id="termsCheckbox" class="me-2" value="" required>
+            <label for="termsCheckbox"> I have read and agree with this site's
+                <a href="https://is.gd/TABNhT">terms of service</a>
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Sign Up</button>
+    </form>
 
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-    @if ($errors->has('name'))
-      <span class="error">
-          {{ $errors->first('name') }}
-      </span>
-    @endif
+    <div class="options-separator">
+        <span class="divider-text text-black-50">Or</span>
+    </div>
 
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
-      <span class="error">
-          {{ $errors->first('email') }}
-      </span>
-    @endif
-
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-      <span class="error">
-          {{ $errors->first('password') }}
-      </span>
-    @endif
-
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
-
-    <button type="submit">
-      Register
+    <button class="btn btn-lg btn-secondary btn-block" type="button">
+        <i class=" bi bi-github"></i>
+        Sign up with GitHub
     </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
-</form>
+
+    <div class="m-2 text-secondary mt-3 mb-5">
+        <p>Already have an account?
+            <a href="signin.php" class="text-secondary fw-bold">Sign in <i class="bi bi-arrow-right"></i></a>
+        </p>
+    </div>
+</div>
 @endsection

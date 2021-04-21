@@ -16,8 +16,7 @@ noUiSlider.create(slider, {
     },
 });
 
-
-var inputs = [
+let inputs = [
     document.getElementById('input-number-left'),
     document.getElementById('input-number-right')
 ];
@@ -34,8 +33,6 @@ inputs[1].addEventListener('change', function () {
     slider.noUiSlider.set([null, this.value]);
 });
 
-
-
 // Auction Owner Radio
 let input_text = document.getElementById("radio-owner-user-input");
 let input_radio_div = document.getElementById("auction-owner-radios");
@@ -46,8 +43,10 @@ input_radio_div.addEventListener('change', function(e) {
         case 'radio-owner-user':
             input_text.disabled = false;
             break;
+
         case 'radio-owner-user-input':
             break;
+
         default:
             input_text.disabled = true;
             break;

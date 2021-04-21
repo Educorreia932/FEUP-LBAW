@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Sign in -->
 <div class="container-fluid" style="flex:auto;">
     <main class="d-flex align-items-center justify-content-center">
         <div class="container-lg text-center">
@@ -29,9 +28,8 @@
 
             <div class="m-2 text-secondary mt-3">
                 <p>Dont have an account?
-                <a href="signup.php" class="text-secondary fw-bold">Sign up <i class="bi bi-arrow-right"></i></a>
+                <a href="register" class="text-secondary fw-bold">Sign up <i class="bi bi-arrow-right"></i></a>
             </p>
-        </div>
         </div>
     </main>
 </div>
