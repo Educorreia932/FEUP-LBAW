@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
 // Home
-Route::get('/', 'Auth\LoginController@home');
+Route::get('/', 'HomeController@show')->name("home");
 
 // Cards
 Route::get('cards', 'CardController@list');
