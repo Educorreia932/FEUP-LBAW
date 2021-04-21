@@ -104,9 +104,9 @@
                             </button>
 
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="user_profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+                                <li><a class="dropdown-item" href="dashboard">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="user_profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="settings">Settings</a></li>
                                 <li><a class="dropdown-item" href="">Sign out</a></li>
                             </ul>
                         </li>
@@ -122,10 +122,10 @@
                                     <span class="navbar-text"><i class="bi bi-bell text-muted"></i> Notifications (42)</span>
                                 </button>
                             </li>
-                            <li class="nav-item col-6"><a class="nav-link" href="settings.php">Settings</a></li>
-                            <li class="nav-item col-6"><a class="nav-link" href="user_profile.php">Profile</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="settings">Settings</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="user_profile">Profile</a></li>
                             <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
-                            <li class="nav-item col-6"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                            <li class="nav-item col-6"><a class="nav-link" href="dashboard">Dashboard</a></li>
                         </div>
                     <?php } else { ?>
                         <li class="nav-item col-6 col-md-auto">

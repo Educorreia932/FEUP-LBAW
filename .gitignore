@@ -14,3 +14,5 @@ yarn-error.log
 wiki/
 components.wiki/
 .idea/
+
+*.log
