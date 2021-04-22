@@ -23,6 +23,7 @@ tags:
   - name: "M04: User Administration and Static pages"
   
 paths:
+  # M01: Authentication and Individual Profile
   /login:
     get:
       operationId: R101
@@ -156,11 +157,6 @@ paths:
                   description: "Failed registration. Redirecting back to register form"
                   value: "/register"
       
-
-  # /search_results:
-
-
-
   /users/me:
     get: 
       operationId: R106
@@ -203,15 +199,9 @@ paths:
                 email: 
                   type: string
                   format: email
-                images:
-                  type: array
-                  items:
-                    type: string
-                    format: binary
-              required:
-                - name
-                - username
-                - email
+                image:
+                  type: string
+                  format: binary
       responses:
         "302":
           description: 'Redirect after processing new account settings.'
@@ -224,8 +214,14 @@ paths:
                   description: "Account settings saved. Redirect to profile page."
                   value: "/user/{id}"
                 302Failure:
-                  description: "Couldn't save settings. Redirect to profile page."
-                  value: "/user/{id}"
+                  description: "Couldn't save settings. Redirect to settings page."
+                  value: "/user/settings_account"
+                  
+  /user/settings_account/delete:
+    post:
+      operationId: R113
+      summary: "R113: Delete account"
+      desciption: "Deletes all your personal information and account"
 
   /user/settings_privacy:
     get:
@@ -328,6 +324,7 @@ paths:
                   description: "Couldn't save security settings. Redirect to profile page."
                   value: "/user/{id}"
 
+  # M02: Auctions
 
   /auction/create_auction:
     get:
@@ -414,9 +411,134 @@ paths:
                   description: "Auction couldn't be created. Redirect to create auction form."
                   value: "/auctions/create_auction"
   
+  /auction/{id}:
+    get:
+      operationId: R109
+      summary: "R109: View an auction"
+      description: "Show auction page. Access: PUB"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+  
+  /auction/search_results:
+    get:
+      operationId: R110
+      summary: "R110: Search Auctions"
+      description: "Searches for auctions and returns the search results as JSON. Access: PUB"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: query
+          name: category
+          description: "Categories to search for"
+          schema:
+            type: array
+            items:
+              type: string
+          required: false
+        - in: query
+          name: min_bid_value
+          description: "Minimum value for the current bid of an auction"
+          schema:
+            type: number
+            format: money
+          required: false
+        - in: query
+          name: max_bid_value
+          description: "Maximum value for the current bid of an auction"
+          schema:
+            type: number
+            format: money
+          required: false
+        - in: query
+          name: followed_users
+          description: "Boolean with the flag to search for followed users"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: status
+          description: "Specific auction status, i.e. Open and/or Scheduled auctions"
+          schema:
+            type: array
+            items:
+              type: string
+          required: false
+        - in: query
+          name: username
+          description: "Search for specific usernames"
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: search_text
+          description: "String to use for full-text search"
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    seller:
+                      type: string
+                    current_bid:
+                      type: number
+                      format: money
+                    personal_bid:
+                      type: number
+                      format: money
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+                    bookmarked:
+                      type: boolean
+                    thumb_image:
+                      type: string
+                      format: binary
+                    status:
+                      type: string
+              example:
+                - id: 1
+                  title: "Foo Fighters - Greatest Hits MP3"
+                  seller: "ffighters"
+                  current_bid: 125.3
+                  personal_bid: 123.59
+                  start_date: "2021-03-13 12:00:00"
+                  end_date: "2021-03-27 12:00:00"
+                  bookmarked: true
+                  thumb_image: image
+                  status: "Open"
+                - id: 6
+                  title: "Fighters Legacy - STEAM KEY"
+                  seller: "ppenguin"
+                  current_bid: 103.03
+                  personal_bid: null
+                  start_date: "2021-02-12 12:00:00"
+                  end_date: "2021-03-20 12:00:00"
+                  bookmarked: false
+                  thumb_image: image
+                  status: "Open"
 
-  # /auction/{id}:
-  #   get:
-  #     operationId: R109
-  #     summary: "R109: View an auction"
-  #     description: "Show"
+  # M03: Users
