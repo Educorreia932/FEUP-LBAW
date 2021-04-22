@@ -221,7 +221,7 @@ paths:
     post:
       operationId: R113
       summary: "R113: Delete account"
-      desciption: "Deletes all your personal information and account"
+      description: "Deletes all your personal information and account"
 
   /user/settings_privacy:
     get:
@@ -542,3 +542,96 @@ paths:
                   status: "Open"
 
   # M03: Users
+  /user/search_results:
+    get:
+      operationId: R111
+      summary: "R111: Search Users"
+      description: "Searches for users and returns the search results as JSON. Access: PUB"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: query
+          name: has_auctions           # TODO maybe add more options?
+          description: "Search only for users who have auctions"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: followed_users
+          description: "Boolean indicating if only followed users should be displayed"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: min_rating
+          description: "Minimum value for a user's rating"
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: max_rating
+          description: "Maximum value for a user's rating"
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: min_register_date
+          description: "Minimum account creation date"
+          schema:
+            type: string
+            format: date
+          required: false
+        - in: query
+          name: max_register_date
+          description: "Maximum account creation date"
+          schema:
+            type: string
+            format: date
+          required: false
+        - in: query
+          name: search_text
+          description: "String to use for full-text search"
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    profile_image:
+                      type: string
+                      format: binary
+                    joined:
+                      type: string
+                      format: date
+                    followed:
+                      type: boolean
+                    rating:
+                      type: integer
+              example:
+                - id: 4
+                  name: "Old Monk"
+                  username: "old_monk"
+                  profile_image: image
+                  joined: "2021-04-15 16:00:00"
+                  followed: true
+                  rating: 56
+                - id: 9
+                  name: "Farm Worker"
+                  username: "ppenguin"
+                  profile_image: image
+                  joined: "2021-03-01 15:30:00"
+                  followed: false
+                  rating: 343
