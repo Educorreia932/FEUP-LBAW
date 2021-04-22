@@ -9,7 +9,6 @@
 
             <main class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
-                {{-- <?php breadcrumbs(array("Home", $breadcrumbs[$subpage]), array("home.php")) ?> --}}
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"

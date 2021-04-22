@@ -86,7 +86,7 @@ CREATE TABLE bid (
 
 ALTER TABLE auction ADD CONSTRAINT bid_foreign_key FOREIGN KEY(latest_bid) REFERENCES bid(id);
 
-CREATE TABLE follow (       
+CREATE TABLE follow (
     follower_id                INTEGER REFERENCES member(id) NOT NULL,
     followed_id                INTEGER REFERENCES member(id) NOT NULL,
     CONSTRAINT member_ck CHECK (follower_id != followed_id),

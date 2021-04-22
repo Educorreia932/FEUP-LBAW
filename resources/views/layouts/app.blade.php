@@ -65,7 +65,6 @@
                     <?php }?>
                 </li>
                 <div class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
-                    <!-- <span class="d-block d-md-none text-secondary text-capitalize header-section-title">Auctions</span> -->
                     <li class="nav-item">
                         <?php if ($current_page == "page_search_auctions") { ?>
                         <a class="nav-link active" aria-current="page" href="search">Auctions</a>
@@ -82,9 +81,9 @@
                     </li>
                     <li class="nav-item">
                         <?php if ($current_page == "page_create_auction") { ?>
-                        <a class="nav-link active" aria-current="page" href="create_auction.php">Sell Item</a>
+                        <a class="nav-link active" aria-current="page" href="create_auction">Sell Item</a>
                         <?php } else {?>
-                        <a class="nav-link" href="create_auction.php">Sell Item</a>
+                        <a class="nav-link" href="create_auction">Sell Item</a>
                         <?php }?>
                     </li>
                 </div>
@@ -142,11 +141,13 @@
                 </div>
                 <?php } else { ?>
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link px-2" href="signin.php">Sign in</a>
+                    <a class="nav-link px-2" href="login">Sign in</a>
                 </li>
+
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2" href="signup.php">Sign
-                        up</a>
+                    <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2" href="register">
+                        Sign up
+                    </a>
                 </li>
                 <?php } ?>
             </ul>

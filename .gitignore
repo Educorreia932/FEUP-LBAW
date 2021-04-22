@@ -16,3 +16,5 @@ components.wiki/
 .idea/
 
 *.log
+
+bootstrap/cache/
