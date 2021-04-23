@@ -635,3 +635,53 @@ paths:
                   joined: "2021-03-01 15:30:00"
                   followed: false
                   rating: 343
+
+  # M04  User Administration and Static pages
+  /admin/user_management:
+    get:
+      operationId: R112
+      summary: "R112: Manage banned users"
+      description: "Displays banned users to be managed by an administrator. Access: ADM"
+      tags:
+        - "M04: User Administration and Static pages"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    permissions:
+                      type: array
+                      items:
+                        type: boolean 
+                    reason:
+                      type: string
+                      format: category
+                    joined:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  username: "markhamill"
+                  permissions:
+                    - true
+                    - false
+                    - false    
+                  reason: "Fraudulent Behaviour"
+                  joined: "2021-04-15 16:00:00"
+                - id: 7
+                  username: "johndoe"
+                  permissions:
+                    - false
+                    - false
+                    - true    
+                  reason: "Fraudulent Behaviour"
+                  joined: "2021-04-15 17:00:00"
