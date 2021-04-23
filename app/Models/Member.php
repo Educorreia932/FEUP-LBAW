@@ -11,7 +11,7 @@ class Member extends Model {
     protected $table = 'member';
 
     public function createdAuctions() {
-        return $this->belongsToMany("App\Models\Auction");
+        return $this->hasMany("App\Models\Auction");
     }
 
     public function followers() {
@@ -23,5 +23,9 @@ class Member extends Model {
             "id",
             "follower_id",
         );
+    }
+
+    public function bookmarked_auctions() {
+        return $this->hasMany("App\Models\BookmarkedAuction");
     }
 }
