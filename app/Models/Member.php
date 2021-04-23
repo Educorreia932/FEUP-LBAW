@@ -14,6 +14,10 @@ class Member extends Model {
         return $this->hasMany("App\Models\Auction");
     }
 
+    public function bookmarkedAuctions() {
+        return $this->hasMany("App\Models\BookmarkedAuction");
+    }
+
     public function followers() {
         return $this->hasManyThrough(
             Member::class,
@@ -23,9 +27,5 @@ class Member extends Model {
             "id",
             "follower_id",
         );
-    }
-
-    public function bookmarked_auctions() {
-        return $this->hasMany("App\Models\BookmarkedAuction");
     }
 }

@@ -8,12 +8,7 @@
                     <h4>Dashboard</h4>
 
                     <ul class="nav flex-column">
-                        <?php
-                        //                        sidebar_anchor($subpage, 'created_auctions', 'Created Auctions', $href);
-                        //                        sidebar_anchor($subpage, 'bidded_auctions', 'Bidded Auctions', $href);
-                        //                        sidebar_anchor($subpage, 'bookmarked_auctions', 'Bookmarked Auctions', $href);
-                        //                        sidebar_anchor($subpage, 'followed', 'Followed', $href);
-                        ?>
+
                     </ul>
                 </div>
             </nav>

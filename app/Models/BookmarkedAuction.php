@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookmarkedAuction extends Model {
     use HasFactory;
+
+    protected $table = 'bookmarked_auction';
+
 }

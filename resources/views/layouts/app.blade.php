@@ -37,6 +37,8 @@
 </head>
 
 <body>
+
+{{-- Header --}}
 <header class="navbar navbar-expand-md navbar-dark bg-dark py-2">
     <nav class="container-fluid flex-wrap flex-md-nowrap mx-0" aria-label="Main Navigation">
         <a class="navbar-brand p-0 me-md-3 mx-auto fs-4" aria-label="Trade-a-Bid" href="/">
@@ -134,10 +136,10 @@
                             <span class="navbar-text"><i class="bi bi-bell text-muted"></i> Notifications (42)</span>
                         </button>
                     </li>
-                    <li class="nav-item col-6"><a class="nav-link" href="settings">Settings</a></li>
+                    <li class="nav-item col-6"><a class="nav-link" href={{ route('settings') }}>Settings</a></li>
                     <li class="nav-item col-6"><a class="nav-link" href="user_profile">Profile</a></li>
                     <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
-                    <li class="nav-item col-6"><a class="nav-link" href="dashboard">Dashboard</a></li>
+                    <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
                 </div>
                 <?php } else { ?>
                 <li class="nav-item col-6 col-md-auto">
@@ -154,7 +156,8 @@
         </div>
     </nav>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
+    {{-- Notifications Modal --}}
+    <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -172,15 +175,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </header>
 
+{{-- Main --}}
 <main>
     <section id="content">
         @yield('content')
     </section>
 </main>
 
+{{-- Footer --}}
 <footer class="container-fluid mt-auto bg-dark py-2">
     <div class="row">
         <div class="ms-2 col">
