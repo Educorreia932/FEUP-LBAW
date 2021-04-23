@@ -14,7 +14,7 @@
             </div>
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
-        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $joined }}</p>
+        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined }}</p>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             @if (true)
                 <button type="button" class="follow btn btn-danger w-100">

@@ -13,4 +13,15 @@ class Member extends Model {
     public function createdAuctions() {
         return $this->belongsToMany("App\Models\Auction");
     }
+
+    public function followers() {
+        return $this->hasManyThrough(
+            Member::class,
+            Follow::class,
+            "followed_id",
+            "id",
+            "id",
+            "follower_id",
+        );
+    }
 }

@@ -60,8 +60,7 @@
         </button>
     </section>
 
-    <!-- Second section-->
-    <section class="py-sm-3 bg-light container">
+    <div class="py-sm-3 bg-light container">
         <div class="row">
             {{-- Recent bids --}}
             <section class="col-xl-6 mt-sm-4">
@@ -94,15 +93,18 @@
         {{-- Open Auctions --}}
         <section class="row mt-sm-4 col-lg-12">
             <hr class="d-sm-none">
+
             <span class="d-flex flex-row mb-2 align-items-center">
-                    <h4>Open auctions</h4>
-                    <a href="search_results.php"
-                       class="ms-2 link-secondary text-decoration-none align-items-center">
-                        See all <i class="bi bi-arrow-right"></i>
-                    </a>
-                </span>
+                <h4>Open auctions</h4>
+                <a href="search_results.php"
+                   class="ms-2 link-secondary text-decoration-none align-items-center">
+                    See all <i class="bi bi-arrow-right"></i>
+                </a>
+            </span>
+
             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                 @each ("partials.auction_card", $open_auctions, "auction")
             </div>
         </section>
+    </div>
 @endsection

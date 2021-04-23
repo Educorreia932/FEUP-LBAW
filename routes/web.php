@@ -35,7 +35,7 @@ Route::get("create_auction", "CreateAuctionController@show")->name("create_aucti
 Route::get("user_profile", "UserProfileController@show")->name("user_profile");
 
 // Dashboard
-Route::get("dashboard", "DashboardController@show")->name("dashboard");
+Route::get("dashboard", "DashboardController@followers")->name("dashboard_followers");
 
 // Settings
 Route::get("settings", "SettingsController@show")->name("settings");
