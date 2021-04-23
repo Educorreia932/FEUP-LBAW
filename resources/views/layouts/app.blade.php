@@ -115,9 +115,9 @@
                     </button>
 
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                        <li><a class="dropdown-item" href="dashboard">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="user_profile">Profile</a></li>
-                        <li><a class="dropdown-item" href="settings">Settings</a></li>
+                        <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
+                        <li><a class="dropdown-item" href={{ route('user_profile') }}>Profile</a></li>
+                        <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
                         <li><a class="dropdown-item" href="">Sign out</a></li>
                     </ul>
                 </li>
@@ -137,7 +137,7 @@
                         </button>
                     </li>
                     <li class="nav-item col-6"><a class="nav-link" href={{ route('settings') }}>Settings</a></li>
-                    <li class="nav-item col-6"><a class="nav-link" href="user_profile">Profile</a></li>
+                    <li class="nav-item col-6"><a class="nav-link" href={{ route('user_profile') }}>Profile</a></li>
                     <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
                     <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
                 </div>

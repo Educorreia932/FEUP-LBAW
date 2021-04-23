@@ -25,27 +25,29 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 // Search
-Route::get('search', 'SearchController@search')->name('search');
+Route::get('auction/search_results', 'SearchController@search')->name('search');
+Route::get('user/search_results', 'SearchController@search')->name('search');
 
 // Auctions
-Route::get("auction", "AuctionController@show")->name("auction");
+Route::get("auction/{id}", "AuctionController@show")->name("auction");
 Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
 
 // Users
-Route::get("user_profile", "UserProfileController@show")->name("user_profile");
+Route::get("users/me", "UserProfileController@show")->name("user_profile");
+Route::get("users/{id}", "UserProfileController@show");
 
 // Dashboard
-Route::get("dashboard", "DashboardController@createdAuctions")->name("dashboard");
+Route::redirect("dashboard", "dashboard/created_auctions")->name("dashboard");
 Route::get("dashboard/created_auctions", "DashboardController@createdAuctions")->name("dashboard_created_auctions");
 Route::get("dashboard/bidded_auctions", "DashboardController@biddedAuctions")->name("dashboard_bidded_auctions");
 Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions");
 Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
 
 // Settings
-Route::get("settings/", "SettingsController@account")->name("settings");
-Route::get("settings/account", "SettingsController@account")->name("settings_account");
-Route::get("settings/privacy", "SettingsController@privacy")->name("settings_privacy");
-Route::get("settings/security", "SettingsController@security")->name("settings_security");
+Route::redirect("user/settings/", "user/settings/account")->name("settings");
+Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
+Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
+Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
 
 // Other
 Route::get('about', fn() => View::make("pages/about"));

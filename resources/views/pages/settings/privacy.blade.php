@@ -25,14 +25,17 @@
             <input class="form-check-input" type="checkbox" id="switch-notifications">
             <label class="form-check-label" for="switch-notifications">Notifications</label>
         </div>
+
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="switch-outbid-notifications" checked disabled>
             <label class="form-check-label" for="switch-outbid-notifications">Outbid Notifications</label>
         </div>
+
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="switch-start-auction-notifications" checked disabled>
             <label class="form-check-label" for="switch-start-auction-notifications">Start auction notifications</label>
         </div>
+
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="switch-user-activity-notifications" disabled>
             <label class="form-check-label" for="switch-user-activity-notifications">Followed user activity

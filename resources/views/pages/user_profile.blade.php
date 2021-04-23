@@ -5,7 +5,8 @@
         {{-- Breadcrumbs --}}
     </div>
 
-    <div class="container">
+    {{-- User Information --}}
+    <section class="container">
         <div class="row justify-content-center">
             <div class="d-flex flex-column flex-md-row border border-4">
                 <div
@@ -61,11 +62,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-12 col-md-6">
+            {{-- Feedback --}}
+            <section class="col-12 col-md-6">
                 <h2 class="fs-bold">Feedback</h2>
                 <table id="bid-history" class="table">
                     <thead>
@@ -104,8 +106,10 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="col col-md-6 d-flex flex-column justify-content-center">
+            </section>
+
+            {{-- Insights --}}
+            <section class="col col-md-6 d-flex flex-column justify-content-center">
                 <h2 class="fs-bold">Insights</h2>
 
                 <div class="container border border-3 p-0">
@@ -124,25 +128,20 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 
-    <div class="container mt-4">
+    {{-- Created Auctions --}}
+    <section class="container mt-4">
         <h2 class="fs-bold">Created Auctions</h2>
         <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-            @include("partials.auction_card", [
-                "title" => "Antichamber STEAM Key",
-                "price" => 2.05,
-                "remaining_time" => "2d",
-                "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-            ])
 
         </div>
-    </div>
+    </section>
 
     {{-- Modal --}}
-    <div class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
+    <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -169,6 +168,7 @@
 
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-danger">Report</button>
@@ -176,5 +176,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
