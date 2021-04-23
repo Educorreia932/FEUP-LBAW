@@ -35,7 +35,10 @@ Route::get("create_auction", "CreateAuctionController@show")->name("create_aucti
 Route::get("user_profile", "UserProfileController@show")->name("user_profile");
 
 // Dashboard
-Route::get("dashboard", "DashboardController@followers")->name("dashboard_followers");
+Route::get("dashboard/created_auctions", "DashboardController@created_auctions")->name("dashboard_created_auctions");
+Route::get("dashboard/bidded_auctions", "DashboardController@bidded_auctions")->name("dashboard_bidded_auctions");
+Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarked_auctions")->name("dashboard_bookmarked_auctions");
+Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
 
 // Settings
 Route::get("settings", "SettingsController@show")->name("settings");
