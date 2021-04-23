@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="../js/auction-card.js"></script>
+    <script src={{ asset("js/auction-card.js") }}></script>
 
     <!-- Featured Auctions -->
     <section class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);'>
@@ -72,12 +72,7 @@
                                         class="bi bi-arrow-right"></i></a>
                             </span>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                    @include("partials.auction_card", [
-                        "title" => "Antichamber STEAM Key",
-                        "price" => 2.05,
-                        "remaining_time" => "2d",
-                        "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                    ])
+
                 </div>
             </section>
 
@@ -91,12 +86,7 @@
                     </a>
                 </span>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                    @include("partials.auction_card", [
-                        "title" => "Antichamber STEAM Key",
-                        "price" => 2.05,
-                        "remaining_time" => "2d",
-                        "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                    ])
+
                 </div>
             </section>
         </div>
@@ -112,12 +102,7 @@
                     </a>
                 </span>
             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                @include("partials.auction_card", [
-                    "title" => "Antichamber STEAM Key",
-                    "price" => 2.05,
-                    "remaining_time" => "2d",
-                    "image" => "https://www.music-bazaar.com/album-images/vol1001/676/676075/2524775-big/Antichamber-Original-Soundtrack-Single-cover.jpg"
-                ])
+                @each ("partials.auction_card", $open_auctions, "auction")
             </div>
         </section>
 @endsection
