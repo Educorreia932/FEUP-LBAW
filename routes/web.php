@@ -37,14 +37,14 @@ Route::get("users/me", "UserProfileController@show")->name("user_profile");
 Route::get("users/{id}", "UserProfileController@show");
 
 // Dashboard
-Route::redirect("dashboard", "dashboard/created_auctions")->name("dashboard");
+Route::get("dashboard", fn() => redirect("dashboard/created_auctions"))->name("dashboard");
 Route::get("dashboard/created_auctions", "DashboardController@createdAuctions")->name("dashboard_created_auctions");
 Route::get("dashboard/bidded_auctions", "DashboardController@biddedAuctions")->name("dashboard_bidded_auctions");
 Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions");
 Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
 
 // Settings
-Route::redirect("user/settings/", "user/settings/account")->name("settings");
+Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings");
 Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
 Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
 Route::get("user/settings/security", "SettingsController@security")->name("settings_security");

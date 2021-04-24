@@ -1,3 +1,7 @@
+<?php
+$current_page = "home";
+?>
+
 @extends('layouts.app')
 
 @section('content')

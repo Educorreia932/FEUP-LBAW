@@ -1,7 +1,11 @@
+<?php
+$current_page = "search_auctions";
+?>
+
 @extends('layouts.app')
 
 @section('content')
-    <script defer src="../js/screen_size_toggle_collapse.js"></script>
+    <script defer src="{{ asset("js/screen_size_toggle_collapse.js") }}"></script>
 
     <div class="container-fluid" style="flex: auto;">
         <div class="row h-100">
@@ -41,7 +45,7 @@
                 <section>
                     <p>Results for: <u>Fighters</u> (5)</p>
 
-                    @each("partials.auction_entry", $auctions, "auction");
+                    @each("partials.auction_entry", $auctions, "auction")
                 </section>
             </section>
         </div>
