@@ -7,9 +7,7 @@
                 <div class="position-sticky pt-3">
                     <h4>Dashboard</h4>
 
-                    <ul class="nav flex-column">
-
-                    </ul>
+                    @include("partials.dashboard_sidebar")
                 </div>
             </nav>
 

@@ -11,7 +11,7 @@ class Member extends Model {
     protected $table = 'member';
 
     public function createdAuctions() {
-        return $this->hasMany("App\Models\Auction");
+        return $this->hasMany( "App\Models\Auction", "seller_id");
     }
 
     public function bookmarkedAuctions() {
@@ -27,5 +27,9 @@ class Member extends Model {
             "id",
             "follower_id",
         );
+    }
+
+    public function notifications() {
+
     }
 }

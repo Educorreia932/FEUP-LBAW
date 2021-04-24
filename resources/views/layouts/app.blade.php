@@ -55,40 +55,26 @@
             <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
                 <li class="nav-item col-6 col-md-auto">
                     <?php
-                    $current_page = "page_home";
-                    $user = "Educorreia";
-
-                    if ($current_page == "page_home") { ?>
+                        $current_page = "page_home";
+                        $user = "Educorreia";
+                    ?>
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <?php }
-
-                    else {?>
-                    <a class="nav-link" href="/">Home</a>
-                    <?php }?>
                 </li>
-                <div class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
+
+                {{-- Navigation Links --}}
+                <section class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
                     <li class="nav-item">
-                        <?php if ($current_page == "page_search_auctions") { ?>
-                        <a class="nav-link active" aria-current="page" href="search">Auctions</a>
-                        <?php } else {?>
-                        <a class="nav-link" href="search">Auctions</a>
-                        <?php }?>
+                        <a class="nav-link" href={{ route("search_auctions") }}>Auctions</a>
                     </li>
+
                     <li class="nav-item">
-                        <?php if ($current_page == "page_search_users") { ?>
-                        <a class="nav-link active" aria-current="page" href="search_results.php?subpage=users">Users</a>
-                        <?php } else {?>
-                        <a class="nav-link" href="search_results.php?subpage=users">Users</a>
-                        <?php }?>
+                        <a class="nav-link active" aria-current="page" href={{ route("search_users") }}>Users</a>
                     </li>
+
                     <li class="nav-item">
-                        <?php if ($current_page == "page_create_auction") { ?>
                         <a class="nav-link active" aria-current="page" href="create_auction">Sell Item</a>
-                        <?php } else {?>
-                        <a class="nav-link" href="create_auction">Sell Item</a>
-                        <?php }?>
                     </li>
-                </div>
+                </section>
             </ul>
 
             <hr class="d-md-none text-white-50">
@@ -118,9 +104,10 @@
                         <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
                         <li><a class="dropdown-item" href={{ route('user_profile') }}>Profile</a></li>
                         <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
-                        <li><a class="dropdown-item" href="">Sign out</a></li>
+                        <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
                     </ul>
                 </li>
+
                 <div class="d-flex d-md-none flex-wrap flex-row w-100">
                     <li class="nav-item col-12 d-flex justify-content-between">
                         <div class="col-6 d-flex align-items-center">

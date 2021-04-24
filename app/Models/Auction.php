@@ -11,6 +11,6 @@ class Auction extends Model {
     protected $table = "auction";
 
     public function seller() {
-        return $this->hasOne("App\Models\Member");
+        return $this->hasOne("App\Models\Member", "id", "seller_id");
     }
 }

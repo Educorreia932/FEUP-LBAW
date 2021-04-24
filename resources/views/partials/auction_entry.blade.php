@@ -9,10 +9,14 @@
             <div>
                 <h4 class="d-flex align-items-center">
                     <i class="bi bi-circle-fill text-success me-2" style="font-size: 0.5em;"></i>
-                    <a class="text-decoration-none link-dark" href="auction">Foo Fighters - Greatest Hits MP3</a>
+                    <a class="text-decoration-none link-dark" href="auction">{{ $auction->title }}</a>
                 </h4>
-                <span class="text-muted">Created by <a class="text-decoration-none link-dark"
-                                                       href="user_profile">ffighters</a></span>
+                <span class="text-muted">
+                    Created by
+                    <a class="text-decoration-none link-dark" href="user_profile">
+                        {{ $auction->seller()->getResults()->username }}
+                    </a>
+                </span>
             </div>
 
             <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
@@ -25,14 +29,14 @@
                 <div class="row">
                     <div class="col">
                         <span>Current bid</span>
-                        <h4 class="mb-0">50 &euro;</h4>
+                        <h4 class="mb-0">{{ $auction->latest_bid }} &euro;</h4>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm d-flex flex-column mt-3 mt-0-sm align-items-sm-end">
-                <span><span class="fw-bold" style="font-size: x-small;">Starts</span> </span>
-                <span><span class="fw-bold" style="font-size: x-small;">Ends</span> </span>
+                <span><span class="fw-bold" style="font-size: x-small;">Starts</span>{{ $auction->start_date }}</span>
+                <span><span class="fw-bold" style="font-size: x-small;">Ends</span>{{ $auction->start_date }}</span>
             </div>
         </div>
     </div>

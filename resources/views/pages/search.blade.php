@@ -7,7 +7,7 @@
         <div class="row h-100">
             @include('partials.search_sidebar')
 
-            <main class="col ms-sm-auto px-md-4">
+            <section class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
 
                 <div class="d-flex flex-row py-4">
@@ -33,7 +33,6 @@
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown">
-                            {{-- <?php call_user_func_array('search_results_' . $subpage . '_ordering', array()); ?> --}}
                         </ul>
                     </div>
                 </div>
@@ -42,9 +41,9 @@
                 <section>
                     <p>Results for: <u>Fighters</u> (5)</p>
 
-                    @include('partials.auction_entry')
+                    @each("partials.auction_entry", $auctions, "auction");
                 </section>
-            </main>
+            </section>
         </div>
     </div>
 @endsection

@@ -7,8 +7,7 @@
         </div>
 
         <div>
-            @include("partials.auction_entry")
-            @include("partials.auction_entry")
+            @each ("partials.auction_entry", $auctions, "auction")
         </div>
     </div>
 @endsection

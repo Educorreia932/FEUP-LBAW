@@ -7,7 +7,7 @@ use App\Models\Member;
 class DashboardController extends Controller {
     public function createdAuctions() {
         $member = Member::all()->first();
-        $auctions = $member->bookmarkedAuctions()->getResults();
+        $auctions = $member->createdAuctions()->getResults();
 
         return view("pages.dashboard.created_auctions", [ "auctions" => $auctions ]);
     }
