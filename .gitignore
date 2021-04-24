@@ -18,3 +18,5 @@ components.wiki/
 *.log
 
 bootstrap/cache/
+
+/database/population/out/*
