@@ -1,3 +1,7 @@
+<?php
+$current_page = "search_users";
+?>
+
 @extends('layouts.app')
 
 @section('content')

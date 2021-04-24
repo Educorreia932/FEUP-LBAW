@@ -1,3 +1,7 @@
+<?php
+$current_page = "search_users";
+?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -18,8 +22,10 @@
                     </div>
 
                     <div class="col-12 col-md-4 d-flex flex-column mt-md-5 ps-2 me-2">
-                        <h2 class="fw-bold">Foo Fighters</h2>
-                        <span class="fst-italic mb-2">@ffighters</span>
+                        <h2 class="fw-bold">{{ $user->name }}</h2>
+
+                        <span class="fst-italic mb-2">{{ $user->username }}</span>
+
                         <button type="button" class="follow btn btn-outline-danger">
                             <i class="bi bi-heart"></i>
                             <span>Follow</span>
@@ -47,17 +53,9 @@
                     <div class="user-description d-flex flex-column-reverse w-100">
                         <a role="button" class="collapsed description-toggler" data-bs-toggle="collapse"
                            href="#user-description" aria-expanded="false" aria-controls="user-description"></a>
-                        <p class="collapse mb-1" id="user-description">Originally Foo Fighters (Often shortened to FF)
-                            was a
-                            sentient mass of plankton given intelligence by Pucci to function as a guard for some
-                            important
-                            discs. But after Jolyne Kujo showed mercy after beating her, FF chose to take over a dead
-                            girl's
-                            body and help her find him. Foo Fighters is deeply curious (Since she's plankton and new to
-                            human life) and is very willing to try new things. As she hangs out with Jolyne and friends,
-                            she
-                            comes to deeply value her intellect. But she pushes her fear of losing it aside to sacrifice
-                            herself, saving Annasui and Jotaro's stand disc.</p>
+                        <p class="collapse mb-1" id="user-description">
+                            {{ $user->bio }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -116,15 +114,15 @@
                     <div class="row p-2 m-0 align-items-center justify-content-center w-100 h-100">
                         <div class="col text-center">
                             <small>Joined</small>
-                            <h4>22 feb 2020</h4>
+                            <h4>{{ $user->joined }}</h4>
                         </div>
                         <div class="col text-center">
                             <small>Auctions Created</small>
-                            <h4>3502</h4>
+                            <h4>{{ $user->createdAuctions()->count() }}</h4>
                         </div>
                         <div class="col text-center">
                             <small>Followers</small>
-                            <h4>63052</h4>
+                            <h4>{{ $user->followers()->count() }}</h4>
                         </div>
                     </div>
                 </div>
@@ -136,7 +134,7 @@
     <section class="container mt-4">
         <h2 class="fs-bold">Created Auctions</h2>
         <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-
+            @each("partials.auction_card", $user->createdAuctions()->getResults(), "auction")
         </div>
     </section>
 

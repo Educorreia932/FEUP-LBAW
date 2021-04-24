@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="container-fluid" style="flex:auto;">
+    <div class="container-fluid" style="flex:auto;">
         <div class="row bg-light-grey">
             <div class="col-md-4 d-flex flex-column align-items-center justify-content-center text-center">
                 <figure>
@@ -19,11 +19,12 @@
             </div>
         </div>
 
-        <div class="row my-4 justify-content-center">
+        <section class="row my-4 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-10">
                 <div class="text-center">
                     <h3>Celebrating over 3 weeks in development!</h3>
                 </div>
+
                 <div class="text-start">
                     <p>Currently, most websites that provide auction services focus on physical items that must be
                         transported from the seller to the buyer, which entails various complications such as creating
@@ -32,19 +33,21 @@
                     <p>Therefore we offer a unique web platform to auction exclusively digital products.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div class="row my-4 bg-light-grey">
             <div class="col-md-8 px-0">
                 <img class="img-fluid" style="max-height: 30em;" src={{ asset('images/lbaw_offices.png') }} alt="...">
             </div>
+
             <div class="col-md-4 d-flex flex-column align-items-center justify-content-center text-center">
                 <h3>Our offices</h3>
                 <p>Come meet us at our offices in <span style="text-decoration: line-through;">redacted</span>!</p>
             </div>
         </div>
 
-        <div class="row m-4">
+        {{-- Statistics --}}
+        <section class="row m-4">
             <h3>Statistics</h3>
 
             <div class="container-fluid">
@@ -67,9 +70,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="row m-4">
+        {{-- Team --}}
+        <section class="row m-4">
             <h3>Meet our Team</h3>
 
             <div class="d-flex flex-row align-items-stretch justify-content-between overflow-auto">
@@ -78,6 +82,6 @@
                 @include("partials.team_card", ["name" => "Telmo Baptista", "username" => "Telmooo", "img" => asset("images/team/toilmo.png")])
                 @include("partials.team_card", ["name" => "Tiago Silva", "username" => "tiagodusilva", "img" => asset("images/team/homelessBanjoGuy.png")])
             </div>
-        </div>
-    </main>
+        </section>
+    </div>
 @endsection

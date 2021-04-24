@@ -1,3 +1,8 @@
+<?php
+if (!isset($current_page))
+    $current_page = "";
+?>
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 

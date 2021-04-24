@@ -13,7 +13,7 @@
                 </h4>
                 <span class="text-muted">
                     Created by
-                    <a class="text-decoration-none link-dark" href="user_profile">
+                    <a class="text-decoration-none link-dark" href="{{ route("user_profile") }}">
                         {{ $auction->seller()->getResults()->username }}
                     </a>
                 </span>
