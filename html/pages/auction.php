@@ -280,7 +280,7 @@ $stylesheets = array();
                             <select class="form-select" id="">
                                 <option selected>Choose...</option>
                                 <option value="1">Fraudaulent auction</option>
-                                <option value="2">Improper product picutres</option>
+                                <option value="2">Improper product pictures</option>
                                 <option value="3">Improper auction title</option>
                                 <option value="4">Other</option>
                             </select>
