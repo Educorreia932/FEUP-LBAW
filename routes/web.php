@@ -29,7 +29,7 @@ Route::get('auction/search_results', 'SearchResultsController@search_auctions')-
 Route::get('user/search_results', 'SearchResultsController@search_users')->name('search_users');
 
 // Auctions
-Route::get("auction/{id}", "AuctionController@show")->name("auction");
+Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+');
 Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
 
 // Users

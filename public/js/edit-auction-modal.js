@@ -17,13 +17,13 @@ modal.addEventListener('show.bs.modal', function () {
   let category = document.querySelector('.form-select');
 
   // Temporary
-  startTime.value = "12:30";
-  endTime.value = "12:30";
-  startDate.value = "2021-02-09";
-  endDate.value = "2021-02-09";
-  startBid.value = 5;
-  category.selectedIndex = 1;
-  inputName.value = "JoJo Eyes of Heaven PS4 Key";
-  let desc = document.querySelector("#product-information p");
-  inputDescription.value = desc.textContent;
+//   startTime.value = "12:30";
+//   endTime.value = "12:30";
+//   startDate.value = "2021-02-09";
+//   endDate.value = "2021-02-09";
+//   startBid.value = 5;
+//   category.selectedIndex = 1;
+//   inputName.value = "JoJo Eyes of Heaven PS4 Key";
+//   let desc = document.querySelector("#product-information p");
+//   inputDescription.value = desc.textContent;
 })

@@ -44,7 +44,7 @@ CREATE TABLE member (
     name                                TEXT,
     bio                                 TEXT,
     joined                              TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
-    credit                              MONEY NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0::MONEY),
+    credit                              INTEGER NOT NULL CONSTRAINT credit_ck CHECK (credit >= 0),
     rating                              INTEGER DEFAULT 0 NOT NULL,
     data_consent                        BOOLEAN DEFAULT FALSE NOT NULL,
     notifications                       BOOLEAN DEFAULT TRUE NOT NULL,
@@ -61,8 +61,8 @@ CREATE TABLE auction (
     id                              SERIAL PRIMARY KEY,
     title                           TEXT NOT NULL,
     description                     TEXT NOT NULL,
-    starting_bid                    MONEY NOT NULL CONSTRAINT starting_bid_ck CHECK (starting_bid >= 0::MONEY),
-    increment_fixed                 MONEY CONSTRAINT increment_fixed_ck CHECK (increment_fixed IS NULL OR increment_fixed > 0::MONEY),
+    starting_bid                    INTEGER NOT NULL CONSTRAINT starting_bid_ck CHECK (starting_bid > 0),
+    increment_fixed                 INTEGER CONSTRAINT increment_fixed_ck CHECK (increment_fixed IS NULL OR increment_fixed > 0),
     increment_percent               REAL CONSTRAINT increment_percent_ck CHECK (increment_percent IS NULL OR (increment_percent > 0 AND increment_percent <= 0.5)),
     start_date                      TIMESTAMP WITH TIME ZONE NOT NULL,
     end_date                        TIMESTAMP WITH TIME ZONE NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE auction (
 
 CREATE TABLE bid (
     id                      SERIAL PRIMARY KEY,
-    value                   MONEY NOT NULL CONSTRAINT value CHECK (value >= 0::MONEY),
+    value                   INTEGER NOT NULL CONSTRAINT value CHECK (value > 0),
     "date"                  TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     auction_id              INTEGER REFERENCES auction(id) NOT NULL,
     bidder_id               INTEGER REFERENCES member(id) NOT NULL

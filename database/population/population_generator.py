@@ -1,16 +1,27 @@
 from __future__ import annotations
 
+import os, re, os.path
 import json
 import random
 import time
 import string
+import math
 import bcrypt
+import requests
+
+from image_processing import ImageProcessor
+from decorators import timer
 
 # Constants
-jojoFilename = 'jojo.json'
-steamAppsFilename = 'app_details.json'
-lusiadasFilename = 'lusiadas.txt'
-populateFilename = 'out/populate.sql'
+root = 'database/population/'
+jojoFilename = root + 'jojo.json'
+steamAppsFilename = root + 'app_details.json'
+lusiadasFilename = root + 'lusiadas.txt'
+populateFilename = root + 'population.sql'
+
+# Config
+saveFigs = True
+uniqueSalts = True
 
 # ----------------- DATES ------------------------
 
@@ -109,9 +120,19 @@ class Gen:
         self.outFile.write('-' * 80 + '\n')
         self.outFile.write('--{:^76}--\n'.format(tag))
         self.outFile.write('-' * 80 + '\n')
-        
 
+    @timer
     def gen(self):
+        for root, dirs, files in os.walk(ImageProcessor.userRoot):
+            for file in files:
+                os.remove(os.path.join(root, file))
+
+        for root, dirs, files in os.walk(ImageProcessor.auctionRoot):
+            for file in files:
+                os.remove(os.path.join(root, file))
+
+        print("Cleaned old images")
+
         self.writeTag("USERS")
         n = self.userGen()
         if self.verbose:
@@ -134,13 +155,13 @@ class Gen:
         n = self.genRatings()
         if self.verbose:
             print(f"Generated {n} ratings")
-        
+
         self.outFile.write('\n\n\n\n')
         self.writeTag("BOOKMARKS")
         n = self.genBookmarks()
         if self.verbose:
             print(f"Generated {n} bookmarks")
-        
+
         self.outFile.write('\n\n\n\n')
         self.writeTag("Messages")
         n, n1 = self.genMessages()
@@ -164,7 +185,7 @@ class Gen:
         n = self.genAdmins()
         if self.verbose:
             print(f"Generated {n} admins")
-    
+
 
 
     def genAdmins(self):
@@ -192,8 +213,8 @@ class Gen:
         f.close()
 
         messageThreads = 1
-        messages = 0        
-        
+        messages = 0
+
         for u1 in range(0, len(self.users) - 4):
             threads = random.sample(range(u1 + 1, len(self.users)), random.randint(0, 2))
             if u1 in threads:  # Make sure the owner is not included
@@ -275,7 +296,7 @@ class Gen:
             reporter = None
             while reporter == None or reporter == seller_id:
                 reporter = random.randrange(0, len(self.users))
-            
+
             timestamp = max_date(max_date(self.auctions[auction_id]['start'], self.users[seller_id]['join_date']), self.users[reporter]['join_date'])
             timestamp = sum_time(timestamp, random.randint(200, 1400))
 
@@ -283,11 +304,11 @@ class Gen:
                 f"""VALUES ('Fraudalent Auction', 'Attempt to sell product not released yet', {format_date(timestamp)}, {reporter}, {auction_id});\n"""
 
             self.outFile.write(statement)
-        
+
         self.outFile.write("\n")
 
         return len(self.fakeAuctions)
-    
+
     def genUserReports(self):
         n_reports = random.randint(2, 8)
         reasons = ['Fraud', 'Improper profile image', 'Improper username', 'Other']
@@ -301,7 +322,7 @@ class Gen:
                 f"""VALUES ('{reasons[report_type]}', '{descriptions[report_type]}', {format_date(timestamp)}, {u1}, {u2});\n"""
 
             self.outFile.write(statement)
-        
+
         self.outFile.write("\n")
         return n_reports
 
@@ -311,7 +332,7 @@ class Gen:
         bidders = random.sample(range(0, len(self.users)), random.randint(2, 6) + 1)
         if auction['seller'] in bidders:  # Make sure the owner is not included
             bidders.remove(auction['seller'])
-        
+
         n_bids = random.randint(0, 20)
         last_bidder = None
         for i in range(0, n_bids):
@@ -322,7 +343,7 @@ class Gen:
             last_bidder = cur_bidder
 
             t = i / (n_bids + 1.0)
-            value = lerp(auction['bid'], auction['price'], t)
+            value = math.ceil(lerp(auction['bid'], auction['price'], t))
             date = random_date(auction['start'], auction['end'], t)
 
             yield {'bidder': cur_bidder, 'value': value, 'timestamp': date}
@@ -340,7 +361,7 @@ class Gen:
         image_id = 0
         bid_id = 0
         for item in items.values():
-            
+
             total_item_auctions = 1 if random.random() < 0.9 else random.randint(2, 6)
 
             for _ in range(total_item_auctions):
@@ -350,7 +371,7 @@ class Gen:
                 nsfw = 'FALSE'
                 if 'hentai' in title.lower() or 'hentai' in description.lower() or 'nudity' in title.lower() or 'nudity' in description.lower():
                     nsfw = 'TRUE'
-                
+
                 if 'hitler' in title.lower() or 'hitler' in description.lower() or 'isis' in title.lower() or 'isis' in description.lower():
                     self.reportableAuctions.add(auction_id)
 
@@ -359,9 +380,9 @@ class Gen:
                     price = random.random() * 30
                     self.fakeAuctions.add(auction_id)
                 else:
-                    price = float(item['price'][1:])
+                    price = math.ceil(float(item['price'][1:]) * 100)
 
-                starting_bid = price / (random.random() * 4 + 1)
+                starting_bid = math.ceil(price / (random.random() * 4.0 + 2.0))
 
 
                 fixed_increment = None
@@ -370,12 +391,12 @@ class Gen:
                 percent_increment_str = 'NULL'
                 if random.random() < 0.75:
                     # Fixed increment
-                    fixed_increment = max(0.01, random.random() * 2.0)
-                    fixed_increment_str = "{:.2f}".format(fixed_increment) + "::money"
+                    fixed_increment = random.randint(1, 200)
+                    fixed_increment_str = str(fixed_increment)
                 else:
                     # Percent increment
                     percent_increment = max(0.01, random.random() * 0.5)
-                    percent_increment_str = "'{:.2f}'".format(percent_increment)
+                    percent_increment_str = "{:.2f}".format(percent_increment)
 
                 user = self.users[random.randrange(0, len(self.users))]
                 start_date = random_limit_date(user['join_date'])
@@ -391,7 +412,7 @@ class Gen:
                         0: 'Active',
                         1: 'Active',
                     }[cmp_time_now(end_date)]
-                
+
                 category = None
                 if item['type'] == 'game':
                     category = "Games"
@@ -403,26 +424,35 @@ class Gen:
                     category = "Others"
 
                 statement = f"""INSERT INTO auction (id, title, description, starting_bid, increment_fixed, increment_percent, start_date, end_date, status, category, nsfw, seller_id)\n\t""" + \
-                    f"""VALUES ({auction_id}, '{title}', '{description}', {starting_bid}::money, {fixed_increment_str}, {percent_increment_str}, {format_date(start_date)}, {format_date(end_date)}, '{status}', '{category}', {nsfw}, {user['id']});\n"""
+                    f"""VALUES ({auction_id}, '{title}', '{description}', {starting_bid}, {fixed_increment_str}, {percent_increment_str}, {format_date(start_date)}, {format_date(end_date)}, '{status}', '{category}', {nsfw}, {user['id']});\n"""
 
                 self.outFile.write(statement)
 
                 self.auctions[auction_id] = {'id': auction_id, 'bid': starting_bid, 'price': price, 'fixed_increment': fixed_increment, 'percent_increment': percent_increment, 'start': start_date, 'end': end_date, 'seller': user['id']}
 
-                for _ in item['screenshots'][:random.randint(0, 4)]:
-                    # TODO: Save images to disk
+                if saveFigs:
+                    if not ImageProcessor.auction_images(item['header_image'], auction_id, 'thumbnail'):
+                        print(f'[!] Auction {auction_id} is missing a thumbnail')
+
+                rand_n_images = min(len(item['screenshots']), random.randint(0, 5))
+                for img in random.sample(item['screenshots'], rand_n_images):
+                    # Save images to disk
+                    if saveFigs:
+                        if not ImageProcessor.auction_images(img['path_full'], auction_id, image_id):
+                            continue
+
                     statement = f"""INSERT INTO auction_image (id, auction_id) VALUES ({image_id}, {auction_id});\n"""
                     self.outFile.write(statement)
                     image_id += 1
 
-                last_bidder = None            
+                last_bidder = None
                 for bid in self.generate_bids(self.auctions[auction_id]):
                     statement = f"""INSERT INTO bid (id, value, "date", auction_id, bidder_id) """ + \
-                        f"""VALUES({bid_id}, {"{:.2f}".format(bid['value'])}::money, {format_date(bid['timestamp'])}, {auction_id}, {bid['bidder']});\n"""
+                        f"""VALUES({bid_id}, {bid['value']}, {format_date(bid['timestamp'])}, {auction_id}, {bid['bidder']});\n"""
                     self.outFile.write(statement)
                     last_bidder = bid['bidder']
                     bid_id += 1
-                    
+
                 self.auctions[auction_id]['winner'] = last_bidder
                 self.outFile.write("\n")
 
@@ -436,10 +466,17 @@ class Gen:
         f.close()
 
         password = 'zawarudo'
-        passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
 
-        i = 0
+        passwordHash = None
+        if not uniqueSalts:
+            passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+
+
+        user_id = 0
         for character in characters:
+            if uniqueSalts:
+                passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
+
             username = character['anchor'].replace("'", "''").replace("%27s", "")
 
             if character['anchor'] in (u['username'] for u in self.users.values()):
@@ -447,23 +484,25 @@ class Gen:
 
             name = character['title'].replace("'", "''")
             bio = character['bio'].replace("'", "''")
-            credit_value = (random.random() * 400.0) if random.random() <= 0.85 else 0.0
-            credit = "{:.2f}".format(credit_value)
+            r = random.random()
+            credit_value = random.randint(0, 10000) if r <= 0.80 else random.randint(10000, 40000) if r <= 0.85 else 0
 
             joined_date = random_user_date()
 
-            profile_picture = character['src'].replace("'", "''")
+            # Save images to disk
+            if saveFigs:
+                ImageProcessor.profile_images(character['src'], user_id)
 
             data_consent = "TRUE" if random.random() > 0.2 else "FALSE"
 
             insertStatement = f"""INSERT INTO member (id, username, email, password, name, bio, joined, credit, data_consent)\n\t""" + \
-                f"""VALUES ({i}, '{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit}::money, {data_consent});\n"""
+                f"""VALUES ({user_id}, '{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit_value}, {data_consent});\n"""
 
             self.outFile.write(insertStatement)
 
-            self.users[i] = {'id': i, 'username': username, 'password': password, 'join_date': joined_date}
-        
-            i += 1
+            self.users[user_id] = {'id': user_id, 'username': username, 'password': password, 'join_date': joined_date}
+
+            user_id += 1
 
         return len(self.users)
 

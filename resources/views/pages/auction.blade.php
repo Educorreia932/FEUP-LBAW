@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@inject('helper', \App\Helpers\LbawUtils::class)
+
 @section('content')
     <!-- Chart.JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -18,37 +20,27 @@
             <div id="product-images" class="carousel slide col-md-5 h-min-content" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#product-images" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#product-images" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#product-images" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
+                            aria-current="true" aria-label="Thumbnail"></button>
+                    @foreach ($auction->images as $img)
+                    <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{$loop->iteration}}"
+                            aria-label="Image {{$loop->iteration}}"></button>
+                    @endforeach
                 </div>
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block m-auto"
-                             src="https://www.mobygames.com/images/covers/l/382051-jojo-s-bizarre-adventure-eyes-of-heaven-playstation-4-front-cover.png"
+                             src="/images/auctions/{{$auction->id}}/thumbnail_medium.png"
                              alt="...">
                     </div>
 
+                    @foreach ($auction->images as $img)
                     <div class="carousel-item">
                         <img class="d-block m-auto"
-                             src="https://hd-tecnologia.com/imagenes/articulos/2016/06/CAP-6-Jolyne_01-800x450.jpg"
+                             src="/images/auctions/{{$auction->id}}/{{$img->id}}_medium.png"
                              alt="...">
                     </div>
-
-                    <div class="carousel-item">
-                        <img class="d-block m-auto" src="https://i.ytimg.com/vi/6MFccQc1eBE/maxresdefault.jpg"
-                             alt="...">
-                    </div>
-
-                    <div class="carousel-item">
-                        <img class="d-block m-auto" src="https://i.ytimg.com/vi/tZd48sRoxj8/maxresdefault.jpg"
-                             alt="...">
-                    </div>
+                    @endforeach
                 </div>
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#product-images"
@@ -69,8 +61,9 @@
                 <!-- Product information -->
                 <div class="row" id="product-information">
                     <div class="row">
-                        <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">JoJo Eyes of
-                            Heaven PS4 Key</h2>
+                        <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
+                            {{$auction->title}}
+                        </h2>
                         <div
                             class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
                             <button type="button" class="btn hover-scale" data-bs-toggle="modal"
@@ -90,20 +83,7 @@
                         </div>
 
                     </div>
-                    <p class="text-overflow-ellipsis">Eyes of Heaven is designed to be a 3D action brawler with tag-team
-                        elements set in large arenas based on locations in the JoJo's Bizarre Adventure manga. Players
-                        may
-                        pick a single character to control in a large environment, as well as a second character that
-                        may be
-                        controlled by either a CPU or second human player to fight the enemy team for a 2v2 battle.
-                        Certain
-                        match-ups contain special animations and dialogue between two characters, mostly between allies
-                        in
-                        the form of unique combination attacks such as the Dual Combos (デュアルコンボ, Dyuaru Konbo) and Dual
-                        Heat
-                        Attacks (デュアルヒートアタック, Dyuaru Hīto Attaku), though provide no discernible bonuses or advantages
-                        in
-                        battle.</p>
+                    <p class="text-overflow-ellipsis">{{$auction->description}}</p>
                 </div>
 
                 <div class="row">
@@ -112,35 +92,55 @@
                         <h3 class="d-sm-none">Seller</h3>
                         <a href="user_profile.php"
                            class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
-                            <span class="ms-3 ms-sm-0 me-0 me-sm-3">Hirohiko Araki</span>
+                            <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
-                                     src="https://static.jojowiki.com/images/d/d4/latest/20200101165640/HolHorseAv.png"
-                                     alt="Profile Image">
+                                     src="/images/users/{{$auction->seller->id}}_small.png"
+                                     alt="Seller Profile Image">
                             </div>
                         </a>
                     </div>
 
                     <div class="col-sm-8 col-xl-6 order-sm-1">
+                        {{--TODO: THIS--}}
+                        @if ($auction->ended)
+                        {{-- AUCTION ENDED --}}
+                        <h3>Winning Bid</h3>
+                        <div class="row">
+                            <div class="col d-flex flex-column">
+                                @if ($auction->current_bid != null)
+                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                @else
+                                <h4>No bids were made</h4>
+                                @endif
+                            </div>
+                        </div>
+                        @else
+                        {{-- AUCTION IS OPEN --}}
                         <h3>Bids</h3>
                         <div class="row">
                             <div class="col d-flex flex-column">
                                 <span>Current bid</span>
-                                <h4>180.00 &euro;</h4>
+                                @if ($auction->current_bid != null)
+                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                @else
+                                <h4>No bids</h4>
+                                @endif
                             </div>
                             <div class="col d-flex flex-column">
                                 <span>Next bid starts at</span>
-                                <h4>181.00 &euro;</h4>
+                                <h4>{{$helper->formatCurrency($auction->next_bid)}} &phi;</h4>
                             </div>
                         </div>
 
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">&euro;</span>
+                                <span class="input-group-text">&phi;</span>
                             </div>
                             <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min="181">
                             <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -155,13 +155,14 @@
             </span>
             <hr class="my-1">
 
-            @include("partials.auction_detail", ["key" => "Time remaining", "value" => "24 minutes 39 seconds", "subgroup" => true])
-            @include("partials.auction_detail", ["key" => "Duration", "value" => "1 week", "subgroup" => false])
-            @include("partials.auction_detail", ["key" => "Bidders", "value" => "3 different bidders", "subgroup" => true])
-            @include("partials.auction_detail", ["key" => "Total Bids", "value" => "7 bids", "subgroup" => false])
-            @include("partials.auction_detail", ["key" => "Starting Bid", "value" => "75.00 €", "subgroup" => true])
-            @include("partials.auction_detail", ["key" => "Mandatory Bid Increment", "value" => "1.00 €", "subgroup" => false])
-            @include("partials.auction_detail", ["key" => "Average Bid Increment", "value" => "15.00 €", "subgroup" => false])
+            @if (!$auction->ended)
+                @include("partials.auction_detail", ["key" => "Time remaining", "value" => $auction->getTimeRemainingString(), "subgroup" => true])
+            @endif
+            @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->getDurationString(), "subgroup" => false])
+            @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
+            @include("partials.auction_detail", ["key" => "Total Bids", "value" => $auction->n_bids . " bids", "subgroup" => false])
+            @include("partials.auction_detail", ["key" => "Starting Bid", "value" => $helper->formatCurrency($auction->starting_bid) . " φ", "subgroup" => true])
+            @include("partials.auction_detail", ["key" => "Mandatory Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
         </div>
     </section>
 
@@ -191,13 +192,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @include("partials.bid_table_entry", ["name" => "Me", "bid" => 180, "time" => "20 sec."])
+                        @foreach ($auction->bids()->orderBy('date', 'desc')->get() as $bid)
+                            @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $helper->time_elapsed_string($bid->date)])
+                            @if ($loop->iteration > 6)
+                                @break
+                            @endif
+                        @endforeach
 
-                        @for ($i = 0; $i < 6; $i++)
-                            @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => 15 + (10 - $i) * 15, "time" => $i + 1 . " hour"])
-                        @endfor
-
-                        @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => 75, "time" => "1 week"])
+                        @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $helper->time_elapsed_string($auction->start_date)])
                     </tbody>
                 </table>
             </div>
@@ -217,11 +219,11 @@
                         <div class="row">
                             <div class="form-group col-md-12 mt-3">
                                 <label for="inputName" class="sr-only">Auction Name</label>
-                                <input type="text" id="inputName" class="form-control" required>
+                                <input type="text" id="inputName" value="{{$auction->title}}" class="form-control" required>
                             </div>
                             <div class="form-group col-md-12 mt-3">
                                 <label for="inputDescription" class="sr-only">Auction Description</label>
-                                <textarea class="form-control" rows="4" id="inputDescription"></textarea>
+                                <textarea class="form-control" rows="4" id="inputDescription">{{$auction->description}}</textarea>
                             </div>
                             <div class="form-group col-sm-12 mt-3">
                                 <label for="startDate" class="sr-only">Starting on</label>
@@ -242,15 +244,15 @@
                                 <div class="input-group">
                                     <input type="text" id="inputValue" class="form-control" placeholder="0.00"
                                            aria-label="euro amount (with dot and two decimal places)">
-                                    <span class="input-group-text">€</span>
+                                    <span class="input-group-text">&phi;</span>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6 mt-3">
                                 <label for="inputIncr" class="sr-only">Increment</label>
                                 <div class="input-group">
                                     <input type="text" id="inputIncr" class="form-control" placeholder="0.00"
-                                           aria-label="euro amount (with dot and two decimal places)">
-                                    <span class="input-group-text">€</span>
+                                           aria-label="phi amount (with dot and two decimal places)">
+                                    <span class="input-group-text">&phi;</span>
                                 </div>
                             </div>
                             <div class="d-flex flex-row mt-3">
