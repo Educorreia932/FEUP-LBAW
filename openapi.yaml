@@ -222,6 +222,20 @@ paths:
       operationId: R113
       summary: "R113: Delete account"
       description: "Deletes all your personal information and account"
+      responses:
+        "302":
+          description: 'Redirect after processing account deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Account deleted. Redirect to home page."
+                  value: "/"
+                302Failure:
+                  description: "Couldn't delete account. Redirect to settings page."
+                  value: "/user/settings_account"
 
   /user/settings_privacy:
     get:
@@ -542,7 +556,24 @@ paths:
                   status: "Open"
 
   # M03: Users
-  /user/search_results:
+  /users/{username}:
+    get:
+      operationId: R114
+      summary: "R114: User profile"
+      description: "Shows a user profile. Access: PUB"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI10 Public Profile](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
+
+  /users/search_results:
     get:
       operationId: R111
       summary: "R111: Search Users"
