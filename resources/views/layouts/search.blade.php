@@ -1,7 +1,3 @@
-<?php
-$current_page = "search_auctions";
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -13,6 +9,11 @@ $current_page = "search_auctions";
 
             <section class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
+
+                @include("partials.breadccrumbs", [ "pages" => [
+                    ["title" => "Home", "href" => "/"],
+                    ["title" => "Users", "href" => "/user/search_results"]
+                ]])
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
@@ -45,7 +46,7 @@ $current_page = "search_auctions";
                 <section>
                     <p>Results for: <u>Fighters</u> (5)</p>
 
-                    @each("partials.auction_entry", $auctions, "auction")
+                    @yield("results")
                 </section>
             </section>
         </div>

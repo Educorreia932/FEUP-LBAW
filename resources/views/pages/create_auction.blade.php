@@ -9,9 +9,15 @@ $current_page = "create_auction"
 
     <div class="container-fluid">
         <div class="flex-shrink-0">
-            <div class="row m-4">
+            <section class="row m-4">
                 <h1>Create Auction</h1>
-            </div>
+
+                @include("partials.breadccrumbs", [ "pages" => [
+                    ["title" => "Home", "href" => "/"],
+                    ["title" => "Auctions", "href" => "/auction/search_results"],
+                    ["title" => "Create Auction", "href" => "/create_auction"]
+                ]])
+            </section>
 
             <div class="row g-3 align-items-center">
                 <!-- Gallery column -->
