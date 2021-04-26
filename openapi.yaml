@@ -689,7 +689,7 @@ paths:
                       type: integer
                     username:
                       type: string
-                    permissions:
+                    permissions:   # boolean?
                       type: array
                       items:
                         type: boolean 
@@ -716,3 +716,140 @@ paths:
                     - true    
                   reason: "Fraudulent Behaviour"
                   joined: "2021-04-15 17:00:00"
+  
+  /admin/reported_users:
+    get:
+      operationId: R113
+      summary: "R113: View reported users"
+      description: "Displays all reported users. Access: ADM"
+      tags:
+        - "M04: User Administration and Static pages"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    reason:
+                      type: string
+                      format: category
+                    details:
+                      type: string
+                    date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  username: "markhamill"
+                  reason: "Fraudulent Behaviour"   
+                  details: "Improper username"
+                  date: "2021-02-12 17:00:00"
+                - id: 7
+                  username: "johndoe"    
+                  reason: "Fraudulent Behaviour"
+                  details: "Improper profile image"
+                  date: "2021-04-15 18:00:00"
+  
+  /admin/auction_management:
+    get:
+      operationId: R114
+      summary: "R114: Manage reported auctions"
+      description: "Displays all auctions to be managed by an administrator. Access: ADM"
+      tags:
+        - "M04: User Administration and Static pages"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    status:         # boolean?
+                      type: array
+                      items:
+                        type: boolean 
+                    details:
+                      type: string
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  title: "Siksong Steam Key"
+                  status:
+                    - true
+                    - false
+                    - false
+                    - false
+                  details: "Attempt to sell unreleased game"
+                  start_date: "2021-02-12 17:00:00"
+                  end_date: "2021-02-14 17:00:00"
+                - id: 7
+                  title: "Hades Steam Key"    
+                  status:
+                  - false
+                  - true
+                  - false
+                  - false
+                  details: "Using images from other games"
+                  start_date: "2021-02-14 12:00:00"
+                  end_date: "2021-02-15 12:00:00"
+
+  /admin/reported_auctions:
+    get:
+      operationId: R115
+      summary: "R115: View all reported auctions"
+      description: "Displays all auction reports. Access: ADM"
+      tags:
+        - "M04: User Administration and Static pages"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    reason:
+                      type: string
+                      format: category
+                    details:
+                      type: string
+                    date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  title: "Siksong Steam Key"
+                  reason: "Fraudulent Behaviour"
+                  details: "Attempt to sell unreleased game"
+                  date: "2021-02-12 17:00:00"
+                - id: 4
+                  title: "Hades Steam Key"    
+                  reason: "Improper auction pictures"
+                  details: "Using images from other games"
+                  date: "2021-02-15 12:00:00"
