@@ -1,6 +1,4 @@
-<?php
-$current_page = "search_auctions";
-?>
+
 
 @extends('layouts.app')
 
@@ -45,7 +43,7 @@ $current_page = "search_auctions";
                 <section>
                     <p>Results for: <u>Fighters</u> (5)</p>
 
-                    @each("partials.auction_entry", $auctions, "auction")
+                    @yield("results")
                 </section>
             </section>
         </div>

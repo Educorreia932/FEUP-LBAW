@@ -8,12 +8,12 @@ class SearchResultsController extends Controller {
     public function search_auctions() {
         $auctions = Auction::all()->take(20);
 
-        return view('pages.search', [ "auctions" => $auctions ]);
+        return view('pages.search_auctions', [ "auctions" => $auctions ]);
     }
 
     public function search_users() {
         $members = Member::all()->take(20);
 
-        return view('pages.search', [ "members" => $members ]);
+        return view('pages.search_users', [ "members" => $members ]);
     }
 }
