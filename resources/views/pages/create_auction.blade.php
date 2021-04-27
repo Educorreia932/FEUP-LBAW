@@ -1,8 +1,4 @@
-<?php
-$current_page = "create_auction"
-?>
-
-@extends('layouts.app')
+@extends('layouts.app', ['current_page' => 'create_auction'])
 
 @section('content')
     <script src={{ asset("js/upload-images.js") }}></script>

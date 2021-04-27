@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboard', ['sub' => 'followed'])
 
 @section('subpage')
     <div class="container-fluid mb-4">

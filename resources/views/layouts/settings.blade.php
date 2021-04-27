@@ -1,7 +1,3 @@
-<?php
-$current_page = "search_users";
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -13,12 +9,14 @@ $current_page = "search_users";
                     <h4>Settings</h4>
 
                     <ul class="nav flex-column">
-
+                        @include("partials.sidebar_anchor", ['active' => $active == 'account', 'url' => route('settings_account'), 'name' => 'Account'])
+                        @include("partials.sidebar_anchor", ['active' => $active == 'privacy', 'url' => route('settings_privacy'), 'name' => 'Privacy & Notifications'])
+                        @include("partials.sidebar_anchor", ['active' => $active == 'security', 'url' => route('settings_security'), 'name' => 'Security'])
                     </ul>
                 </div>
             </nav>
 
-            <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-4">
                 @yield("subpage")
             </section>
         </div>

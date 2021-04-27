@@ -1,8 +1,4 @@
-<?php
-$current_page = "home";
-?>
-
-@extends('layouts.app')
+@extends('layouts.app', ['current_page' => 'home'])
 
 @section('content')
     <script src={{ asset("js/auction-card.js") }}></script>

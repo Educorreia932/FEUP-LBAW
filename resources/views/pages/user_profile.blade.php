@@ -118,7 +118,7 @@
                     </div>
                     <div class="col text-center">
                         <small>Followers</small>
-                        <h4>{{ $user->followers()->count() }}</h4>
+                        <h4>{{ $user->followedBy()->count() }}</h4>
                     </div>
                 </div>
             </div>

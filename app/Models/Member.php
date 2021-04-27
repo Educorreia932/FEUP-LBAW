@@ -24,17 +24,35 @@ class Member extends Model {
     }
 
     public function bookmarkedAuctions() {
-        return $this->hasMany("App\Models\BookmarkedAuction");
+        return $this->hasManyThrough(
+            Auction::class,
+            BookmarkedAuction::class,
+            'auction_id', // Foreign key on the bookmarks table...
+            'id', // Foreign key on the auction table...
+            'id', // Local key on the member table...
+            'member_id' // Local key on the bookmarks table...
+        );
     }
 
-    public function followers() {
+    public function follows() {
         return $this->hasManyThrough(
             Member::class,
             Follow::class,
-            "followed_id",
-            "id",
-            "id",
-            "follower_id",
+            'follower_id', // Foreign key on the follow table...
+            'id', // Foreign key on the member (to find) table...
+            'id', // Local key on the member (own) table...
+            'followed_id' // Local key on the follow table...
+        );
+    }
+
+    public function followedBy() {
+        return $this->hasManyThrough(
+            Member::class,
+            Follow::class,
+            'followed_id', // Foreign key on the follow table...
+            'id', // Foreign key on the member (to find) table...
+            'id', // Local key on the member (own) table...
+            'follower_id' // Local key on the follow table...
         );
     }
 

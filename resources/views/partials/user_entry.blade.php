@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex justify-content-center">
-        <a href="user_profile.php"><img style="border-radius: 50%;" width="120" height="120" src="https://static.jojowiki.com/images/c/cd/latest/20201002224021/Jotaro6Av.png"
-                                        alt="User image"></a>
+        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{asset('images/users/' . $member->id . '_medium.png')}}
+                                        alt="User profile image"></a>
     </div>
     <div class="col-7 col-sm-9 col-lg-10">
         <div class="d-flex flex-column mb-3 mb-md-0">
             <div class="d-flex flex-column flex-md-row">
-                <a href="user_profile.php" class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <a href={{route('user_profile', ['username' => $member->username])}} class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5">
                     <h4 class="m-0 text-truncate me-2">{{ $member->name }}</h4>
                 </a>
                 <p class="m-0 col">({{ $member->rating }} <i class="bi bi-star"></i>) <span class="text-muted">{{ $member->rating / 5.0}}%</span>

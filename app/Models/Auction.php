@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 use App\Helpers\LbawUtils;
 
@@ -22,6 +23,10 @@ class Auction extends Model {
         'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
+
+    public static function getCategoryNames() {
+        return DB::select('SELECT unnest(enum_range(NULL::auction_category))::text');
+    }
 
     public function getEndedAttribute() {
         return date_create() > $this->ended_date;
@@ -80,7 +85,7 @@ class Auction extends Model {
     }
 
     public function getThumbnailCard() {
-        return '/images/auctions/' . $this->id . '/thumbnail_card.png';
+        return asset('images/auctions/' . $this->id . '/thumbnail_card.png');
     }
 
     public function getTimeRemainingString(): string {
