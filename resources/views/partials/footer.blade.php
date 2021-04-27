@@ -11,10 +11,10 @@
         <div class="navbar navbar-dark col d-flex flex-column align-items-end text-end">
             <ul class="navbar-nav">
                 <li class="navbar-item">
-                    <a class="nav-link" href="faq">FAQ</a>
+                    <a class="nav-link" href={{route('faq')}}>FAQ</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link" href="about">About</a>
+                    <a class="nav-link" href={{route('about')}}>About</a>
                 </li>
             </ul>
         </div>

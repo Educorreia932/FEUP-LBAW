@@ -5,7 +5,7 @@
         <div class="my-4">
             <h2>Created Auctions</h2>
 
-            @include("partials.breadccrumbs", [ "pages" => [
+            @include("partials.breadcrumbs", [ "pages" => [
                 ["title" => "Home", "href" => "/"],
                 ["title" => "Me", "href" => "/users/me"],
                 ["title" => "Dashboard", "href" => "/dashboard"]

@@ -10,7 +10,7 @@
             <section class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
 
-                @include("partials.breadccrumbs", [ "pages" => [
+                @include("partials.breadcrumbs", [ "pages" => [
                     ["title" => "Home", "href" => "/"],
                     ["title" => "Users", "href" => "/user/search_results"]
                 ]])

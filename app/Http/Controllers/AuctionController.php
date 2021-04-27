@@ -9,4 +9,9 @@ class AuctionController extends Controller {
         $auction = Auction::find($id);
         return view('pages.auction', ['auction' => $auction]);
     }
+
+    public function showDetails($id) {
+        $auction = Auction::find($id);
+        return view('pages.auction_details', ['auction' => $auction]);
+    }
 }

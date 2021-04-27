@@ -10,6 +10,15 @@ class Member extends Model {
 
     protected $table = 'member';
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'joined' => 'datetime'
+    ];
+
     public function createdAuctions() {
         return $this->hasMany( "App\Models\Auction", "seller_id");
     }

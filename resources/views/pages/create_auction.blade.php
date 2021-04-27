@@ -12,7 +12,7 @@ $current_page = "create_auction"
             <section class="row m-4">
                 <h1>Create Auction</h1>
 
-                @include("partials.breadccrumbs", [ "pages" => [
+                @include("partials.breadcrumbs", [ "pages" => [
                     ["title" => "Home", "href" => "/"],
                     ["title" => "Auctions", "href" => "/auction/search_results"],
                     ["title" => "Create Auction", "href" => "/create_auction"]

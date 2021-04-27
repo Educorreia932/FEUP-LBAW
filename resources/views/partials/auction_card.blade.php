@@ -1,6 +1,6 @@
 @inject('helper', \App\Helpers\LbawUtils::class)
 
-<a href="auction/{{$auction->id}}" class="card text-decoration-none link-dark text-wrap hover-scale me-sm-3 mb-3 mb-sm-0"
+<a href={{route('auction', ['id' => $auction->id])}} class="card text-decoration-none link-dark text-wrap hover-scale me-sm-3 mb-3 mb-sm-0"
    style="width: 12rem;">
     <img class="card-img-top w-100" style="object-fit: cover; height: 11rem;" src="{{$auction->getThumbnailCard()}}" alt="">
 
