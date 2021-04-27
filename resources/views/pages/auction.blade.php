@@ -22,7 +22,7 @@
 <section class="container-fluid bg-light">
     <div class="row">
         <!-- Product images -->
-        <div id="product-images" class="carousel slide col-md-5 h-min-content" data-bs-ride="carousel">
+        <div id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Thumbnail"></button>

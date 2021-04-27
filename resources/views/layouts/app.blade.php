@@ -4,7 +4,7 @@ if (!isset($current_page))
 ?>
 
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" class="bg-dark" style="height: 100vh">
 
 <head>
     <meta charset="utf-8">
@@ -41,16 +41,14 @@ if (!isset($current_page))
     </script>
 </head>
 
-<body>
+<body style="min-height: 100vh; display: flex; flex-direction:column;">
 
 {{-- Header --}}
-@include("partials.header")
+@include("partials.header", ['current_page' => $current_page])
 
 {{-- Main --}}
-<main>
-    <section id="content">
-        @yield('content')
-    </section>
+<main id="content" class="big-boy">
+    @yield('content')
 </main>
 
 {{-- Footer --}}

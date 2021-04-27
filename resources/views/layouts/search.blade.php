@@ -1,19 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.app', ['current_page' => $current_page])
 
 @section('content')
     <script defer src="{{ asset("js/screen_size_toggle_collapse.js") }}"></script>
 
-    <div class="container-fluid" style="flex: auto;">
-        <div class="row h-100">
-            @include('partials.search_sidebar')
+    <div class="container-fluid big-boy">
+        <div class="row big-boy flex-row">
+
+        <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
+            <div>
+                    <h4>Search for</h4>
+
+                    <ul class="nav flex-column mb-4">
+                        {{-- Sidebar anchor --}}
+                        @include("partials.sidebar_anchor", ['active' => $current_page == 'search_auctions', 'url' => route('search_auctions'), 'name' => 'Auctions'])
+                        @include("partials.sidebar_anchor", ['active' => $current_page == 'search_users', 'url' => route('search_users'), 'name' => 'Users'])
+                    </ul>
+
+                    <h4>Filters</h4>
+
+                    @yield("filters")
+
+                </div>
+            </nav>
 
             <section class="col ms-sm-auto px-md-4">
                 <h1 class="mt-4">Search Results</h1>
 
-                @include("partials.breadcrumbs", [ "pages" => [
-                    ["title" => "Home", "href" => "/"],
-                    ["title" => "Users", "href" => "/user/search_results"]
-                ]])
+                @yield('breadcrumbs')
 
                 <div class="d-flex flex-row py-4">
                     <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
@@ -38,12 +51,13 @@
                         </button>
 
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown">
+                            @yield("sorting")
                         </ul>
                     </div>
                 </div>
 
                 {{-- Search results--}}
-                <section>
+                <section class="my-4">
                     <p>Results for: <u>Fighters</u> (5)</p>
 
                     @yield("results")
