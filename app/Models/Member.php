@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Member extends Model {
+class Member extends Authenticatable {
     use HasFactory;
 
     protected $table = 'member';
@@ -19,8 +19,16 @@ class Member extends Model {
         'joined' => 'datetime'
     ];
 
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
+    protected $hidden = [
+        'password'
+    ];
+
     public function createdAuctions() {
-        return $this->hasMany( "App\Models\Auction", "seller_id");
+        return $this->hasMany("App\Models\Auction", "seller_id");
     }
 
     public function bookmarkedAuctions() {
