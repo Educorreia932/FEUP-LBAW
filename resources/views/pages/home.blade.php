@@ -4,7 +4,7 @@
     <script src={{ asset("js/auction-card.js") }}></script>
 
     <!-- Featured Auctions -->
-    <section class="container-fluid row align-items-center m-0 mb-3" style='background-color: rgb(189, 189, 189);'>
+    <section class="container-fluid row align-items-center m-0" style='background-color: rgb(189, 189, 189);'>
         <!-- Carousel -->
         <div id="slides" class="carousel slide offset-lg-3 col-sm-8 col-md-6" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -52,7 +52,7 @@
     </section>
 
     <!-- Search bar -->
-    <section class="container input-group w-100 w-sm-75 w-xl-50 w-xxl-25">
+    <section class="container input-group my-4 w-100 w-sm-75 w-xl-50 w-xxl-25">
         <input type="search" class="form-control" placeholder="Search" aria-label="Search"
                aria-describedby="search-addon"/>
         <button class="input-group-text border-0" id="search-addon">
@@ -60,7 +60,7 @@
         </button>
     </section>
 
-    <div class="py-sm-3 bg-light container">
+    <div class="py-sm-3 my-4 container">
         <div class="row">
             {{-- Recent bids --}}
             <section class="col-xl-6 mt-sm-4">

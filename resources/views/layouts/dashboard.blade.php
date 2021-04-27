@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid" style="flex: auto;">
-        <div class="row h-100">
+    <div class="container-fluid big-boy">
+        <div class="row big-boy flex-row">
             {{-- Sidebar menu --}}
             <nav id="sidebar-menu" class="col-md-3 col-lg-2 bg-light sidebar">
                 <div class="position-sticky pt-3">

@@ -3,8 +3,8 @@
 @section('content')
     <script defer src="{{ asset("js/screen_size_toggle_collapse.js") }}"></script>
 
-    <div class="container-fluid" style="flex: auto;">
-        <div class="row h-100">
+    <div class="container-fluid big-boy">
+        <div class="row big-boy flex-row">
 
         <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
             <div>

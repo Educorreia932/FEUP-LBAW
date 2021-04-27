@@ -25,7 +25,6 @@
         crossorigin="anonymous"></script>
 <script defer src={{ asset("js/search_results_user.js") }}></script>
 <script defer src={{ asset("js/bookmark.js") }}></script>
-<script defer src={{ asset("js/master_checkboxes.js") }}></script>
 
      <!-- Options -->
      <div>
