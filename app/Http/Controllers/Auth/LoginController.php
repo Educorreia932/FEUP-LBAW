@@ -21,8 +21,6 @@ class LoginController extends Controller {
 
     /**
      * Where to redirect users after login.
-     *
-     * @var string
      */
     protected string $redirectTo = '/';
 
@@ -35,7 +33,11 @@ class LoginController extends Controller {
         $this->middleware('guest')->except('logout');
     }
 
-    public function getUser() {
+    public function getUser($request) {
         return $request->user();
+    }
+
+    public function home() {
+        return redirect('login');
     }
 }

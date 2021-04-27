@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\View;
 // Home
 Route::get('/', 'HomeController@show')->name("home");
 
-// Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
-
 // API
 Route::put('api/cards', 'CardController@create');
 Route::delete('api/cards/{card_id}', 'CardController@delete');
@@ -18,11 +14,11 @@ Route::post('api/item/{id}', 'ItemController@update');
 Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
+Route::post('login', 'Auth\LoginController@login')->name("login");
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register_form');
+Route::post('register', 'Auth\RegisterController@register')->name("register");
 
 // Search Results
 Route::get('auction/search_results', 'SearchResultsController@search_auctions')->name('search_auctions');
