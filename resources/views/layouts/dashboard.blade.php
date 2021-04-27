@@ -1,7 +1,3 @@
-<?php
-$current_page = "search_users";
-?>
-
 @extends('layouts.app')
 
 @section('content')
@@ -12,7 +8,12 @@ $current_page = "search_users";
                 <div class="position-sticky pt-3">
                     <h4>Dashboard</h4>
 
-                    @include("partials.dashboard_sidebar")
+                    <ul class="nav flex-column">
+                        @include("partials.sidebar_anchor", [ "active" => $sub == "created", "name" => "Created Auctions", "url" => route("dashboard_created_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => $sub == "bidded", "name" => "Bidded Auctions", "url" => route("dashboard_bidded_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => $sub == "bookmarked", "name" => "Bookmarked Auctions", "url" => route("dashboard_bookmarked_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => $sub == "followed", "name" => "Followed", "url" => route("dashboard_followed")])
+                    </ul>
                 </div>
             </nav>
 

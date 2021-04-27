@@ -1,4 +1,4 @@
-@extends('layouts.settings')
+@extends('layouts.settings', ['active' => 'privacy'])
 
 @section('subpage')
     <script defer src="../js/master_checkboxes.js"></script>

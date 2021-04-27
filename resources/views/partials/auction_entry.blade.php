@@ -1,4 +1,6 @@
-<div class="row auction-entry py-3 pe-md-2 hover-highlight rounded-3">
+@inject('helper', \App\Helpers\LbawUtils::class)
+
+<div class="row auction-entry py-2 pe-md-2 hover-highlight rounded-3">
     <!-- Product image -->
     <a href={{route('auction', ['id' => $auction->id])}} class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
         <img class="img-thumbnail" src={{asset('images/auctions/' . $auction->id . '/thumbnail_card.png')}}>
@@ -27,6 +29,16 @@
         <div class="row mt-3">
             <div class="col-sm d-flex flex-column justify-content-end">
                 <div class="row">
+                    @if ($auction->ended)
+                    <div class="col">
+                        @if ($auction->latest_bid != null)
+                        <span>Winning bid</span>
+                        <h4 class="mb-0">{{ $helper->formatCurrency($auction->latest->value) }} &phi;</h4>
+                        @else
+                        <h4 class="mb-0">No bids were made</h4>
+                        @endif
+                    </div>
+                    @else
                     <div class="col">
                         @if ($auction->latest_bid != null)
                         <span>Current bid</span>
@@ -35,6 +47,7 @@
                         <h4 class="mb-0">No bids yet</h4>
                         @endif
                     </div>
+                    @endif
                 </div>
             </div>
 

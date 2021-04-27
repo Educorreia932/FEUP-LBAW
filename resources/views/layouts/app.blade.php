@@ -44,7 +44,7 @@ if (!isset($current_page))
 <body>
 
 {{-- Header --}}
-@include("partials.header")
+@include("partials.header", ['current_page' => $current_page])
 
 {{-- Main --}}
 <main>

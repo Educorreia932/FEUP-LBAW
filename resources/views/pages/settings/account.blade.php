@@ -1,4 +1,4 @@
-@extends('layouts.settings')
+@extends('layouts.settings', ['active' => 'account'])
 
 @section('subpage')
     <div class="container-fluid">
