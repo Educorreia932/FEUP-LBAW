@@ -40,12 +40,13 @@ class RegisterController extends Controller {
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
         return Validator::make($data, [
             'username' => 'required|string|max:255',
+            "name" => "required|string",
             'email' => 'required|string|email|max:255|unique:member',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -59,9 +60,12 @@ class RegisterController extends Controller {
      */
     protected function create(array $data) {
         return Member::create([
+            "username" => $data["username"],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            "credit" => 0, // TODO: Change after adding default value to database
+            "id" => 42069  // TODO: Change after fixing serial key in database
         ]);
     }
 }

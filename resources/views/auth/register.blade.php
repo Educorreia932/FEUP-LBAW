@@ -6,23 +6,23 @@
             {{ csrf_field() }}
 
             <h1 class="mb-3">Sign Up</h1>
-            <label for="inputUsername" class="sr-only float-start">Username*</label>
-            <input type="text" id="inputUsername" class="form-control" name="username" required autofocus="">
+            <label for="username" class="sr-only float-start">Username*</label>
+            <input type="text" id="username" class="form-control" name="username" required autofocus="">
 
-            <label for="inputName" class="sr-only float-start">Name*</label>
-            <input type="text" id="inputName" class="form-control" name="name" required autofocus="">
+            <label for="name" class="sr-only float-start">Name*</label>
+            <input type="text" id="name" class="form-control" name="name" required autofocus="">
 
-            <label for="inputEmail" class="sr-only float-start">Email*</label>
-            <input type="email" id="inputEmail" class="form-control" name="email" required autofocus="">
+            <label for="email" class="sr-only float-start">Email*</label>
+            <input type="email" id="email" class="form-control" name="email" required autofocus="">
 
-            <label for="inputPhone" class="sr-only float-start">Phone Number</label>
-            <input class="form-control" id="inputPhone" type="phone" name="phone">
+            <label for="phone" class="sr-only float-start">Phone Number</label>
+            <input class="form-control" id="phone" name="phone" type="phone">
 
-            <label for="inputPassword"  class="sr-only float-start">Password*</label>
-            <input type="password" id="inputPassword" class="form-control" name="password" required>
+            <label for="password" class="sr-only float-start">Password*</label>
+            <input type="password" id="password" class="form-control" name="password" required>
 
-            <label for="confirmation" class="sr-only float-start">Comfirm Password*</label>
-            <input type="password" id="confirmation" class="form-control" required>
+            <label for="password-confirm" class="sr-only float-start">Comfirm Password*</label>
+            <input type="password" id="password-confirm" class="form-control" required>
 
             <div class="d-flex flex-row align-items-baseline text-start mt-2">
                 <input type="checkbox" id="termsCheckbox" class="me-2" required>
