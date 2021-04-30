@@ -25,3 +25,4 @@ bootstrap/cache/
 /public/images/auctions/*
 
 __pycache__/
+.vscode/

@@ -63,7 +63,7 @@ CREATE TABLE auction (
     description                     TEXT NOT NULL,
     starting_bid                    INTEGER NOT NULL CONSTRAINT starting_bid_ck CHECK (starting_bid > 0),
     increment_fixed                 INTEGER CONSTRAINT increment_fixed_ck CHECK (increment_fixed IS NULL OR increment_fixed > 0),
-    increment_percent               REAL CONSTRAINT increment_percent_ck CHECK (increment_percent IS NULL OR (increment_percent > 0 AND increment_percent <= 0.5)),
+    increment_percent               INTEGER CONSTRAINT increment_percent_ck CHECK (increment_percent IS NULL OR (increment_percent > 0 AND increment_percent <= 50)),
     start_date                      TIMESTAMP WITH TIME ZONE NOT NULL,
     end_date                        TIMESTAMP WITH TIME ZONE NOT NULL,
     status                          auction_status NOT NULL,
