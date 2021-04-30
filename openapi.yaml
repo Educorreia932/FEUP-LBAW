@@ -4,7 +4,7 @@ info:
   version: "1.0"
   title: "Trade-a-Bid"
   description: "Web Resources Specification (A7) for Trade-a-Bid"
-  
+
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
@@ -15,13 +15,13 @@ servers:
 externalDocs:
   description: "Find more info here."
   url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/eap
-  
+
 tags:
   - name: "M01: Authentication and Individual Profile"
   - name: "M02: Auctions"
   - name: "M03: Users"
   - name: "M04: User Administration and Static pages"
-  
+
 paths:
   # M01: Authentication and Individual Profile
   /login:
@@ -38,7 +38,7 @@ paths:
       operationId: R102
       summary: "R102: Login Action"
       description: "Processes the login form submission. Access: PUB"
-      tags: 
+      tags:
         - "M01: Authentication and Individual Profile"
       requestBody:
         required: true
@@ -47,10 +47,10 @@ paths:
             schema:
               type: object
               properties:
-                email:          
+                email:
                   type: string
                   format: email
-                password:    
+                password:
                   type: string
                   format: password
               required:
@@ -70,7 +70,7 @@ paths:
                 302Error:
                   description: "Failed to authenticate. Returning to login form"
                   value: "/login"
-  
+
   /logout:
     post:
       operationId: R103
@@ -89,7 +89,7 @@ paths:
                 302Success:
                   description: "Sign-out successful. Redirecting to home page"
                   value: "/"
-  
+
   /register:
     get:
       operationId: R104
@@ -100,14 +100,14 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI05 Sign-up](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui05-sign-up)"
-    
+
     post:
       operationId: R105
       summary: "R105: Register new user"
       description: "Processes the form information to register new user. Access: PUB"
       tags:
         - "M01: Authentication and Individual Profile"
-      
+
       requestBody:
         required: true
         content:
@@ -156,9 +156,9 @@ paths:
                 302Error:
                   description: "Failed registration. Redirecting back to register form"
                   value: "/register"
-      
+
   /users/me:
-    get: 
+    get:
       operationId: R106
       summary: "R106: View your profile"
       description: "Show user profile Access: USR"
@@ -167,7 +167,7 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
-  
+
   /user/settings_account:
     get:
       operationId: R107
@@ -184,7 +184,7 @@ paths:
       summary: "R108: Edit user profile"
       description: "Processes the form information to update user information. Acess: USR"
       tags:
-       - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and Individual Profile"
       requestBody:
         required: true
         content:
@@ -192,11 +192,11 @@ paths:
             schema:
               type: object
               properties:
-                name: 
+                name:
                   type: string
-                username: 
+                username:
                   type: string
-                email: 
+                email:
                   type: string
                   format: email
                 image:
@@ -216,7 +216,7 @@ paths:
                 302Failure:
                   description: "Couldn't save settings. Redirect to settings page."
                   value: "/user/settings_account"
-                  
+
   /user/settings_account/delete:
     post:
       operationId: R113
@@ -253,7 +253,7 @@ paths:
       summary: "R110: Edit privacy settings"
       description: "Processes the form information to update user information. Acess: USR"
       tags:
-       - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and Individual Profile"
       requestBody:
         required: true
         content:
@@ -261,11 +261,11 @@ paths:
             schema:
               type: object
               properties:
-                switch-nsf: 
+                switch-nsf:
                   type: boolean
-                switch-use-data: 
+                switch-use-data:
                   type: boolean
-                email: 
+                email:
                   type: string
                 switch-notifications:
                   type: boolean
@@ -300,13 +300,13 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
-                  
+
     post:
       operationId: R112
       summary: "R112: Edit security settings"
       description: "Processes the form information to update user's password. Acess: USR"
       tags:
-       - "M01: Authentication and Individual Profile"
+        - "M01: Authentication and Individual Profile"
       requestBody:
         required: true
         content:
@@ -314,7 +314,7 @@ paths:
             schema:
               type: object
               properties:
-                pwd: 
+                pwd:
                   type: string
                   format: password
                 pwd-new:
@@ -322,7 +322,7 @@ paths:
                   format: password
                 pwd-confirmed:
                   type: string
-                  format: passowrd         
+                  format: passowrd
       responses:
         "302":
           description: 'Redirect after processing security changes.'
@@ -342,8 +342,8 @@ paths:
 
   /auction/create_auction:
     get:
-      operationId: R107
-      summary: "R107: Create auction form"
+      operationId: R201
+      summary: "R201: Create auction form"
       description: "Provide a new auction registration form. Access: USR"
       tags:
         - "M02: Auctions"
@@ -352,12 +352,12 @@ paths:
           description: "Ok. Show [UI08 Create Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui08-create-auction)"
 
     post:
-      operationId: R108
-      summary: "R108: Create an auction"
+      operationId: R202
+      summary: "R202: Create an auction"
       description: "Processes the form information to create an auction. Access: USR"
       tags:
         - "M02: Auctions"
-      
+
       requestBody:
         required: true
         content:
@@ -409,7 +409,7 @@ paths:
                 - category
                 - nsfw
                 - images
-          
+
       responses:
         "302":
           description: 'Redirect after processing the new auction information.'
@@ -424,11 +424,11 @@ paths:
                 302Failure:
                   description: "Auction couldn't be created. Redirect to create auction form."
                   value: "/auctions/create_auction"
-  
+
   /auction/{id}:
     get:
-      operationId: R109
-      summary: "R109: View an auction"
+      operationId: R203
+      summary: "R203: View an auction"
       description: "Show auction page. Access: PUB"
       tags:
         - "M02: Auctions"
@@ -441,11 +441,11 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
-  
+
   /auction/search_results:
     get:
-      operationId: R110
-      summary: "R110: Search Auctions"
+      operationId: R204
+      summary: "R204: Search Auctions"
       description: "Searches for auctions and returns the search results as JSON. Access: PUB"
       tags:
         - "M02: Auctions"
@@ -558,8 +558,8 @@ paths:
   # M03: Users
   /users/{username}:
     get:
-      operationId: R114
-      summary: "R114: User profile"
+      operationId: R301
+      summary: "R301: User profile"
       description: "Shows a user profile. Access: PUB"
       tags:
         - "M03: Users"
@@ -575,8 +575,8 @@ paths:
 
   /users/search_results:
     get:
-      operationId: R111
-      summary: "R111: Search Users"
+      operationId: R302
+      summary: "R302: Search Users"
       description: "Searches for users and returns the search results as JSON. Access: PUB"
       tags:
         - "M03: Users"
@@ -670,8 +670,8 @@ paths:
   # M04  User Administration and Static pages
   /admin/user_management:
     get:
-      operationId: R112
-      summary: "R112: Manage banned users"
+      operationId: R401
+      summary: "R303: Manage banned users"
       description: "Displays banned users to be managed by an administrator. Access: ADM"
       tags:
         - "M04: User Administration and Static pages"
@@ -692,7 +692,7 @@ paths:
                     permissions:   # boolean?
                       type: array
                       items:
-                        type: boolean 
+                        type: boolean
                     reason:
                       type: string
                       format: category
@@ -705,7 +705,7 @@ paths:
                   permissions:
                     - true
                     - false
-                    - false    
+                    - false
                   reason: "Fraudulent Behaviour"
                   joined: "2021-04-15 16:00:00"
                 - id: 7
@@ -713,14 +713,14 @@ paths:
                   permissions:
                     - false
                     - false
-                    - true    
+                    - true
                   reason: "Fraudulent Behaviour"
                   joined: "2021-04-15 17:00:00"
-  
+
   /admin/reported_users:
     get:
-      operationId: R113
-      summary: "R113: View reported users"
+      operationId: R402
+      summary: "R402: View reported users"
       description: "Displays all reported users. Access: ADM"
       tags:
         - "M04: User Administration and Static pages"
@@ -749,19 +749,19 @@ paths:
               example:
                 - id: 5
                   username: "markhamill"
-                  reason: "Fraudulent Behaviour"   
+                  reason: "Fraudulent Behaviour"
                   details: "Improper username"
                   date: "2021-02-12 17:00:00"
                 - id: 7
-                  username: "johndoe"    
+                  username: "johndoe"
                   reason: "Fraudulent Behaviour"
                   details: "Improper profile image"
                   date: "2021-04-15 18:00:00"
-  
+
   /admin/auction_management:
     get:
-      operationId: R114
-      summary: "R114: Manage reported auctions"
+      operationId: R403
+      summary: "R403: Manage reported auctions"
       description: "Displays all auctions to be managed by an administrator. Access: ADM"
       tags:
         - "M04: User Administration and Static pages"
@@ -782,7 +782,7 @@ paths:
                     status:         # boolean?
                       type: array
                       items:
-                        type: boolean 
+                        type: boolean
                     details:
                       type: string
                     start_date:
@@ -803,20 +803,20 @@ paths:
                   start_date: "2021-02-12 17:00:00"
                   end_date: "2021-02-14 17:00:00"
                 - id: 7
-                  title: "Hades Steam Key"    
+                  title: "Hades Steam Key"
                   status:
-                  - false
-                  - true
-                  - false
-                  - false
+                    - false
+                    - true
+                    - false
+                    - false
                   details: "Using images from other games"
                   start_date: "2021-02-14 12:00:00"
                   end_date: "2021-02-15 12:00:00"
 
   /admin/reported_auctions:
     get:
-      operationId: R115
-      summary: "R115: View all reported auctions"
+      operationId: R404
+      summary: "R404: View all reported auctions"
       description: "Displays all auction reports. Access: ADM"
       tags:
         - "M04: User Administration and Static pages"
@@ -849,7 +849,7 @@ paths:
                   details: "Attempt to sell unreleased game"
                   date: "2021-02-12 17:00:00"
                 - id: 4
-                  title: "Hades Steam Key"    
+                  title: "Hades Steam Key"
                   reason: "Improper auction pictures"
                   details: "Using images from other games"
                   date: "2021-02-15 12:00:00"
