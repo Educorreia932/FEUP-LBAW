@@ -20,7 +20,7 @@ class LoginController extends Controller {
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Where to redirect users after lo gin.
      */
     protected string $redirectTo = '/';
 
@@ -30,6 +30,8 @@ class LoginController extends Controller {
      * @return void
      */
     public function __construct() {
+        parent::__construct();
+
         $this->middleware('guest')->except('logout');
     }
 
