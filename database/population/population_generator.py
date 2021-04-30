@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import typing
 import os, re, os.path
 import json
 import random
@@ -9,7 +10,6 @@ import math
 import bcrypt
 import requests
 
-from image_processing import ImageProcessor
 from decorators import timer
 
 # Constants
@@ -19,9 +19,11 @@ steamAppsFilename = root + 'app_details.json'
 lusiadasFilename = root + 'lusiadas.txt'
 populateFilename = root + 'population.sql'
 
+populationUserInfoFilename = root + 'population_users.json'
+populationAuctionInfoFilename = root + 'population_auctions.json'
+
 # Config
-saveFigs = True
-uniqueSalts = True
+uniqueSalts = False
 
 # ----------------- DATES ------------------------
 
@@ -123,15 +125,15 @@ class Gen:
 
     @timer
     def gen(self):
-        for root, dirs, files in os.walk(ImageProcessor.userRoot):
-            for file in files:
-                os.remove(os.path.join(root, file))
+        # for root, _, files in os.walk(ImageProcessor.userRoot):
+        #     for file in files:
+        #         os.remove(os.path.join(root, file))
 
-        for root, dirs, files in os.walk(ImageProcessor.auctionRoot):
-            for file in files:
-                os.remove(os.path.join(root, file))
+        # for root, dirs, files in os.walk(ImageProcessor.auctionRoot):
+        #     for file in files:
+        #         os.remove(os.path.join(root, file))
 
-        print("Cleaned old images")
+        # print("Cleaned old images")
 
         self.writeTag("USERS")
         n = self.userGen()
@@ -186,6 +188,12 @@ class Gen:
         if self.verbose:
             print(f"Generated {n} admins")
 
+        usersFile = open(populationUserInfoFilename, "w")
+        auctionsFile = open(populationAuctionInfoFilename, "w")
+
+        json.dump(self.users, usersFile, separators=(',', ': '), indent='\t')
+        json.dump(self.auctions, auctionsFile, separators=(',', ': '), indent='\t')
+        
 
 
     def genAdmins(self):
@@ -200,7 +208,7 @@ class Gen:
         statement = f"""INSERT INTO admin (username, password) VALUES ('iargo', '{passwordHash_1}');\n""" + \
             f"""INSERT INTO admin (username, password) VALUES ('toilmo', '{passwordHash_2}');\n""" + \
             f"""INSERT INTO admin (username, password) VALUES ('oivo', '{passwordHash_3}');\n""" + \
-            f"""INSERT INTO admin (username, password) VALUES ('skooma', '{passwordHash_4}');\n"""
+            f"""INSERT INTO admin (username, password) VALUES ('skelo', '{passwordHash_4}');\n"""
 
         self.outFile.write(statement)
         self.outFile.write('\n')
@@ -396,7 +404,7 @@ class Gen:
                 else:
                     # Percent increment
                     percent_increment = max(0.01, random.random() * 0.5)
-                    percent_increment_str = "{:.2f}".format(percent_increment)
+                    percent_increment_str = str(math.floor(percent_increment))
 
                 user = self.users[random.randrange(0, len(self.users))]
                 start_date = random_limit_date(user['join_date'])
@@ -428,19 +436,22 @@ class Gen:
 
                 self.outFile.write(statement)
 
-                self.auctions[auction_id] = {'id': auction_id, 'bid': starting_bid, 'price': price, 'fixed_increment': fixed_increment, 'percent_increment': percent_increment, 'start': start_date, 'end': end_date, 'seller': user['id']}
-
-                if saveFigs:
-                    if not ImageProcessor.auction_images(item['header_image'], auction_id, 'thumbnail'):
-                        print(f'[!] Auction {auction_id} is missing a thumbnail')
-
                 rand_n_images = min(len(item['screenshots']), random.randint(0, 5))
-                for img in random.sample(item['screenshots'], rand_n_images):
-                    # Save images to disk
-                    if saveFigs:
-                        if not ImageProcessor.auction_images(img['path_full'], auction_id, image_id):
-                            continue
+                auction_imgs = [random.sample(item['screenshots'], rand_n_images)]
+                self.auctions[auction_id] = {
+                    'id': auction_id,
+                    'bid': starting_bid,
+                    'price': price,
+                    'fixed_increment': fixed_increment,
+                    'percent_increment': percent_increment,
+                    'start': start_date,
+                    'end': end_date,
+                    'seller': user['id'],
+                    'thumbnail_url': item['header_image'],
+                    'images_url': auction_imgs
+                }
 
+                for _ in auction_imgs:
                     statement = f"""INSERT INTO auction_image (id, auction_id) VALUES ({image_id}, {auction_id});\n"""
                     self.outFile.write(statement)
                     image_id += 1
@@ -489,10 +500,6 @@ class Gen:
 
             joined_date = random_user_date()
 
-            # Save images to disk
-            if saveFigs:
-                ImageProcessor.profile_images(character['src'], user_id)
-
             data_consent = "TRUE" if random.random() > 0.2 else "FALSE"
 
             insertStatement = f"""INSERT INTO member (id, username, email, password, name, bio, joined, credit, data_consent)\n\t""" + \
@@ -500,7 +507,13 @@ class Gen:
 
             self.outFile.write(insertStatement)
 
-            self.users[user_id] = {'id': user_id, 'username': username, 'password': password, 'join_date': joined_date}
+            self.users[user_id] = {
+                'id': user_id, 
+                'username': username,
+                'password': password, 
+                'join_date': joined_date,
+                'img_url': character['src']
+            }
 
             user_id += 1
 
