@@ -3,7 +3,7 @@
 <div class="row auction-entry py-2 pe-md-2 hover-highlight rounded-3">
     <!-- Product image -->
     <a href={{route('auction', ['id' => $auction->id])}} class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
-        <img class="img-thumbnail" src={{asset('images/auctions/' . $auction->id . '/thumbnail_card.png')}}>
+        <img class="img-thumbnail" src={{ $auction->getThumbnail('card') }}>
     </a>
 
     <div class="col-md d-flex flex-column justify-content-between">

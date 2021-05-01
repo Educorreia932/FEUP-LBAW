@@ -84,8 +84,14 @@ class Auction extends Model {
         return $this->hasOne(Member::class, "id", "seller_id");
     }
 
-    public function getThumbnailCard() {
-        return asset('images/auctions/' . $this->id . '/thumbnail_card.png');
+    public function getThumbnail($type='card') {
+        return asset('images/auctions/' . $this->id . '/thumbnail_' . $type . '.jpg');
+    }
+
+    public function genImages($type='card') {
+        foreach ($this->images as $img) {
+            yield asset('images/auctions/' . $this->id . '/' . $img->id . '_' . $type . '.jpg');
+        }
     }
 
     public function getTimeRemainingString(): string {

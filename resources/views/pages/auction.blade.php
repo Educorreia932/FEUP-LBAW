@@ -26,7 +26,7 @@
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Thumbnail"></button>
-                @foreach ($auction->images as $img)
+                @foreach ($auction->genImages('medium') as $img)
                 <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{$loop->iteration}}"
                         aria-label="Image {{$loop->iteration}}"></button>
                 @endforeach
@@ -35,14 +35,14 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block m-auto"
-                            src="/images/auctions/{{$auction->id}}/thumbnail_medium.png"
+                            src={{ $auction->getThumbnail('medium') }}
                             alt="...">
                 </div>
 
-                @foreach ($auction->images as $img)
+                @foreach ($auction->genImages('medium') as $img)
                 <div class="carousel-item">
                     <img class="d-block m-auto"
-                            src="/images/auctions/{{$auction->id}}/{{$img->id}}_medium.png"
+                            src={{$img}}
                             alt="...">
                 </div>
                 @endforeach
@@ -100,7 +100,7 @@
                         <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
                         <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                             <img style="border-radius:50%;" width="40" height="40"
-                                    src="/images/users/{{$auction->seller->id}}_small.png"
+                                    src={{ $auction->seller->getImage('small') }}
                                     alt="Seller Profile Image">
                         </div>
                     </a>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex justify-content-center">
-        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{asset('images/users/' . $member->id . '_medium.png')}}
+        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{ $member->getImage('medium') }}
                                         alt="User profile image"></a>
     </div>
     <div class="col-7 col-sm-9 col-lg-10">

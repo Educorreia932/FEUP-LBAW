@@ -70,4 +70,8 @@ class Member extends Authenticatable {
     public function notifications() {
 
     }
+
+    public function getImage($type='small') {
+        return asset('images/users/' . $this->id . '_' . $type . '.jpg');
+    }
 }
