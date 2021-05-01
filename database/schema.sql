@@ -44,6 +44,7 @@ CREATE TABLE member (
     remember_token                      TEXT,
     name                                TEXT,
     bio                                 TEXT,
+    phone_number                        TEXT,
     joined                              TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     credit                              INTEGER NOT NULL DEFAULT 0 CONSTRAINT credit_ck CHECK (credit >= 0),
     rating                              INTEGER DEFAULT 0 NOT NULL,
