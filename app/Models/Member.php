@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Member extends Model {
-    use HasFactory;
+class Member extends Authenticatable {
+    use Notifiable;
 
     protected $table = 'member';
+
+    // Don't add create and update timestamps in database.
+    public $timestamps  = false;
 
     /**
      * The attributes that should be cast to native types.
@@ -19,18 +22,26 @@ class Member extends Model {
         'joined' => 'datetime'
     ];
 
+    protected $fillable = [
+        "username", 'name', 'email', 'password', "credit", "id" // TODO: Change after adding default value to database
+    ];
+
+    protected $hidden = [
+        'password', "remember_token"
+    ];
+
     public function createdAuctions() {
-        return $this->hasMany( "App\Models\Auction", "seller_id");
+        return $this->hasMany("App\Models\Auction", "seller_id");
     }
 
     public function bookmarkedAuctions() {
         return $this->hasManyThrough(
             Auction::class,
             BookmarkedAuction::class,
-            'auction_id', // Foreign key on the bookmarks table...
-            'id', // Foreign key on the auction table...
-            'id', // Local key on the member table...
-            'member_id' // Local key on the bookmarks table...
+            'auction_id',      // Foreign key on the bookmarks table...
+            'id',            // Foreign key on the auction table...
+            'id',             // Local key on the member table...
+            'member_id'  // Local key on the bookmarks table...
         );
     }
 
@@ -38,10 +49,10 @@ class Member extends Model {
         return $this->hasManyThrough(
             Member::class,
             Follow::class,
-            'follower_id', // Foreign key on the follow table...
-            'id', // Foreign key on the member (to find) table...
-            'id', // Local key on the member (own) table...
-            'followed_id' // Local key on the follow table...
+            'follower_id',      // Foreign key on the follow table...
+            'id',             // Foreign key on the member (to find) table...
+            'id',               // Local key on the member (own) table...
+            'followed_id'  // Local key on the follow table...
         );
     }
 

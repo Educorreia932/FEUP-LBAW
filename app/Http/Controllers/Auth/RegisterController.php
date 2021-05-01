@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -26,7 +26,7 @@ class RegisterController extends Controller {
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected string $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -34,19 +34,22 @@ class RegisterController extends Controller {
      * @return void
      */
     public function __construct() {
+        parent::__construct();
+
         $this->middleware('guest');
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data) {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255',
+            "name" => "required|string",
+            'email' => 'required|string|email|max:255|unique:member',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -54,11 +57,12 @@ class RegisterController extends Controller {
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\Models\User
+     * @param array $data
+     * @return mixed
      */
     protected function create(array $data) {
-        return User::create([
+        return Member::create([
+            "username" => $data["username"],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
