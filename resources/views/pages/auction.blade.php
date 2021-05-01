@@ -68,16 +68,19 @@
                 <section class="row" id="product-information">
                     <div class="row">
                         <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
-                            {{$auction->title}}
+                            {{ $auction->title }}
                         </h2>
 
                         <div
                             class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
+
+                            @if($user != $auction->seller)
                             <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                     data-bs-target="#report-modal">
                                 <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
                                 <span>Report auction</span>
                             </button>
+                            @endif
 
                             <button type="button" class="btn hover-scale auction-bookmark">
                                 <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
@@ -101,13 +104,14 @@
                     <section
                         class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
                         <h3 class="d-sm-none">Seller</h3>
+
                         <a href="{{ route('user_profile', ['username' => $auction->seller->username]) }}"
                            class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse
-                           justify-content-end flex-sm-row justify-content-sm-start">
+                               justify-content-end flex-sm-row justify-content-sm-start">
                             <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
-                                     src="/images/users/{{$auction->seller->id}}_small.png"
+                                     src="/images/users/{{ $auction->seller->id }}_small.png"
                                      alt="Seller Profile Image">
                             </div>
                         </a>
@@ -142,7 +146,7 @@
                                 </div>
                                 <div class="col d-flex flex-column">
                                     <span>Next bid starts at</span>
-                                    <h4>{{$helper->formatCurrency($auction->next_bid)}} &phi;</h4>
+                                    <h4>{{ $helper->formatCurrency($auction->next_bid) }} &phi;</h4>
                                 </div>
                             </div>
 
@@ -164,9 +168,9 @@
     {{-- Auction details --}}
     <section class="container-fluid p-4">
         <div class="row">
-        <span class="d-flex align-items-end">
-            <h3 class="m-0 p-0">Auction Details</h3>
-        </span>
+            <span class="d-flex align-items-end">
+                <h3 class="m-0 p-0">Auction Details</h3>
+            </span>
             <hr class="my-1">
 
             @if (!$auction->ended)
@@ -183,10 +187,10 @@
     {{-- Bid history --}}
     <section class="container-fluid p-4">
         <div class="row d-flex flex-row">
-        <span class="d-flex align-items-end">
-            <h3 class="m-0 p-0">Bid History</h3>
-            <a class="ms-2" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>See more</a>
-        </span>
+            <span class="d-flex align-items-end">
+                <h3 class="m-0 p-0">Bid History</h3>
+                <a class="ms-2" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>See more</a>
+            </span>
 
             <hr class="my-1">
 
@@ -302,8 +306,8 @@
     </div>
 
     {{-- Report modal --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <section class="modal fade" tabindex="-1" role="dialog" id="report-modal">
+        <form class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Report auction</h5>
@@ -315,7 +319,7 @@
                         <select class="form-select" id="">
                             <option selected>Choose...</option>
                             <option value="1">Fraudaulent auction</option>
-                            <option value="2">Improper product picutres</option>
+                            <option value="2">Improper product pictures</option>
                             <option value="3">Improper auction title</option>
                             <option value="4">Other</option>
                         </select>
@@ -332,7 +336,7 @@
                     <button type="button" class="btn btn-danger">Report</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </section>
 @endsection
 
