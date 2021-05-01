@@ -23,7 +23,7 @@ populationUserInfoFilename = root + 'population_users.json'
 populationAuctionInfoFilename = root + 'population_auctions.json'
 
 # Config
-uniqueSalts = False
+uniqueSalts = True
 
 # ----------------- DATES ------------------------
 
@@ -193,7 +193,7 @@ class Gen:
 
         json.dump(self.users, usersFile, separators=(',', ': '), indent='\t')
         json.dump(self.auctions, auctionsFile, separators=(',', ': '), indent='\t')
-        
+
 
 
     def genAdmins(self):
@@ -223,8 +223,8 @@ class Gen:
         messageThreads = 1
         messages = 0
 
-        for u1 in range(0, len(self.users) - 4):
-            threads = random.sample(range(u1 + 1, len(self.users)), random.randint(0, 2))
+        for u1 in range(1, len(self.users) - 3):
+            threads = random.sample(range(u1 + 1, len(self.users) + 1), random.randint(0, 2))
             if u1 in threads:  # Make sure the owner is not included
                 threads.remove(u1)
 
@@ -250,9 +250,9 @@ class Gen:
         return messageThreads - 1, messages
 
     def genFollows(self):
-        follow_id = 0
-        for u in range(0, len(self.users)):
-            follow_list = random.sample(range(0, len(self.users)), random.randint(0, 12))
+        follow_id = 1
+        for u in range(1, len(self.users) + 1):
+            follow_list = random.sample(range(1, len(self.users) + 1), random.randint(0, 12))
             if u in follow_list:  # Make sure the owner is not included
                 follow_list.remove(u)
 
@@ -262,13 +262,13 @@ class Gen:
                 follow_id += 1
 
             self.outFile.write("\n")
-        return follow_id
+        return follow_id - 1
 
 
     def genBookmarks(self):
-        bookmark_id = 0
-        for u in range(0, len(self.users)):
-            bookmark_list = random.sample(range(0, len(self.auctions)), random.randint(6, 18))
+        bookmark_id = 1
+        for u in range(1, len(self.users) + 1):
+            bookmark_list = random.sample(range(1, len(self.auctions) + 1), random.randint(6, 18))
 
             for b in bookmark_list:
                 statement = f"""INSERT INTO bookmarked_auction (member_id, auction_id) VALUES ({u}, {b});\n"""
@@ -276,7 +276,7 @@ class Gen:
                 bookmark_id += 1
 
             self.outFile.write("\n")
-        return bookmark_id
+        return bookmark_id - 1
 
 
     def add_rating(self, u:int, r:int, isPositive:bool):
@@ -303,7 +303,7 @@ class Gen:
             seller_id = self.auctions[auction_id]['seller']
             reporter = None
             while reporter == None or reporter == seller_id:
-                reporter = random.randrange(0, len(self.users))
+                reporter = random.randrange(1, len(self.users) + 1)
 
             timestamp = max_date(max_date(self.auctions[auction_id]['start'], self.users[seller_id]['join_date']), self.users[reporter]['join_date'])
             timestamp = sum_time(timestamp, random.randint(200, 1400))
@@ -322,7 +322,7 @@ class Gen:
         reasons = ['Fraud', 'Improper profile image', 'Improper username', 'Other']
         descriptions = ['Did not send product after auction ended', 'NSFW image', 'Offensive username', 'Is just ugly']
         for _ in range(0, n_reports):
-            u1, u2 = random.sample(range(0, len(self.users)), 2)
+            u1, u2 = random.sample(range(1, len(self.users) + 1), 2)
             report_type = random.randint(0, 3)
             timestamp = max_date(self.users[u1]['join_date'], self.users[u2]['join_date'])
             timestamp = sum_time(timestamp, random.randint(3600, 3600 * 24 * 8))
@@ -337,7 +337,7 @@ class Gen:
 
     def generate_bids(self, auction:dict):
         # Select pool of possible bidders
-        bidders = random.sample(range(0, len(self.users)), random.randint(2, 6) + 1)
+        bidders = random.sample(range(1, len(self.users) + 1), random.randint(2, 6) + 1)
         if auction['seller'] in bidders:  # Make sure the owner is not included
             bidders.remove(auction['seller'])
 
@@ -365,9 +365,9 @@ class Gen:
         items = json.load(f)
         f.close()
 
-        auction_id = 0
-        image_id = 0
-        bid_id = 0
+        auction_id = 1
+        image_id = 1
+        bid_id = 1
         for item in items.values():
 
             total_item_auctions = 1 if random.random() < 0.9 else random.randint(2, 6)
@@ -403,10 +403,10 @@ class Gen:
                     fixed_increment_str = str(fixed_increment)
                 else:
                     # Percent increment
-                    percent_increment = max(0.01, random.random() * 0.5)
-                    percent_increment_str = str(math.floor(percent_increment))
+                    percent_increment = random.randint(1, 50)
+                    percent_increment_str = str(percent_increment)
 
-                user = self.users[random.randrange(0, len(self.users))]
+                user = self.users[random.randrange(1, len(self.users) + 1)]
                 start_date = random_limit_date(user['join_date'])
                 end_date = random_auction_closing_date(start_date)
 
@@ -431,13 +431,20 @@ class Gen:
                 else:
                     category = "Others"
 
-                statement = f"""INSERT INTO auction (id, title, description, starting_bid, increment_fixed, increment_percent, start_date, end_date, status, category, nsfw, seller_id)\n\t""" + \
-                    f"""VALUES ({auction_id}, '{title}', '{description}', {starting_bid}, {fixed_increment_str}, {percent_increment_str}, {format_date(start_date)}, {format_date(end_date)}, '{status}', '{category}', {nsfw}, {user['id']});\n"""
+                statement = f"""INSERT INTO auction (title, description, starting_bid, increment_fixed, increment_percent, start_date, end_date, status, category, nsfw, seller_id)\n\t""" + \
+                    f"""VALUES ('{title}', '{description}', {starting_bid}, {fixed_increment_str}, {percent_increment_str}, {format_date(start_date)}, {format_date(end_date)}, '{status}', '{category}', {nsfw}, {user['id']});\n"""
 
                 self.outFile.write(statement)
 
                 rand_n_images = min(len(item['screenshots']), random.randint(0, 5))
-                auction_imgs = [random.sample(item['screenshots'], rand_n_images)]
+                auction_imgs = []
+
+                for stuff in random.sample(item['screenshots'], rand_n_images):
+                    statement = f"""INSERT INTO auction_image (auction_id) VALUES ({auction_id});\n"""
+                    self.outFile.write(statement)
+                    auction_imgs.append({'image_id': image_id, 'url': stuff['path_full']})
+                    image_id += 1
+
                 self.auctions[auction_id] = {
                     'id': auction_id,
                     'bid': starting_bid,
@@ -448,18 +455,13 @@ class Gen:
                     'end': end_date,
                     'seller': user['id'],
                     'thumbnail_url': item['header_image'],
-                    'images_url': auction_imgs
+                    'images': auction_imgs,
                 }
-
-                for _ in auction_imgs:
-                    statement = f"""INSERT INTO auction_image (id, auction_id) VALUES ({image_id}, {auction_id});\n"""
-                    self.outFile.write(statement)
-                    image_id += 1
 
                 last_bidder = None
                 for bid in self.generate_bids(self.auctions[auction_id]):
-                    statement = f"""INSERT INTO bid (id, value, "date", auction_id, bidder_id) """ + \
-                        f"""VALUES({bid_id}, {bid['value']}, {format_date(bid['timestamp'])}, {auction_id}, {bid['bidder']});\n"""
+                    statement = f"""INSERT INTO bid (value, "date", auction_id, bidder_id) """ + \
+                        f"""VALUES({bid['value']}, {format_date(bid['timestamp'])}, {auction_id}, {bid['bidder']});\n"""
                     self.outFile.write(statement)
                     last_bidder = bid['bidder']
                     bid_id += 1
@@ -483,7 +485,7 @@ class Gen:
             passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
 
 
-        user_id = 0
+        user_id = 1
         for character in characters:
             if uniqueSalts:
                 passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
@@ -501,16 +503,20 @@ class Gen:
             joined_date = random_user_date()
 
             data_consent = "TRUE" if random.random() > 0.2 else "FALSE"
+            notifications = "TRUE" if random.random() > 0.2 else "FALSE"
+            outbid_notifications = "TRUE" if random.random() > 0.2 else "FALSE"
+            start_auction_notifications = "TRUE" if random.random() > 0.2 else "FALSE"
+            followed_user_activity = "TRUE" if random.random() > 0.2 else "FALSE"
 
-            insertStatement = f"""INSERT INTO member (id, username, email, password, name, bio, joined, credit, data_consent)\n\t""" + \
-                f"""VALUES ({user_id}, '{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit_value}, {data_consent});\n"""
+            insertStatement = f"""INSERT INTO member (username, email, password, name, bio, joined, credit, data_consent, notifications, outbid_notifications, start_auction_notifications, followed_user_activity)\n\t""" + \
+                f"""VALUES ('{username}', '{username}@jojo.com', '{passwordHash}', '{name}', '{bio}', {format_date(joined_date)}, {credit_value}, {data_consent}, {notifications}, {outbid_notifications}, {start_auction_notifications}, {followed_user_activity});\n"""
 
             self.outFile.write(insertStatement)
 
             self.users[user_id] = {
-                'id': user_id, 
+                'id': user_id,
                 'username': username,
-                'password': password, 
+                'password': password,
                 'join_date': joined_date,
                 'img_url': character['src']
             }

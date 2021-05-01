@@ -21,8 +21,8 @@ bootstrap/cache/
 
 /database/population/out/*
 
-/public/images/users/*
-/public/images/auctions/*
+/public/images/users/
+/public/images/auctions/
 
 __pycache__/
 .vscode/
