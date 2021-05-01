@@ -41,5 +41,5 @@ Route::get("user/settings/privacy", "SettingsController@privacy")->name("setting
 Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
 
 // Other
-Route::get('about', fn() => View::make("pages/about"))->name("about");
-Route::get('faq', fn() => View::make("pages/faq"))->name("faq");
+Route::get('about', "AboutController@show")->name("about");
+Route::get('faq', "AboutController@faq")->name("faq");
