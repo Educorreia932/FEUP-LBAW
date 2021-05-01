@@ -7,13 +7,13 @@
 
             <h1 class="mb-3">Sign Up</h1>
             <label for="username" class="sr-only float-start">Username*</label>
-            <input type="text" id="username" class="form-control" name="username" required autofocus="">
+            <input type="text" id="username" class="form-control" name="username" required>
 
             <label for="name" class="sr-only float-start">Name*</label>
-            <input type="text" id="name" class="form-control" name="name" required autofocus="">
+            <input type="text" id="name" class="form-control" name="name" required>
 
             <label for="email" class="sr-only float-start">Email*</label>
-            <input type="email" id="email" class="form-control" name="email" required autofocus="">
+            <input type="email" id="email" class="form-control" name="email" required>
 
             <label for="phone" class="sr-only float-start">Phone Number</label>
             <input class="form-control" id="phone" name="phone" type="phone">

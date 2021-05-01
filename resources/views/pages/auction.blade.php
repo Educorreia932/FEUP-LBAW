@@ -28,22 +28,22 @@
                     <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Thumbnail"></button>
                     @foreach ($auction->images as $img)
-                        <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{$loop->iteration}}"
-                                aria-label="Image {{$loop->iteration}}"></button>
+                        <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{ $loop->iteration }}"
+                                aria-label="Image {{ $loop->iteration }}"></button>
                     @endforeach
                 </div>
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block m-auto"
-                             src="/images/auctions/{{$auction->id}}/thumbnail_medium.png"
+                             src="/images/auctions/{{ $auction->id }}/thumbnail_medium.png"
                              alt="...">
                     </div>
 
                     @foreach ($auction->images as $img)
                         <div class="carousel-item">
                             <img class="d-block m-auto"
-                                 src="/images/auctions/{{$auction->id}}/{{$img->id}}_medium.png"
+                                 src="/images/auctions/{{ $auction->id }}/{{ $img->id }}_medium.png"
                                  alt="...">
                         </div>
                     @endforeach
@@ -75,11 +75,11 @@
                             class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
 
                             @if($user != $auction->seller)
-                            <button type="button" class="btn hover-scale" data-bs-toggle="modal"
-                                    data-bs-target="#report-modal">
-                                <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
-                                <span>Report auction</span>
-                            </button>
+                                <button type="button" class="btn hover-scale" data-bs-toggle="modal"
+                                        data-bs-target="#report-modal">
+                                    <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
+                                    <span>Report auction</span>
+                                </button>
                             @endif
 
                             <button type="button" class="btn hover-scale auction-bookmark">
@@ -189,7 +189,7 @@
         <div class="row d-flex flex-row">
             <span class="d-flex align-items-end">
                 <h3 class="m-0 p-0">Bid History</h3>
-                <a class="ms-2" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>See more</a>
+                <a class="ms-2" style="font-size: smaller;" href={{ route('auction_details', ['id' => $auction->id]) }}>See more</a>
             </span>
 
             <hr class="my-1">
@@ -203,18 +203,19 @@
             <div class="row col-lg-5 order-lg-1">
                 <table id="bid-history" class="table table-striped table-hover">
                     <thead>
-                    <tr>
-                        <th scope="col">Bidder</th>
-                        <th scope="col">Bid</th>
-                        <th scope="col">Date</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">Bidder</th>
+                            <th scope="col">Bid</th>
+                            <th scope="col">Date</th>
+                        </tr>
                     </thead>
+
                     <tbody>
-                    @foreach ($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
-                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $helper->time_elapsed_string($bid->date)])
+                    @foreach($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
+                        @include("partials.bid_table_entry", [ "name" => "Y**p", "bid" => $bid->value, "time" => $helper->time_elapsed_string($bid->date)])
                     @endforeach
 
-                    @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $helper->time_elapsed_string($auction->start_date)])
+                    @include("partials.bid_table_entry", [ "name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $helper->time_elapsed_string($auction->start_date)])
                     </tbody>
                 </table>
             </div>
@@ -223,12 +224,13 @@
 
     {{-- Edit modal --}}
     <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
-        <div class="modal-dialog">
+        <form class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLable">Edit Auction</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
                     <form>
                         <div class="row">
@@ -237,11 +239,13 @@
                                 <input type="text" id="inputName" value="{{$auction->title}}" class="form-control"
                                        required>
                             </div>
+
                             <div class="form-group col-md-12 mt-3">
                                 <label for="inputDescription" class="sr-only">Auction Description</label>
                                 <textarea class="form-control" rows="4"
                                           id="inputDescription">{{$auction->description}}</textarea>
                             </div>
+
                             <div class="form-group col-sm-12 mt-3">
                                 <label for="startDate" class="sr-only">Starting on</label>
                                 <div class="input-group">
@@ -249,6 +253,7 @@
                                     <input type="time" id="startTime" class="form-control">
                                 </div>
                             </div>
+
                             <div class="form-group col-sm-12 mt-3">
                                 <label for="endDate" class="sr-only">Ending on</label>
                                 <div class="input-group">
@@ -256,6 +261,7 @@
                                     <input type="time" id="endTime" class="form-control">
                                 </div>
                             </div>
+
                             <div class="form-group col-sm-6 mt-3">
                                 <label for="inputValue" class="sr-only">Starting Bid</label>
                                 <div class="input-group">
@@ -297,17 +303,21 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save Changes</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
     {{-- Report modal --}}
     <section class="modal fade" tabindex="-1" role="dialog" id="report-modal">
-        <form class="modal-dialog modal-dialog-centered">
+        <form id="report-form" class="modal-dialog modal-dialog-centered" method="post"
+              action=" {{ route("auction_report", [ "id" => $auction->id ]) }}">
+            {{ csrf_field() }}
+
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Report auction</h5>
@@ -316,7 +326,7 @@
 
                 <div class="modal-body">
                     <div class="mb-3">
-                        <select class="form-select" id="">
+                        <select name="report-reason" class="form-select" form="report-form">
                             <option selected>Choose...</option>
                             <option value="1">Fraudaulent auction</option>
                             <option value="2">Improper product pictures</option>
@@ -326,14 +336,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <textarea class="form-control" id="report-reason" rows="6"></textarea>
+                        <textarea class="form-control" id="report-description" rows="6" name="report-description"
+                                  form="report-form"></textarea>
                         <span class="input-group-text text-wrap">Elaborate the reason to report this auction, so we can analyze the case better.</span>
                     </div>
                 </div>
 
+                <input hidden name="reporter" value={{ $user->id }}>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Report</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-danger" type="submit">Report</button>
                 </div>
             </div>
         </form>

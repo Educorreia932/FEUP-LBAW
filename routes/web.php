@@ -1,12 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 // Home
 Route::get('/', 'HomeController@show')->name("home");
-
-// API
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
@@ -22,6 +19,7 @@ Route::get('user/search_results', 'SearchResultsController@search_users')->name(
 // Auctions
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
+Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
 Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
 
 // Users
