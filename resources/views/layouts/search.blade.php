@@ -6,14 +6,14 @@
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
 
-        <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
-            <div>
+            <nav class="col-md-3 col-xl-2 py-3 bg-light sidebar collapse" id="sidebar">
+                <div>
                     <h4>Search for</h4>
 
                     <ul class="nav flex-column mb-4">
                         {{-- Sidebar anchor --}}
-                        @include("partials.sidebar_anchor", ['active' => $current_page == 'search_auctions', 'url' => route('search_auctions'), 'name' => 'Auctions'])
-                        @include("partials.sidebar_anchor", ['active' => $current_page == 'search_users', 'url' => route('search_users'), 'name' => 'Users'])
+                        @include("partials.sidebar_anchor", ['active' => ($current_page == 'search_auctions'), 'url' => route('search_auctions'), 'name' => 'Auctions'])
+                        @include("partials.sidebar_anchor", ['active' => ($current_page == 'search_users'), 'url' => route('search_users'), 'name' => 'Users'])
                     </ul>
 
                     <h4>Filters</h4>
