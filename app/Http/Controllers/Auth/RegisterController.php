@@ -66,8 +66,6 @@ class RegisterController extends Controller {
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            "credit" => 0, // TODO: Change after adding default value to database
-            "id" => 42069  // TODO: Change after fixing serial key in database
         ]);
     }
 }

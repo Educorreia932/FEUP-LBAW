@@ -41,7 +41,7 @@
                     <li class="d-none d-md-flex nav-item dropdown px-1">
                         <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                 id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="me-2">Educorreia932</span>
+                            <span class="me-2">{{ $user->username }}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
                                      src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg"

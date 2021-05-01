@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\Member;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
     public function show() {
