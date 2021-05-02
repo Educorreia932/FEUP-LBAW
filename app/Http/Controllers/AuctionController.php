@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditRequest;
+use App\Http\Requests\ReportRequest;
 use App\Models\Auction;
 use App\Models\AuctionImage;
 use App\Http\Requests\CreateAuctionRequest;
-use Illuminate\Support\Arr;
+use App\Models\AuctionReport;
 use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,8 +31,7 @@ class AuctionController extends Controller {
     }
 
     public function store(CreateAuctionRequest $request) {
-
-        // validating request
+        // Validating request
         $validated = $request->validated();
 
         $auction = new Auction($validated);
@@ -42,10 +42,9 @@ class AuctionController extends Controller {
 
         $auction_id = $auction->id;
 
-        // handle images
+        // Handle images
         if ($request->hasFile('image')) {
-
-            // create  images directory for this auction
+            // Create  images directory for this auction
             $path = public_path().'/images/auctions/' . $auction_id;
             File::makeDirectory($path, $mode = 0777, true, true);
 
@@ -56,6 +55,7 @@ class AuctionController extends Controller {
                     $auction_image = AuctionImage::create(['auction_id' => $auction_id]);
                     $image_id = $auction_image->id;
                 }
+
                 else
                     $image_id = 'thumbnail';
 
@@ -64,11 +64,10 @@ class AuctionController extends Controller {
             }
         }
 
-
         return Redirect::to('/');
     }
 
-    public function report($id, Request $request) {
+    public function report($id, ReportRequest $request) {
         $report_reason = "";
 
         switch ($request->get("report-reason")) {
@@ -92,5 +91,12 @@ class AuctionController extends Controller {
             "reporter_id" => $request->get("reporter"),
             "reported_id" => $id
         ]);
+    }
+
+    public function edit($id, EditRequest $request) {
+        // Validating request
+        // $validated = $request->validated();
+
+        dd($request);
     }
 }

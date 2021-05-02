@@ -22,7 +22,7 @@ Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id',
 Route::get("create_auction", "AuctionController@create")->name("create_auction")->middleware("auth");
 Route::post("create_auction", "AuctionController@store")->name("store_auction")->middleware("auth");
 Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
-
+Route::post("auction/{id}/edit", "AuctionController@edit")->where('id', '[0-9]+')->name("auction_edit");
 
 // Users
 Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->middleware("auth");
