@@ -45,18 +45,16 @@ class AuctionController extends Controller {
         // Handle images
         if ($request->hasFile('image')) {
             // Create  images directory for this auction
-            $path = public_path().'/images/auctions/' . $auction_id;
+            $path = public_path() . '/images/auctions/' . $auction_id;
             File::makeDirectory($path, $mode = 0777, true, true);
 
             $i = 0;
-            foreach($request->file('image') as $file) {
+            foreach ($request->file('image') as $file) {
 
                 if ($i > 0) {
                     $auction_image = AuctionImage::create(['auction_id' => $auction_id]);
                     $image_id = $auction_image->id;
-                }
-
-                else
+                } else
                     $image_id = 'thumbnail';
 
                 ImageHelper::save_auction_image($file, $path, $image_id);
@@ -97,6 +95,16 @@ class AuctionController extends Controller {
         // Validating request
         // $validated = $request->validated();
 
-        dd($request);
+        $auction = Auction::find($id);
+
+        if ($request->get("title") != null)
+            $auction->title = $request->get("title");
+
+        if ($request->get("description") != null)
+            $auction->description = $request->get("description");
+
+        $auction->update();
+
+        return Redirect::to(route("auction", ["id" => $id]));
     }
 }

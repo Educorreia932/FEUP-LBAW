@@ -22,13 +22,13 @@ class EditRequest extends FormRequest {
      */
     public function rules() {
         return [
-//            'auction-title' => 'min:5|max:50|nullable',
-//            'auction-description' => 'min:10|max:255|nullable',
-//            'auction-start-date' => 'date|nullable',
-//            'auction-end-date' => 'date|after:start_date|nullable',
-//            'auction-starting-bid' => 'integer|nullable',
-//            'auction-category' => 'string|nullable',
-//            'auction-nsfw' => 'nullable',
+//            'title' => 'min:5|max:50|nullable',
+//            'description' => 'min:10|max:255|nullable',
+//            'start-date' => 'date|nullable',
+//            'end-date' => 'date|after:start_date|nullable',
+//            'starting-bid' => 'integer|nullable',
+//            'category' => 'string|nullable',
+//            'nsfw' => 'nullable',
         ];
     }
 
