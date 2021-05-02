@@ -423,7 +423,7 @@ paths:
                   value: "/auctions/{id}"
                 302Failure:
                   description: "Auction couldn't be created. Redirect to create auction form."
-                  value: "/auctions/create_auction"
+                  value: "/auction/create_auction"
 
   /auction/{id}:
     get:
@@ -572,6 +572,149 @@ paths:
         "200":
           description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
 
+  /auction/{id}/edit:
+    get:
+      operationId: R206
+      summary: "R206: Edit auction form."
+      description: "Fetch edit auction form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+    post:
+      operationId: R207
+      summary: "R207: Edit an auction"
+      description: "Processes the form information to edit an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                startDate:
+                  type: string
+                  format: date
+                startTime:
+                  type: string
+                  format: time
+                endDate:
+                  type: string
+                  format: date
+                endTime:
+                  type: string
+                  format: time
+                startingBid:
+                  type: number
+                increment:
+                  type: number
+                isPercentual:
+                  type: boolean
+                category:
+                  type: string
+                nsfw:
+                  type: boolean
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - name
+                - description
+                - startDate
+                - startTime
+                - endDate
+                - endTime
+                - startingBid
+                - increment
+                - isPercentual
+                - category
+                - nsfw
+                - images
+
+      responses:
+        "302":
+          description: 'Redirect after processing the new auction information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction created successfully. Redirect to auction page."
+                  value: "/"
+                302Failure:
+                  description: "Auction couldn't be created. Redirect to create auction form."
+                  value: "/auctions/create_auction"
+
+  /auction/{id}/report:
+    get:
+      operationId: R208
+      summary: "R208: Show report auction form."
+      description: "Fetch report auction form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+    post:
+      operationId: R209
+      summary: "R209: Save report data"
+      description: "Processes the form information to report an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  format: category
+                description:
+                  type: string
+              required:
+                - reason
+                - description
+
+      responses:
+        "302":
+          description: 'Redirect after processing the report information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction reported. Redirect to auction page."
+                  value: "/auction/{id}"
+                302Failure:
+                  description: "Couldn't report auction. Redirect to report auction form."
+                  value: "/auction/{id}"
 
   # M03: Users
   /users/{username}:
