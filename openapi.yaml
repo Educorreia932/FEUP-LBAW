@@ -555,6 +555,24 @@ paths:
                   thumb_image: image
                   status: "Open"
 
+  /auction/{id}/delete:
+    get:
+      operationId: R205
+      summary: "R205: Delete an auction"
+      description: "Set specified auction as 'Terminated'. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+
   # M03: Users
   /users/{username}:
     get:
