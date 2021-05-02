@@ -29,17 +29,17 @@ Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->mi
 Route::get("users/{username}", "UserProfileController@show")->name('user_profile');
 
 // Dashboard
-Route::get("dashboard", fn() => redirect("dashboard/created_auctions"))->name("dashboard");
-Route::get("dashboard/created_auctions", "DashboardController@createdAuctions")->name("dashboard_created_auctions");
-Route::get("dashboard/bidded_auctions", "DashboardController@biddedAuctions")->name("dashboard_bidded_auctions");
-Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions");
-Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
+Route::get("dashboard", fn() => redirect("dashboard/created_auctions"))->name("dashboard")->middleware("auth");
+Route::get("dashboard/created_auctions", "DashboardController@createdAuctions")->name("dashboard_created_auctions")->middleware("auth");
+Route::get("dashboard/bidded_auctions", "DashboardController@biddedAuctions")->name("dashboard_bidded_auctions")->middleware("auth");
+Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions")->middleware("auth");
+Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed")->middleware("auth");
 
 // Settings
-Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings");
-Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
-Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
-Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
+Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings")->middleware("auth");
+Route::get("user/settings/account", "SettingsController@account")->name("settings_account")->middleware("auth");
+Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy")->middleware("auth");
+Route::get("user/settings/security", "SettingsController@security")->name("settings_security")->middleware("auth");
 
 // Other
 Route::get('about', "AboutController@show")->name("about");

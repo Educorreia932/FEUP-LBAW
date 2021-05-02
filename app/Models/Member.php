@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Helpers\LbawUtils;
 
 class Member extends Authenticatable {
     use Notifiable;
@@ -29,6 +30,14 @@ class Member extends Authenticatable {
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function getHasAuctionsAttribute() {
+        return $this->createdAuctions()->count();
+    }
+
+    public function followsMember($id) {
+        return $this->follows()->where('followed_id', '=', $id)->first() != null;
+    }
 
     public function createdAuctions() {
         return $this->hasMany("App\Models\Auction", "seller_id");
@@ -73,5 +82,9 @@ class Member extends Authenticatable {
 
     public function getImage($type='small') {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
+    }
+
+    public function getJoinedTimeAgoString() {
+        return implode(', ', LbawUtils::time_diff_string(date_create()->diff($this->joined))) . ' ago';
     }
 }

@@ -10,7 +10,9 @@
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <h4 class="d-flex align-items-center">
-                    <i class="bi bi-circle-fill text-success me-2" style="font-size: 0.5em;"></i>
+                    <i class="bi bi-circle-fill
+                    @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->status == 'Scheduled') text-warning @else text-success @endif
+                    me-2" style="font-size: 0.5em;"></i>
                     <a class="text-decoration-none link-dark" href={{route('auction', ['id' => $auction->id])}}>{{ $auction->title }}</a>
                 </h4>
                 <span class="text-muted">
@@ -21,9 +23,11 @@
                 </span>
             </div>
 
+            @auth
             <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
                 <i class="bi bi-bookmark-dash-fill" style="font-size: 2.5em; text-align: right"></i>
             </button>
+            @endauth
         </div>
 
         <div class="row mt-3">

@@ -52,7 +52,7 @@
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed">
+            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed" @guest disabled @endguest>
             <label class="form-check-label" for="radio-owner-followed">
                 Followed Only
             </label>

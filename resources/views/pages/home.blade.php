@@ -61,6 +61,7 @@
     </section>
 
     <div class="py-sm-3 my-4 container">
+        @auth
         <div class="row">
             {{-- Recent bids --}}
             <section class="col-xl-6 mt-sm-4">
@@ -89,6 +90,7 @@
                 </div>
             </section>
         </div>
+        @endauth
 
         {{-- Open Auctions --}}
         <section class="row mt-sm-4 col-lg-12">
