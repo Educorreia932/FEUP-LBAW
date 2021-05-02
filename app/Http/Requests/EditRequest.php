@@ -22,14 +22,32 @@ class EditRequest extends FormRequest {
      */
     public function rules() {
         return [
-//            'title' => 'min:5|max:50|nullable',
-//            'description' => 'min:10|max:255|nullable',
-//            'start-date' => 'date|nullable',
-//            'end-date' => 'date|after:start_date|nullable',
-//            'starting-bid' => 'integer|nullable',
-//            'category' => 'string|nullable',
-//            'nsfw' => 'nullable',
+            'title' => 'min:5|max:50|required',
+            'description' => 'min:10|max:255|required',
+            'start_date' => 'date|required',
+            'end_date' => 'date|after:start_date|required',
+            "increment" => "integer|required",
+            'starting_bid' => 'integer|required',
+            'category' => 'string|required',
+            'nsfw' => 'nullable',
         ];
     }
 
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation() {
+        // Converting date and hour to datetime
+        if ($this->has(['start_date', 'start_time'])) {
+            $start_datetime = $this->input('start_date') . " " . $this->input('start_time');
+            $this->merge(['start_date' => $start_datetime]);
+        }
+
+        if ($this->has(['end_date', 'end_time'])) {
+            $end_datetime = $this->input('end_date') . " " . $this->input('end_time');
+            $this->merge(['end_date' => $end_datetime]);
+        }
+    }
 }

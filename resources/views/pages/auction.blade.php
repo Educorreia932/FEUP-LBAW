@@ -10,6 +10,16 @@
     <script defer src={{ asset("js/auction.js") }}></script>
     <script defer src={{ asset("js/bookmark.js") }}></script>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="row m-2">
         <h1>Auction</h1>
 
@@ -276,9 +286,9 @@
                                     <label for="startDate" class="sr-only">Starting on</label>
                                     <div class="input-group">
                                         <input type="date" id="startDate" class="form-control"
-                                               name="start-date">
+                                               name="start_date" value={{ $auction->end_date }}>
                                         <input type="time" id="startTime" class="form-control"
-                                               name="start-time">
+                                               name="start_time" value="23:59">
                                     </div>
                                 </div>
 
@@ -286,8 +296,10 @@
                                 <div class="form-group col-sm-12 mt-3">
                                     <label for="endDate" class="sr-only">Ending on</label>
                                     <div class="input-group">
-                                        <input type="date" id="endDate" class="form-control" name="end-date">
-                                        <input type="time" id="endTime" class="form-control" name="end-time">
+                                        <input type="date" id="endDate" class="form-control" name="end_date"
+                                               value={{ $auction->end_date }}>
+                                        <input type="time" id="endTime" class="form-control" name="end_time"
+                                               value="23:59">
                                     </div>
                                 </div>
 
@@ -297,7 +309,7 @@
                                     <div class="input-group">
                                         <input type="text" id="inputValue" class="form-control" placeholder="0.00"
                                                aria-label="Euro amount (with dot and two decimal places)"
-                                               name="starting-bid">
+                                               name="starting_bid" value={{ $auction->starting_bid }}>
                                         <span class="input-group-text">&phi;</span>
                                     </div>
                                 </div>
@@ -308,7 +320,7 @@
                                     <div class="input-group">
                                         <input type="text" id="inputIncr" class="form-control" placeholder="0.00"
                                                aria-label="Phi amount (with dot and two decimal places)"
-                                               name="increment">
+                                               name="increment" value={{ $auction->increment_fixed }}>
                                         <span class="input-group-text">&phi;</span>
                                     </div>
                                 </div>
@@ -318,14 +330,33 @@
                                     <div class="col-sm-6">
                                         <label for="inputCategory">Category</label>
                                         <div class="input-group mb-3 col-sm-6">
-                                            <select class="form-select" id="inputCategory" form="edit-form" name="category">
+                                            <select class="form-select" id="inputCategory" form="edit-form"
+                                                    name="category">f
                                                 <option selected>Choose...</option>
-                                                <option value="1">Games</option>
-                                                <option value="2">Software</option>
-                                                <option value="3">eBook</option>
-                                                <option value="4">Music</option>
-                                                <option value="5">Skins</option>
-                                                <option value="6">Other</option>
+                                                <option
+                                                    value="Games" {{ $auction->category == 'Games' ? "selected" : "" }}>
+                                                    Games
+                                                </option>
+                                                <option
+                                                    value="Software" {{ $auction->category == 'Software' ? "selected" : "" }}>
+                                                    Software
+                                                </option>
+                                                <option
+                                                    value="eBook" {{ $auction->category == 'eBook' ? "selected" : "" }}>
+                                                    eBook
+                                                </option>
+                                                <option
+                                                    value="Music" {{ $auction->category == 'Music' ? "selected" : "" }}>
+                                                    Music
+                                                </option>
+                                                <option
+                                                    value="Skins" {{ $auction->category == 'Skins' ? "selected" : "" }}>
+                                                    Skins
+                                                </option>
+                                                <option
+                                                    value="Other" {{ $auction->category == 'Other' ? "selected" : "" }}>
+                                                    Other
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -333,7 +364,7 @@
                                     {{-- NSFW --}}
                                     <div class="ms-3 mt-4 form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="switch-nsfw"
-                                               name="nsfw">
+                                               name="nsfw" value={{ $auction->nsfw }}>
                                         <label class="form-check-label" for="switch-nsfw">NSFW</label>
                                     </div>
                                 </div>

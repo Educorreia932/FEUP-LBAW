@@ -93,17 +93,10 @@ class AuctionController extends Controller {
 
     public function edit($id, EditRequest $request) {
         // Validating request
-        // $validated = $request->validated();
+        $validated = $request->validated();
 
         $auction = Auction::find($id);
-
-        if ($request->get("title") != null)
-            $auction->title = $request->get("title");
-
-        if ($request->get("description") != null)
-            $auction->description = $request->get("description");
-
-        $auction->update();
+        $auction->update($validated);
 
         return Redirect::to(route("auction", ["id" => $id]));
     }

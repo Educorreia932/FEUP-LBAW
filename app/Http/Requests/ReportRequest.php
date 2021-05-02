@@ -25,4 +25,6 @@ class ReportRequest extends FormRequest {
 
         ];
     }
+
+
 }
