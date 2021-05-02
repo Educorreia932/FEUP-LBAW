@@ -6,6 +6,8 @@ use App\Models\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 
 class RegisterController extends Controller {
     /*
@@ -26,7 +28,7 @@ class RegisterController extends Controller {
      *
      * @var string
      */
-    protected string $redirectTo = '/';
+    protected string $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -47,10 +49,10 @@ class RegisterController extends Controller {
      */
     protected function validator(array $data) {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            "name" => "required|string",
-            'email' => 'required|string|email|max:255|unique:member',
-            'password' => 'required|string|min:6|confirmed',
+            'username' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:member'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -58,14 +60,14 @@ class RegisterController extends Controller {
      * Create a new user instance after a valid registration.
      *
      * @param array $data
-     * @return mixed
+     * @return \App\Models\Member
      */
     protected function create(array $data) {
         return Member::create([
-            "username" => $data["username"],
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

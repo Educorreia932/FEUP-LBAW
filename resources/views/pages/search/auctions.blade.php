@@ -33,7 +33,7 @@
     <p class="text-secondary my-2">Category</p>
 
     <div class="master-checkbox-reverse">
-        @include('partials.filter_checkbox', ["name" => "All", "id" => "a"])
+        @include('partials.filter_checkbox', ["name" => "All", "id" => "a", "checked" => true])
 
         <div class="row">
             <div class="col">
@@ -62,7 +62,7 @@
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed">
+        <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed" @guest disabled @endguest>
         <label class="form-check-label" for="radio-owner-followed">
             Followed Users
         </label>

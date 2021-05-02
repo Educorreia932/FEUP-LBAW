@@ -5,7 +5,7 @@
         <section class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
                 <form class="form-signin" method="post" action="{{ route("login") }}">
-                    {{ csrf_field() }}
+                    @csrf
 
                     <h1 class="mb-3">Sign In</h1>
 

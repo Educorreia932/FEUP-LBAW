@@ -15,8 +15,9 @@
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
         <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined }}</p>
+        @auth
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            @if (true)
+            @if (Auth::user()->followsMember($member->id))
                 <button type="button" class="follow btn btn-danger w-100">
                     <i class="bi bi-heart-fill"></i>
                     <span>Following</span>
@@ -28,6 +29,7 @@
                 </button>
             @endif
         </div>
+        @endauth
     </div>
 </div>
 <hr>
