@@ -394,23 +394,23 @@
 
                     <div class="modal-body">
                         <div class="mb-3">
-                            <select name="report-reason" class="form-select" form="report-form">
+                            <select name="reason" class="form-select" form="report-form">
                                 <option selected>Choose...</option>
-                                <option value="1">Fraudaulent auction</option>
-                                <option value="2">Improper product pictures</option>
-                                <option value="3">Improper auction title</option>
-                                <option value="4">Other</option>
+                                <option value="Fraudalent Auction">Fraudaulent auction</option>
+                                <option value="Improper product pictures">Improper product pictures</option>
+                                <option value="Improper auction title">Improper auction title</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                        <textarea class="form-control" id="report-description" rows="6" name="report-description"
+                        <textarea class="form-control" id="report-description" rows="6" name="description"
                                   form="report-form"></textarea>
                             <span class="input-group-text text-wrap">Elaborate the reason to report this auction, so we can analyze the case better.</span>
                         </div>
                     </div>
 
-                    <input hidden name="reporter" value={{ Auth::id() }}>
+                    <input hidden name="reporter_id" value={{ Auth::id() }}>
 
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>

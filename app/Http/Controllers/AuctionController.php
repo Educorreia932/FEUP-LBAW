@@ -49,8 +49,8 @@ class AuctionController extends Controller {
             File::makeDirectory($path, $mode = 0777, true, true);
 
             $i = 0;
-            foreach ($request->file('image') as $file) {
 
+            foreach ($request->file('image') as $file) {
                 if ($i > 0) {
                     $auction_image = AuctionImage::create(['auction_id' => $auction_id]);
                     $image_id = $auction_image->id;
@@ -66,29 +66,13 @@ class AuctionController extends Controller {
     }
 
     public function report($id, ReportRequest $request) {
-        $report_reason = "";
+        // Validating request
+        $validated = $request->validated();
+        $validated["reported_id"] = $id;
 
-        switch ($request->get("report-reason")) {
-            case 1:
-                $report_reason = "Fraudalent Auction";
-                break;
-            case 2:
-                $report_reason = "Improper product pictures";
-                break;
-            case 3:
-                $report_reason = "Improper auction title";
-                break;
-            case 4:
-                $report_reason = "Other";
-                break;
-        }
+        AuctionReport::create($validated);
 
-        $report = AuctionReport::create([
-            "reason" => $report_reason,
-            "description" => $request->get("report-description"),
-            "reporter_id" => $request->get("reporter"),
-            "reported_id" => $id
-        ]);
+        return Redirect::to(route("auction", ["id" => $id]));
     }
 
     public function edit($id, EditRequest $request) {

@@ -22,9 +22,9 @@ class ReportRequest extends FormRequest {
      */
     public function rules() {
         return [
-
+            "reason" => "required|string",
+            "description" => "required|string",
+            "reporter_id" => "required|integer"
         ];
     }
-
-
 }
