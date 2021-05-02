@@ -80,9 +80,7 @@
                             {{-- Auction description --}}
                             <div class="form-group col-md-12 mt-3">
                                 <label for="inputDescription" class="sr-only">Auction Description</label>
-                                <textarea class="form-control" rows="4" id="inputDescription" name="description">
-                                {{{ old('description') }}}
-                                </textarea>
+                                <textarea class="form-control" rows="4" id="inputDescription" name="description">{{{ old('description') }}}</textarea>
                             </div>
                             
                             

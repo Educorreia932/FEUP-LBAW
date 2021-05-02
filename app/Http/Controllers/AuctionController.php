@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class AuctionController extends Controller {
     public function show($id) {
@@ -33,7 +34,7 @@ class AuctionController extends Controller {
         $validated = $request->validated();
 
         $auction = new Auction($validated);
-        $auction->seller_id = 1; # TODO Auth::user()->id
+        $auction->seller_id = Auth::user()->id;
         $auction->status = 'Scheduled';
         
         $auction->save();
@@ -58,9 +59,6 @@ class AuctionController extends Controller {
                     $image_id = 'thumbnail';
                 
                 ImageHelper::save_image($file, $path, $image_id);
-
-                // $name = $i."_"."original.".$file->extension();
-                // $file->move($path, $name);
                 $i++;
             }
         }
