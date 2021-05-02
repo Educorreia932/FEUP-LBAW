@@ -10,7 +10,6 @@ class Member extends Authenticatable {
 
     protected $table = 'member';
 
-    // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
     /**
@@ -23,7 +22,7 @@ class Member extends Authenticatable {
     ];
 
     protected $fillable = [
-        'username', 'name', 'email', 'password'
+        "username", 'name', 'email', 'password', "credit"
     ];
 
     protected $hidden = [

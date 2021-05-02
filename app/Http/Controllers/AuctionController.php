@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditRequest;
+use App\Http\Requests\ReportRequest;
 use App\Models\Auction;
 use App\Models\AuctionImage;
 use App\Http\Requests\CreateAuctionRequest;
-use Illuminate\Support\Arr;
+use App\Models\AuctionReport;
 use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,7 @@ class AuctionController extends Controller {
 
     public function showDetails($id) {
         $auction = Auction::find($id);
+
         return view('pages.auction_details', ['auction' => $auction]);
     }
 
@@ -29,8 +31,7 @@ class AuctionController extends Controller {
     }
 
     public function store(CreateAuctionRequest $request) {
-
-        // validating request
+        // Validating request
         $validated = $request->validated();
 
         $auction = new Auction($validated);
@@ -41,21 +42,19 @@ class AuctionController extends Controller {
 
         $auction_id = $auction->id;
 
-        // handle images
+        // Handle images
         if ($request->hasFile('image')) {
-
-            // create  images directory for this auction
-            $path = public_path().'/images/auctions/' . $auction_id;
+            // Create  images directory for this auction
+            $path = public_path() . '/images/auctions/' . $auction_id;
             File::makeDirectory($path, $mode = 0777, true, true);
 
             $i = 0;
-            foreach($request->file('image') as $file) {
 
+            foreach ($request->file('image') as $file) {
                 if ($i > 0) {
                     $auction_image = AuctionImage::create(['auction_id' => $auction_id]);
                     $image_id = $auction_image->id;
-                }
-                else
+                } else
                     $image_id = 'thumbnail';
 
                 ImageHelper::save_auction_image($file, $path, $image_id);
@@ -63,7 +62,26 @@ class AuctionController extends Controller {
             }
         }
 
-
         return Redirect::to('/');
+    }
+
+    public function report($id, ReportRequest $request) {
+        // Validating request
+        $validated = $request->validated();
+        $validated["reported_id"] = $id;
+
+        AuctionReport::create($validated);
+
+        return Redirect::to(route("auction", ["id" => $id]));
+    }
+
+    public function edit($id, EditRequest $request) {
+        // Validating request
+        $validated = $request->validated();
+
+        $auction = Auction::find($id);
+        $auction->update($validated);
+
+        return Redirect::to(route("auction", ["id" => $id]));
     }
 }

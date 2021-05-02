@@ -1,12 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 // Home
 Route::get('/', 'HomeController@show')->name("home");
-
-// API
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
@@ -24,7 +21,8 @@ Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->nam
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
 Route::get("create_auction", "AuctionController@create")->name("create_auction")->middleware("auth");
 Route::post("create_auction", "AuctionController@store")->name("store_auction")->middleware("auth");
-
+Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
+Route::post("auction/{id}/edit", "AuctionController@edit")->where('id', '[0-9]+')->name("auction_edit");
 
 // Users
 Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->middleware("auth");
