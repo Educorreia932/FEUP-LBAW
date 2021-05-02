@@ -25,6 +25,7 @@ Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id',
 Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
 
 // Users
+Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->middleware("auth");
 Route::get("users/{username}", "UserProfileController@show")->name('user_profile');
 
 // Dashboard

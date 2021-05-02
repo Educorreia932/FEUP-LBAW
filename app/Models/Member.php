@@ -23,11 +23,11 @@ class Member extends Authenticatable {
     ];
 
     protected $fillable = [
-        "username", 'name', 'email', 'password', "credit", "id" // TODO: Change after adding default value to database
+        'username', 'name', 'email', 'password'
     ];
 
     protected $hidden = [
-        'password', "remember_token"
+        'password', 'remember_token'
     ];
 
     public function createdAuctions() {

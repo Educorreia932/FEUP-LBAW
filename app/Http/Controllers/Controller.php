@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\View;
 class Controller extends BaseController {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $user;
-
     public function __construct() {
-        // $this->user = Auth::user(); // TODO: Why isn't this working?
-        $this->user = Member::find(20);
-        Auth::login($this->user);
 
-        View::share("user", $this->user);
     }
 }
