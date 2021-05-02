@@ -10,7 +10,7 @@ class AuctionImage extends Model {
 
     protected $table = 'auction_image';
 
-    public $timestamp = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'auction_id'

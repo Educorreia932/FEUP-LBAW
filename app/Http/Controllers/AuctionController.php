@@ -65,7 +65,6 @@ class AuctionController extends Controller {
             }
         }
 
-        // TODO create auction image
        
         return Redirect::to('/');
     }
