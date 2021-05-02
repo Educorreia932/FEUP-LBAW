@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+use App\Rules\AfterToday;
+
 class CreateAuctionRequest extends FormRequest
 {
     /**
@@ -27,11 +29,11 @@ class CreateAuctionRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:50',
             'description' => 'required|min:10|max:255',
-            'start_date' => 'required|date',
+            'start_date' => ['required', 'date', new AfterToday],
             'end_date' => 'required|date|after:start_date',
             'starting_bid' => 'required|integer',
-            'increment_percent' => 'required_without:increment_fixed|numeric|integer|max:50',
-            'increment_fixed' => 'required_without:increment_percent|numeric|integer',
+            'increment_percent' => 'required_without:increment_fixed|numeric|integer|min:1|max:50',
+            'increment_fixed' => 'required_without:increment_percent|numeric|integer|min:1',
             'category' => 'required|string',
             'nsfw' => 'nullable',
             'image' => 'required',
