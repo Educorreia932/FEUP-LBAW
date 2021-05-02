@@ -442,6 +442,37 @@ paths:
         "200":
           description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
 
+  /auction/{id}/bookmark:
+    post:
+      summary: "Set Bookmark"
+      description: "Mark auction as bookmarked. Access: USR"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+
+    delete:
+      summary: "Unset Bookmark"
+      description: "Unmark auction as bookmarked. Access: USR"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+
   /auction/search_results:
     get:
       operationId: R204

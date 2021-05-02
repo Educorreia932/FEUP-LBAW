@@ -23,10 +23,19 @@
                     <span class="fst-italic mb-2">{{ '@' . $user->username }}</span>
 
                     @if (Auth::check() && Auth::id() != $user->id )
-                    <button type="button" class="follow btn btn-outline-danger">
-                        <i class="bi bi-heart"></i>
-                        <span>Follow</span>
-                    </button>
+                    <script defer src={{ asset("js/follow_users.js") }}></script>
+
+                        @if (Auth::user()->followsMember($user->id))
+                        <button type="button" class="follow btn btn-danger w-100" member_username="{{ $user->username }}">
+                            <i class="bi bi-heart-fill"></i>
+                            <span>Following</span>
+                        </button>
+                        @else
+                        <button type="button" class="follow btn btn-outline-danger w-100" member_username="{{ $user->username }}">
+                            <i class="bi bi-heart"></i>
+                            <span>Follow</span>
+                        </button>
+                        @endif
                     @endif
                 </div>
             </div>

@@ -38,6 +38,10 @@ class Member extends Authenticatable {
         return $this->follows()->where('followed_id', '=', $id)->first() != null;
     }
 
+    public function bookmarkedAuction($id) {
+        return $this->bookmarkedAuctions()->where('auction_id', '=', $id)->first() != null;
+    }
+
     public function createdAuctions() {
         return $this->hasMany("App\Models\Auction", "seller_id");
     }
@@ -46,10 +50,10 @@ class Member extends Authenticatable {
         return $this->hasManyThrough(
             Auction::class,
             BookmarkedAuction::class,
-            'auction_id',      // Foreign key on the bookmarks table...
+            'member_id',      // Foreign key on the bookmarks table...
             'id',            // Foreign key on the auction table...
             'id',             // Local key on the member table...
-            'member_id'  // Local key on the bookmarks table...
+            'auction_id'  // Local key on the bookmarks table...
         );
     }
 

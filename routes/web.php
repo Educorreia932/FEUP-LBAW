@@ -25,10 +25,15 @@ Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id',
 Route::get("create_auction", "AuctionController@create")->name("create_auction")->middleware("auth");
 Route::post("create_auction", "AuctionController@store")->name("store_auction")->middleware("auth");
 
+Route::post("auction/{id}/bookmark", "AuctionController@bookmark")->where('id', '[0-9]+')->name("bookmark")->middleware("auth");
+Route::delete("auction/{id}/bookmark", "AuctionController@unbookmark")->where('id', '[0-9]+')->name("unbookmark")->middleware("auth");
 
 // Users
-Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->middleware("auth");
-Route::get("users/{username}", "UserProfileController@show")->name('user_profile');
+Route::get("users/me", "UserController@showMyProfile")->name('my_profile')->middleware("auth");
+Route::get("users/{username}", "UserController@showProfile")->name('user_profile');
+
+Route::post("users/{username}/follow", "UserController@follow")->name("follow")->middleware("auth");
+Route::delete("users/{username}/follow", "UserController@unfollow")->name("unfollow")->middleware("auth");
 
 // Dashboard
 Route::get("dashboard", fn() => redirect("dashboard/created_auctions"))->name("dashboard")->middleware("auth");

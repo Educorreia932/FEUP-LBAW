@@ -24,8 +24,9 @@
             </div>
 
             @auth
-            <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start">
-                <i class="bi bi-bookmark-dash-fill" style="font-size: 2.5em; text-align: right"></i>
+            <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start" auction_id="{{ $auction->id }}">
+                <i class="bi @if (Auth::user()->bookmarkedAuction($auction->id)) bi-bookmark-dash-fill @else bi-bookmark-plus @endif"
+                    style="font-size: 2.5em; text-align: right"></i>
             </button>
             @endauth
         </div>

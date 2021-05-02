@@ -7,11 +7,13 @@ use App\Models\AuctionImage;
 use App\Http\Requests\CreateAuctionRequest;
 use Illuminate\Support\Arr;
 use App\Helpers\ImageHelper;
+use App\Models\BookmarkedAuction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuctionController extends Controller {
     public function show($id) {
@@ -26,6 +28,17 @@ class AuctionController extends Controller {
 
     public function create() {
         return view('pages.create_auction');
+    }
+
+    public function bookmark($id) {
+        DB::table('bookmarked_auction')->insert([
+            'auction_id' => $id,
+            'member_id' => Auth::id()
+        ]);
+    }
+
+    public function unbookmark($id) {
+        DB::table('bookmarked_auction')->where('member_id', '=', Auth::id())->where('auction_id', '=', $id)->delete();
     }
 
     public function store(CreateAuctionRequest $request) {

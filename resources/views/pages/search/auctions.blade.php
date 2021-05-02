@@ -33,7 +33,7 @@
     <p class="text-secondary my-2">Category</p>
 
     <div class="master-checkbox-reverse">
-        @include('partials.filter_checkbox', ["name" => "All", "id" => "a", "checked" => true])
+        @include('partials.filter_checkbox', ["name" => "All", "id" => "a", "checked" => true, "master" => true])
 
         <div class="row">
             <div class="col">

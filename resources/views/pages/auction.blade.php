@@ -3,12 +3,13 @@
 @inject('helper', \App\Helpers\LbawUtils::class)
 
 @section('content')
-<!-- Chart.JS -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script src={{ asset("js/edit-auction-modal.js") }} defer></script>
 <script defer src={{ asset("js/auction.js") }}></script>
+
+@auth
 <script defer src={{ asset("js/bookmark.js") }}></script>
+@endauth
 
 <div class="row m-2">
     <h1>Auction</h1>
@@ -88,8 +89,9 @@
                         @endif
 
                         {{-- button for bookmarking auction --}}
-                        <button type="button" class="btn hover-scale auction-bookmark">
-                            <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
+                        <button type="button" class="btn hover-scale auction-bookmark" auction_id="{{ $auction->id }}">
+                            <i class="bi @if (Auth::user()->bookmarkedAuction($auction->id)) bi-bookmark-dash-fill @else bi-bookmark-plus @endif"
+                                style="font-size: 1.5em; text-align: right"></i>
                         </button>
                         @endauth
                     </div>
@@ -168,9 +170,9 @@
         <hr class="my-1">
 
         @if (!$auction->ended)
-            @include("partials.auction_detail", ["key" => "Closes", "value" => $auction->end_date->diffForHumans(), "subgroup" => true])
+            @include("partials.auction_detail", ["key" => "Closes", "value" => $auction->end_date->diffForHumans(), "subgroup" => false])
         @endif
-        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->end_date->diffForHumans($auction->start_date), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->end_date->longAbsoluteDiffForHumans($auction->start_date), "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Start Date", "value" => $auction->start_date, "subgroup" => false])
         @include("partials.auction_detail", ["key" => "End Date", "value" => $auction->end_date, "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
@@ -183,6 +185,10 @@
 {{-- Bid history --}}
 @if ($auction->has_bids)
 <section class="container-fluid p-4">
+
+    <!-- Chart.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" crossorigin="anonymous"></script>
+
     <div class="row d-flex flex-row">
         <span class="d-flex align-items-end">
             <h3 class="m-0 p-0">Bid History</h3>
@@ -191,6 +197,17 @@
 
         <hr class="my-1">
 
+        @php
+            $bid_list = $auction->bids()->orderBy('date', 'desc')->limit(6)->get();
+        @endphp
+
+        {{-- Data for chart.js --}}
+        <ol id="chart-data" style="display: none;">
+            @foreach ($bid_list as $bid)
+            <li bid_value={{ $bid->value }} bid_timestamp="{{ $bid->date->timestamp }}"></li>
+            @endforeach
+        </ol>
+
         {{-- Bid history chart --}}
         <div class="row col-lg-7 order-lg-2 d-flex flex-column justify-content-center">
             <canvas class="mt-4" id="bid-history-chart"></canvas>
@@ -198,7 +215,7 @@
 
         {{-- Bid history table --}}
         <div class="row col-lg-5 order-lg-1">
-            <table id="bid-history" class="table table-striped table-hover">
+            <table id="bid-history" class="table table-striped table-hover" style="height: min-content;">
                 <thead>
                 <tr>
                     <th scope="col">Bidder</th>
@@ -207,7 +224,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
+                    @foreach ($bid_list as $bid)
                         @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $bid->date->diffForHumans()])
                     @endforeach
                 </tbody>
