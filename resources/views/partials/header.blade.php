@@ -26,7 +26,7 @@
             <hr class="d-md-none text-white-50">
 
             <ul class="navbar-nav flex-row ms-md-auto me-md-4">
-                @if ($user)
+                @if (Auth::check())
                     {{-- Notifications --}}
                     <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
                             type="button"
@@ -41,10 +41,10 @@
                     <li class="d-none d-md-flex nav-item dropdown px-1">
                         <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                 id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="me-2">{{ $user->username }}</span>
+                            <span class="me-2">{{ Auth::user()->name }}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
-                                     src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg"
+                                     src={{ Auth::user()->getImage('small') }}
                                      alt="Profile Image">
                             </div>
                         </button>
@@ -87,12 +87,12 @@
                 @else
                     {{-- Authentication --}}
                     <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link px-2" href="login">Sign in</a>
+                        <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
                     </li>
 
                     <li class="nav-item col-6 col-md-auto">
                         <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2"
-                           href="register">
+                           href={{ route('register_form') }}>
                             Sign up
                         </a>
                     </li>

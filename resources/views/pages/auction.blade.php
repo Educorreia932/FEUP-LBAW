@@ -13,40 +13,31 @@
     <div class="row m-2">
         <h1>Auction</h1>
 
-        @include("partials.breadcrumbs", [ "pages" => [
-            ["title" => "Home", "href" => route('home')],
-            ["title" => "Auctions", "href" => route('search_auctions')],
-            ["title" => $auction->title, "href" => route('auction', ['id' => $auction->id])]
-        ]])
-    </div>
+<section class="container-fluid bg-light">
+    <div class="row">
+        {{-- Product images --}}
+        <div id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Thumbnail"></button>
+                @foreach ($auction->genImages('medium') as $img)
+                <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{$loop->iteration}}"
+                        aria-label="Image {{$loop->iteration}}"></button>
+                @endforeach
+            </div>
 
-    <section class="container-fluid bg-light">
-        <div class="row">
-            <!-- Product images -->
-            <section id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#product-images" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Thumbnail"></button>
-                    @foreach ($auction->images as $img)
-                        <button type="button" data-bs-target="#product-images" data-bs-slide-to="{{ $loop->iteration }}"
-                                aria-label="Image {{ $loop->iteration }}"></button>
-                    @endforeach
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block m-auto"
+                            src={{ $auction->getThumbnail('medium') }}
+                            alt="Auction Thumbnail">
                 </div>
 
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block m-auto"
-                             src="/images/auctions/{{ $auction->id }}/thumbnail_medium.png"
-                             alt="...">
-                    </div>
-
-                    @foreach ($auction->images as $img)
-                        <div class="carousel-item">
-                            <img class="d-block m-auto"
-                                 src="/images/auctions/{{ $auction->id }}/{{ $img->id }}_medium.png"
-                                 alt="...">
-                        </div>
-                    @endforeach
+                @foreach ($auction->genImages('medium') as $img)
+                <div class="carousel-item">
+                    <img class="d-block m-auto"
+                            src={{$img}}
+                            alt="Auction image">
                 </div>
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#product-images"
@@ -62,17 +53,38 @@
                 </button>
             </section>
 
-            <!-- Auction information -->
-            <section id="auction-information" class="col-md my-4 d-flex flex-column justify-content-between">
-                <!-- Product information -->
-                <section class="row" id="product-information">
-                    <div class="row">
-                        <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
-                            {{ $auction->title }}
-                        </h2>
+        {{-- Auction information --}}
+        <div id="auction-information" class="col-md my-4 d-flex flex-column justify-content-between">
+            {{-- Product information --}}
+            <div class="row" id="product-information">
+                <div class="row">
+                    <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
+                        {{$auction->title}}
+                    </h2>
+                    <div
+                        class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
+                        @auth
+                        @if (Auth::id() != $auction->seller_id)
+                        {{-- button for reporting auction (only for the users who did not create it) --}}
+                        <button type="button" class="btn hover-scale" data-bs-toggle="modal"
+                                data-bs-target="#report-modal">
+                            <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
+                            <span>Report auction</span>
+                        </button>
+                        @else
+                        {{-- button for editing auction information (only for the user who created it) --}}
+                        <button type="button" class="btn hover-scale" data-bs-toggle="modal"
+                                data-bs-target="#edit-modal">
+                            <i class="bi bi-pencil" style="font-size: 1.5em; text-align: right"></i>
+                        </button>
+                        @endif
 
-                        <div
-                            class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
+                        {{-- button for bookmarking auction --}}
+                        <button type="button" class="btn hover-scale auction-bookmark">
+                            <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
+                        </button>
+                        @endauth
+                    </div>
 
                             @if($user != $auction->seller)
                                 <button type="button" class="btn hover-scale" data-bs-toggle="modal"
@@ -82,9 +94,20 @@
                                 </button>
                             @endif
 
-                            <button type="button" class="btn hover-scale auction-bookmark">
-                                <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
-                            </button>
+            <div class="row">
+                <div
+                    class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
+                    <h3 class="d-sm-none">Seller</h3>
+                    <a href={{route('user_profile', ['username' => $auction->seller->username])}}
+                        class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
+                        <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
+                        <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                            <img style="border-radius:50%;" width="40" height="40"
+                                    src={{ $auction->seller->getImage('small') }}
+                                    alt="Seller Profile Image">
+                        </div>
+                    </a>
+                </div>
 
                             <!-- Button for editing auction information (only for the user who created it) -->
                             @if($user == $auction->seller)
@@ -96,70 +119,14 @@
                         </div>
                     </div>
 
-                    <p class="text-overflow-ellipsis">{{ $auction->description }}</p>
-                </section>
-
-                <div class="row">
-                    {{-- Seller --}}
-                    <section
-                        class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
-                        <h3 class="d-sm-none">Seller</h3>
-
-                        <a href="{{ route('user_profile', ['username' => $auction->seller->username]) }}"
-                           class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse
-                               justify-content-end flex-sm-row justify-content-sm-start">
-                            <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
-                            <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                                <img style="border-radius:50%;" width="40" height="40"
-                                     src="/images/users/{{ $auction->seller->id }}_small.png"
-                                     alt="Seller Profile Image">
-                            </div>
-                        </a>
-                    </section>
-
-                    {{-- Winning bid --}}
-                    <section class="col-sm-8 col-xl-6 order-sm-1">
-                        {{--TODO: THIS--}}
-                        @if ($auction->ended)
-                            {{-- AUCTION ENDED --}}
-                            <h3>Winning Bid</h3>
-                            <div class="row">
-                                <div class="col d-flex flex-column">
-                                    @if ($auction->current_bid != null)
-                                        <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
-                                    @else
-                                        <h4>No bids were made</h4>
-                                    @endif
-                                </div>
-                            </div>
-                        @else
-                            {{-- AUCTION IS OPEN --}}
-                            <h3>Bids</h3>
-                            <div class="row">
-                                <div class="col d-flex flex-column">
-                                    <span>Current bid</span>
-                                    @if ($auction->current_bid != null)
-                                        <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
-                                    @else
-                                        <h4>No bids</h4>
-                                    @endif
-                                </div>
-                                <div class="col d-flex flex-column">
-                                    <span>Next bid starts at</span>
-                                    <h4>{{ $helper->formatCurrency($auction->next_bid) }} &phi;</h4>
-                                </div>
-                            </div>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">&phi;</span>
-                                </div>
-                                <input type="number" class="form-control hide-appearence" placeholder="Enter bid"
-                                       min="181">
-                                <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
-                            </div>
-                        @endif
-                    </section>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">&phi;</span>
+                        </div>
+                        <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min={{ number_format($auction->next_bid / 100, 2) }}>
+                        <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
+                    </div>
+                    @endif
                 </div>
             </section>
         </div>
@@ -173,24 +140,27 @@
             </span>
             <hr class="my-1">
 
-            @if (!$auction->ended)
-                @include("partials.auction_detail", ["key" => "Time remaining", "value" => $auction->getTimeRemainingString(), "subgroup" => true])
-            @endif
-            @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->getDurationString(), "subgroup" => false])
-            @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
-            @include("partials.auction_detail", ["key" => "Total Bids", "value" => $auction->n_bids . " bids", "subgroup" => false])
-            @include("partials.auction_detail", ["key" => "Starting Bid", "value" => $helper->formatCurrency($auction->starting_bid) . " φ", "subgroup" => true])
-            @include("partials.auction_detail", ["key" => "Mandatory Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
-        </div>
-    </section>
+        @if (!$auction->ended)
+            @include("partials.auction_detail", ["key" => "Closes", "value" => $auction->end_date->diffForHumans(), "subgroup" => true])
+        @endif
+        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->end_date->diffForHumans($auction->start_date), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Start Date", "value" => $auction->start_date, "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "End Date", "value" => $auction->end_date, "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
+        @include("partials.auction_detail", ["key" => "Total Bids", "value" => $auction->n_bids . " bids", "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Starting Bid", "value" => $helper->formatCurrency($auction->starting_bid) . " φ", "subgroup" => true])
+        @include("partials.auction_detail", ["key" => "Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
+    </div>
+</section>
 
-    {{-- Bid history --}}
-    <section class="container-fluid p-4">
-        <div class="row d-flex flex-row">
-            <span class="d-flex align-items-end">
-                <h3 class="m-0 p-0">Bid History</h3>
-                <a class="ms-2" style="font-size: smaller;" href={{ route('auction_details', ['id' => $auction->id]) }}>See more</a>
-            </span>
+{{-- Bid history --}}
+@if ($auction->has_bids)
+<section class="container-fluid p-4">
+    <div class="row d-flex flex-row">
+        <span class="d-flex align-items-end">
+            <h3 class="m-0 p-0">Bid History</h3>
+            <a class="ms-2" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>See more</a>
+        </span>
 
             <hr class="my-1">
 
@@ -199,28 +169,26 @@
                 <canvas class="mt-4" id="bid-history-chart"></canvas>
             </div>
 
-            {{-- Bid history table --}}
-            <div class="row col-lg-5 order-lg-1">
-                <table id="bid-history" class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Bidder</th>
-                            <th scope="col">Bid</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
-                        @include("partials.bid_table_entry", [ "name" => "Y**p", "bid" => $bid->value, "time" => $helper->time_elapsed_string($bid->date)])
+        {{-- Bid history table --}}
+        <div class="row col-lg-5 order-lg-1">
+            <table id="bid-history" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Bidder</th>
+                    <th scope="col">Bid</th>
+                    <th scope="col">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach ($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
+                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $bid->date->diffForHumans()])
                     @endforeach
-
-                    @include("partials.bid_table_entry", [ "name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $helper->time_elapsed_string($auction->start_date)])
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
+@endif
 
     {{-- Edit modal --}}
     <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">

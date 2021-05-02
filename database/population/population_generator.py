@@ -125,15 +125,6 @@ class Gen:
 
     @timer
     def gen(self):
-        # for root, _, files in os.walk(ImageProcessor.userRoot):
-        #     for file in files:
-        #         os.remove(os.path.join(root, file))
-
-        # for root, dirs, files in os.walk(ImageProcessor.auctionRoot):
-        #     for file in files:
-        #         os.remove(os.path.join(root, file))
-
-        # print("Cleaned old images")
 
         self.writeTag("USERS")
         n = self.userGen()

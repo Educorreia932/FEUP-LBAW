@@ -48,6 +48,7 @@ CREATE TABLE member (
     joined                              TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     credit                              INTEGER NOT NULL DEFAULT 0 CONSTRAINT credit_ck CHECK (credit >= 0),
     rating                              INTEGER DEFAULT 0 NOT NULL,
+    nsfw_consent                        BOOLEAN DEFAULT FALSE NOT NULL,
     data_consent                        BOOLEAN DEFAULT FALSE NOT NULL,
     notifications                       BOOLEAN DEFAULT TRUE NOT NULL,
     outbid_notifications                BOOLEAN DEFAULT TRUE NOT NULL,

@@ -11,16 +11,16 @@
                         <div class="row">
                             <div class="col-4">
                                 <img class="img-fluid rounded-3"
-                                     src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg"
-                                     alt="...">
+                                     src={{ Auth::user()->getImage('medium') }}
+                                     alt={{ Auth::user()->username . ' profile picture' }}>
 
                                 <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-center">
                                     <button type="button" class="btn btn-secondary">Change Image</button>
                                 </div>
                             </div>
                             <div class="col-7">
-                                <h3>Foo Fighters</h3>
-                                <h4 class="text-muted">@ffighters</h4>
+                                <h3>{{ Auth::user()->name }}</h3>
+                                <h4 class="text-muted">{{ '@' . Auth::user()->username }}</h4>
                             </div>
                         </div>
                     </div>
@@ -28,19 +28,19 @@
                     <div class="col-lg-4 order-lg-1">
                         <div class="mb-3">
                             <label class="form-label" for="name">Name</label>
-                            <input class="form-control" type="text" id="name" name="name" placeholder="Foo Fighters">
+                            <input class="form-control" type="text" id="name" name="name" placeholder={{ Auth::user()->name }}>
                         </div>
 
                         <label class="form-label" for="username">Username</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" id="username" placeholder="Username"
+                            <input type="text" class="form-control" id="username" placeholder={{ Auth::user()->username }}
                                    aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label" for="email">Email</label>
-                            <input class="form-control" type="text" id="email" name="email" placeholder="ff@jojo.net">
+                            <input class="form-control" type="text" id="email" name="email" placeholder={{ Auth::user()->email }}>
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                     </div>

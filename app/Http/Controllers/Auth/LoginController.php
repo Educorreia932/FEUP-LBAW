@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller {
@@ -23,7 +24,7 @@ class LoginController extends Controller {
     /**
      * Where to redirect users after lo gin.
      */
-    protected string $redirectTo = '/';
+    protected string $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

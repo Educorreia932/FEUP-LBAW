@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex justify-content-center">
-        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{asset('images/users/' . $member->id . '_medium.png')}}
+        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{ $member->getImage('medium') }}
                                         alt="User profile image"></a>
     </div>
     <div class="col-7 col-sm-9 col-lg-10">
@@ -14,9 +14,10 @@
             </div>
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
-        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined }}</p>
+        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined->toFormattedDateString() }}</p>
+        @auth
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            @if (true)
+            @if (Auth::user()->followsMember($member->id))
                 <button type="button" class="follow btn btn-danger w-100">
                     <i class="bi bi-heart-fill"></i>
                     <span>Following</span>
@@ -28,6 +29,7 @@
                 </button>
             @endif
         </div>
+        @endauth
     </div>
 </div>
 <hr>

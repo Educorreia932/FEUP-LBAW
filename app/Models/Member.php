@@ -26,8 +26,16 @@ class Member extends Authenticatable {
     ];
 
     protected $hidden = [
-        'password', "remember_token"
+        'password', 'remember_token'
     ];
+
+    public function getHasAuctionsAttribute() {
+        return $this->createdAuctions()->count();
+    }
+
+    public function followsMember($id) {
+        return $this->follows()->where('followed_id', '=', $id)->first() != null;
+    }
 
     public function createdAuctions() {
         return $this->hasMany("App\Models\Auction", "seller_id");
@@ -68,5 +76,9 @@ class Member extends Authenticatable {
 
     public function notifications() {
 
+    }
+
+    public function getImage($type='small') {
+        return asset('images/users/' . $this->id . '_' . $type . '.jpg');
     }
 }

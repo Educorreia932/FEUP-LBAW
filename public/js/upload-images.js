@@ -36,7 +36,7 @@ function handleImage() {
 
         let deleteBtn = document.createElement('div');
         deleteBtn.className = 'carousel-caption d-sm-block pb-0';
-        deleteBtn.innerHTML = '<button class="btn btn-danger float-end"><i class="bi bi-trash"></i></button>';
+        deleteBtn.innerHTML = '<button class="btn btn-danger float-end"><i class="bi bi-trash"></i></butotn>';
         
         deleteBtn.addEventListener('click', removeItem);
         item.appendChild(deleteBtn);

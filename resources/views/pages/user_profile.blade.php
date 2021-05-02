@@ -13,8 +13,8 @@
                 class="col-12 col-md-8 user-details d-flex flex-column flex-md-row align-items-center align-items-md-start">
                 <div class="profile-avatar m-0 m-md-3">
                     <img width="200" height="200"
-                            src={{asset('images/users/' . $user->id . '_medium.png')}}
-                            alt="F.F.">
+                            src={{ $user->getImage('medium') }}
+                            alt={{ $user->username . " profile picture" }}>
                 </div>
 
                 <div class="col-12 col-md-4 d-flex flex-column mt-md-5 ps-2 me-2">
@@ -22,29 +22,37 @@
 
                     <span class="fst-italic mb-2">{{ '@' . $user->username }}</span>
 
+                    @if (Auth::check() && Auth::id() != $user->id )
                     <button type="button" class="follow btn btn-outline-danger">
                         <i class="bi bi-heart"></i>
                         <span>Follow</span>
                     </button>
+                    @endif
                 </div>
             </div>
             <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
                 <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
-                    <!-- OTHERS' PROFILE -->
+                    {{-- OTHERS' PROFILE --}}
                     <a class="p-0 link-dark text-decoration-none hover-scale" href="search_results.php">
                         <i class="bi bi-shop"></i>
                         <span>Open Auctions</span>
                     </a>
+
+                    @auth
+                    @if (Auth::id() != $user->id )
                     <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal"
                             class="btn ms-2 p-0 hover-scale">
                         <i class="bi bi-flag-fill text-danger"></i>
                         <span>Report user</span>
                     </button>
-                    <!-- OWN PROFILE -->
-                    <!-- <a class="p-0 link-dark text-decoration-none hover-scale" href="settings-account.php">
+                    @else
+                    {{-- OWN PROFILE --}}
+                    <a class="p-0 ms-2 link-dark text-decoration-none hover-scale" href={{ route('settings_account') }}>
                         <i class="bi bi-gear"></i>
                         <span>Edit Profile</span>
-                    </a> -->
+                    </a>
+                    @endif
+                    @endauth
                 </div>
                 <div class="user-description d-flex flex-column-reverse w-100">
                     <a role="button" class="collapsed description-toggler" data-bs-toggle="collapse"
@@ -110,7 +118,7 @@
                 <div class="row p-2 m-0 align-items-center justify-content-center w-100 h-100">
                     <div class="col text-center">
                         <small>Joined</small>
-                        <h4>{{ $user->joined }}</h4>
+                        <h4>{{ $user->joined->toFormattedDateString() }}</h4>
                     </div>
                     <div class="col text-center">
                         <small>Auctions Created</small>
@@ -127,12 +135,14 @@
 </div>
 
 {{-- Created Auctions --}}
+@if ($user->has_auctions)
 <section class="container my-4">
     <h2 class="fs-bold">Created Auctions</h2>
     <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
         @each("partials.auction_card", $user->createdAuctions()->orderBy('end_date', 'desc')->limit(8)->get(), "auction")
     </div>
 </section>
+@endif
 
 {{-- Modal --}}
 <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
