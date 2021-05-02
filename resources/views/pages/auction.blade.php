@@ -71,7 +71,8 @@
                     </h2>
                     <div
                         class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
-                        @if (!Auth::check() || Auth::id() != $auction->seller_id)
+                        @auth
+                        @if (Auth::id() != $auction->seller_id)
                         <!-- button for reporting auction (only for the users who did not create it) -->
                         <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                 data-bs-target="#report-modal">
@@ -90,6 +91,7 @@
                         <button type="button" class="btn hover-scale auction-bookmark">
                             <i class="bi bi-bookmark-plus" style="font-size: 1.5em; text-align: right"></i>
                         </button>
+                        @endauth
                     </div>
 
                 </div>
