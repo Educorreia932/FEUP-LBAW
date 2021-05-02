@@ -11,7 +11,7 @@
             <div>
                 <h4 class="d-flex align-items-center">
                     <i class="bi bi-circle-fill
-                    @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->status == 'Scheduled') text-warning @else text-success @endif
+                    @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->started) text-warning @else text-success @endif
                     me-2" style="font-size: 0.5em;"></i>
                     <a class="text-decoration-none link-dark" href={{route('auction', ['id' => $auction->id])}}>{{ $auction->title }}</a>
                 </h4>
@@ -57,7 +57,7 @@
 
             <div class="col-sm d-flex flex-column mt-3 mt-0-sm align-items-sm-end">
                 <span><span class="fw-bold" style="font-size: x-small;">Starts </span>{{ $auction->start_date }}</span>
-                <span><span class="fw-bold" style="font-size: x-small;">Ends </span>{{ $auction->start_date }}</span>
+                <span><span class="fw-bold" style="font-size: x-small;">Ends </span>{{ $auction->end_date }}</span>
             </div>
         </div>
     </div>

@@ -149,7 +149,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">&phi;</span>
                         </div>
-                        <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min="181">
+                        <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min={{ number_format($auction->next_bid / 100, 2) }}>
                         <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
                     </div>
                     @endif
@@ -168,17 +168,20 @@
         <hr class="my-1">
 
         @if (!$auction->ended)
-            @include("partials.auction_detail", ["key" => "Time remaining", "value" => $auction->getTimeRemainingString(), "subgroup" => true])
+            @include("partials.auction_detail", ["key" => "Closes", "value" => $auction->end_date->diffForHumans(), "subgroup" => true])
         @endif
-        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->getDurationString(), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->end_date->diffForHumans($auction->start_date), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Start Date", "value" => $auction->start_date, "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "End Date", "value" => $auction->end_date, "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
         @include("partials.auction_detail", ["key" => "Total Bids", "value" => $auction->n_bids . " bids", "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Starting Bid", "value" => $helper->formatCurrency($auction->starting_bid) . " φ", "subgroup" => true])
-        @include("partials.auction_detail", ["key" => "Mandatory Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
     </div>
 </section>
 
 {{-- Bid history --}}
+@if ($auction->has_bids)
 <section class="container-fluid p-4">
     <div class="row d-flex flex-row">
         <span class="d-flex align-items-end">
@@ -205,15 +208,14 @@
                 </thead>
                 <tbody>
                     @foreach ($auction->bids()->orderBy('date', 'desc')->limit(6)->get() as $bid)
-                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $helper->time_elapsed_string($bid->date)])
+                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $bid->date->diffForHumans()])
                     @endforeach
-
-                    @include("partials.bid_table_entry", ["name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $helper->time_elapsed_string($auction->start_date)])
                 </tbody>
             </table>
         </div>
     </div>
 </section>
+@endif
 
 {{-- Edit modal --}}
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">

@@ -46,7 +46,7 @@ class CreateAuctionRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-     
+
         // converting date and hour to datetime
         if ($this->has(['start_date', 'start_time'])) {
             $start_datetime = $this->input('start_date')." ".$this->input('start_time');
@@ -58,12 +58,16 @@ class CreateAuctionRequest extends FormRequest
             $this->merge(['end_date' => $end_datetime]);
         }
 
+        if ($this->has('starting_bid')) {
+            $this->merge(['starting_bid' => ceil($this->input('starting_bid') * 100)]);
+        }
+
         // determine if minimum increment is percentage or fixed
         if ($this->has('increment_val')) {
             if ($this->has('percent_check') && $this->input('percent_check')) // percentual
                 $this->merge(['increment_percent' => $this->input('increment_val')]);
             else // fixed
-                $this->merge(['increment_fixed' => $this->input('increment_val')]);
+                $this->merge(['increment_fixed' => ceil($this->input('increment_val') * 100)]);
         }
     }
 }

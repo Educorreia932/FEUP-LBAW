@@ -14,7 +14,7 @@
             </div>
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
-        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined }}</p>
+        <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined->toFormattedDateString() }}</p>
         @auth
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             @if (Auth::user()->followsMember($member->id))

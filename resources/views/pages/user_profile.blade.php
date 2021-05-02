@@ -118,7 +118,7 @@
                 <div class="row p-2 m-0 align-items-center justify-content-center w-100 h-100">
                     <div class="col text-center">
                         <small>Joined</small>
-                        <h4>{{ $user->getJoinedTimeAgoString() }}</h4>
+                        <h4>{{ $user->joined->toFormattedDateString() }}</h4>
                     </div>
                     <div class="col text-center">
                         <small>Auctions Created</small>

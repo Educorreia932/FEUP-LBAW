@@ -36,7 +36,7 @@ class AuctionController extends Controller {
         $auction = new Auction($validated);
         $auction->seller_id = Auth::user()->id;
         $auction->status = 'Scheduled';
-        
+
         $auction->save();
 
         $auction_id = $auction->id;
@@ -47,23 +47,23 @@ class AuctionController extends Controller {
             // create  images directory for this auction
             $path = public_path().'/images/auctions/' . $auction_id;
             File::makeDirectory($path, $mode = 0777, true, true);
-            
+
             $i = 0;
             foreach($request->file('image') as $file) {
-                
+
                 if ($i > 0) {
                     $auction_image = AuctionImage::create(['auction_id' => $auction_id]);
                     $image_id = $auction_image->id;
                 }
-                else 
+                else
                     $image_id = 'thumbnail';
-                
-                ImageHelper::save_image($file, $path, $image_id);
+
+                ImageHelper::save_auction_image($file, $path, $image_id);
                 $i++;
             }
         }
 
-       
+
         return Redirect::to('/');
     }
 }

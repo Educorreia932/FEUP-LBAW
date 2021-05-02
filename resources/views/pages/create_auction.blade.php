@@ -41,13 +41,13 @@
 
                         <button class="carousel-control-prev" type="button" data-bs-target="#uploadPreview"
                                 data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon handle-background" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
 
                         <button class="carousel-control-next" type="button" data-bs-target="#uploadPreview"
                                 data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon handle-background" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
@@ -82,8 +82,8 @@
                                 <label for="inputDescription" class="sr-only">Auction Description</label>
                                 <textarea class="form-control" rows="4" id="inputDescription" name="description">{{{ old('description') }}}</textarea>
                             </div>
-                            
-                            
+
+
                             {{-- Starting on --}}
                             <div class="form-group col-sm-6 mt-3">
                                 <label for="inputStartDate" class="sr-only ">Starting on</label>
@@ -106,7 +106,7 @@
                             <div class="form-group col-sm-4 mt-3">
                                 <label for="inputStartBid" class="sr-only">Starting Bid</label>
                                 <div class="input-group">
-                                    <input type="text" name="starting_bid" id="inputStartBid" class="form-control" placeholder="0.00"
+                                    <input type="number" name="starting_bid" id="inputStartBid" class="form-control hide-appearence" placeholder="1.00" min="0.01" step="0.01"
                                            aria-label="credit amount (with dot and two decimal places)" value="{{ old('starting_bid') }}" required>
                                     <span class="input-group-text">φ</span>
                                 </div>
@@ -117,14 +117,14 @@
                                 <label for="inputIncr" class="sr-only">Increment</label>
                                 <div class="input-group">
                                     <input type="number" name="increment_val" id="inputIncr" class="form-control hide-appearence"
-                                           placeholder="1" min="1" step="1"
+                                           placeholder="0.20" min="0.01" step="0.01"
                                            aria-label="credit amount (with dot and two decimal places)" value="{{ old('increment_val') }}" required>
                                     <input type="checkbox" name="percent_check" class="d-none" id="incrPercent">
                                     <span id="incrSpan" class="input-group-text">φ</a>
                                 </div>
                             </div>
 
-                            
+
                             {{-- Category --}}
                             <div class="col-sm-4 mt-3">
                                 <label for="inputCategory">Category</label>
