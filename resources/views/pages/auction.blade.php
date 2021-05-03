@@ -4,7 +4,6 @@
 
 @section('content')
 
-<script src={{ asset("js/edit-auction-modal.js") }} defer></script>
 <script defer src={{ asset("js/auction.js") }}></script>
 
 @auth
@@ -294,6 +293,8 @@
 
 
 @elseif (!$auction->ended)
+
+<script src={{ asset("js/edit-auction-modal.js") }} defer></script>
 
 {{-- Edit modal --}}
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">

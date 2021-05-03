@@ -849,7 +849,7 @@ paths:
           description: OK
         default:
           description: Unexpected error
-            
+
   # M03: Users
   /users/{username}:
     get:
