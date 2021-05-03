@@ -23,7 +23,7 @@ class AuctionController extends Controller {
         if ($auction == null)
             return abort(404);
 
-        if (!Auth::check() || ($auction->nsfw && !Auth::user()->nsfw_consent))
+        if ($auction->nsfw && !(Auth::check() && Auth::user()->nsfw_consent))
             return back();
 
         return view('pages.auction', ['auction' => $auction]);
