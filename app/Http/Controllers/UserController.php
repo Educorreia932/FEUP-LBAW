@@ -9,6 +9,9 @@ class UserController extends Controller {
     public function showProfile($username) {
         $user = Member::all()->where('username', '=', $username)->first();
 
+        if ($user == null)
+            return abort(404);
+
         return view('pages.user_profile', [ "user" => $user]);
     }
 

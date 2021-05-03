@@ -13,7 +13,7 @@ marks.forEach(elem => {
 
         if (target.classList.contains("bi-heart")) {
             // Is now following
-            request = new Request('/users/' + member_username + '/follow', { method: 'POST', headers: myHeaders });
+            request = new Request('/users/' + member_username + '/follow', { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
                     target.classList.remove("bi-heart");

@@ -12,7 +12,7 @@ marks.forEach(elem => {
 
         if (target.classList.contains("bi-bookmark-plus")) {
             // Is now bookmarked
-            request = new Request('/auction/' + auction_id + '/bookmark', { method: 'POST', headers: myHeaders });
+            request = new Request('/auction/' + auction_id + '/bookmark', { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
                     target.classList.remove("bi-bookmark-plus");

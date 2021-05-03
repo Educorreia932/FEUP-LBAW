@@ -154,12 +154,14 @@
 @endif
 
 {{-- Modal --}}
+@auth
+@if (Auth::id() != $user->id )
 <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="report-user-modal-title">Report Foo Fighters</h5>
+                <h5 class="modal-title" id="report-user-modal-title">Report {{ $user->name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form>
@@ -190,4 +192,7 @@
         </div>
     </div>
 </section>
+@endif
+@endauth
+
 @endsection

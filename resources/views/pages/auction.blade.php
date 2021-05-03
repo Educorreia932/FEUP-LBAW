@@ -80,7 +80,7 @@
                             <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
                             <span>Report auction</span>
                         </button>
-                        @else
+                        @elseif (!$auction->ended)
                         {{-- button for editing auction information (only for the user who created it) --}}
                         <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                 data-bs-target="#edit-modal">
@@ -225,8 +225,23 @@
                 </thead>
                 <tbody>
                     @foreach ($bid_list as $bid)
-                        @include("partials.bid_table_entry", ["name" => "Y**p", "bid" => $bid->value, "time" => $bid->date->diffForHumans()])
+                        @include("partials.bid_table_entry", ["auction" => $auction, "bid_id" => $bid->id, "value" => $bid->value, "time" => $bid->date->diffForHumans()])
                     @endforeach
+
+                    @if ($auction->n_bids != count($bid_list))
+                    <tr>
+                        <td></td>
+                        <td>...</td>
+                        <td></td>
+                    </tr>
+                    @endif
+
+                    <tfoot>
+                        <td>Starting Bid</td>
+
+                        <td>{{ $helper->formatCurrency($auction->starting_bid) }} &phi;</td>
+                        <td>{{ $auction->start_date->diffForHumans() }}</td>
+                    </tfoot>
                 </tbody>
             </table>
         </div>
@@ -234,6 +249,8 @@
 </section>
 @endif
 
+@auth
+@if (Auth::id() != $auction->seller_id)
 {{-- Edit modal --}}
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
     <div class="modal-dialog">
@@ -316,6 +333,8 @@
     </div>
 </div>
 
+@elseif (!$auction->ended)
+
 {{-- Report modal --}}
 <div class="modal fade" tabindex="-1" role="dialog" id="report-modal">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -349,5 +368,9 @@
         </div>
     </div>
 </div>
+@endif
+@endauth
+
+
 @endsection
 

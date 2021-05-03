@@ -18,11 +18,25 @@ use Illuminate\Support\Facades\DB;
 class AuctionController extends Controller {
     public function show($id) {
         $auction = Auction::find($id);
+
+        if ($auction == null)
+            return abort(404);
+
+        if (!Auth::check() || ($auction->nsfw && !Auth::user()->nsfw_consent))
+            return back();
+
         return view('pages.auction', ['auction' => $auction]);
     }
 
     public function showDetails($id) {
         $auction = Auction::find($id);
+
+        if ($auction == null)
+            return abort(404);
+
+        if (!Auth::check() || ($auction->nsfw && !Auth::user()->nsfw_consent))
+            return back();
+
         return view('pages.auction_details', ['auction' => $auction]);
     }
 
