@@ -19,8 +19,8 @@ Route::get('user/search_results', 'SearchResultsController@search_users')->name(
 // Auctions
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
-Route::get("create_auction", "AuctionController@create")->name("create_auction")->middleware("auth");
-Route::post("create_auction", "AuctionController@store")->name("store_auction")->middleware("auth");
+Route::get("auction/create", "AuctionController@create")->name("create_auction")->middleware("auth");
+Route::post("auction/create", "AuctionController@store")->name("store_auction")->middleware("auth");
 
 Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
 Route::post("auction/{id}/edit", "AuctionController@edit")->where('id', '[0-9]+')->name("auction_edit");
