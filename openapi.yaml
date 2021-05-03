@@ -490,41 +490,6 @@ paths:
         "200":
           description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
 
-  /auction/{id}/bookmark:
-    post:
-      summary: "Set Bookmark"
-      description: "Mark auction as bookmarked. Access: USR"
-      tags:
-        - "M02: Auctions"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          description: Unexpected error
-
-    delete:
-      summary: "Unset Bookmark"
-      description: "Unmark auction as bookmarked. Access: USR"
-      tags:
-        - "M02: Auctions"
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-      responses:
-        '200':
-          description: OK
-        default:
-          description: Unexpected error
-
   /auction/search_results:
     get:
       operationId: R204
@@ -848,6 +813,43 @@ paths:
                   description: "Couldn't report auction. Redirect to auction page."
                   value: "/auction/{id}"
 
+  /auction/{id}/bookmark:
+    post:
+      operationId: R211
+      summary: "Set Bookmark"
+      description: "R211: Mark auction as bookmarked. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+
+    delete:
+      operationId: R212
+      summary: "Unset Bookmark"
+      description: "R212: Unmark auction as bookmarked. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+            
   # M03: Users
   /users/{username}:
     get:
@@ -1354,4 +1356,3 @@ paths:
       responses:
         "200":
           description: "Ok. Show [UI02 About](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui02-about)"
-
