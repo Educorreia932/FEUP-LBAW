@@ -15,12 +15,12 @@ BEGIN
         END IF;
         IF OLD.username <> NEW.username OR OLD.name <> NEW.name THEN
             UPDATE auction
-                SET auction.ts_search =
-                    setweight(to_tsvector('english', coalesce(auction.title,'')), 'A')    ||
-                    setweight(to_tsvector('english', coalesce(auction.description,'')), 'B')  ||
+                SET ts_search =
+                    setweight(to_tsvector('english', coalesce(title,'')), 'A')    ||
+                    setweight(to_tsvector('english', coalesce(description,'')), 'B')  ||
                     setweight(to_tsvector('english', coalesce(NEW.username,'')), 'C') ||
                     setweight(to_tsvector('english', coalesce(NEW.name,'')), 'D')
-                WHERE auction.seller_id = NEW.id;
+                WHERE seller_id = NEW.id;
         END IF;
     END IF;
 

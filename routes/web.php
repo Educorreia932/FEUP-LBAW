@@ -38,6 +38,7 @@ Route::get("dashboard/followed", "DashboardController@followed")->name("dashboar
 // Settings
 Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings")->middleware("auth");
 Route::get("user/settings/account", "SettingsController@account")->name("settings_account")->middleware("auth");
+Route::put("user/settings/account", "SettingsController@save_account_changes")->name("save_account_changes")->middleware("auth");
 Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy")->middleware("auth");
 Route::get("user/settings/security", "SettingsController@security")->name("settings_security")->middleware("auth");
 
