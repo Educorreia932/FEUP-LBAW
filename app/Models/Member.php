@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use App\Helpers\LbawUtils;
-
 class Member extends Authenticatable {
     use Notifiable;
 
     protected $table = 'member';
 
-    // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
     /**
@@ -25,7 +22,7 @@ class Member extends Authenticatable {
     ];
 
     protected $fillable = [
-        'username', 'name', 'email', 'password'
+        "username", 'name', 'email', 'password', "credit"
     ];
 
     protected $hidden = [
@@ -40,6 +37,10 @@ class Member extends Authenticatable {
         return $this->follows()->where('followed_id', '=', $id)->first() != null;
     }
 
+    public function bookmarkedAuction($id) {
+        return $this->bookmarkedAuctions()->where('auction_id', '=', $id)->first() != null;
+    }
+
     public function createdAuctions() {
         return $this->hasMany("App\Models\Auction", "seller_id");
     }
@@ -48,10 +49,10 @@ class Member extends Authenticatable {
         return $this->hasManyThrough(
             Auction::class,
             BookmarkedAuction::class,
-            'auction_id',      // Foreign key on the bookmarks table...
+            'member_id',      // Foreign key on the bookmarks table...
             'id',            // Foreign key on the auction table...
             'id',             // Local key on the member table...
-            'member_id'  // Local key on the bookmarks table...
+            'auction_id'  // Local key on the bookmarks table...
         );
     }
 
@@ -83,9 +84,5 @@ class Member extends Authenticatable {
 
     public function getImage($type='small') {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
-    }
-
-    public function getJoinedTimeAgoString() {
-        return implode(', ', LbawUtils::time_diff_string(date_create()->diff($this->joined))) . ' ago';
     }
 }

@@ -1,12 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 // Home
 Route::get('/', 'HomeController@show')->name("home");
-
-// API
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
@@ -22,11 +19,21 @@ Route::get('user/search_results', 'SearchResultsController@search_users')->name(
 // Auctions
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
-Route::get("create_auction", "CreateAuctionController@show")->name("create_auction");
+Route::get("auction/create", "AuctionController@create")->name("create_auction")->middleware("auth");
+Route::post("auction/create", "AuctionController@store")->name("store_auction")->middleware("auth");
+
+Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
+Route::post("auction/{id}/edit", "AuctionController@edit")->where('id', '[0-9]+')->name("auction_edit");
+
+Route::put("auction/{id}/bookmark", "AuctionController@bookmark")->where('id', '[0-9]+')->name("bookmark")->middleware("auth");
+Route::delete("auction/{id}/bookmark", "AuctionController@unbookmark")->where('id', '[0-9]+')->name("unbookmark")->middleware("auth");
 
 // Users
-Route::get("users/me", "UserProfileController@showMe")->name('user_profile')->middleware("auth");
-Route::get("users/{username}", "UserProfileController@show")->name('user_profile');
+Route::get("users/me", "UserController@showMyProfile")->name('my_profile')->middleware("auth");
+Route::get("users/{username}", "UserController@showProfile")->name('user_profile');
+
+Route::put("users/{username}/follow", "UserController@follow")->name("follow")->middleware("auth");
+Route::delete("users/{username}/follow", "UserController@unfollow")->name("unfollow")->middleware("auth");
 
 // Dashboard
 Route::get("dashboard", fn() => redirect("dashboard/created_auctions"))->name("dashboard")->middleware("auth");

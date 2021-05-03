@@ -8,11 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use App\Helpers\LbawUtils;
+use Carbon\Carbon;
 
 class Auction extends Model {
     use HasFactory;
 
     protected $table = "auction";
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that should be cast to native types.
@@ -24,12 +32,37 @@ class Auction extends Model {
         'end_date' => 'datetime',
     ];
 
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'nsfw' => 'false'
+    ];
+
+    /**
+     * The attributes that are not mass fillable
+     * @var array
+     */
+    protected $guarded = [
+        'id', 'seller_id', 'latest_bid', 'ts_search'
+    ];
+
+    protected $hidden = [
+        'seller_id', 'latest_bid', 'ts_search'
+    ];
+
     public static function getCategoryNames() {
         return DB::select('SELECT unnest(enum_range(NULL::auction_category))::text');
     }
 
     public function getEndedAttribute() {
-        return date_create() > $this->ended_date;
+        return Carbon::now() > $this->end_date;
+    }
+
+    public function getStartedAttribute() {
+        return Carbon::now() > $this->end_date;
     }
 
     public function getInterruptedAttribute() {
@@ -41,10 +74,6 @@ class Auction extends Model {
             return LbawUtils::formatCurrency($this->increment_fixed) . " φ";
         else
             return $this->increment_percent . " %";
-    }
-
-    public function getTimeRemainingAttribute() {
-        return date_create()->diff($this->end_date);
     }
 
     public function getDurationAttribute() {
@@ -61,7 +90,7 @@ class Auction extends Model {
         if ($this->increment_fixed != null)
             return $this->latest->value + $this->increment_fixed;
         else
-            return $this->latest->value * (1 + $this->increment_percent);
+            return ceil($this->latest->value * (100 + $this->increment_percent) / 100);
     }
 
     public function getNBiddersAttribute() {
@@ -70,6 +99,10 @@ class Auction extends Model {
 
     public function getNBidsAttribute() {
         return $this->bids->count();
+    }
+
+    public function getHasBidsAttribute() {
+        return $this->latest_bid != null;
     }
 
     public function images() {
@@ -101,12 +134,6 @@ class Auction extends Model {
     public function getTimeRemainingString(): string {
         if ($this->ended)
             return "Ended";
-        return LbawUtils::time_elapsed_string($this->time_remaining);
+        return $this->end_date->diffForHumans();
     }
-
-    public function getDurationString(): string {
-        $s =  LbawUtils::time_diff_string($this->duration, false);
-        return implode(', ', $s);
-    }
-
 }

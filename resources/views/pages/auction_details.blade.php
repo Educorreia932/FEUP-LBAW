@@ -18,6 +18,7 @@
     ]])
 </div>
 
+{{-- Bid history table --}}
 <section class="container-fluid p-4">
     <div class="row">
         <span class="d-flex align-items-end">
@@ -27,15 +28,20 @@
         <hr class="my-1">
 
         @if (!$auction->ended)
-            @include("partials.auction_detail", ["key" => "Time remaining", "value" => $auction->getTimeRemainingString(), "subgroup" => true])
+            @include("partials.auction_detail", ["key" => "Closes", "value" => $auction->end_date->diffForHumans(), "subgroup" => false])
         @endif
-        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->getDurationString(), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Duration", "value" => $auction->end_date->longAbsoluteDiffForHumans($auction->start_date), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Start Date", "value" => $auction->start_date, "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "End Date", "value" => $auction->end_date, "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Bidders", "value" => $auction->n_bidders . " different bidders", "subgroup" => true])
         @include("partials.auction_detail", ["key" => "Total Bids", "value" => $auction->n_bids . " bids", "subgroup" => false])
         @include("partials.auction_detail", ["key" => "Starting Bid", "value" => $helper->formatCurrency($auction->starting_bid) . " φ", "subgroup" => true])
-        @include("partials.auction_detail", ["key" => "Mandatory Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
+        @include("partials.auction_detail", ["key" => "Bid Increment", "value" => $auction->getIncrementString(), "subgroup" => false])
     </div>
 </section>
+
+<!-- Chart.JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" crossorigin="anonymous"></script>
 
 <section class="container-fluid p-4">
     <div class="row d-flex flex-row">
@@ -44,6 +50,14 @@
         </span>
         <hr class="my-1">
 
+        {{-- Data for chart.js --}}
+        <ol id="chart-data" style="display: none;">
+            @foreach ($auction->bids as $bid)
+            <li bid_value={{ $bid->value }} bid_timestamp="{{ $bid->date->timestamp }}"></li>
+            @endforeach
+        </ol>
+
+        {{-- Bid history chart --}}
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="row col-lg-8 col-xl-6">
@@ -64,10 +78,16 @@
                         </thead>
                         <tbody>
                         @foreach ($auction->bids()->orderBy('date', 'desc')->get() as $bid)
-                            @include("partials.bid_table_entry", ["bid_no" => $loop->remaining + 1, "name" => "Y**p", "bid" => $bid->value, "time" => $bid->date])
+                            @include("partials.bid_table_entry", ["bid_no" => $loop->remaining + 1, "auction" => $auction, "bid" => $bid, "value" => $bid->value, "time" => $bid->date])
                         @endforeach
 
-                        @include("partials.bid_table_entry", ["bid_no" => 0, "name" => "Starting Bid", "bid" => $auction->starting_bid, "time" => $auction->start_date])
+                        <tfoot>
+                            <td></td>
+                            <td>Starting Bid</td>
+
+                            <td>{{ $helper->formatCurrency($auction->starting_bid) }} &phi;</td>
+                            <td>{{ $auction->start_date }}</td>
+                        </tfoot>
                         </tbody>
                     </table>
                 </div>

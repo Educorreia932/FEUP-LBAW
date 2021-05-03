@@ -26,23 +26,3 @@ inputs[0].addEventListener('change', function () {
 inputs[1].addEventListener('change', function () {
     slider.noUiSlider.set([null, this.value]);
 });
-
-let follow_buttons = document.querySelectorAll('.follow');
-
-follow_buttons.forEach(follow_button => {
-    follow_button.addEventListener('click', function () {
-        let icon = follow_button.querySelector('i');
-        let text = follow_button.querySelector('span');
-        if (follow_button.classList.contains('btn-outline-danger')) {
-            follow_button.classList.replace('btn-outline-danger', 'btn-danger');
-            icon.classList.replace('bi-heart', 'bi-heart-fill');
-            
-            text.innerHTML = "Following";
-        } else {
-            follow_button.classList.replace('btn-danger', 'btn-outline-danger');
-            icon.classList.replace('bi-heart-fill', 'bi-heart');
-    
-            text.innerHTML = "Follow";
-        }
-    })
-});
