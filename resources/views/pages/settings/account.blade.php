@@ -6,51 +6,55 @@
 
         <div class="row">
             <div class="container-fluid border rounded-3">
-                <div class="row mt-2 justify-content-between">
-                    <div class="col-lg-8 order-lg-2">
-                        <div class="row">
-                            <div class="col-4">
-                                <img class="img-fluid rounded-3"
-                                     src={{ Auth::user()->getImage('medium') }}
-                                     alt={{ Auth::user()->username . ' profile picture' }}>
+                <form action="{{ route('save_account_changes') }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div class="row mt-2 justify-content-between">
+                        <div class="col-lg-8 order-lg-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img class="img-fluid rounded-3"
+                                        src={{ Auth::user()->getImage('medium') }}
+                                        alt={{ Auth::user()->username . ' profile picture' }}>
 
-                                <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <button type="button" class="btn btn-secondary">Change Image</button>
+                                    <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-center">
+                                        <button type="button" class="btn btn-secondary">Change Image</button>
+                                    </div>
+                                </div>
+                                <div class="col-7">
+                                    <h3>{{ Auth::user()->name }}</h3>
+                                    <h4 class="text-muted">{{ '@' . Auth::user()->username }}</h4>
                                 </div>
                             </div>
-                            <div class="col-7">
-                                <h3>{{ Auth::user()->name }}</h3>
-                                <h4 class="text-muted">{{ '@' . Auth::user()->username }}</h4>
+                        </div>
+
+                        <div class="col-lg-4 order-lg-1">
+                            <div class="mb-3">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-control" autocomplete="off" type="text" id="name" name="name" placeholder={{ Auth::user()->name }}>
+                            </div>
+
+                            <label class="form-label" for="username">Username</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input autocomplete="off" type="text" class="form-control" id="username" name="username" placeholder={{ Auth::user()->username }}
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input autocomplete="email" class="form-control" type="text" id="email" name="email" placeholder={{ Auth::user()->email }}>
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 order-lg-1">
-                        <div class="mb-3">
-                            <label class="form-label" for="name">Name</label>
-                            <input class="form-control" type="text" id="name" name="name" placeholder={{ Auth::user()->name }}>
-                        </div>
-
-                        <label class="form-label" for="username">Username</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" id="username" placeholder={{ Auth::user()->username }}
-                                   aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="email">Email</label>
-                            <input class="form-control" type="text" id="email" name="email" placeholder={{ Auth::user()->email }}>
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div class="row">
+                        <div class="my-2 d-grid gap-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="my-2 d-grid gap-2 d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary">Save Changes</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
