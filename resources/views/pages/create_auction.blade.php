@@ -149,7 +149,7 @@
                                         <option value="Software" {{ old('category') == 'Software' ? "selected" : "" }}>
                                             Software
                                         </option>
-                                        <option value="eBook" {{ old('category') == 'eBook' ? "selected" : "" }}>eBook
+                                        <option value="E-Books" {{ old('category') == 'E-Books' ? "selected" : "" }}>eBook
                                         </option>
                                         <option value="Music" {{ old('category') == 'Music' ? "selected" : "" }}>Music
                                         </option>

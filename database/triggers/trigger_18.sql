@@ -27,5 +27,5 @@ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS member_bid_permission_check on auction CASCADE;
 CREATE TRIGGER member_bid_permission_check
     BEFORE INSERT ON bid
-    FOR EACH ROW 
+    FOR EACH ROW
     EXECUTE PROCEDURE member_bid_permission_check();

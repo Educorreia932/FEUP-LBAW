@@ -24,7 +24,8 @@
         integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg=="
         crossorigin="anonymous"></script>
 <script defer src={{ asset("js/search_results_user.js") }}></script>
-<script defer src={{ asset("js/bookmark.js") }}></script>
+<script defer src={{ asset("js/follow_users.js") }}></script>
+
 
      <!-- Options -->
      <div>

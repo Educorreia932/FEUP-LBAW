@@ -332,20 +332,32 @@ class Gen:
         if auction['seller'] in bidders:  # Make sure the owner is not included
             bidders.remove(auction['seller'])
 
-        n_bids = random.randint(0, 20)
         last_bidder = None
-        for i in range(0, n_bids):
+        last_bid = auction['bid']
+
+        bid_t = sorted([random.random() for _ in range(random.randint(0, 20))])
+
+        for t in bid_t:
             # Prevent repeated bidders
             cur_bidder = None
             while cur_bidder == None or cur_bidder == last_bidder:
                 cur_bidder = random.choice(bidders)
             last_bidder = cur_bidder
 
-            t = i / (n_bids + 1.0)
-            value = math.ceil(lerp(auction['bid'], auction['price'], t))
+            next_bid = None
+            if auction['fixed_increment'] != None:
+                next_bid = last_bid + auction['fixed_increment']
+            else:
+                next_bid = math.ceil(last_bid * (100 + auction['percent_increment']) / 100)
+
+            if random.random() > 0.1:
+                next_bid += random.randint(1, 100)
+
             date = random_date(auction['start'], auction['end'], t)
 
-            yield {'bidder': cur_bidder, 'value': value, 'timestamp': date}
+            yield {'bidder': cur_bidder, 'value': next_bid, 'timestamp': date}
+            last_bid = next_bid
+
 
     def genAuctions(self):
 
@@ -368,7 +380,7 @@ class Gen:
                 description = item['description'].replace("'", "''")
 
                 nsfw = 'FALSE'
-                if 'hentai' in title.lower() or 'hentai' in description.lower() or 'nudity' in title.lower() or 'nudity' in description.lower():
+                if 'hentai' in title.lower() or 'hentai' in description.lower() or 'nudity' in title.lower() or 'nudity' in description.lower() or 'Bikes and Girls' == item['title']:
                     nsfw = 'TRUE'
 
                 if 'hitler' in title.lower() or 'hitler' in description.lower() or 'isis' in title.lower() or 'isis' in description.lower():
@@ -427,7 +439,7 @@ class Gen:
 
                 self.outFile.write(statement)
 
-                rand_n_images = min(len(item['screenshots']), random.randint(0, 5))
+                rand_n_images = min(len(item['screenshots']), random.randint(0, 3))
                 auction_imgs = []
 
                 for stuff in random.sample(item['screenshots'], rand_n_images):
@@ -478,6 +490,10 @@ class Gen:
 
         user_id = 1
         for character in characters:
+
+            if character['bio'].startswith('This is a list of minor characters') or character['bio'].startswith('This is a list of unnamed characters'):
+                continue
+
             if uniqueSalts:
                 passwordHash = bcrypt.hashpw(bytes(password, 'utf-8'), bcrypt.gensalt()).decode('UTF-8')
 

@@ -18,12 +18,12 @@
         @auth
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             @if (Auth::user()->followsMember($member->id))
-                <button type="button" class="follow btn btn-danger w-100">
+                <button type="button" class="follow btn btn-danger w-100" member_username="{{ $member->username }}">
                     <i class="bi bi-heart-fill"></i>
                     <span>Following</span>
                 </button>
             @else
-                <button type="button" class="follow btn btn-outline-danger w-100">
+                <button type="button" class="follow btn btn-outline-danger w-100" member_username="{{ $member->username }}">
                     <i class="bi bi-heart"></i>
                     <span>Follow</span>
                 </button>

@@ -23,10 +23,19 @@
                     <span class="fst-italic mb-2">{{ '@' . $user->username }}</span>
 
                     @if (Auth::check() && Auth::id() != $user->id )
-                    <button type="button" class="follow btn btn-outline-danger">
-                        <i class="bi bi-heart"></i>
-                        <span>Follow</span>
-                    </button>
+                    <script defer src={{ asset("js/follow_users.js") }}></script>
+
+                        @if (Auth::user()->followsMember($user->id))
+                        <button type="button" class="follow btn btn-danger w-100" member_username="{{ $user->username }}">
+                            <i class="bi bi-heart-fill"></i>
+                            <span>Following</span>
+                        </button>
+                        @else
+                        <button type="button" class="follow btn btn-outline-danger w-100" member_username="{{ $user->username }}">
+                            <i class="bi bi-heart"></i>
+                            <span>Follow</span>
+                        </button>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -145,12 +154,14 @@
 @endif
 
 {{-- Modal --}}
+@auth
+@if (Auth::id() != $user->id )
 <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="report-user-modal-title">Report Foo Fighters</h5>
+                <h5 class="modal-title" id="report-user-modal-title">Report {{ $user->name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form>
@@ -181,4 +192,7 @@
         </div>
     </div>
 </section>
+@endif
+@endauth
+
 @endsection
