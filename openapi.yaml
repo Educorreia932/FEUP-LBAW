@@ -1,0 +1,1358 @@
+openapi: 3.0.0
+
+info:
+  version: "1.0"
+  title: "Trade-a-Bid"
+  description: "Web Resources Specification (A7) for Trade-a-Bid"
+
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/lbaw2112/Trade-a-Bid/1.0
+  - url: http://lbaw2112-piu.lbaw-prod.fe.up.pt/
+    description: "Production server"
+
+externalDocs:
+  description: "Find more info here."
+  url: https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/eap
+
+tags:
+  - name: "M01: Authentication and Individual Profile"
+  - name: "M02: Auctions"
+  - name: "M03: Users"
+  - name: "M04: Administration"
+  - name: "M05: Other"
+
+paths:
+  # M01: Authentication and Individual Profile
+  /login:
+    get:
+      operationId: R101
+      summary: "R101: Login Form"
+      description: "Provide login form. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui04-sign-in)"
+
+    post:
+      operationId: R102
+      summary: "R102: Login Action"
+      description: "Processes the login form submission. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        "302":
+          description: "Redirect after processing the login credentials."
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Successful authentication, redirecting to home page"
+                  value: "/"
+                302Error:
+                  description: "Failed to authenticate. Returning to login form"
+                  value: "/login"
+
+  /logout:
+    post:
+      operationId: R103
+      summary: "R103: Sign-out"
+      description: "Sign-out the current authenticated user. Access: USR, ADM"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "302":
+          description: "Redict after processing sign-out"
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Sign-out successful. Redirecting to home page"
+                  value: "/"
+
+  /register:
+    get:
+      operationId: R104
+      summary: "R104: Register Form"
+      description: "Provide a new user registration form. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI05 Sign-up](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui05-sign-up)"
+
+    post:
+      operationId: R105
+      summary: "R105: Register new user"
+      description: "Processes the form information to register new user. Access: PUB"
+      tags:
+        - "M01: Authentication and Individual Profile"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                  format: phone
+                password:
+                  type: string
+                  format: password
+                confirmationPassword:
+                  type: string
+                  format: password
+                termsService:
+                  type: boolean
+              required:
+                - name
+                - username
+                - email
+                - phone
+                - password
+                - confirmationPassword
+                - termsService
+
+      responses:
+        "302":
+          description: "Redirect after processing new user information"
+          headers:
+            location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Sucessful registration. Redirecting to home page"
+                  value: "/"
+                302Error:
+                  description: "Failed registration. Redirecting back to register form"
+                  value: "/register"
+
+  /users/me:
+    get:
+      operationId: R106
+      summary: "R106: View your profile"
+      description: "Show user's profile Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
+
+  /user/settings_account:
+    get:
+      operationId: R107
+      summary: "R107: Edit user profile"
+      description: "Provide a form with the user's data to be edited. Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+
+    post:
+      operationId: R108
+      summary: "R108: Edit user profile"
+      description: "Processes the form information to update user information. Acess: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                image:
+                  type: string
+                  format: binary
+      responses:
+        "302":
+          description: 'Redirect after processing new account settings.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Account settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save settings. Redirect to settings page."
+                  value: "/user/settings_account"
+
+  /user/settings_account/delete:
+    post:
+      operationId: R109
+      summary: "R109: Delete account"
+      description: "Deletes all your personal information and account"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "302":
+          description: 'Redirect after processing account deletion.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Account deleted. Redirect to home page."
+                  value: "/"
+                302Failure:
+                  description: "Couldn't delete account. Redirect to settings page."
+                  value: "/user/settings_account"
+
+  /user/settings_privacy:
+    get:
+      operationId: R110
+      summary: "R110: Edit privacy settings"
+      description: "Provide a form with the user's privacy settings to be edited. Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+
+    post:
+      operationId: R111
+      summary: "R111: Edit privacy settings"
+      description: "Processes the form information to update user information. Acess: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                switch-nsf:
+                  type: boolean
+                switch-use-data:
+                  type: boolean
+                email:
+                  type: string
+                switch-notifications:
+                  type: boolean
+                switch-outbid-notifications:
+                  type: boolean
+                switch-start-auction-notifications:
+                  type: boolean
+                switch-user-activity-notifications:
+                  type: boolean
+      responses:
+        "302":
+          description: 'Redirect after processing privacy settings.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Privacy settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save privacy settings. Redirect to profile page."
+                  value: "/user/{id}"
+
+  /user/settings_security:
+    get:
+      operationId: R112
+      summary: "R112: Edit security settings"
+      description: "Provide a form with passwords fields to be edited. Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI04 Sign-in](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui11-settings)"
+
+    post:
+      operationId: R113
+      summary: "R113: Edit security settings"
+      description: "Processes the form information to update user's password. Acess: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                pwd:
+                  type: string
+                  format: password
+                pwd-new:
+                  type: string
+                  format: password
+                pwd-confirmed:
+                  type: string
+                  format: passowrd
+      responses:
+        "302":
+          description: 'Redirect after processing security changes.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Security settings saved. Redirect to profile page."
+                  value: "/user/{id}"
+                302Failure:
+                  description: "Couldn't save security settings. Redirect to profile page."
+                  value: "/user/{id}"
+
+  /user/dashboard/created_auctions:
+    get:
+      operationId: R114
+      summary: "R114: View created acutions"
+      description: "Show user's created auctions Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+  /user/dashboard/bidded_auctions:
+    get:
+      operationId: R115
+      summary: "R115: View bidded acutions"
+      description: "Show user's bidded auctions Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+  /user/dashboard/bookmarked_auctions:
+    get:
+      operationId: R116
+      summary: "R116: View bookmarked acutions"
+      description: "Show user's bookmarked auctions Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+  /user/dashboard/followed:
+    get:
+      operationId: R117
+      summary: "R117: View followed users"
+      description: "Show user's followed users Access: USR"
+      tags:
+        - "M01: Authentication and Individual Profile"
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+  # M02: Auctions
+
+  /auction/create_auction:
+    get:
+      operationId: R201
+      summary: "R201: Create auction form"
+      description: "Provide a new auction registration form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      responses:
+        "200":
+          description: "Ok. Show [UI08 Create Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui08-create-auction)"
+
+    post:
+      operationId: R202
+      summary: "R202: Create an auction"
+      description: "Processes the form information to create an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                startDate:
+                  type: string
+                  format: date
+                startTime:
+                  type: string
+                  format: time
+                endDate:
+                  type: string
+                  format: date
+                endTime:
+                  type: string
+                  format: time
+                startingBid:
+                  type: number
+                increment:
+                  type: number
+                isPercentual:
+                  type: boolean
+                category:
+                  type: string
+                nsfw:
+                  type: boolean
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+              required:
+                - name
+                - description
+                - startDate
+                - startTime
+                - endDate
+                - endTime
+                - startingBid
+                - increment
+                - isPercentual
+                - category
+                - nsfw
+                - images
+
+      responses:
+        "302":
+          description: 'Redirect after processing the new auction information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction created successfully. Redirect to auction page."
+                  value: "/auctions/{id}"
+                302Failure:
+                  description: "Auction couldn't be created. Redirect to create auction form."
+                  value: "/auction/create_auction"
+
+  /auction/{id}:
+    get:
+      operationId: R203
+      summary: "R203: View an auction"
+      description: "Show auction page. Access: PUB"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+
+  /auction/search_results:
+    get:
+      operationId: R204
+      summary: "R204: Search Auctions"
+      description: "Searches for auctions and returns the search results as JSON. Access: PUB"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: query
+          name: category
+          description: "Categories to search for"
+          schema:
+            type: array
+            items:
+              type: string
+          required: false
+        - in: query
+          name: min_bid_value
+          description: "Minimum value for the current bid of an auction"
+          schema:
+            type: number
+            format: money
+          required: false
+        - in: query
+          name: max_bid_value
+          description: "Maximum value for the current bid of an auction"
+          schema:
+            type: number
+            format: money
+          required: false
+        - in: query
+          name: followed_users
+          description: "Boolean with the flag to search for followed users"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: status
+          description: "Specific auction status, i.e. Open and/or Scheduled auctions"
+          schema:
+            type: array
+            items:
+              type: string
+          required: false
+        - in: query
+          name: username
+          description: "Search for specific usernames"
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: search_text
+          description: "String to use for full-text search"
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    seller:
+                      type: string
+                    current_bid:
+                      type: number
+                      format: money
+                    personal_bid:
+                      type: number
+                      format: money
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+                    bookmarked:
+                      type: boolean
+                    thumb_image:
+                      type: string
+                      format: binary
+                    status:
+                      type: string
+              example:
+                - id: 1
+                  title: "Foo Fighters - Greatest Hits MP3"
+                  seller: "ffighters"
+                  current_bid: 125.3
+                  personal_bid: 123.59
+                  start_date: "2021-03-13 12:00:00"
+                  end_date: "2021-03-27 12:00:00"
+                  bookmarked: true
+                  thumb_image: image
+                  status: "Open"
+                - id: 6
+                  title: "Fighters Legacy - STEAM KEY"
+                  seller: "ppenguin"
+                  current_bid: 103.03
+                  personal_bid: null
+                  start_date: "2021-02-12 12:00:00"
+                  end_date: "2021-03-20 12:00:00"
+                  bookmarked: false
+                  thumb_image: image
+                  status: "Open"
+
+  /auction/{id}/delete:
+    get:
+      operationId: R205
+      summary: "R205: Delete an auction"
+      description: "Set specified auction as 'Terminated'. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI09 Dashboard](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui09-dashboard)"
+
+  /auction/{id}/edit:
+    get:
+      operationId: R206
+      summary: "R206: Edit auction form."
+      description: "Fetch edit auction form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+
+    post:
+      operationId: R207
+      summary: "R207: Edit an auction"
+      description: "Processes the form information to edit an auction. Access: OWN"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                start_date:
+                  type: string
+                  format: date
+                start_time:
+                  type: string
+                  format: time
+                end_date:
+                  type: string
+                  format: date
+                end_time:
+                  type: string
+                  format: time
+                starting_bid:
+                  type: number
+                increment:
+                  type: number
+                category:
+                  type: string
+                nsfw:
+                  type: boolean
+              required:
+                - name
+                - description
+                - start_date
+                - start_time
+                - end_date
+                - end_time
+                - starting_bid
+                - increment
+                - category
+                - nsfw
+
+      responses:
+        "302":
+          description: 'Redirect after processing the new auction information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction created successfully. Redirect to auction page."
+                  value: "/"
+                302Failure:
+                  description: "Auction couldn't be created. Redirect to create auction form."
+                  value: "/auctions/create_auction"
+
+  /auction/{id}/report:
+    get:
+      operationId: R208
+      summary: "R208: Show report auction form."
+      description: "Fetch report auction form. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI07 Auction](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui07-auction)"
+
+    post:
+      operationId: R209
+      summary: "R209: Save report data"
+      description: "Processes the form information to report an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  format: category
+                description:
+                  type: string
+              required:
+                - reason
+                - description
+
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        "302":
+          description: 'Redirect after processing the report information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction reported. Redirect to auction page."
+                  value: "/auction/{id}"
+                302Failure:
+                  description: "Couldn't report auction. Redirect to report auction form."
+                  value: "/auction/{id}"
+
+  /auction/{id}/bid:
+    post:
+      operationId: R210
+      summary: "R210: Auction bid"
+      description: "R210: Bid on an auction. Access: USR"
+      tags:
+        - "M02: Auctions"
+
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: integer
+                bidder_id:
+                  type: integer
+              required:
+                - value
+                - bidder_id
+      responses:
+        "302":
+          description: 'Redirect after processing the bid.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Auction reported. Redirect to auction page."
+                  value: "/auction/{id}"
+                302Failure:
+                  description: "Couldn't report auction. Redirect to auction page."
+                  value: "/auction/{id}"
+
+  /auction/{id}/bookmark:
+    post:
+      operationId: R211
+      summary: "Set Bookmark"
+      description: "R211: Mark auction as bookmarked. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+
+    delete:
+      operationId: R212
+      summary: "Unset Bookmark"
+      description: "R212: Unmark auction as bookmarked. Access: USR"
+      tags:
+        - "M02: Auctions"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+        default:
+          description: Unexpected error
+            
+  # M03: Users
+  /users/{username}:
+    get:
+      operationId: R301
+      summary: "R301: User profile"
+      description: "Shows a user profile. Access: PUB"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Show [UI10 Public Profile](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui10-public-profile)"
+
+  /users/search_results:
+    get:
+      operationId: R302
+      summary: "R302: Search Users"
+      description: "Searches for users and returns the search results as JSON. Access: PUB"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: query
+          name: has_auctions
+          description: "Search only for users who have auctions"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: followed_users
+          description: "Boolean indicating if only followed users should be displayed"
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: min_rating
+          description: "Minimum value for a user's rating"
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: max_rating
+          description: "Maximum value for a user's rating"
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: min_register_date
+          description: "Minimum account creation date"
+          schema:
+            type: string
+            format: date
+          required: false
+        - in: query
+          name: max_register_date
+          description: "Maximum account creation date"
+          schema:
+            type: string
+            format: date
+          required: false
+        - in: query
+          name: sort
+          description: "Sorted items by"
+          schema:
+            type: string
+        - in: query
+          name: search_text
+          description: "String to use for full-text search"
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    profile_image:
+                      type: string
+                      format: binary
+                    joined:
+                      type: string
+                      format: date
+                    followed:
+                      type: boolean
+                    rating:
+                      type: integer
+              example:
+                - id: 4
+                  name: "Old Monk"
+                  username: "old_monk"
+                  profile_image: image
+                  joined: "2021-04-15 16:00:00"
+                  followed: true
+                  rating: 56
+                - id: 9
+                  name: "Farm Worker"
+                  username: "ppenguin"
+                  profile_image: image
+                  joined: "2021-03-01 15:30:00"
+                  followed: false
+                  rating: 343
+
+  /users/{username}/follow:
+    put:
+      operationId: R303
+      summary: "R303: Follow user"
+      description: "Follow a user. Access: USR"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Success"
+
+    delete:
+      operationId: R304
+      summary: "R304: Unfollow user"
+      description: "Unfollow a user. Access: USR"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Success"
+
+  /users/{username}/report:
+    post:
+      operationId: R305
+      summary: "R305: Report user"
+      description: "Report a user. Access: USR"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  format: category
+                description:
+                  type: string
+              required:
+                - reason
+                - description
+      responses:
+        "302":
+          description: 'Redirect after processing the report information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "User reported. Redirect to auction page."
+                  value: "/users/{username}"
+                302Failure:
+                  description: "Couldn't report user. Redirect to report user form."
+                  value: "/users/{username}"
+
+  /users/{username}/rate:
+    put:
+      operationId: R306
+      summary: "R306: Rate user"
+      description: "Rate a user. Access: USR"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Success"
+    delete:
+      operationId: R307
+      summary: "R307: Remove user rating"
+      description: "Remove user rating. Access: USR"
+      tags:
+        - "M03: Users"
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok. Success"
+
+  # M04 Administration
+  /admin/user_management:
+    get:
+      operationId: R401
+      summary: "R401: Manage banned users"
+      description: "Displays banned users to be managed by an administrator. Access: ADM"
+      tags:
+        - "M04: Administration"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    permissions:   # boolean?
+                      type: array
+                      items:
+                        type: boolean
+                    reason:
+                      type: string
+                      format: category
+                    joined:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  username: "markhamill"
+                  permissions:
+                    - true
+                    - false
+                    - false
+                  reason: "Fraudulent Behaviour"
+                  joined: "2021-04-15 16:00:00"
+                - id: 7
+                  username: "johndoe"
+                  permissions:
+                    - false
+                    - false
+                    - true
+                  reason: "Fraudulent Behaviour"
+                  joined: "2021-04-15 17:00:00"
+
+    post:
+      operationId: R402
+      summary: "R402: Change User Permissions"
+      description: "Change Permissions. Access: ADM"
+      tags:
+        - "M04: Administration"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                permissions:
+                  type: array
+                  items:
+                    type: boolean
+              required:
+                - user_id
+                - permissions
+      responses:
+        "302":
+          description: 'Redirect after processing permissions.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Permissions changed."
+                  value: "/dashboard_admin/user_management"
+                302Failure:
+                  description: "Couldn't change permissions."
+                  value: "/dashboard_admin/user_management"
+
+  /admin/reported_users:
+    get:
+      operationId: R403
+      summary: "R403: View reported users"
+      description: "Displays all reported users. Access: ADM"
+      tags:
+        - "M04: Administration"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    reason:
+                      type: string
+                      format: category
+                    details:
+                      type: string
+                    date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  username: "markhamill"
+                  reason: "Fraudulent Behaviour"
+                  details: "Improper username"
+                  date: "2021-02-12 17:00:00"
+                - id: 7
+                  username: "johndoe"
+                  reason: "Fraudulent Behaviour"
+                  details: "Improper profile image"
+                  date: "2021-04-15 18:00:00"
+
+  /admin/auction_management:
+    get:
+      operationId: R404
+      summary: "R404: Manage reported auctions"
+      description: "Displays all auctions to be managed by an administrator. Access: ADM"
+      tags:
+        - "M04: Administration"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    status:
+                      type: string
+                    details:
+                      type: string
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  title: "Siksong Steam Key"
+                  status: "Active"
+                  details: "Attempt to sell unreleased game"
+                  start_date: "2021-02-12 17:00:00"
+                  end_date: "2021-02-14 17:00:00"
+                - id: 7
+                  title: "Hades Steam Key"
+                  status: "Active"
+                  details: "Using images from other games"
+                  start_date: "2021-02-14 12:00:00"
+                  end_date: "2021-02-15 12:00:00"
+    post:
+      operationId: R405
+      summary: "R405: Change auction status"
+      description: "Change auction status. Access: ADM"
+      tags:
+        - "M04: Administration"
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                auction_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+                - auction_id
+                - status
+      responses:
+        "302":
+          description: 'Redirect after processing status.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: "Changed auction status."
+                  value: "/dashboard_admin/auction_management"
+                302Failure:
+                  description: "Couldn't change auction status."
+                  value: "/dashboard_admin/auction_management"
+
+  /admin/reported_auctions:
+    get:
+      operationId: R406
+      summary: "R406: View all reported auctions"
+      description: "Displays all auction reports. Access: ADM"
+      tags:
+        - "M04: Administration"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    reason:
+                      type: string
+                      format: category
+                    details:
+                      type: string
+                    date:
+                      type: string
+                      format: date
+              example:
+                - id: 5
+                  title: "Siksong Steam Key"
+                  reason: "Fraudulent Behaviour"
+                  details: "Attempt to sell unreleased game"
+                  date: "2021-02-12 17:00:00"
+                - id: 4
+                  title: "Hades Steam Key"
+                  reason: "Improper auction pictures"
+                  details: "Using images from other games"
+                  date: "2021-02-15 12:00:00"
+
+  # M05: Other
+  /:
+    get:
+      operationId: R501
+      summary: "R501: Display Home page"
+      description: "R501: Display Home page"
+      tags:
+        - "M05: Other"
+      responses:
+        "200":
+          description: "Ok. Show [UI01 Home](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui01-home)"
+
+  /faq:
+    get:
+      operationId: R502
+      summary: "R502: Display FAQ page"
+      description: "Display faq page. Access: PUB"
+      tags:
+        - "M05: Other"
+      responses:
+        "200":
+          description: "Ok. Show [UI03 FAQ](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui03-faq)"
+
+  /about:
+    get:
+      operationId: R503
+      summary: "R503: Display About page"
+      description: "Display about page. Access: PUB"
+      tags:
+        - "M05: Other"
+      responses:
+        "200":
+          description: "Ok. Show [UI02 About](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2112/-/wikis/er#ui02-about)"
