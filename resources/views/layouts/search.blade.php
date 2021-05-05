@@ -62,7 +62,13 @@
 
                     @yield("results")
                 </section>
+            
+               
+               
             </section>
+            <div class="d-flex justify-content-center">
+                @yield('links')
+            </div>
         </div>
     </div>
 @endsection

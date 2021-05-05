@@ -96,3 +96,7 @@
     </div>
 
 @endsection
+
+@section("links") 
+    {!! $members->links() !!}
+@endsection
