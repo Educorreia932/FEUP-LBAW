@@ -98,5 +98,5 @@
 @endsection
 
 @section("links") 
-    {!! $members->links() !!}
+    {!! $members->onEachSide(2)->links() !!}
 @endsection
