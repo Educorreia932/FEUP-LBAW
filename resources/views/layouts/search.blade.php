@@ -38,7 +38,7 @@
                             {{-- Search bar --}}
                             <section class="container input-group">
                                 <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                                    aria-describedby="search-addon"/ name="fts">
+                                    aria-describedby="search-addon"/ name="fts" value="{{ old('fts') }}">
                                 <button type="submit" class="input-group-text border-0" id="search-addon" >
                                     <i class="bi bi-search"></i>
                                 </button>
