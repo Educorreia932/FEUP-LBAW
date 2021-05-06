@@ -14,7 +14,10 @@
 @endsection
 
 @section("results")
-    @each("partials.user_entry", $members, "member")
+    {{-- display users --}}
+    @foreach($members as $member)
+        @include('partials.user_entry', ['member' => $member])
+    @endforeach
 @endsection
 
 @section("filters")
@@ -47,13 +50,13 @@
         <p class="text-secondary my-2">Shown Users</p>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-any" checked>
+            <input class="form-check-input" type="radio" name="owner_all_filter" id="radio-owner-any" checked>
             <label class="form-check-label" for="radio-owner-any">
                 All
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="owner-filter" id="radio-owner-followed" @guest disabled @endguest>
+            <input class="form-check-input" type="radio" name="owner_follow_filter" id="radio-owner-followed" @guest disabled @endguest>
             <label class="form-check-label" for="radio-owner-followed">
                 Followed Only
             </label>
@@ -73,12 +76,12 @@
         <div class="row mb-3">
             <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
                 <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
-                <input type="text" class="form-control" id="input-number-left" aria-label="User Rating">
+                <input type="text" class="form-control" id="input-number-left" name="user_min_rating" aria-label="User Rating">
             </div>
 
             <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
                 <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
-                <input type="text" class="form-control" id="input-number-right" aria-label="User Rating">
+                <input type="text" class="form-control" id="input-number-right" name="user_max_rating" aria-label="User Rating">
             </div>
         </div>
     </div>
@@ -87,16 +90,18 @@
         <p class="text-secondary my-2">Joined</p>
         <div class="input-group">
             <span class="input-group-text" style="padding-right: 15px;">From</span>
-            <input type="date" id="startDate" class="form-control">
+            <input type="date" id="startDate" class="form-control" name="join_from">
         </div>
         <div class="input-group mt-2">
             <span class="input-group-text" style="padding-right: 36px;">To</span>
-            <input type="date" id="endDate" class="form-control">
+            <input type="date" id="endDate" class="form-control" name="join_to">
         </div>
     </div>
 
 @endsection
 
 @section("links") 
-    {!! $members->onEachSide(2)->links() !!}
+    @if ($members)
+        {!! $members->onEachSide(2)->links() !!}
+    @endif
 @endsection

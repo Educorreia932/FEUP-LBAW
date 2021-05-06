@@ -6,7 +6,7 @@
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
 
-            <form action="{{route($current_page)}}" method="POST" role="search">
+            <form action="{{route($current_page)}}" id="search-form" method="GET" role="search">
                 @csrf
 
                 <div class="row">
@@ -38,7 +38,7 @@
                             {{-- Search bar --}}
                             <section class="container input-group">
                                 <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                                    aria-describedby="search-addon"/>
+                                    aria-describedby="search-addon"/ name="fts">
                                 <button type="submit" class="input-group-text border-0" id="search-addon" >
                                     <i class="bi bi-search"></i>
                                 </button>
