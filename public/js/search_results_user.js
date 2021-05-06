@@ -40,7 +40,7 @@ submit.addEventListener('click', function(ev) {
 
     request = new Request('search_results', { method: 'GET', headers: myHeaders });
     fetch(request).then(function(response) {
-        if (response.ok) {
-            
+        if (!response.ok) {
+            console.log("Error: Invalid Response " + response)
         }});
 })

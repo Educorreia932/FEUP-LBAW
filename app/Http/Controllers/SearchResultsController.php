@@ -52,6 +52,22 @@ class SearchResultsController extends Controller {
             $query = $query->where('joined', '<=', $request['join_to']);
         }
 
+        // sort 
+        if ($request->has('sort') && $request->sort){
+            if ($request->sort === 'rating') {
+                $query->orderBy('rating');
+            }
+            else if ($request->sort === 'auctions') {
+                $query = $query->selectRaw('member.*, COUNT(auction.seller_id) as num_auctions')
+                ->leftJoin('auction', 'auction.seller_id', '=', 'member.id')
+                ->groupBy('member.id')
+                ->orderByDesc('num_auctions');
+            }
+            else if ($request->sort === 'date') {
+                $query = $query->orderByDesc('joined');
+            }
+        }
+
         // display 5 members per page
         $members = $query->paginate(5);
 

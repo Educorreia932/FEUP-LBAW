@@ -8,12 +8,15 @@
 @endsection
 
 @section("sorting")
-<li><a class="dropdown-item" href="#">Rating</a></li>
-<li><a class="dropdown-item" href="#">Total Auctions</a></li>
-<li><a class="dropdown-item" href="#">Date Joined</a></li>
+<option selected>Sort by</option>
+<option value="rating">Rating</option>
+<option value="auctions">Total Auction</option>
+<option value="date">Date Joined</option>
 @endsection
 
 @section("results")
+    <p>Results for: <u>{{ old('fts') ? old('fts') : 'All' }}</u> ({{ $members->total() }})</p>
+
     {{-- display users --}}
     @foreach($members as $member)
         @include('partials.user_entry', ['member' => $member])

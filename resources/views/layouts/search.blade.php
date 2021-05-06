@@ -30,30 +30,28 @@
                             @yield('breadcrumbs')
 
                         <div class="d-flex flex-row py-4">
-                            <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#sidebar" aria-expanded="false">
-                                <i class="bi bi-caret-right-fill"></i>
-                            </button>
-
-                            {{-- Search bar --}}
-                            <section class="container input-group">
-                                <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                                    aria-describedby="search-addon"/ name="fts" value="{{ old('fts') }}">
-                                <button type="submit" class="input-group-text border-0" id="search-addon" >
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </section>
-
-                            {{-- Sort criteria --}}
-                            <div class="d-none d-md-flex nav-item dropdown">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="user-dropdown"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Sort By
+                            {{-- search text input --}}
+                            <nav class="col-md-10 d-flex flex-row">
+                                <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#sidebar" aria-expanded="false">
+                                    <i class="bi bi-caret-right-fill"></i>
                                 </button>
 
-                                <ul class="dropdown-menu" aria-labelledby="user-dropdown">
-                                    @yield("sorting")
-                                </ul>
+                                {{-- Search bar --}}
+                                <section class="container input-group">
+                                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                                        aria-describedby="search-addon" name="fts" value="{{ old('fts') }}">
+                                    <button type="submit" class="input-group-text border-0" id="search-addon" >
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </section>
+                            </nav>
+
+                            {{-- sort by options --}}
+                            <div class="col-md-2">
+                                <select class="form-select input-sm" name="sort">
+                                    @yield('sorting')
+                                </select>
                             </div>
                         </div>
                     
@@ -61,17 +59,19 @@
                         <section class="col ms-sm-auto px-md-4">
                             {{-- Search results--}}
                             <section class="my-4">
-                                <p>Results for: <u>Fighters</u> (5)</p>
+                                
                                 @yield("results")
+
+                                {{-- pagination links --}}
+                                <nav class="d-flex justify-content-center">
+                                    @yield('links')
+                                </nav> 
                             </section>
                         </section>
                     </section>
                 </div>
             </form>
-
-            <div class="d-flex justify-content-center">
-                @yield('links')
-            </div>
+  
         </div>
     </div>
 @endsection
