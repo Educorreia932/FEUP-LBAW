@@ -8,10 +8,10 @@
 @endsection
 
 @section("sorting")
-<option selected>Sort by</option>
-<option value="rating">Rating</option>
-<option value="auctions">Total Auction</option>
-<option value="date">Date Joined</option>
+<option {{ old('sort') ? "" : "checked" }}>Sort by</option>
+<option value="rating" {{ old('sort') === 'rating' ? "checked" : "" }}>Rating</option>
+<option value="auctions" {{ old('sort') === 'auctions' ? "checked" : "" }}>Total Auction</option>
+<option value="date" {{ old('sort') === 'date' ? "checked" : "" }}>Date Joined</option>
 @endsection
 
 @section("results")

@@ -5,6 +5,7 @@ use App\Models\Auction;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SearchResultsController extends Controller {
     public function search_auctions() {
@@ -14,7 +15,6 @@ class SearchResultsController extends Controller {
     }
 
     public function search_users(Request $request) {
-        // dd($request['user-min-rating']);
         
         // select all members
         $query = Member::query(); 
@@ -25,9 +25,13 @@ class SearchResultsController extends Controller {
             ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts]);
         }
 
-        // has auctions
+        // selecting all users who have at least one auction
         if ($request->has('filter_check') && $request->filter_check) {
-            $query = $query->join('auction', 'member.id', '=', 'auction.seller_id');
+            $query = $query->whereExists(function($q) {
+                $q->select(DB::raw(1))
+                  ->from('auction')
+                  ->whereColumn('auction.seller_id', 'member.id');
+            });
         }
 
         // followed users
