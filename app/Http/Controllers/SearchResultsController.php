@@ -8,10 +8,52 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SearchResultsController extends Controller {
-    public function search_auctions() {
-        $auctions = Auction::all()->take(20);
+    public function search_auctions(Request $request) {
+        $query = Auction::query();
 
-        return view('pages.search.auctions', [ "auctions" => $auctions ]);
+        // FTS - Full Text Search
+        if ($request->has('fts') && strlen($request->fts)) {
+            $query = $query->whereRaw("auction.ts_search @@ plainto_tsquery('english', ?)", [$request->fts])
+            ->orderByRaw("ts_rank(auction.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts]);
+        }
+
+        // category filters
+        if ($request->has('filter_check_game') && $request->filter_check_game)
+            $query = $query->where('category', '=', 'Games');
+        else if ($request->has('filter_check_book') && $request->filter_check_book)
+            $query = $query->where('category', '=', 'E-Books');
+        else if ($request->has('filter_check_music') && $request->filter_check_music)
+            $query = $query->where('category', '=', 'Music');
+        else if ($request->has('filter_check_sftw') && $request->filter_check_sftw)
+            $query = $query->where('category', '=', 'Software');
+        else if ($request->has('filter_check_skin') && $request->filter_check_skin)
+            $query = $query->where('category', '=', 'Skins');
+        else if ($request->has('filter_check_other') && $request->filter_check_other)
+            $query = $query->where('category', '=', 'Others');
+
+        // auction owner
+        if ($request->has('owner_filter')) {
+            if ($request->owner_filter === "follow") {
+                    // $query->where
+                    // SELECT auction.* FROM 
+                    //     auction WHERE auction.seller_id IN (
+                    //         SELECT followed_id
+                    //         FROM follow
+                    //         WHERE follow.follower_id = 376
+                    //     ) 
+            }
+            else if ($request->owner_filter === "username") {
+
+            }
+        }
+        
+
+        // display 5 members per page
+        $auctions = $query->paginate(5);
+
+        $request->flash();
+
+        return view('pages.search.auctions')->with('auctions', $auctions);
     }
 
     public function search_users(Request $request) {
@@ -26,7 +68,7 @@ class SearchResultsController extends Controller {
         }
 
         // selecting all users who have at least one auction
-        if ($request->has('filter_check') && $request->filter_check) {
+        if ($request->has('filter_check_auction') && $request->filter_check_auction) {
             $query = $query->whereExists(function($q) {
                 $q->select(DB::raw(1))
                   ->from('auction')
@@ -35,7 +77,8 @@ class SearchResultsController extends Controller {
         }
 
         // followed users
-        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all') {
+        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all') {  // TODO FIX THIS QUERY
+           
             $query = $query->join('follow', 'followed_id', '=', 'member.id')
             ->where('follower_id', '=', Auth::user()->id);
         }

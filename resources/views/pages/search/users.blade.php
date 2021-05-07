@@ -41,7 +41,7 @@
 
             <div class="row">
                 <div class="col">
-                    @include('partials.filter_checkbox', ["name" => "Has auctions", "id" => "b", "checked" => old('filter_check')])
+                    @include('partials.filter_checkbox', ["name" => "Has auctions", "id" => "auction", "checked" => old('filter_check_auction')])
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 @section('content')
     <script defer src="{{ asset("js/screen_size_toggle_collapse.js") }}"></script>
+    
 
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
@@ -63,7 +64,7 @@
                                 @yield("results")
 
                                 {{-- pagination links --}}
-                                <nav class="d-flex justify-content-center">
+                                <nav class="d-flex justify-content-center my-4">
                                     @yield('links')
                                 </nav> 
                             </section>
@@ -71,7 +72,6 @@
                     </section>
                 </div>
             </form>
-  
         </div>
     </div>
 @endsection
