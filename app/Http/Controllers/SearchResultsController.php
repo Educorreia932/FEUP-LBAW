@@ -46,7 +46,8 @@ class SearchResultsController extends Controller {
                 $query = $query->whereIn('seller_id', $final);     
             }
             else if ($request->owner_filter === "username") {
-                $query = $query->join('member', 'member.id', '=', 'auction.seller_id')
+                // TODO Fix : breaking when searching for 'foo' 
+                $query = $query->select('auction.*')->join('member', 'member.id', '=', 'auction.seller_id')
                 ->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts_user])
                 ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts_user]);
             }
