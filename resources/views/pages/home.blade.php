@@ -62,34 +62,34 @@
 
     <div class="py-sm-3 my-4 container">
         @auth
-        <div class="row">
-            {{-- Recent bids --}}
-            <section class="col-xl-6 mt-sm-4">
-                <hr class="d-sm-none">
-                <span class="d-flex flex-row mb-2 align-items-center">
-                                <h4>Recent bids</h4>
-                                <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">See all <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </span>
-                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+            <div class="row">
+                {{-- Recent bids --}}
+                <section class="col-xl-6 mt-sm-4">
+                    <hr class="d-sm-none">
+                    <span class="d-flex flex-row mb-2 align-items-center">
+                        <h4>Recent bids</h4>
+                        <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">
+                            See all <i class="bi bi-arrow-right"></i></a>
+                        </span>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
 
-                </div>
-            </section>
+                    </div>
+                </section>
 
-            {{-- Followed Users' Auctions --}}
-            <section class="col-xl-6 mt-sm-4">
-                <hr class="d-sm-none">
-                <span class="d-flex flex-row mb-2 align-items-center">
+                {{-- Followed Users' Auctions --}}
+                <section class="col-xl-6 mt-sm-4">
+                    <hr class="d-sm-none">
+                    <span class="d-flex flex-row mb-2 align-items-center">
                     <h4>Followed Users' Auctions</h4>
                     <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
                 </span>
-                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
 
-                </div>
-            </section>
-        </div>
+                    </div>
+                </section>
+            </div>
         @endauth
 
         {{-- Open Auctions --}}

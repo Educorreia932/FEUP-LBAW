@@ -10,7 +10,13 @@ class Message extends Model {
 
     protected $table = 'message';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'thread_id', 'sender_id', "body"
+    ];
+
     public function sender() {
-        return $this->hasOne(Member::class, "id");
+        return $this->hasOne(Member::class, "id", "sender_id");
     }
 }
