@@ -1,7 +1,7 @@
-@extends('layouts.app', ['current_page' => 'home'])
+@extends('layouts.app')
 
 @section("content")
-    <section class="bg-light-grey">
+    <section class="container-fluid bg-light-grey p-4">
         <h1 class="mt-4">Inbox</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [
@@ -11,7 +11,7 @@
         ]])
 
         {{-- Messages --}}
-        <section id="messages" class="d-flex flex-column">
+        <section id="messages" class="d-flex flex-column px-5">
             @foreach($messages as $message)
                 @include("partials.message")
             @endforeach
