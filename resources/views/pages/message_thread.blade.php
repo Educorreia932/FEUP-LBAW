@@ -1,12 +1,6 @@
 @extends('layouts.app', ['current_page' => 'home'])
 
 @section("content")
-    <style>
-        #messages > .message {
-            margin: 1em;
-        }
-    </style>
-
     <section class="bg-light-grey">
         <h1 class="mt-4">Inbox</h1>
 
@@ -17,7 +11,7 @@
         ]])
 
         {{-- Messages --}}
-        <section id="messages">
+        <section id="messages" class="d-flex flex-column">
             @foreach($messages as $message)
                 @include("partials.message")
             @endforeach
