@@ -42,6 +42,10 @@ Route::get("dashboard/bidded_auctions", "DashboardController@biddedAuctions")->n
 Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions")->middleware("auth");
 Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed")->middleware("auth");
 
+// Messages
+Route::get("messages", "MessagesController@inbox")->name("inbox")->middleware("auth");
+Route::get("messages/{thread_id}", "MessagesController@message_thread")->name("message_thread")->middleware("auth");
+
 // Settings
 Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings")->middleware("auth");
 Route::get("user/settings/account", "SettingsController@account")->name("settings_account")->middleware("auth");

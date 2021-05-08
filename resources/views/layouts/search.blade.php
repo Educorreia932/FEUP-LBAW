@@ -19,7 +19,6 @@
                     <h4>Filters</h4>
 
                     @yield("filters")
-
                 </div>
             </nav>
 

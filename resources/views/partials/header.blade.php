@@ -44,15 +44,18 @@
                             <span class="me-2">{{ Auth::user()->name }}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
-                                     src={{ Auth::user()->getImage('small') }}
+                                     src="{{ Auth::user()->getImage('small') }}"
                                      alt="Profile Image">
                             </div>
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                             <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
-                            <li><a class="dropdown-item"
-                                   href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
+                            <li><a class="dropdown-item" href={{ route('inbox') }}>Messages</a></li>
+                            <li>
+                                <a class="dropdown-item" href={{ route('user_profile', ['username' => 'me']) }}>
+                                    Profile
+                                </a>
                             </li>
                             <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
                             <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
