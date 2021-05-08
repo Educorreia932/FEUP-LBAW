@@ -1,7 +1,13 @@
 @extends('layouts.app', ['current_page' => 'home'])
 
 @section("content")
-    <section class="">
+    <style>
+        #messages > .message {
+            margin: 1em;
+        }
+    </style>
+
+    <section class="bg-light-grey">
         <h1 class="mt-4">Inbox</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [

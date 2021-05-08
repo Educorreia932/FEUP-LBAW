@@ -98,7 +98,6 @@ CREATE TABLE follow (
 
 CREATE TABLE message_thread (
     id                      SERIAL PRIMARY KEY,
-    topic                   TEXT
 );
 
 CREATE TABLE message_thread_participant (

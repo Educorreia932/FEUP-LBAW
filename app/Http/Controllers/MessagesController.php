@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
 use App\Models\MessageThread;
+use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends Controller {
     public function inbox() {
-        $threads = MessageThread::all()->take(10);
+        $threads = Auth::user()->messageThreads;
 
         return view('pages.message_inbox', [ "threads" => $threads ]);
     }

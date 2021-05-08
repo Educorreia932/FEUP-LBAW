@@ -1,7 +1,8 @@
 @extends('layouts.app', ['current_page' => 'home'])
 
 @section("content")
-    <section class="">
+    <section>
+
         <h1 class="mt-4">Inbox</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [

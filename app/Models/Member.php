@@ -10,7 +10,7 @@ class Member extends Authenticatable {
 
     protected $table = 'member';
 
-    public $timestamps  = false;
+    public $timestamps = false;
 
     /**
      * The attributes that should be cast to native types.
@@ -78,11 +78,22 @@ class Member extends Authenticatable {
         );
     }
 
+    public function messageThreads() {
+        return $this->hasManyThrough(
+            MessageThread::class,
+            MessageThreadParticipant::class,
+            'thread_id',
+            'id',
+            'id',
+            'participant_id'
+        );
+    }
+
     public function notifications() {
 
     }
 
-    public function getImage($type='small') {
+    public function getImage($type = 'small') {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
     }
 }
