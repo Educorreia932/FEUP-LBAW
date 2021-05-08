@@ -85,7 +85,7 @@
     <div class="input-group mb-3">
         <span class="input-group-text" id="radio-owner-user-at">@</span>
         <input type="text" id="radio-owner-user-input" class="form-control" placeholder="Username"
-                aria-label="Username" aria-describedby="radio-owner-user-at" name="fts_user" value="{{ old('fts_username') }}" disabled>
+                aria-label="Username" aria-describedby="radio-owner-user-at" name="fts_user" value="{{ old('fts_user') }}" {{ old('fts_user') ? "" : "disabled" }}>
     </div>
 </section>
 

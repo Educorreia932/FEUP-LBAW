@@ -34,16 +34,21 @@ class SearchResultsController extends Controller {
         // auction owner
         if ($request->has('owner_filter')) {
             if ($request->owner_filter === "follow") {
-                    // $query->where
-                    // SELECT auction.* FROM 
-                    //     auction WHERE auction.seller_id IN (
-                    //         SELECT followed_id
-                    //         FROM follow
-                    //         WHERE follow.follower_id = 376
-                    //     ) 
+
+                Auth::check();
+                $follows = DB::table("follow")->select('followed_id as id')->where('follower_id', '=', Auth::user()->id)->get();
+
+                $final = [];
+                foreach ($follows->toArray() as $key => $item) {
+                    array_push($final, $item->id);
+                }
+
+                $query = $query->whereIn('seller_id', $final);     
             }
             else if ($request->owner_filter === "username") {
-
+                $query = $query->join('member', 'member.id', '=', 'auction.seller_id')
+                ->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts_user])
+                ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts_user]);
             }
         }
         
@@ -77,17 +82,19 @@ class SearchResultsController extends Controller {
         }
 
         // followed users
-        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all') {  // TODO FIX THIS QUERY
-           
+        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all') {  // TODO FIX THIS QUER
+            Auth::check();
             $query = $query->join('follow', 'followed_id', '=', 'member.id')
             ->where('follower_id', '=', Auth::user()->id);
+
+            // dd($query->get());
         }
 
         // rating
-        if ($request->has(['user_min_rating', 'user_max_rating'])) {
-            $query = $query->where('rating', '>=', (int) $request['user_min_rating'])
-            ->where('rating', '<=', (int) $request['user_max_rating']);
-        }
+        // if ($request->has(['user_min_rating', 'user_max_rating'])) {
+        //     $query = $query->where('rating', '>=', (int) $request['user_min_rating'])
+        //     ->where('rating', '<=', (int) $request['user_max_rating']);
+        // }
 
         // join date left bound
         if ($request->has('join_from') && $request->join_from) {
