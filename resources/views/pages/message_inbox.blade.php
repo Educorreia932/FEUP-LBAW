@@ -1,8 +1,7 @@
 @extends('layouts.app', ['current_page' => 'home'])
 
 @section("content")
-    <section>
-
+    <section class="container-fluid p-4">
         <h1 class="mt-4">Inbox</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [
@@ -13,9 +12,9 @@
         {{-- Message threads --}}
         <section id="message-threads">
             <div class="row">
-                <p class="col">User</p>
-                <p class="col">Topic</p>
-                <p class="col">Date</p>
+                <p class="col-3">Participants</p>
+                <p class="col-6">Topic</p>
+                <p class="col">Last message sent at</p>
             </div>
 
             <section id="message-thread-entries">

@@ -13,4 +13,15 @@ class MessageThread extends Model {
     public function messages() {
         return $this->hasMany(Message::class, "thread_id");
     }
+
+    public function participants() {
+        return $this->hasManyThrough(
+            Member::class,
+            MessageThreadParticipant::class,
+            "thread_id",
+            "id",
+            "id",
+            "participant_id"
+        );
+    }
 }
