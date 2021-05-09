@@ -26,7 +26,7 @@
 @endsection
 
 @section("filters")
-    <!-- https://refreshless.com/nouislider/ -->
+    {{-- https://refreshless.com/nouislider/ --}}
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"
             integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg=="
             crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
     <script defer src={{ asset("js/bookmark.js") }}></script>
     <script defer src={{ asset("js/master_checkboxes.js") }}></script>
 
-    <!-- Categories -->
+    {{-- Categories --}}
     <section>
         <p class="text-secondary my-2">Category</p>
 
@@ -57,7 +57,7 @@
         </div>
     </section>
 
-    <!-- Auction Owner -->
+    {{-- Auction Owner --}}
     <section class="my-3" id="auction-owner-radios">
         <p class="text-secondary my-2">Auction Owner</p>
 
@@ -89,7 +89,7 @@
     </div>
 </section>
 
-    <!-- Auction timeframe -->
+    {{-- Auction timeframe --}}
     <section class="my-3">
         <p class="text-secondary my-2">Auction timeframe</p>
 
@@ -98,7 +98,7 @@
         @include('partials.filter_checkbox', ["name" => "Ended", "id" => "end", "checked" => old('filter_check_end')])
     </section>
 
-    <!-- Current bid price range -->
+    {{-- Current bid price range --}}
     <div class="my-3">
         <label class="text-secondary" for="price-range">Current bid (Φ)</label>
 
@@ -110,13 +110,13 @@
             <div class="row mb-3">
                 <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
                     <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
-                    <input type="text" class="form-control" id="input-number-left"
+                    <input type="number" min="0" class="form-control" id="input-number-left"
                            aria-label="Amount" name="min_bid" value="{{ old('min_bid') }}">
                 </div>
 
                 <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
                     <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
-                    <input type="text" class="form-control" id="input-number-right"
+                    <input type="number" min="0" class="form-control" id="input-number-right"
                            aria-label="Amount" name="max_bid" value="{{ old('max_bid') }}">
                 </div>
             </div>

@@ -46,13 +46,39 @@ class SearchResultsController extends Controller {
                 $query = $query->whereIn('seller_id', $final);     
             }
             else if ($request->owner_filter === "username") {
-                // TODO Fix : breaking when searching for 'foo' 
                 $query = $query->select('auction.*')->join('member', 'member.id', '=', 'auction.seller_id')
                 ->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts_user])
                 ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts_user]);
             }
         }
         
+
+        // Not sure this works
+        $timeframe = [];
+        if ($request->has('filter_check_sche') && $request->filter_check_sche) {
+            array_push($timeframe, "Scheduled");
+        }
+
+        if ($request->has('filter_check_open') && $request->filter_check_open) {
+            array_push($timeframe, "Active");
+        }
+
+        if ($request->has('filter_check_end') && $request->filter_check_end) {
+            array_push($timeframe, "Closed");
+        }
+
+        if (!empty($timeframe)) {
+            $query = $query->where('status', $timeframe);
+        }
+
+        // bid range
+        // TODO: review credit calculation
+        if ($request->has(['min_bid', 'max_bid'])) {
+            if ($request->min_bid && $request->min_bid > 0)
+                $query = $query->whereRaw('latest_bid / 100 >= ?', [(int) $request->min_bid]);
+            if ($request->max_bid)
+                $query = $query->whereRaw('latest_bid / 100 <= ?', [(int) $request->max_bid]);
+        }
 
         // display 5 members per page
         $auctions = $query->paginate(5);
@@ -61,6 +87,7 @@ class SearchResultsController extends Controller {
 
         return view('pages.search.auctions')->with('auctions', $auctions);
     }
+
 
     public function search_users(Request $request) {
         
@@ -92,10 +119,12 @@ class SearchResultsController extends Controller {
         }
 
         // rating
-        // if ($request->has(['user_min_rating', 'user_max_rating'])) {
-        //     $query = $query->where('rating', '>=', (int) $request['user_min_rating'])
-        //     ->where('rating', '<=', (int) $request['user_max_rating']);
-        // }
+        if ($request->has('user_min_rating') && $request->user_min_rating > 0) {
+            $query = $query->select('member.*')
+            ->join('rating', 'member.id' , '=', 'ratee_id')
+            ->groupBy('member.id')
+            ->havingRaw('(SUM(value) / COUNT(member.id))*100 >= ?', [$request->user_min_rating]);
+        }
 
         // join date left bound
         if ($request->has('join_from') && $request->join_from) {
