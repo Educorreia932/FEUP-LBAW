@@ -11,7 +11,7 @@ class MessageThread extends Model {
     protected $table = 'message_thread';
 
     public function messages() {
-        return $this->hasMany(Message::class, "thread_id");
+        return $this->hasMany(Message::class, "thread_id")->orderBy('timestamp');
     }
 
     public function participants() {
