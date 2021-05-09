@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'home'])
+@extends('layouts.app')
 
 @section("content")
     <section class="container-fluid p-4">

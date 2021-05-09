@@ -23,7 +23,7 @@ class SendMessageRequest extends FormRequest {
     public function rules() {
         return [
             'body' => 'min:1|required',
-            "sender_id" => ""
+            "sender_id" => "integer|required"
         ];
     }
 }

@@ -1,7 +1,7 @@
 @if( $message->sender == Auth::user() )
     {{-- Logged-in user's messages --}}
     <div class="message align-self-end mb-3">
-        <div class="bg-primary text-white mw-50 d-inline-block p-2 rounded ">
+        <div class="bg-primary text-white mw-50 d-inline-block p-2 rounded px-3">
             <a class="link-light text-decoration-none"
                href="{{ route("user_profile", [ "username" => $message->sender->username ]) }}">
                 <strong>{{ $message->sender->name }}</strong>
@@ -18,7 +18,7 @@
              class="me-3"
         >
 
-        <div class="bg-white mw-50 d-inline-block p-2 rounded">
+        <div class="bg-white mw-50 d-inline-block p-2 rounded px-3">
             <a class="link-dark text-decoration-none"
                href="{{ route("user_profile", [ "username" => $message->sender->username ]) }}">
                 <strong>{{ $message->sender->name }}</strong>

@@ -2,7 +2,7 @@
 
 </style>
 
-<div class="row mb-3">
+<div class="row hover-highlight py-3">
     <div class="col-3 container">
         @foreach($message_thread->participants as $participant)
             <a href="{{ route("user_profile", [ "username" => $participant->username ]) }}">
@@ -21,5 +21,5 @@
         @endforeach
     </a>
 
-    <p class="col">{{ $message_thread->messages->first()->timestamp }}</p>
+    <p class="col">{{ $message_thread->messages->last()->timestamp }}</p>
 </div>

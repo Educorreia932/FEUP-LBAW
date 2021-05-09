@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SendMessageRequest;
 use App\Models\Message;
 use App\Models\MessageThread;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends Controller {
@@ -26,6 +27,6 @@ class MessagesController extends Controller {
 
         Message::create($validated);
 
-        return ['status' => 'Message Sent!'];
+        return $request;
     }
 }
