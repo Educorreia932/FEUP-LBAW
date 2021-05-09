@@ -60,7 +60,7 @@ class SettingsController extends Controller {
             $validated_data = $validator->validate();
 
             $id = Auth::id();
-        
+
             $user = Member::findOrFail($id);
 
             if (!empty($validated_data['name'])) {

@@ -2,14 +2,14 @@
 
 let masters = document.querySelectorAll(".master-checkbox , .master-checkbox-reverse");
 
-console.log(masters);
+// console.log(masters);
 
 masters.forEach(master => {
     let check_state = master.querySelector(".form-check.master .form-check-input");
     let reversed = master.classList.contains("master-checkbox-reverse");
 
     if (check_state == null) {
-        console.log("[!] Missing elements in master-checkbox")
+        // console.log("[!] Missing elements in master-checkbox");
         return;
     }
 

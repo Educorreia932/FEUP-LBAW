@@ -23,6 +23,13 @@ class Auction extends Model {
     public $timestamps = false;
 
     /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -62,7 +69,15 @@ class Auction extends Model {
     }
 
     public function getStartedAttribute() {
-        return Carbon::now() > $this->end_date;
+        return Carbon::now() > $this->start_date;
+    }
+
+    public function getScheduledAttribute() {
+        return Carbon::now() < $this->start_date;
+    }
+
+    public function getOpenAttribute() {
+        return $this->started && !$this->ended;
     }
 
     public function getInterruptedAttribute() {
@@ -105,6 +120,11 @@ class Auction extends Model {
         return $this->latest_bid != null;
     }
 
+    public function holdsLatestBid($memberId) {
+        return isset($this->latest_bid)
+            && $memberId == $this->latest->bidder_id;
+    }
+
     public function images() {
         return $this->hasMany(AuctionImage::class, "auction_id", "id");
     }
@@ -134,6 +154,6 @@ class Auction extends Model {
     public function getTimeRemainingString(): string {
         if ($this->ended)
             return "Ended";
-        return $this->end_date->diffForHumans();
+        return $this->end_date->shortRelativeDiffForHumans();
     }
 }
