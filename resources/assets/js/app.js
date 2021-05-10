@@ -6,3 +6,8 @@
  */
 
 require('./bootstrap');
+
+Echo.private('message_thread')
+    .listen('MessageSent', (e) => {
+        console.log(e.message)
+    });

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Http\Requests\SendMessageRequest;
 use App\Models\Message;
 use App\Models\MessageThread;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends Controller {
@@ -25,8 +25,10 @@ class MessagesController extends Controller {
         $validated = $request->validated();
         $validated += ["thread_id" => $thread_id];
 
-        Message::create($validated);
+        $message = Message::create($validated);
 
-        return $request;
+        broadcast(new MessageSent($message))->toOthers();
+
+        return ['status' => 'Message Sent!'];
     }
 }

@@ -23,19 +23,8 @@ function sendMessage() {
     request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    // Define what happens in case of error
-    request.addEventListener("error", function () {
-        console.log(this.responseText);
-    });
-
-    request.addEventListener("load", function () {
-        console.log(this.responseText);
-    })
-
     request.send(encodeForAjax({
         body: body,
         sender_id: sender_id
     }));
 }
-
-
