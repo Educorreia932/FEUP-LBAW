@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\Member;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,32 +19,21 @@ class SearchResultsController extends Controller {
         }
 
         // category filters
-        if ($request->has('filter_check_game') && $request->filter_check_game)
-            $query = $query->where('category', '=', 'Games');
-        else if ($request->has('filter_check_book') && $request->filter_check_book)
-            $query = $query->where('category', '=', 'E-Books');
-        else if ($request->has('filter_check_music') && $request->filter_check_music)
-            $query = $query->where('category', '=', 'Music');
-        else if ($request->has('filter_check_sftw') && $request->filter_check_sftw)
-            $query = $query->where('category', '=', 'Software');
-        else if ($request->has('filter_check_skin') && $request->filter_check_skin)
-            $query = $query->where('category', '=', 'Skins');
-        else if ($request->has('filter_check_other') && $request->filter_check_other)
-            $query = $query->where('category', '=', 'Others');
+        if ($request->has('filter_check_category')) {
+            $categories = [];
+            foreach (Auction::CATEGORY_FORM as $key => $value)
+                if (in_array($value, $request->filter_check_category))
+                    array_push($categories, $key);
+
+            if (count($categories) > 0 && count($categories) < count(Auction::CATEGORY_FORM)) {
+                $query = $query->whereIn('category', $categories);
+            }
+        }
 
         // auction owner
         if ($request->has('owner_filter')) {
-            if ($request->owner_filter === "follow") {
-
-                Auth::check();
-                $follows = DB::table("follow")->select('followed_id as id')->where('follower_id', '=', Auth::user()->id)->get();
-
-                $final = [];
-                foreach ($follows->toArray() as $key => $item) {
-                    array_push($final, $item->id);
-                }
-
-                $query = $query->whereIn('seller_id', $final);     
+            if ($request->owner_filter === "follow" && Auth::check()) {
+                $query = $query->join('follow', 'follow.followed_id', '=', 'auction.seller_id')->where('follow.follower_id', '=', Auth::id());
             }
             else if ($request->owner_filter === "username") {
                 $query = $query->select('auction.*')->join('member', 'member.id', '=', 'auction.seller_id')
@@ -51,48 +41,108 @@ class SearchResultsController extends Controller {
                 ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts_user]);
             }
         }
-        
 
-        // Not sure this works
-        $timeframe = [];
-        if ($request->has('filter_check_sche') && $request->filter_check_sche) {
-            array_push($timeframe, "Scheduled");
+        // NSFW
+        $safety = 1;
+        if (Auth::check() && $request->has('filter_check_nsfw')) {
+            $safety = 0;
+            if (in_array('sfw', $request->filter_check_nsfw))
+                $safety += 1;
+            if (in_array('nsfw', $request->filter_check_nsfw))
+                $safety += 2;
         }
 
-        if ($request->has('filter_check_open') && $request->filter_check_open) {
-            array_push($timeframe, "Active");
+        switch ($safety) {
+            case 0: // None
+            case 3: // All
+                break;
+            case 1: // SFW
+                $query = $query->where('nsfw', '=', 'FALSE');
+                break;
+            case 2: // NSFW
+                $query = $query->where('nsfw', '=', 'TRUE');
+                break;
         }
 
-        if ($request->has('filter_check_end') && $request->filter_check_end) {
-            array_push($timeframe, "Closed");
+        // Auction timeframe
+        $timeframe = 3;
+        if ($request->has('filter_check_timeframe')) {
+            $timeframe = 0;
+            if (in_array('sched', $request->filter_check_timeframe))
+                $timeframe += 1;
+            if (in_array('open', $request->filter_check_timeframe))
+                $timeframe += 2;
+            if (in_array('end', $request->filter_check_timeframe))
+                $timeframe += 4;
         }
 
-        if (!empty($timeframe)) {
-            $query = $query->where('status', $timeframe);
+        switch ($timeframe) {
+            case 0: // None selected
+            case 7: // All selected
+                break;
+            case 1: // Scheduled only
+                $query = $query->where('start_date', '>', Carbon::now());
+                break;
+            case 2: // Open only
+                $query = $query->where('start_date', '<', Carbon::now())
+                    ->where('end_date', '>', Carbon::now());
+                break;
+            case 3: // Sheduled or open
+                $query = $query->where('end_date', '>', Carbon::now());
+                break;
+            case 4: // Closed only
+                $query = $query->where('end_date', '<', Carbon::now());
+                break;
+            case 5: // Closed or scheduled
+                $query = $query->where(function($query)
+                {
+                    $query->orWhere('start_date', '>', Carbon::now())
+                        ->orWhere('end_date', '<', Carbon::now());
+                });
+                break;
+            case 6: // Closed or open
+                $query = $query->where('start_date', '<', Carbon::now());
+                break;
+            default:
+                break;
         }
+
 
         // bid range
-        // TODO: review credit calculation
         if ($request->has(['min_bid', 'max_bid'])) {
             if ($request->min_bid && $request->min_bid > 0)
-                $query = $query->whereRaw('latest_bid / 100 >= ?', [(int) $request->min_bid]);
+                $query = $query->where('next_bid', '>=', round($request->min_bid * 100));
             if ($request->max_bid)
-                $query = $query->whereRaw('latest_bid / 100 <= ?', [(int) $request->max_bid]);
+                $query = $query->where('next_bid', '<=', round($request->max_bid * 100));
         }
 
-        // display 5 members per page
-        $auctions = $query->paginate(5);
+
+        // sort
+        if ($request->has('sort') && $request->sort){
+            if ($request->sort === 'price') {
+                $query->orderBy('next_bid');
+            }
+            else if ($request->sort === 'time') {
+                $query = $query->orderByDesc('end_date');
+            }
+            else if ($request->sort === 'date') {
+                $query = $query->orderByDesc('start_date');
+            }
+        }
+
+        // display 15 auctions per page
+        $auctions = $query->paginate(15);
 
         $request->flash();
 
-        return view('pages.search.auctions')->with('auctions', $auctions);
+        return view('pages.search.search_auctions')->with('auctions', $auctions)->with('request', $request);
     }
 
 
     public function search_users(Request $request) {
-        
+
         // select all members
-        $query = Member::query(); 
+        $query = Member::query();
 
         // FTS - Full Text Search
         if ($request->has('fts') && strlen($request->fts)) {
@@ -110,33 +160,28 @@ class SearchResultsController extends Controller {
         }
 
         // followed users
-        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all') {  // TODO FIX THIS QUER
-            Auth::check();
+        if ($request->has('owner_filter') && $request['owner_filter'] !== 'all' && Auth::check()) {
             $query = $query->join('follow', 'followed_id', '=', 'member.id')
-            ->where('follower_id', '=', Auth::user()->id);
-
-            // dd($query->get());
+                            ->where('follower_id', '=', Auth::id());
         }
 
         // rating
-        if ($request->has('user_min_rating') && $request->user_min_rating > 0) {
-            $query = $query->select('member.*')
-            ->join('rating', 'member.id' , '=', 'ratee_id')
-            ->groupBy('member.id')
-            ->havingRaw('(SUM(value) / COUNT(member.id))*100 >= ?', [$request->user_min_rating]);
-        }
+        if ($request->has('user_min_rating') && $request->user_min_rating)
+            $query = $query->where('rating', '>=', $request->user_min_rating);
+        if ($request->has('user_max_rating') && $request->user_max_rating)
+            $query = $query->where('rating', '<=', $request->user_max_rating);
 
         // join date left bound
         if ($request->has('join_from') && $request->join_from) {
             $query = $query->where('joined', '>=', $request['join_from']);
         }
-    
+
          // join date right bound
         if ($request->has('join_to') && $request->join_to) {
             $query = $query->where('joined', '<=', $request['join_to']);
         }
 
-        // sort 
+        // sort
         if ($request->has('sort') && $request->sort){
             if ($request->sort === 'rating') {
                 $query->orderBy('rating');
@@ -152,11 +197,11 @@ class SearchResultsController extends Controller {
             }
         }
 
-        // display 5 members per page
-        $members = $query->paginate(5);
+        // display 15 members per page
+        $members = $query->paginate(15);
 
         $request->flash();
 
-        return view('pages.search.users')->with('members',$members); //view('pages.search.users', [ "members" => $members ]);
+        return view('pages.search.search_users')->with('members', $members)->with('request', $request);
     }
 }

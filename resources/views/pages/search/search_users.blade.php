@@ -8,9 +8,9 @@
 @endsection
 
 @section("sorting")
-<option {{ old('sort') ? "" : "checked" }}>Sort by</option>
+<option {{ old('sort') ? "" : "checked" }}>Best Match</option>
 <option value="rating" {{ old('sort') === 'rating' ? "checked" : "" }}>Rating</option>
-<option value="auctions" {{ old('sort') === 'auctions' ? "checked" : "" }}>Total Auction</option>
+<option value="auctions" {{ old('sort') === 'auctions' ? "checked" : "" }}>Total Auctions</option>
 <option value="date" {{ old('sort') === 'date' ? "checked" : "" }}>Date Joined</option>
 @endsection
 
@@ -35,7 +35,7 @@
 
             <div class="row">
                 <div class="col">
-                    @include('partials.filter_checkbox', ["name" => "Has auctions", "id" => "auction", "checked" => old('filter_check_auction')])
+                    @include('partials.filter_checkbox', ["name" => "Has auctions", "group" => "auction", "value" => 'has_auction', "request" => $request])
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <label class="form-check-label" for="radio-owner-any">
                 All
             </label> <br>
-            <input class="form-check-input" type="radio" name="owner_filter" id="radio-owner-followed"  
+            <input class="form-check-input" type="radio" name="owner_filter" id="radio-owner-followed"
                 {{ (old('owner_filter') && old('owner_filter') != 'all') ? "checked" : "" }} @guest disabled @endguest>
             <label class="form-check-label" for="radio-owner-followed">
                 Followed Only
@@ -60,9 +60,17 @@
     </div>
 
     {{-- User's minimum rating --}}
-    <div class="my-3 w-50">
-        <label class="text-secondary" for="user_min_rating">Minimum Rating (%)</label>
-        <input type="number" class="form-control" min="0" max="100" placeholder="0" value="{{ old('user_min_rating') }}" id="input-number-left" name="user_min_rating" aria-label="User Rating">
+    <p class="my-0 text-secondary">Rating</p>
+    <div class="row mb-3">
+        <div class="col-6 w-50">
+            <label class="text-secondary" for="user_min_rating">Min</label>
+            <input type="number" class="form-control hide-appearence" step="1" placeholder="0" value="{{ old('user_min_rating') }}" id="input-number-left" name="user_min_rating" aria-label="User Min Rating">
+        </div>
+
+        <div class="col-6 w-50">
+            <label class="text-secondary" for="user_max_rating">Max</label>
+            <input type="number" class="form-control hide-appearence" step="1" placeholder="1000" value="{{ old('user_max_rating') }}" id="input-number-right" name="user_max_rating" aria-label="User Max Rating">
+        </div>
     </div>
 
     <div class="form-group mt-3">
@@ -79,7 +87,7 @@
 
 @endsection
 
-@section("links") 
+@section("links")
     @if ($members)
         {{-- pagination links (preserving input data when moving to another page) --}}
         {!! $members->appends(request()->except('page'))->links() !!}

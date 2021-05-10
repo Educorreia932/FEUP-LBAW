@@ -23,6 +23,16 @@ class AuctionPolicy
     }
 
     /**
+     * Determine whether the user can view an auction.
+     *
+     * @param  \App\Models\Member  $member
+     * @return mixed
+     */
+    public function viewNsfw(Member $member) {
+        return $member->nsfw_consent;
+    }
+
+    /**
      * Determine whether the user can create an auction.
      *
      * @param  \App\Models\Member  $member

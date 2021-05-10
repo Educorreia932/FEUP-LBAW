@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Helpers\LbawUtils;
 use Carbon\Carbon;
 
+use function PHPUnit\Framework\returnSelf;
+
 class Auction extends Model {
     use HasFactory;
 
@@ -60,9 +62,24 @@ class Auction extends Model {
         'seller_id', 'latest_bid', 'ts_search'
     ];
 
-    public static function getCategoryNames() {
-        return DB::select('SELECT unnest(enum_range(NULL::auction_category))::text');
-    }
+    public const CATEGORY = [
+        'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others'
+    ];
+
+    public const CATEGORY_FORM = [
+        'Games' => 'game',
+        'Software' => 'sftw',
+        'E-Books' => 'book',
+        'Skins' => 'skin',
+        'Music' => 'music',
+        'Series & Movies' => 'sem',
+        'Comics & Manga' => 'cem',
+        'Others' => 'oth',
+    ];
+
+    const STATUS = [
+        'Active', 'Terminated'
+    ];
 
     public function getEndedAttribute() {
         return Carbon::now() > $this->end_date;
@@ -97,15 +114,6 @@ class Auction extends Model {
 
     public function getCurrentBidAttribute() {
         return $this->latest == null ? null : $this->latest->value;
-    }
-
-    public function getNextBidAttribute() {
-        if ($this->latest == null)
-            return $this->starting_bid;
-        if ($this->increment_fixed != null)
-            return $this->latest->value + $this->increment_fixed;
-        else
-            return ceil($this->latest->value * (100 + $this->increment_percent) / 100);
     }
 
     public function getNBiddersAttribute() {

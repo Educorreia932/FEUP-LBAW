@@ -12,8 +12,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register')->name("register");
 
 // Search Results
-Route::get('auction/search_results', 'SearchResultsController@search_auctions')->name('search_auctions');
-Route::get('user/search_results', 'SearchResultsController@search_users')->name('search_users');
+Route::get('auction/search', 'SearchResultsController@search_auctions')->name('search_auctions');
+Route::get('user/search', 'SearchResultsController@search_users')->name('search_users');
 
 // Auctions
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
