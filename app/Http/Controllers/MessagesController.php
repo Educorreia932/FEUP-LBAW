@@ -31,7 +31,7 @@ class MessagesController extends Controller {
 
         $message = Message::create($validated);
 
-        MessageSent::dispatch($this->showMessage($message));
+        broadcast(new MessageSent($this->showMessage($message)))->toOthers();
 
         return ['status' => 'Message Sent!'];
     }

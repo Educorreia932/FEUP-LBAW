@@ -14,7 +14,7 @@
 
         <div class="px-5">
             {{-- Messages --}}
-            <section id="messages" class="d-flex flex-column">
+            <section id="messages" class="d-flex flex-column overflow-auto" style="max-height: 25em;">
                 @foreach($messages as $message)
                     @include("partials.message")
                 @endforeach

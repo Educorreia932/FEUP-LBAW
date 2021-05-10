@@ -16,6 +16,12 @@ class Message extends Model {
         'thread_id', 'sender_id', "body"
     ];
 
+    protected $casts = [
+        'timestamp' => 'datetime',
+    ];
+
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
     public function sender() {
         return $this->hasOne(Member::class, "id", "sender_id");
     }

@@ -13,7 +13,8 @@
         @endforeach
     </div>
 
-    <a id="message-thread-topic" class="col-6" href="{{ route("message_thread", [ "thread_id" => $message_thread->id ]) }}">
+    <a id="message-thread-topic" class="col-6"
+       href="{{ route("message_thread", [ "thread_id" => $message_thread->id ]) }}">
         @foreach($message_thread->participants as $participant)
             <span>
                 {{ $participant->name }}
@@ -21,5 +22,5 @@
         @endforeach
     </a>
 
-    <p class="col">{{ $message_thread->messages->last()->timestamp }}</p>
+    <p class="col">{{ $message_thread->messages->last()->timestamp->shortRelativeDiffForHumans() }}</p>
 </div>

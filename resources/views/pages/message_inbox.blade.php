@@ -13,7 +13,7 @@
         <section id="message-threads">
             <div class="row">
                 <p class="col-3">Participants</p>
-                <p class="col-6">Topic</p>
+                <p class="col-6">Thread</p>
                 <p class="col">Last message sent at</p>
             </div>
 
