@@ -82,10 +82,10 @@ class Member extends Authenticatable {
         return $this->hasManyThrough(
             MessageThread::class,
             MessageThreadParticipant::class,
-            'thread_id',
+            'participant_id',
             'id',
             'id',
-            'participant_id'
+            'thread_id'
         );
     }
 

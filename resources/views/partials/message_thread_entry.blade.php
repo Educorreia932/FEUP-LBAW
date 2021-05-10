@@ -3,6 +3,7 @@
 </style>
 
 <div class="row hover-highlight py-3">
+    {{-- Participants --}}
     <div class="col-3 container">
         @foreach($message_thread->participants as $participant)
             <a href="{{ route("user_profile", [ "username" => $participant->username ]) }}">
@@ -13,6 +14,7 @@
         @endforeach
     </div>
 
+    {{-- Thread --}}
     <a id="message-thread-topic" class="col-6"
        href="{{ route("message_thread", [ "thread_id" => $message_thread->id ]) }}">
         @foreach($message_thread->participants as $participant)
@@ -22,5 +24,8 @@
         @endforeach
     </a>
 
-    <p class="col">{{ $message_thread->messages->last()->timestamp->shortRelativeDiffForHumans() }}</p>
+    {{-- Last message sent at --}}
+    <p class="col">
+        {{ $message_thread->messages->last()->timestamp->shortRelativeDiffForHumans() }}
+    </p>
 </div>
