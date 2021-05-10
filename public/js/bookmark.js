@@ -2,12 +2,12 @@ let marks = document.querySelectorAll('.auction-bookmark');
 
 marks.forEach(elem => {
     elem.addEventListener('click', function(ev) {
-        target = elem.querySelector('i');
-        auction_id = elem.getAttribute('auction_id');
+        let target = elem.querySelector('i');
+        let auction_id = elem.getAttribute('auction_id');
 
-        csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+        let csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
-        var myHeaders = new Headers();
+        let myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
         if (target.classList.contains("bi-bookmark-plus")) {

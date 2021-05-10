@@ -21,6 +21,13 @@ class Member extends Authenticatable {
         'joined' => 'datetime'
     ];
 
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
     protected $fillable = [
         "username", 'name', 'email', 'password', "credit"
     ];
