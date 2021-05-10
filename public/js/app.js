@@ -1848,7 +1848,8 @@ module.exports = {
 __webpack_require__(/*! ./bootstrap */ "./resources/assets/js/bootstrap.js");
 
 Echo["private"]('message_thread').listen('MessageSent', function (e) {
-  console.log(e.message);
+  var messages = document.getElementById("messages");
+  messages.innerHTML += e.message;
 });
 
 /***/ }),

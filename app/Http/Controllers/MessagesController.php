@@ -21,13 +21,17 @@ class MessagesController extends Controller {
         return view('pages.message_thread', ["messages" => $messages, "thread_id" => $id]);
     }
 
+    public function showMessage($message) {
+        return view("partials.message", ["message" => $message]);
+    }
+
     public function sendMessage($thread_id, SendMessageRequest $request) {
         $validated = $request->validated();
         $validated += ["thread_id" => $thread_id];
 
         $message = Message::create($validated);
 
-        broadcast(new MessageSent($message))->toOthers();
+        MessageSent::dispatch($this->showMessage($message));
 
         return ['status' => 'Message Sent!'];
     }

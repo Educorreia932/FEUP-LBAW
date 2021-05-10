@@ -1,4 +1,3 @@
-
 /**
  * First, we will load all of this project's Javascript utilities and other
  * dependencies. Then, we will be ready to develop a robust and powerful
@@ -9,5 +8,7 @@ require('./bootstrap');
 
 Echo.private('message_thread')
     .listen('MessageSent', (e) => {
-        console.log(e.message)
+        let messages = document.getElementById("messages");
+
+        messages.innerHTML += e.message;
     });
