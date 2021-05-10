@@ -12,5 +12,9 @@
         </a>
         <p class="m-0">{{ $message->body }}</p>
     </div>
+
+    <p class="m-1 text-muted">
+        {{ $message->timestamp->longRelativeDiffForHumans() }}
+    </p>
 </div>
 

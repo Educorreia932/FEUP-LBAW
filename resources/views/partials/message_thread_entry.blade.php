@@ -26,6 +26,6 @@
 
     {{-- Last message sent at --}}
     <p class="col">
-        {{ $message_thread->messages->last()->timestamp->shortRelativeDiffForHumans() }}
+        {{ $message_thread->messages->last()->timestamp->longRelativeDiffForHumans() }}
     </p>
 </div>

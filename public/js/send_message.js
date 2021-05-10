@@ -5,6 +5,9 @@ function encodeForAjax(data) {
 }
 
 const form = document.getElementById("send-message-form");
+const messages = document.getElementById("messages");
+
+messages.scrollTop = messages.scrollHeight;
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -13,8 +16,8 @@ form.addEventListener("submit", function (event) {
 });
 
 function sendMessage() {
-    const body = document.getElementById("body").value;
-    const sender_id = document.getElementById("sender_id").value;
+    const body = document.getElementById("body");
+    const sender_id = document.getElementById("sender_id");
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     const request = new XMLHttpRequest();
 
@@ -32,7 +35,9 @@ function sendMessage() {
     });
 
     request.send(encodeForAjax({
-        body: body,
-        sender_id: sender_id
+        body: body.value,
+        sender_id: sender_id.value
     }));
+
+    body.value = "";
 }

@@ -30,8 +30,9 @@ class MessagesController extends Controller {
         $validated += ["thread_id" => $thread_id];
 
         $message = Message::create($validated);
+        $message = Message::find($message->id);
 
-        broadcast(new MessageSent($this->showMessage($message)))->toOthers();
+        MessageSent::dispatch($this->showMessage($message));
 
         return ['status' => 'Message Sent!'];
     }
