@@ -10,7 +10,7 @@ populationUserInfoFilename = root + 'population_users.json'
 populationAuctionInfoFilename = root + 'population_auctions.json'
 
 # Config
-download_users = True
+download_users = False
 start_users = 1
 end_users = None
 

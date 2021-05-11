@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Helpers\LbawUtils;
 use Carbon\Carbon;
 
+use function PHPUnit\Framework\returnSelf;
+
 class Auction extends Model {
     use HasFactory;
 
@@ -21,6 +23,13 @@ class Auction extends Model {
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
 
     /**
      * The attributes that should be cast to native types.
@@ -53,16 +62,39 @@ class Auction extends Model {
         'seller_id', 'latest_bid', 'ts_search'
     ];
 
-    public static function getCategoryNames() {
-        return DB::select('SELECT unnest(enum_range(NULL::auction_category))::text');
-    }
+    public const CATEGORY = [
+        'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others'
+    ];
+
+    public const CATEGORY_FORM = [
+        'Games' => 'game',
+        'Software' => 'sftw',
+        'E-Books' => 'book',
+        'Skins' => 'skin',
+        'Music' => 'music',
+        'Series & Movies' => 'sem',
+        'Comics & Manga' => 'cem',
+        'Others' => 'oth',
+    ];
+
+    const STATUS = [
+        'Active', 'Terminated'
+    ];
 
     public function getEndedAttribute() {
         return Carbon::now() > $this->end_date;
     }
 
     public function getStartedAttribute() {
-        return Carbon::now() > $this->end_date;
+        return Carbon::now() > $this->start_date;
+    }
+
+    public function getScheduledAttribute() {
+        return Carbon::now() < $this->start_date;
+    }
+
+    public function getOpenAttribute() {
+        return $this->started && !$this->ended;
     }
 
     public function getInterruptedAttribute() {
@@ -84,15 +116,6 @@ class Auction extends Model {
         return $this->latest == null ? null : $this->latest->value;
     }
 
-    public function getNextBidAttribute() {
-        if ($this->latest == null)
-            return $this->starting_bid;
-        if ($this->increment_fixed != null)
-            return $this->latest->value + $this->increment_fixed;
-        else
-            return ceil($this->latest->value * (100 + $this->increment_percent) / 100);
-    }
-
     public function getNBiddersAttribute() {
         return $this->bids->groupBy('bidder_id')->count();
     }
@@ -103,6 +126,11 @@ class Auction extends Model {
 
     public function getHasBidsAttribute() {
         return $this->latest_bid != null;
+    }
+
+    public function holdsLatestBid($memberId) {
+        return isset($this->latest_bid)
+            && $memberId == $this->latest->bidder_id;
     }
 
     public function images() {
@@ -134,6 +162,6 @@ class Auction extends Model {
     public function getTimeRemainingString(): string {
         if ($this->ended)
             return "Ended";
-        return $this->end_date->diffForHumans();
+        return $this->end_date->shortRelativeDiffForHumans();
     }
 }

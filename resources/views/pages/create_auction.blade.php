@@ -93,9 +93,9 @@
                                 <label for="inputStartDate" class="sr-only ">Starting on</label>
                                 <div class="input-group">
                                     <input type="date" name="start_date" id="inputStartDate" class="form-control"
-                                           value="{{ old('start_date') }}" required>
+                                           value="{{ old('start_date', Carbon\Carbon::now()->add('minute', 5)->format('Y-m-d')) }}" required>
                                     <input type="time" name="start_time" id="inputStartTime" class="form-control"
-                                           value="{{ old('start_time') }}" required>
+                                           value="{{ old('start_time', Carbon\Carbon::now()->add('minute', 5)->format('H:i')) }}" required>
                                 </div>
                             </div>
 
@@ -104,9 +104,9 @@
                                 <label for="inputEndDate" class="sr-only">Ending on</label>
                                 <div class="input-group">
                                     <input type="date" name="end_date" id="inputEndDate" class="form-control"
-                                           value="{{ old('end_date') }}" required>
+                                           value="{{ old('end_date', Carbon\Carbon::now()->add('minute', 5)->add('hour', 12)->format('Y-m-d')) }}" required>
                                     <input type="time" name="end_time" id="inputEndTime" class="form-control"
-                                           value="{{ old('end_time') }}" required>
+                                           value="{{ old('end_time', Carbon\Carbon::now()->add('minute', 5)->format('H:i')) }}" required>
                                 </div>
                             </div>
 

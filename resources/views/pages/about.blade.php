@@ -15,7 +15,7 @@
             </div>
 
             <div class="col-md-8 px-0">
-                <img class="img-fluid" style="max-height: 30em;" src={{ "images/lbaw.png" }} alt="...">
+                <img class="img-fluid" style="max-height: 30em;" src={{ asset("images/lbaw.png") }} alt="...">
             </div>
         </div>
 

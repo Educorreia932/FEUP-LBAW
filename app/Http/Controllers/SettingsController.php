@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class SettingsController extends Controller {
@@ -30,7 +32,7 @@ class SettingsController extends Controller {
     }
 
     public function save_account_changes(Request $request) {
-        $this->authorize('update', Member::class);
+        $this->authorize('update', $request->user());
 
         $rules = array(
             'name' => ['required_without_all:username,email'],
@@ -41,7 +43,7 @@ class SettingsController extends Controller {
         $messages = array(
             'required_without_all' => 'At least one value must be not empty',
             'min' => ':attribute must have at least :min characters',
-            'email' => 'Email :input is not a valid email',
+            'email' => 'Email :input is not valid',
             'unique' => ':attribute :input already exists'
         );
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -60,7 +62,7 @@ class SettingsController extends Controller {
             $validated_data = $validator->validate();
 
             $id = Auth::id();
-        
+
             $user = Member::findOrFail($id);
 
             if (!empty($validated_data['name'])) {
@@ -90,6 +92,48 @@ class SettingsController extends Controller {
     }
 
     public function change_password(Request $request) {
-        $this->authorize('change_password', Member::class);
+        $this->authorize('change_password', $request->user());
+
+        $rules = array(
+            'pwd' => ['required', 'filled', 'string'],
+            'new-pwd' => ['required', 'filled', 'string'],
+            'confirmed-pwd' => ['required', 'filled', 'string', 'same:new-pwd']
+        );
+
+        $messages = array(
+            'same' => 'Passwords must match.'
+        );
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        try {
+            
+            $validated_data = $validator->validate();
+
+            $id = Auth::id();
+
+            $user = Member::findOrFail($id);
+
+            $current_pwd = $validated_data['pwd'];
+            $new_pwd = $validated_data['new-pwd'];
+
+            if (!Hash::check($current_pwd, $user->password)) {
+                return redirect()->back()->with(
+                    'error', 'Current password is incorrect.'
+                );
+            }
+
+            $user->password = Hash::make($new_pwd);
+
+            $user->save();
+        } catch (ValidationException $e) {
+
+        } catch (ModelNotFoundException $e) {
+            /*return response()->json([
+                'message' => 'User was not found. Please try again.'
+            ], 404);*/
+        }
+
+        return redirect()->back();
     }
 }

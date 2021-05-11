@@ -9,8 +9,7 @@
                 <a href={{route('user_profile', ['username' => $member->username])}} class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5">
                     <h4 class="m-0 text-truncate me-2">{{ $member->name }}</h4>
                 </a>
-                <p class="m-0 col">({{ $member->rating }} <i class="bi bi-star"></i>) <span class="text-muted">{{ $member->rating / 5.0}}%</span>
-                </p>
+                <p class="m-0 col">{{ $member->rating }} <i class="bi bi-star"></i></p>
             </div>
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
