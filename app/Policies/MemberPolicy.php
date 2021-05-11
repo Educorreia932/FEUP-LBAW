@@ -11,75 +11,35 @@ class MemberPolicy {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    /*public function viewAny(Member $member) {
-        //
-    }*/
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
-     * @return mixed
-     */
-    /*public function view(Member $member, Member $member) {
-        //
-    }*/
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\Member  $member
-     * @return mixed
-     */
-    /*public function create(Member $member) {
-        //
-    }*/
+    public function update(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function update(Member $member) {
-        return Auth::id() === $member->id;
+    public function change_password(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function delete(Member $member) {
-        return Auth::id() === $member->id;
+    public function delete(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
-     * @return mixed
-     */
-    /*public function restore(Member $member, Member $member) {
-        
-    }*/
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
-     * @return mixed
-     */
-    /*public function forceDelete(Member $member, Member $member) {
-        
-    }*/
 }

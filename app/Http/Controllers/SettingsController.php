@@ -88,4 +88,8 @@ class SettingsController extends Controller {
         }
         return redirect()->back();
     }
+
+    public function change_password(Request $request) {
+        $this->authorize('change_password', Member::class);
+    }
 }
