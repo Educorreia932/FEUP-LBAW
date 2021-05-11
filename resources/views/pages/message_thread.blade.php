@@ -35,6 +35,7 @@
                 />
 
                 <input hidden id="sender_id" name="sender_id" value={{ Auth::user()->id }}>
+                <input hidden id="thread_id" name="thread_id" value={{ $thread_id }}>
 
                 <button id="send-addon" type="submit" class="input-group-text border-0">
                     <i class="bi bi-arrow-up-right"></i>

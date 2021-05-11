@@ -18,10 +18,11 @@ form.addEventListener("submit", function (event) {
 function sendMessage() {
     const body = document.getElementById("body");
     const sender_id = document.getElementById("sender_id");
+    const thread_id = document.getElementById("thread_id");
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     const request = new XMLHttpRequest();
 
-    request.open("PUT", "/messages/1");
+    request.open("PUT", `/messages/${thread_id.value}`);
     request.setRequestHeader("X-CSRF-TOKEN", csrf);
     request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

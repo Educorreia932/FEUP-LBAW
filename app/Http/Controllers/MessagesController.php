@@ -15,19 +15,22 @@ class MessagesController extends Controller {
         return view('pages.message_inbox', ["threads" => $threads]);
     }
 
-    public function messageThread($id) {
-        $messages = MessageThread::find($id)->messages;
+    public function messageThread($thread_id) {
+        $message_thread = MessageThread::find($thread_id);
 
-        return view('pages.message_thread', ["messages" => $messages, "thread_id" => $id]);
+        if (!$message_thread->participants()->where('participant_id', '=', Auth::id())->count() > 0)
+            abort(403);
+
+        return view('pages.message_thread', ["messages" => $message_thread->messages, "thread_id" => $thread_id]);
     }
 
     public function showMessage($message) {
         return view("partials.message", ["message" => $message]);
     }
 
-    public function sendMessage($thread_id, SendMessageRequest $request) {
+    public function sendMessage($id, SendMessageRequest $request) {
         $validated = $request->validated();
-        $validated += ["thread_id" => $thread_id];
+        $validated += ["thread_id" => $id];
 
         $message = Message::create($validated);
         $message = Message::find($message->id);
