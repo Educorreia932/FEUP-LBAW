@@ -1,4 +1,4 @@
-@extends("layouts.search", ['current_page' => 'search_auctions'])
+@extends("layouts.search", ['current_page' => 'auctions', 'search_route' => 'search_auctions'])
 
 @inject('auc', 'App\Models\Auction')
 
