@@ -4,7 +4,7 @@
     <script defer src="{{ asset("js/send_message.js") }}"></script>
 
     <section class="container-fluid bg-light-grey p-4">
-        <h1 class="mt-4">Inbox</h1>
+        <h1 class="mt-4">{{ $thread->title() }}</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [
             ["title" => "Home", "href" => route('home')],
@@ -14,14 +14,14 @@
 
         <div class="px-5">
             {{-- Messages --}}
-            <section id="messages" class="d-flex flex-column overflow-auto" style="max-height: 25em;">
-                @foreach($messages as $message)
+            <section id="messages" class="d-flex flex-column overflow-auto" style="height: 20em;">
+                @foreach($thread->messages as $message)
                     @include("partials.message")
                 @endforeach
             </section>
 
             {{-- Send message --}}
-            <form id="send-message-form" class="container-fluid input-group my-4 px-5">
+            <form id="send-message-form" class="container-fluid input-group my-4" style="width: 30em">
                 @csrf
 
                 <input
@@ -35,7 +35,7 @@
                 />
 
                 <input hidden id="sender_id" name="sender_id" value={{ Auth::user()->id }}>
-                <input hidden id="thread_id" name="thread_id" value={{ $thread_id }}>
+                <input hidden id="thread_id" name="thread_id" value={{ $thread->id }}>
 
                 <button id="send-addon" type="submit" class="input-group-text border-0">
                     <i class="bi bi-arrow-up-right"></i>

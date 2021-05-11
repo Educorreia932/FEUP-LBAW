@@ -43,9 +43,11 @@ Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAucti
 Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed")->middleware("auth");
 
 // Messages
-Route::get("messages", "MessagesController@inbox")->name("inbox")->middleware("auth");
-Route::get("messages/{thread_id}", "MessagesController@messageThread")->name("message_thread")->middleware("auth");
+Route::get("messages", "MessagesController@showInbox")->name("inbox")->middleware("auth");
+Route::post("messages", "MessagesController@createMessageThread")->name("create_message_thread")->middleware("auth");
+Route::get("messages/{thread_id}", "MessagesController@showMessageThread")->name("message_thread")->middleware("auth");
 Route::put("messages/{thread_id}", "MessagesController@sendMessage")->name("send_message")->middleware("auth");
+Route::post("messages/{thread_id}/add_participant", "MessagesController@addParticipantToThread")->name("add_participant_to_message_thread")->middleware("auth");
 
 // Settings
 Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings")->middleware("auth");

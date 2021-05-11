@@ -26,6 +26,10 @@
 
     {{-- Last message sent at --}}
     <p class="col">
-        {{ $message_thread->messages->last()->timestamp->longRelativeDiffForHumans() }}
+        @if($message_thread->messages->count() == 0)
+            No messages
+        @else
+            {{ $message_thread->messages->last()->timestamp->longRelativeDiffForHumans() }}
+        @endif
     </p>
 </div>
