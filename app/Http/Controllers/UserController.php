@@ -15,6 +15,7 @@ class UserController extends Controller {
     }
 
     public function showMyProfile() {
+        dd(Auth::user());
         return view('pages.user_profile', [ "user" => Auth::user()]);
     }
 
