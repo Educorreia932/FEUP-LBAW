@@ -9,8 +9,16 @@
 
                     <h1 class="mb-3">Sign In</h1>
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <label for="inputEmail" class="sr-only float-start">Email</label>
-                    <input type="email" id="inputEmail" class="form-control" name="email" required>
+                    <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" required>
 
                     <label for="inputPassword" class="sr-only float-start">Password</label>
                     <input type="password" id="inputPassword" class="form-control" name="password" required>

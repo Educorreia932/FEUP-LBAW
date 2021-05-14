@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Http\Request;
+
 class LoginController extends Controller {
     /*
     |--------------------------------------------------------------------------
@@ -44,4 +46,34 @@ class LoginController extends Controller {
     public function home() {
         return redirect('login');
     }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        // determine login type (email | username)
+        $login_type = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [$login_type => $request->input('email'), 'password' => $request->input('password')];
+
+        // attempt authentication with the given credentials
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->back();
+        }
+
+        return back()->withErrors([
+            'credentials' => 'Wrong username or password.',
+        ])->withInput();
+    }
+
 }
