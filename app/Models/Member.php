@@ -10,6 +10,8 @@ class Member extends Authenticatable {
 
     protected $table = 'member';
 
+    protected $guard = 'member';
+
     public $timestamps  = false;
 
     /**

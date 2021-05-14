@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    
     <div class="container-fluid" style="flex:auto;">
         <section class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
-                <form class="form-signin" method="post" action="{{ route("login") }}">
+                <form class="form-signin" method="POST" action="{{ route("login") }}">
                     @csrf
-
+                
                     <h1 class="mb-3">Sign In</h1>
-
+                    
                     @if ($errors->any())
                         <div class="alert alert-danger" role="alert">
                             @foreach($errors->all() as $error)
@@ -17,7 +18,7 @@
                         </div>
                     @endif
 
-                    <label for="inputEmail" class="sr-only float-start">Email</label>
+                    <label for="inputEmail" class="sr-only float-start">Email/Username</label>
                     <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" required>
 
                     <label for="inputPassword" class="sr-only float-start">Password</label>
