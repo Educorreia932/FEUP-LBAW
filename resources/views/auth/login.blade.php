@@ -3,17 +3,6 @@
 @section('content')
     
     <div class="container-fluid" style="flex:auto;">
-
-        @if ($errors->any())
-        <div class="alert alert-danger mt-4 col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
         <section class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
                 <form class="form-signin" method="POST" action="{{ route("login") }}">

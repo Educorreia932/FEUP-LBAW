@@ -74,3 +74,13 @@ Route::get("users/{username}", "UserController@showProfile")->name('user_profile
 // Other
 Route::get('about', "AboutController@show")->name("about");
 Route::get('faq', "AboutController@faq")->name("faq");
+
+// Administration
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->middleware('admin')->group(function() {
+    // Authentication
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
+    Route::post('login', 'Auth\LoginController@login')->name("login");
+
+    // Home
+    Route::get('/', 'AdminController@showHome')->name("home"); // TODO: admin dashboard
+});
