@@ -1,13 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.app', ['current_page' => 'users'])
 
 @section('content')
-<div class="row m-2">
-    {{-- Breadcrumbs --}}
-</div>
-
 {{-- User Information --}}
 <section class="container">
     <div class="row justify-content-center">
+
+        <div class="row px-0 my-2">
+            {{-- Breadcrumbs --}}
+            <h1>User Profile</h1>
+            @include("partials.breadcrumbs", [ "pages" => [
+                ["title" => "Home", "href" => route('home')],
+                ["title" => "Users", "href" => route('search_users')],
+                ["title" => $user->username, "href" => route('user_profile', ['username' => $user->username])]
+            ]])
+        </div>
+
         <div class="d-flex flex-column flex-md-row border border-4">
             <div
                 class="col-12 col-md-8 user-details d-flex flex-column flex-md-row align-items-center align-items-md-start">
@@ -47,21 +54,20 @@
                         <span>Open Auctions</span>
                     </a>
 
-                    @auth
-                    @if (Auth::id() != $user->id )
+                    @can('report', $user)
                     <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal"
                             class="btn ms-2 p-0 hover-scale">
                         <i class="bi bi-flag-fill text-danger"></i>
                         <span>Report user</span>
                     </button>
-                    @else
-                    {{-- OWN PROFILE --}}
+                    @endcan
+
+                    @can('edit', $user)
                     <a class="p-0 ms-2 link-dark text-decoration-none hover-scale" href={{ route('settings_account') }}>
                         <i class="bi bi-gear"></i>
                         <span>Edit Profile</span>
                     </a>
-                    @endif
-                    @endauth
+                    @endcan
                 </div>
                 <div class="user-description d-flex flex-column-reverse w-100">
                     <a role="button" class="collapsed description-toggler" data-bs-toggle="collapse"
@@ -148,14 +154,13 @@
 <section class="container my-4">
     <h2 class="fs-bold">Created Auctions</h2>
     <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-        @each("partials.auction_card", $user->createdAuctions()->orderBy('end_date', 'desc')->limit(8)->get(), "auction")
+        @each("partials.auction_card", $user->getProfileAuctions(), "auction")
     </div>
 </section>
 @endif
 
 {{-- Modal --}}
-@auth
-@if (Auth::id() != $user->id )
+@can('edit', $user)
 <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -192,7 +197,6 @@
         </div>
     </div>
 </section>
-@endif
-@endauth
+@endcan
 
 @endsection

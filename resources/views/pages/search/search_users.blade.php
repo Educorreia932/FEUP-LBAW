@@ -1,4 +1,4 @@
-@extends("layouts.search", ['current_page' => 'search_users'])
+@extends("layouts.search", ['current_page' => 'users', 'search_route' => 'search_users'])
 
 @section("breadcrumbs")
 @include("partials.breadcrumbs", [ "pages" => [

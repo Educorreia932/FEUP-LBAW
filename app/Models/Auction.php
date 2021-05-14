@@ -162,6 +162,6 @@ class Auction extends Model {
     public function getTimeRemainingString(): string {
         if ($this->ended)
             return "Ended";
-        return $this->end_date->shortRelativeDiffForHumans();
+        return $this->end_date->shortAbsoluteDiffForHumans();
     }
 }

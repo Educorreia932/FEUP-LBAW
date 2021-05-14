@@ -1,5 +1,6 @@
 <?php
 
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -19,8 +20,7 @@ Route::get('user/search', 'SearchResultsController@search_users')->name('search_
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
 
-// User Profile
-Route::get("users/{username}", "UserController@showProfile")->name('user_profile');
+
 
 // Authenticated only
 Route::middleware(['auth'])->group(function () {
@@ -67,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
 });
 
+
+// User Profile
+Route::get("users/{username}", "UserController@showProfile")->name('user_profile');
 
 // Other
 Route::get('about', "AboutController@show")->name("about");

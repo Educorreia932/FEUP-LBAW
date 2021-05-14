@@ -6,7 +6,7 @@
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
 
-            <form action="{{route($current_page)}}" id="search-form" method="GET" role="search">
+            <form action="{{route($search_route)}}" id="search-form" method="GET" role="search">
                 @csrf
 
                 <div class="row">
@@ -16,8 +16,8 @@
 
                             <ul class="nav flex-column mb-4">
                                 {{-- Sidebar anchor --}}
-                                @include("partials.sidebar_anchor", ['active' => ($current_page == 'search_auctions'), 'url' => route('search_auctions'), 'name' => 'Auctions'])
-                                @include("partials.sidebar_anchor", ['active' => ($current_page == 'search_users'), 'url' => route('search_users'), 'name' => 'Users'])
+                                @include("partials.sidebar_anchor", ['active' => ($current_page == 'auctions'), 'url' => route('search_auctions'), 'name' => 'Auctions'])
+                                @include("partials.sidebar_anchor", ['active' => ($current_page == 'users'), 'url' => route('search_users'), 'name' => 'Users'])
                             </ul>
 
                             <h4>Filters</h4>
