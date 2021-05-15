@@ -50,6 +50,9 @@ class LoginController extends Controller {
         parent::__construct();
 
         $this->middleware('guest')->except('logout');
+
+        // prevents admin from accessing this page if logged in
+        $this->middleware('guest:admin')->except('logout');
     }
 
     public function getUser($request) {
@@ -83,6 +86,21 @@ class LoginController extends Controller {
         return back()->withErrors([
             'credentials' => 'Wrong username or password.',
         ])->withInput();
+    }
+
+    /**
+     * Log the admin out of the application.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request) {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

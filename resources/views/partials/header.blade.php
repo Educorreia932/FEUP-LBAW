@@ -20,6 +20,11 @@
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "auctions", "title" => "Auctions", "route" => "search_auctions"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "users", "title" => "Users", "route" => "search_users"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
+
+
+                    @admin
+                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "user_management", "title" => "Dashboard", "route" => "admin.user_management"])
+                    @endadmin
                 </section>
             </ul>
 
@@ -49,6 +54,7 @@
                             </div>
                         </button>
 
+                        {{-- Dropdown menu --}}
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                             <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
                             <li><a class="dropdown-item"
@@ -59,43 +65,52 @@
                         </ul>
                     </li>
 
-                    {{-- Dropdown Menu --}}
-                    <div class="d-flex d-md-none flex-wrap flex-row w-100">
-                        <li class="nav-item col-12 d-flex justify-content-between">
-                            <div class="col-6 d-flex align-items-center">
-                                <div class="d-flex p-0 align-self-center" style="width: 32px; height: 32px;">
-                                    <img style="border-radius:50%;" width="32" height="32"
-                                         src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg"
-                                         alt="Profile Image">
-                                </div>
-                                <span class="ms-1 navbar-text">Educorreia932</span>
-                            </div>
-                            <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button"
-                                    data-bs-toggle="modal" data-bs-target="#notifications-modal">
-                                <span class="navbar-text"><i
-                                        class="bi bi-bell text-muted"></i> Notifications (42)</span>
-                            </button>
-                        </li>
-                        <li class="nav-item col-6"><a class="nav-link" href={{ route('settings') }}>Settings</a></li>
-                        <li class="nav-item col-6"><a class="nav-link"
-                                                      href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
-                        </li>
-                        <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
-                        <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
-                    </div>
 
                 @else
-                    {{-- Authentication --}}
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
-                    </li>
 
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2"
-                           href={{ route('register_form') }}>
-                            Sign up
-                        </a>
-                    </li>
+                    {{-- Admin logged-in --}}
+                    @if (Auth::guard('admin')->check()) 
+                        <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
+                                type="button"
+                                data-bs-toggle="modal" data-bs-target="#notifications-modal">
+                            <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white"
+                            style="font-size:xx-large;"></i>
+                            <span class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                                style="font-size:small; font-weight: bold;">42</span>
+                        </button>
+
+                        {{-- Logged-in User --}}
+                        <li class="d-none d-md-flex nav-item dropdown px-1">
+                            <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
+                                    id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
+                                <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                    <img style="border-radius:50%;" width="40" height="40"
+                                        src={{ Auth::guard('admin')->user()->getImage('small') }}
+                                        alt="Profile Image">
+                                </div>
+                            </button>
+
+                            {{-- Dropdown menu --}}
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
+                                <li><a class="dropdown-item" href={{ route('admin.user_management') }}>Dashboard</a></li>
+                                <li><a class="dropdown-item" href={{ route('admin.logout') }}>Sign out</a></li>
+                            </ul>
+                        </li>
+                    
+                    @else 
+                        {{-- Authentication --}}
+                        <li class="nav-item col-6 col-md-auto">
+                            <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
+                        </li>
+
+                        <li class="nav-item col-6 col-md-auto">
+                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2"
+                            href={{ route('register_form') }}>
+                                Sign up
+                            </a>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </div>

@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function showHome() {
-        return view('pages.user_profile', [ "user" => Auth::guard('admin')->user()]);
+        return view('pages.admin.user_management', [ "user" => Auth::guard('admin')->user()]);
     }
 }

@@ -38,6 +38,8 @@ class LoginController extends Controller {
         parent::__construct();
 
         $this->middleware('guest')->except('logout');
+        // prevents admin from accessing this page if logged in
+        $this->middleware('guest:admin')->except('logout');
     }
 
     public function getUser($request) {
@@ -77,5 +79,4 @@ class LoginController extends Controller {
             'credentials' => 'Wrong username or password.',
         ])->withInput();
     }
-
 }
