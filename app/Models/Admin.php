@@ -24,7 +24,7 @@ class Admin extends Authenticatable {
     ];
 
     public function getImage($type='small') {
-        return asset('images/users/' . $this->id . '_' . $type . '.jpg');
+        return asset('images/admin/' . $this->id. '.png');
     }
     
 }
