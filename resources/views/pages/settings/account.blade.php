@@ -1,25 +1,46 @@
 @extends('layouts.settings', ['active' => 'account'])
 
 @section('subpage')
+    <script defer src={{ asset("js/settings.js") }}></script>
+
     <div class="container-fluid">
         <h2 class="my-4">Account</h2>
 
+        <div class="status-messages">
+            @if (Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    @foreach(Session::get('success') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            @if (Session::has('error'))
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach(Session::get('error') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
+
         <div class="row">
             <div class="container-fluid border rounded-3">
-                <form action="{{ route('save_account_changes') }}" method="POST">
+                <form id="account_form" action="{{ route('save_account_changes') }}" enctype="multipart/form-data" method="POST">
                     @method('PUT')
                     @csrf
                     <div class="row mt-2 justify-content-between">
                         <div class="col-lg-8 order-lg-2">
                             <div class="row">
                                 <div class="col-4">
-                                    <img class="img-fluid rounded-3"
-                                        src={{ Auth::user()->getImage('medium') }}
-                                        alt={{ Auth::user()->username . ' profile picture' }}>
+                                    <img id="image-preview" class="img-fluid rounded-3"
+                                            src={{ Auth::user()->getImage('medium') }}
+                                            alt={{ Auth::user()->username . ' profile picture' }}>
 
-                                    <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-center">
-                                        <button type="button" class="btn btn-secondary">Change Image</button>
-                                    </div>
+                                    <input type="file" class="form-control" id="imageFile" name="image"/>
                                 </div>
                                 <div class="col-7">
                                     <h3>{{ Auth::user()->name }}</h3>

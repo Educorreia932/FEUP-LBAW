@@ -3,6 +3,27 @@
 @section('subpage')
     <h2 class="my-4">Security</h2>
 
+    <div class="status-messages">
+        @if (Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                @foreach(Session::get('success') as $message)
+                    <li>{{ $message }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if (Session::has('error'))
+        <div class="alert alert-danger">
+            <ul>
+                @foreach(Session::get('error') as $message)
+                    <li>{{ $message }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+
     <div class="col-lg-8 col-xl-6 mx-3 mx-md-0">
         <form action="{{ route('change_password') }}" method="POST">
             @method('PUT')

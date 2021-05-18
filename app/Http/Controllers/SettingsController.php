@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Helpers\ImageHelper;
 use App\Models\Member;
 
 use Illuminate\Http\Request;
@@ -35,9 +36,10 @@ class SettingsController extends Controller {
         $this->authorize('update', $request->user());
 
         $rules = array(
-            'name' => ['required_without_all:username,email'],
-            'username' => ['required_without_all:name,email'],
-            'email' => ['required_without_all:name,username']
+            'name' => ['required_without_all:username,email,image'],
+            'username' => ['required_without_all:name,email,image'],
+            'email' => ['required_without_all:name,username,image'],
+            'image' => ['required_without_all:name,username,email']
         );
 
         $messages = array(
@@ -56,6 +58,10 @@ class SettingsController extends Controller {
         });
         $validator->sometimes('email', 'required|email:rfc,dns|unique:App\Models\Member,email', function ($input) {
             return !empty($input->email);
+        });
+
+        $validator->sometimes('image', 'required|file|image', function ($input) {
+            return !empty($input->image);
         });
 
         try {
@@ -77,18 +83,29 @@ class SettingsController extends Controller {
                 $user->email = $validated_data['email'];
             }
 
+            if (!empty($validated_data['image'])) {
+                $path = public_path() . '/images/users/';
+
+                ImageHelper::save_user_image($validated_data['image'], $path, $id);
+            }
+
             $user->save();
 
         } catch(ValidationException $e) {
-            /*return response()->json([
-                'message' => $e->getMessage()
-            ], 400);*/
+            return redirect()->back()->with(
+                'error',
+                $validator->errors()->all()
+            );
         } catch (ModelNotFoundException $e) {
-            /*return response()->json([
-                'message' => 'User was not found. Please try again.'
-            ], 404);*/
+            return redirect()->back()->with(
+                'error',
+                ['This user doesn\'t exist.']
+            );
         }
-        return redirect()->back();
+        return redirect()->back()->with(
+            'success',
+            ['Account changes saved!']
+        );
     }
 
     public function change_password(Request $request) {
@@ -119,7 +136,7 @@ class SettingsController extends Controller {
 
             if (!Hash::check($current_pwd, $user->password)) {
                 return redirect()->back()->with(
-                    'error', 'Current password is incorrect.'
+                    'error', ['Current password is incorrect.']
                 );
             }
 
@@ -127,13 +144,19 @@ class SettingsController extends Controller {
 
             $user->save();
         } catch (ValidationException $e) {
-
+            return redirect()->back()->with(
+                'error',
+                $validator->errors()->all()
+            );
         } catch (ModelNotFoundException $e) {
-            /*return response()->json([
-                'message' => 'User was not found. Please try again.'
-            ], 404);*/
+            return redirect()->back()->with(
+                'error',
+                ['This user doesn\'t exist.']
+            );
         }
 
-        return redirect()->back();
+        return redirect()->back()->with(
+            "success", ["Password changed successfully."]
+        );
     }
 }

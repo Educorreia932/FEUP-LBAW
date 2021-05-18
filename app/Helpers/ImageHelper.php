@@ -76,4 +76,20 @@ class ImageHelper {
             ImageHelper::save_upscaled_image($original, $smallFileName, 300);
         }
     }
+
+    public static function save_user_image($file, $path, $id) {
+        $original = ImageHelper::get_image_representation($file->extension(), $file);
+
+        // Generate filenames for original, small and medium files
+        $originalFileName = $path . "/$id" . "_original." . $file->extension();
+        
+        $mediumFileName = $path . "/$id" . "_medium.jpg";
+        $smallFileName = $path . "/$id" . "_small.jpg";
+
+        move_uploaded_file($file, $originalFileName);
+
+        ImageHelper::save_upscaled_image($original, $mediumFileName, 200);
+        ImageHelper::save_upscaled_image($original, $smallFileName, 40);
+    
+    }
 }
