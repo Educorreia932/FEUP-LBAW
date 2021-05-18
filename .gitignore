@@ -26,3 +26,5 @@ bootstrap/cache/
 
 __pycache__/
 .vscode/
+
+package-lock.json
