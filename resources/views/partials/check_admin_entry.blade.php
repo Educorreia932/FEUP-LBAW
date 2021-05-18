@@ -1,17 +1,17 @@
 <div class="form-check @if(isset($master) && $master) master @endif">
     <input class="form-check-input" name="filter_check_{{ $group }}[]" type="checkbox"
-    id="filter_check_{{ $group . $value }}" value="{{ $value }}"
+    id="filter_check_{{ $group . "_" . $value }}" value="{{ $value }}"
+
+    @if (isset($disabled) && $disabled)
+        disabled
+    @endif
 
     @if ($state)
         checked
-    @else
-        @if (isset($default))
-            checked
-        @endif
     @endif
     >
     
-    <label class="form-check-label" for="filter_check_{{ $group . $value }}">
+    <label class="form-check-label" for="filter_check_{{ $group . "_" . $value }}">
         {{ $name }}
     </label>
 </div>

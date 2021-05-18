@@ -1,6 +1,8 @@
 @extends('layouts.dashboard', ['sub' => 'user_management'])
 
 @section('subpage')
+    <script defer src={{ asset("js/admin_dashboard_users.js") }}></script>
+
     <div class="container-fluid mb-4">
         <div class="my-4">
             <h2>User Management</h2>
@@ -52,12 +54,12 @@
                 <tbody>
                     {{-- Reported user entries --}}
                     @foreach ($reports as $report)
-                        <tr class="align-middle">
+                        <tr class="user-entry align-middle" user_id="{{$report->member_id}}">
                             <th scope="row">{{$report->username}}</th>
                             <td class="master-checkbox-reverse">
-                                @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned])
-                                @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission])
-                                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission])
+                                @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
+                                @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])
+                                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned])
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
@@ -70,23 +72,8 @@
                                 </div>
                             </td>
                             <td>{{$report->joined}}</td>
-                    @endforeach
-                    {{-- @php for ($i = 0; $i < 5; $i++) {
-                        <tr class="align-middle">
-                            <th scope="row">markhamill69</th>
-                            <td class="master-checkbox-reverse">
-                            
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <span>Fraudulent Behaviour</span>
-                                    <a href="#">See details »</a>
-                                </div>
-                            </td>
-                            <td>12 feb 2021</td>
                         </tr>
-                    }
-                    @endphp --}}
+                    @endforeach
                 </tbody>
                 </table>
             </div>  

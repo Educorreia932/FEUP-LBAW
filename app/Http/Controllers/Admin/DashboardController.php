@@ -21,12 +21,13 @@ class DashboardController extends Controller {
         if ($request->has('filter') && $request->filter === 'report'){
             $query = DB::table('user_report')
                     ->join('member', 'reported_id', 'member.id')
-                    ->select('user_report.*','username', 'joined', 'banned', 'sell_permission', 'bid_permission');
+                    ->select('user_report.*', 'member.id as member_id',  'username', 'joined', 'banned', 'sell_permission', 'bid_permission');
         }
         else {
             // select all users
             $query = Member::query();
-            $query = $query->leftJoin('user_report', 'user_report.reported_id', 'member.id');
+            $query = $query->leftJoin('user_report', 'user_report.reported_id', 'member.id')
+                        ->select('user_report.*', 'member.id as member_id', 'username', 'joined', 'banned', 'sell_permission', 'bid_permission');
         }
 
         // search by username
