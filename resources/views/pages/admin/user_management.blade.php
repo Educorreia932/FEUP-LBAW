@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_admin', ['sub' => 'user_management'])
+@extends('layouts.dashboard', ['sub' => 'user_management'])
 
 @section('subpage')
     <div class="container-fluid mb-4">

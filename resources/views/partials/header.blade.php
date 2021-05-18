@@ -19,8 +19,8 @@
                 <section class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "auctions", "title" => "Auctions", "route" => "search_auctions"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "users", "title" => "Users", "route" => "search_users"])
-                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
-
+                    
+                    @includeWhen(!Auth::guard('admin')->check(), "partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
 
                     @admin
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "user_management", "title" => "Dashboard", "route" => "admin.user_management"])
