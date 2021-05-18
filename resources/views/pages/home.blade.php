@@ -72,7 +72,7 @@
                                         class="bi bi-arrow-right"></i></a>
                             </span>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-
+                    @each ("partials.auction_card", $bidded_auctions, "auction")
                 </div>
             </section>
 
@@ -86,7 +86,7 @@
                     </a>
                 </span>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-
+                    @each ("partials.auction_card", $followed_auctions, "auction")
                 </div>
             </section>
         </div>

@@ -12,6 +12,9 @@
                         alt="My Profile Image">
             </div>
             <span>{{ $bid->bidder->username }}</span>
+            @if ($bid->id == $auction->latest_bid)
+            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            @endif
         </td>
         @elseif(Auth::id() == $bid->bidder_id)
         <td class="d-flex align-items-center">
@@ -21,10 +24,17 @@
                         alt="My Profile Image">
             </div>
             <span>Me</span>
+            @if ($bid->id == $auction->latest_bid)
+            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            @endif
         </td>
         @else
         <td>
-            <i class="bi bi-person-circle mx-2" style="font-size: 1.2rem;"></i>{{ $helper->encodeUsername($auction, $bid->bidder_id)}}
+            <i class="bi bi-person-circle mx-2" style="font-size: 1.2rem;"></i>
+            <span>{{ $helper->encodeUsername($auction, $bid->bidder_id)}}</span>
+            @if ($bid->id == $auction->latest_bid)
+            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            @endif
         </td>
         @endif
 

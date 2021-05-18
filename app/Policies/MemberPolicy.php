@@ -9,6 +9,28 @@ class MemberPolicy {
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can edit another
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function edit(Member $member, Member $target) {
+        return $member->id == $target->id;
+    }
+
+    /**
+     * Determine whether the user can report another
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function report(Member $member, Member $target) {
+        return $member->id != $target->id;
+    }
+
+    /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member

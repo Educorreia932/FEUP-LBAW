@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
 use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller {
     public function __construct() {
@@ -19,7 +21,13 @@ class DashboardController extends Controller {
     }
 
     public function biddedAuctions() {
-        $auctions = Auth::user()->createdAuctions;
+        $auctions = Auction::query()
+            ->select(DB::raw('auction.*, max(bid.date) AS latest_bid_date'))
+            ->join('bid', 'bid.auction_id', '=', 'auction.id')
+            ->where('bid.bidder_id', '=', Auth::id())
+            ->groupBy('auction.id')
+            ->orderBy('latest_bid_date', 'desc')
+            ->get();
 
         return view("pages.dashboard.bidded_auctions", [ "auctions" => $auctions ]);
     }
