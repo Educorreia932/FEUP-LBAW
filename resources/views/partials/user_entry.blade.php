@@ -9,14 +9,14 @@
                 <a href={{route('user_profile', ['username' => $member->username])}} class="text-decoration-none text-dark col-sm-10 col-md-8 col-lg-6 col-xl-5">
                     <h4 class="m-0 text-truncate me-2">{{ $member->name }}</h4>
                 </a>
-                <p class="m-0 col">({{ $member->rating }} <i class="bi bi-star"></i>) <span class="text-muted">{{ $member->rating / 5.0}}%</span>
-                </p>
+                <p class="m-0 col">{{ $member->rating }} <i class="bi bi-star"></i></p>
             </div>
             <span class="fst-italic">&commat;{{ $member->username }}</span>
         </div>
         <p class="d-none d-md-block mb-3"><span class="text-muted">Joined on</span> {{ $member->joined->toFormattedDateString() }}</p>
         @auth
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            @if (Auth::id() != $member->id)
             @if (Auth::user()->followsMember($member->id))
                 <button type="button" class="follow btn btn-danger w-100" member_username="{{ $member->username }}">
                     <i class="bi bi-heart-fill"></i>
@@ -27,6 +27,7 @@
                     <i class="bi bi-heart"></i>
                     <span>Follow</span>
                 </button>
+            @endif
             @endif
         </div>
         @endauth

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Member extends Authenticatable {
     use Notifiable;
@@ -20,6 +22,13 @@ class Member extends Authenticatable {
     protected $casts = [
         'joined' => 'datetime'
     ];
+
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
 
     protected $fillable = [
         "username", 'name', 'email', 'password', "credit"
@@ -39,6 +48,13 @@ class Member extends Authenticatable {
 
     public function bookmarkedAuction($id) {
         return $this->bookmarkedAuctions()->where('auction_id', '=', $id)->first() != null;
+    }
+
+    public function getProfileAuctions() {
+        $query = $this->createdAuctions()->orderBy('end_date', 'desc');
+        if (!Auth::check() || !Auth::user()->nsfw_consent)
+            $query = $query->where('nsfw', '=', 'FALSE');
+        return $query->limit(8)->get();
     }
 
     public function createdAuctions() {

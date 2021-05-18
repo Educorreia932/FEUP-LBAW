@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 use App\Rules\AfterToday;
+use Carbon\Carbon;
 
 class CreateAuctionRequest extends FormRequest
 {
@@ -51,12 +52,13 @@ class CreateAuctionRequest extends FormRequest
 
         // converting date and hour to datetime
         if ($this->has(['start_date', 'start_time'])) {
-            $start_datetime = $this->input('start_date')." ".$this->input('start_time');
+            $start_datetime = Carbon::createFromFormat('Y-m-d H:i', $this->input('start_date')." ".$this->input('start_time'));
+            $start_datetime->setTimezone('Europe/London');
             $this->merge(['start_date' => $start_datetime]);
         }
 
         if ($this->has(['end_date', 'end_time'])) {
-            $end_datetime = $this->input('end_date')." ".$this->input('end_time');
+            $end_datetime = Carbon::createFromFormat('Y-m-d H:i', $this->input('end_date')." ".$this->input('end_time'));
             $this->merge(['end_date' => $end_datetime]);
         }
 

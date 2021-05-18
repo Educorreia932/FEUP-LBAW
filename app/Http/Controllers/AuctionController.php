@@ -9,39 +9,34 @@ use App\Models\AuctionImage;
 use App\Http\Requests\CreateAuctionRequest;
 use App\Models\AuctionReport;
 use App\Helpers\ImageHelper;
+use App\Models\Bid;
 use App\Models\BookmarkedAuction;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AuctionController extends Controller {
     public function show($id) {
-        $auction = Auction::find($id);
-
-        if ($auction == null)
-            return abort(404);
-
-        if ($auction->nsfw && !(Auth::check() && Auth::user()->nsfw_consent))
-            return back();
+        $auction = Auction::findOrFail($id);
+        $this->authorize('view', $auction);
 
         return view('pages.auction', ['auction' => $auction]);
     }
 
     public function showDetails($id) {
-        $auction = Auction::find($id);
-
-        if ($auction == null)
-            return abort(404);
-
-        if ($auction->nsfw && !(Auth::check() && Auth::user()->nsfw_consent))
-            return back();
+        $auction = Auction::findOrFail($id);
+        $this->authorize('view', $auction);
 
         return view('pages.auction_details', ['auction' => $auction]);
     }
 
     public function create() {
+        $this->authorize('sell', Auction::class);
         return view('pages.create_auction');
     }
 
@@ -56,12 +51,57 @@ class AuctionController extends Controller {
         DB::table('bookmarked_auction')->where('member_id', '=', Auth::id())->where('auction_id', '=', $id)->delete();
     }
 
+    public function bid(Request $request, $id) {
+        $auction = Auction::findOrFail($id);
+        $this->authorize('bid', $auction);
+
+        if (!$request->has('bid'))
+            abort(400);
+
+        $request->merge(['bid' => intval(preg_replace("/[^0-9]/", "", $request['bid']))]);
+
+        // Validate request
+        $rules = array(
+            'bid' => ['required', 'integer', 'min:' . $auction->next_bid],
+        );
+
+        $messages = array(
+            'min' => ':attribute must be at least :min φ',
+        );
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        try {
+            $data = $validator->validate();
+
+            $bid = Bid::create([
+                'auction_id' => $id,
+                'bidder_id' => Auth::id(),
+                'value' => $data['bid'],
+            ]);
+
+            $bid->save();
+
+        } catch(ValidationException $e) {
+            dd($e->getMessage());
+            /*return response()->json([
+                'message' => $e->getMessage()
+            ], 400);*/
+        } catch (ModelNotFoundException $e) {
+            /*return response()->json([
+                'message' => 'User was not found. Please try again.'
+            ], 404);*/
+        }
+        return redirect()->back();
+    }
+
     public function store(CreateAuctionRequest $request) {
+        $this->authorize('sell', Auction::class);
+
         // Validating request
         $validated = $request->validated();
 
         $auction = new Auction($validated);
-        $auction->seller_id = Auth::user()->id;
+        $auction->seller_id = Auth::id();
         $auction->status = 'Scheduled';
 
         $auction->save();
@@ -88,10 +128,13 @@ class AuctionController extends Controller {
             }
         }
 
-        return Redirect::to('/');
+        return Redirect::to(route('auction', ['id', $auction->id]));
     }
 
     public function report($id, ReportRequest $request) {
+        $auction = Auction::findOrFail($id);
+        $this->authorize('report', $auction);
+
         // Validating request
         $validated = $request->validated();
         $validated["reported_id"] = $id;
@@ -102,10 +145,11 @@ class AuctionController extends Controller {
     }
 
     public function edit($id, EditRequest $request) {
+        $auction = Auction::findOrFail($id);
+        $this->authorize('edit', $auction);
+
         // Validating request
         $validated = $request->validated();
-
-        $auction = Auction::find($id);
         $auction->update($validated);
 
         return Redirect::to(route("auction", ["id" => $id]));

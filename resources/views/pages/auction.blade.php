@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['current_page' => 'auctions'])
 
 @inject('helper', \App\Helpers\LbawUtils::class)
 
@@ -11,6 +11,7 @@
 @endauth
 
 <div class="row m-2">
+    {{-- Breadcrumbs --}}
     <h1>Auction</h1>
     @include("partials.breadcrumbs", [ "pages" => [
         ["title" => "Home", "href" => route('home')],
@@ -66,27 +67,32 @@
             {{-- Product information --}}
             <div class="row" id="product-information">
                 <div class="row">
-                    <h2 class="col d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
+                    <h2 class="col mb-0 d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
+                        <i class="bi bi-circle-fill me-2
+                            @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->scheduled) text-warning @elseif($auction->open) text-success @endif"
+                            style="font-size: 0.5em;"></i>
                         {{$auction->title}}
                     </h2>
                     <div
                         class="p-0 justify-content-center justify-content-sm-end justify-content-md-start justify-content-lg-end col-12 col-sm-4 col-md-12 col-lg-4 order-1 order-sm-2 order-md-1 order-lg-2 d-flex">
-                        @auth
-                        @if (Auth::id() != $auction->seller_id)
-                        {{-- button for reporting auction (only for the users who did not create it) --}}
+                        @can('report', $auction)
+                        {{-- button for reporting auction --}}
                         <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                 data-bs-target="#report-modal">
                             <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
                             <span>Report auction</span>
                         </button>
-                        @elseif (!$auction->ended)
-                        {{-- button for editing auction information (only for the user who created it) --}}
+                        @endcan
+
+                        @can('edit', $auction)
+                        {{-- button for editing auction information --}}
                         <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                 data-bs-target="#edit-modal">
                             <i class="bi bi-pencil" style="font-size: 1.5em; text-align: right"></i>
                         </button>
-                        @endif
+                        @endcan
 
+                        @auth
                         {{-- button for bookmarking auction --}}
                         <button type="button" class="btn hover-scale auction-bookmark" auction_id="{{ $auction->id }}">
                             <i class="bi @if (Auth::user()->bookmarkedAuction($auction->id)) bi-bookmark-dash-fill @else bi-bookmark-plus @endif"
@@ -96,6 +102,7 @@
                     </div>
 
                 </div>
+                <p class="text-muted">{{ $auction->category }}</p>
                 <p class="text-overflow-ellipsis">{{$auction->description}}</p>
             </div>
 
@@ -115,44 +122,68 @@
                 </div>
 
                 <div class="col-sm-8 col-xl-6 order-sm-1">
-                    {{--TODO: THIS--}}
                     @if ($auction->ended)
-                    {{-- AUCTION ENDED --}}
-                    <h3>Winning Bid</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column">
-                            @if ($auction->current_bid != null)
-                            <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
-                            @else
-                            <h4>No bids were made</h4>
-                            @endif
+                        {{-- AUCTION ENDED --}}
+                        <h3>Winning Bid</h3>
+                        <div class="row">
+                            <div class="col d-flex flex-column">
+                                @if ($auction->current_bid != null)
+                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                @else
+                                <h4>No bids were made</h4>
+                                @endif
+                            </div>
                         </div>
-                    </div>
+                    @elseif ($auction->scheduled)
+                        {{-- AUCTION IS OPEN --}}
+                        <h3>Starts in</h3>
+                        <div class="row">
+                            <div class="col d-flex flex-column">
+                                <h4>{{ $auction->start_date->longAbsoluteDiffForHumans() }}</h4>
+                            </div>
+                        </div>
                     @else
-                    {{-- AUCTION IS OPEN --}}
-                    <h3>Bids</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column">
-                            <span>Current bid</span>
-                            @if ($auction->current_bid != null)
-                            <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
-                            @else
-                            <h4>No bids</h4>
-                            @endif
+                        {{-- AUCTION IS OPEN --}}
+                        <h3>Bids</h3>
+                        <div class="row">
+                            <div class="col d-flex flex-column">
+                                <span>Current bid</span>
+                                @if ($auction->current_bid != null)
+                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                @else
+                                <h4>No bids</h4>
+                                @endif
+                            </div>
+                            <div class="col d-flex flex-column">
+                                <span>Next bid starts at</span>
+                                <h4>{{$helper->formatCurrency($auction->next_bid)}} &phi;</h4>
+                            </div>
                         </div>
-                        <div class="col d-flex flex-column">
-                            <span>Next bid starts at</span>
-                            <h4>{{$helper->formatCurrency($auction->next_bid)}} &phi;</h4>
-                        </div>
-                    </div>
 
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">&phi;</span>
-                        </div>
-                        <input type="number" class="form-control hide-appearence" placeholder="Enter bid" min={{ number_format($auction->next_bid / 100, 2) }}>
-                        <button class="btn bg-primary text-light" type="button" role="button">Bid</button>
-                    </div>
+                        @guest
+                        <a class="row mt-2" href="{{ route('login') }}">
+                            <button type="button" class="btn btn-primary offset-2 col-6" aria-label="Login to bid">Login to Bid</button>
+                        </a>
+                        @else
+                            @if($auction->holdsLatestBid(Auth::id()) && $auction->seller_id != Auth::id())
+                                <h5><strong>You hold the lastest bid</strong></h5>
+                            @else
+                                @can('bid', $auction)
+                                <form action="{{ route('auction_bid', ['id' => $auction->id]) }}" method="POST">
+
+                                    @csrf
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">&phi;</span>
+                                        </div>
+                                        <input required type="number" name="bid" class="form-control hide-appearence" placeholder="Enter bid" step=0.01 min={{ number_format($auction->next_bid / 100, 2) }}>
+                                        <input type="submit" class="btn bg-primary text-light" value="Bid" type="button" role="button">
+                                    </div>
+                                </form>
+                                @endcan
+                            @endif
+                        @endguest
                     @endif
                 </div>
             </div>
@@ -248,9 +279,8 @@
 </section>
 @endif
 
-@auth
-@if (Auth::id() != $auction->seller_id)
 
+@can('report', $auction)
 {{-- Report modal --}}
 <section class="modal fade" tabindex="-1" role="dialog" id="report-modal">
     <form id="report-form" class="modal-dialog modal-dialog-centered" method="post"
@@ -290,12 +320,10 @@
         </div>
     </form>
 </section>
+@endcan
 
 
-@elseif (!$auction->ended)
-
-<script src={{ asset("js/edit-auction-modal.js") }} defer></script>
-
+@can('edit', $auction)
 {{-- Edit modal --}}
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
     <div class="modal-dialog">
@@ -323,9 +351,7 @@
                         <div class="form-group col-md-12 mt-3">
                             <label for="inputDescription" class="sr-only">Auction Description</label>
                             <textarea class="form-control" rows="4"
-                                      id="inputDescription" name="description">
-                                {{ $auction->description }}
-                            </textarea>
+                                      id="inputDescription" name="description">{{ $auction->description }}</textarea>
                         </div>
 
                         {{-- Starting on --}}
@@ -333,9 +359,9 @@
                             <label for="startDate" class="sr-only">Starting on</label>
                             <div class="input-group">
                                 <input type="date" id="startDate" class="form-control"
-                                       name="start_date" value={{ $auction->end_date }}>
+                                       name="start_date" value={{ $auction->start_date->format('Y-m-d') }}>
                                 <input type="time" id="startTime" class="form-control"
-                                       name="start_time" value="23:59">
+                                       name="start_time" value="{{ $auction->start_date->format('H:i') }}">
                             </div>
                         </div>
 
@@ -344,9 +370,9 @@
                             <label for="endDate" class="sr-only">Ending on</label>
                             <div class="input-group">
                                 <input type="date" id="endDate" class="form-control" name="end_date"
-                                       value={{ $auction->end_date }}>
+                                       value={{ $auction->end_date->format('Y-m-d') }}>
                                 <input type="time" id="endTime" class="form-control" name="end_time"
-                                       value="23:59">
+                                       value="{{ $auction->end_date->format('H:i') }}">
                             </div>
                         </div>
 
@@ -426,9 +452,7 @@
         </form>
     </div>
 </div>
-
-@endif
-@endauth
+@endcan
 
 
 @endsection

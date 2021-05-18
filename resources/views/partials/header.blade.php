@@ -13,13 +13,13 @@
 
         <div class="collapse navbar-collapse ps-2 ps-md-0" id="siteHeader">
             <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
-                @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "home", "title" => "Home"])
+                @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "home", "title" => "Home", "route" => "home"])
 
                 {{-- Navigation Anchors --}}
                 <section class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
-                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "search_auctions", "title" => "Auctions"])
-                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "search_users", "title" => "Users"])
-                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item"])
+                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "auctions", "title" => "Auctions", "route" => "search_auctions"])
+                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "users", "title" => "Users", "route" => "search_users"])
+                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
                 </section>
             </ul>
 

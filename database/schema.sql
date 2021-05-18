@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS auction_image CASCADE;
 
 CREATE TYPE auction_category AS ENUM ( 'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others' );
 
-CREATE TYPE auction_status AS ENUM ( 'Active', 'Closed', 'Scheduled', 'Canceled', 'Frozen', 'Terminated' );
+CREATE TYPE auction_status AS ENUM ( 'Active', 'Terminated' );
 
 CREATE TYPE auction_report_reason AS ENUM ( 'Fraudalent Auction', 'Improper product pictures', 'Improper auction title', 'Other' );
 
@@ -74,6 +74,7 @@ CREATE TABLE auction (
     nsfw                            BOOLEAN NOT NULL DEFAULT FALSE,
     seller_id                       INTEGER REFERENCES member(id) NOT NULL,
     latest_bid                      INTEGER DEFAULT NULL,
+    next_bid                        INTEGER DEFAULT 1 NOT NULL CONSTRAINT next_bid_ck CHECK (next_bid > 0),
     ts_search                       TSVECTOR DEFAULT NULL,
     CONSTRAINT increment_xor_ck     CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
     CONSTRAINT dates_ck             CHECK (end_date > start_date)
