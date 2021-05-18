@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class MessageThread extends Model {
     use HasFactory;
@@ -14,6 +15,10 @@ class MessageThread extends Model {
 
     public function messages() {
         return $this->hasMany(Message::class, "thread_id")->orderBy('timestamp');
+    }
+
+    public function getOtherParticipantsAttribute() {
+        return $this->participants()->where("participant_id", "<>", Auth::id())->get();
     }
 
     public function participants() {

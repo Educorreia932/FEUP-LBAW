@@ -3,7 +3,7 @@
 @section("content")
     <script defer src="{{ asset("js/send_message.js") }}"></script>
 
-    <section class="container-fluid bg-light-grey p-4">
+    <section class="container-fluid big-boy bg-light-grey p-4">
         <h1 class="mt-4">{{ $thread->title() }}</h1>
 
         @include("partials.breadcrumbs", [ "pages" => [
@@ -12,16 +12,16 @@
             ["title" => "Message Thread"]
         ]])
 
-        <div class="px-5">
+        <div class="px-5 big-boy position-relative">
             {{-- Messages --}}
-            <section id="messages" class="d-flex flex-column overflow-auto" style="height: 20em;">
+            <section id="messages" class="d-flex flex-column overflow-auto" style="height: 20em">
                 @foreach($thread->messages as $message)
                     @include("partials.message")
                 @endforeach
             </section>
 
             {{-- Send message --}}
-            <form id="send-message-form" class="container-fluid input-group my-4" style="width: 30em">
+            <form id="send-message-form" class="input-group my-4 position-absolute bottom-0 start-50 translate-middle-x" style="width: 30em">
                 @csrf
 
                 <input
