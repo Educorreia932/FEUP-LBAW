@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.app", ['title' => '404 Not found'])
 
 @section('content')
 

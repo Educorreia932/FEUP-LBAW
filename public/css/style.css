@@ -114,12 +114,10 @@ input[type=number].hide-appearence {
     background-color: var(--bs-primary);
 }
 
-/* Messages */
 
-#message-thread-topic > span:not(:last-child):not(:first-child)::before {
-    content: ", ";
-}
-
-#message-thread-topic > span:last-child:not(:first-child)::before {
-    content: " and ";
+@media (min-width: 576px) {
+    #footer-copyright::after {
+        content: ".  ";
+        white-space: pre;
+    }
 }

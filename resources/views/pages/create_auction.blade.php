@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'create_auction'])
+@extends('layouts.app', ['current_page' => 'create_auction', 'title' => 'Create Auction'])
 
 @section('content')
     <script defer src={{ asset("js/create_auction.js") }}></script>

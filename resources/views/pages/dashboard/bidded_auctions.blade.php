@@ -1,4 +1,4 @@
-@extends('layouts.dashboard', ['sub' => 'bidded'])
+@extends('layouts.dashboard', ['sub' => 'bidded', 'title' => 'Bidded Auctions'])
 
 @section('subpage')
     <div class="container-fluid mb-4">

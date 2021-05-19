@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'users'])
+@extends('layouts.app', ['current_page' => 'users', 'title' => $user->username . ' Profile'])
 
 @section('content')
 

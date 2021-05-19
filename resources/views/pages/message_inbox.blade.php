@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Inbox'])
 
 @section("content")
     <section class="container-fluid p-4">
@@ -13,7 +13,7 @@
 
         {{-- Message threads --}}
         <section id="message-threads" class="d-flex flex-column justify-content-center">
-            <section id="message-thread-entries" class="w-75">
+            <section id="message-thread-entries" class="">
                 @foreach ($threads as $message_thread)
                 <div class="row hover-highlight py-3 rounded">
                     {{-- Participants --}}

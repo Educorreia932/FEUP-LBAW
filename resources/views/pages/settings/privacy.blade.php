@@ -1,4 +1,4 @@
-@extends('layouts.settings', ['active' => 'privacy'])
+@extends('layouts.settings', ['active' => 'privacy', 'title' => 'Privacy & Notification'])
 
 @section('subpage')
 

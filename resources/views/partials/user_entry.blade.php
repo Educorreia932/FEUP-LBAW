@@ -33,4 +33,7 @@
         @endauth
     </div>
 </div>
+
+@if(isset($last) && !$last)
 <hr>
+@endif

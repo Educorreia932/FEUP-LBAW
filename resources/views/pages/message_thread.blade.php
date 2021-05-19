@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Message Thread'])
 
 @section("content")
     <script defer src="{{ asset("js/send_message.js") }}"></script>

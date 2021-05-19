@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'home'])
+@extends('layouts.app', ['current_page' => 'home', 'title' => 'Home'])
 
 @section('content')
     <script src={{ asset("js/auction-card.js") }}></script>
