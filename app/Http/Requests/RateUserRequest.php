@@ -22,7 +22,7 @@ class RateUserRequest extends FormRequest {
      */
     public function rules() {
         return [
-            "reason" => "required|integer",
+            "value" => "required|integer",
         ];
     }
 }

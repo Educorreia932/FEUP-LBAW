@@ -52,8 +52,10 @@ class Member extends Authenticatable {
 
     public function getProfileAuctions() {
         $query = $this->createdAuctions()->orderBy('end_date', 'desc');
+
         if (!Auth::check() || !Auth::user()->nsfw_consent)
             $query = $query->where('nsfw', '=', 'FALSE');
+
         return $query->limit(8)->get();
     }
 
@@ -76,8 +78,8 @@ class Member extends Authenticatable {
         return $this->hasManyThrough(
             Member::class,
             Follow::class,
-            'follower_id',      // Foreign key on the follow table...
-            'id',             // Foreign key on the member (to find) table...
+            'follower_id',       // Foreign key on the follow table...
+            'id',              // Foreign key on the member (to find) table...
             'id',               // Local key on the member (own) table...
             'followed_id'  // Local key on the follow table...
         );
@@ -106,5 +108,13 @@ class Member extends Authenticatable {
         return 0;
 
 //        return $this->follows()->where('followed_id', '=', $id)->first() != null
+    }
+
+    public function ratings() {
+        return $this->hasMany(
+            Rating::class,
+            "ratee_id",
+            "id"
+        );
     }
 }

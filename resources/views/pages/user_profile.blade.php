@@ -90,7 +90,7 @@
             <section class="col-12 col-md-6">
                 <h2 class="fs-bold">Feedback</h2>
 
-                <form action="{{ route("rate_user", [ "username" => Auth::user()->username ]) }}" method="post">
+                <form action="{{ route("rate_user", [ "username" => $user->username ]) }}" method="post">
                     @csrf
 
                     <table id="bid-history" class="table">
@@ -111,13 +111,13 @@
                                     @if(Auth::user()->ratedUser(Auth::id()) == 1)
                                         <i class="bi bi-plus-circle-fill text-success"></i>
                                     @else
-                                        <button class="hover-scale btn btn-link p-0" type="submit" value="1">
+                                        <button class="hover-scale btn btn-link p-0" type="submit" name="value" value="1">
                                             <i class="bi bi-plus-circle text-success"></i>
                                         </button>
                                     @endif
                                 </td>
                             @endcan
-                            <td>23</td>
+                            <td>{{ $user->ratings()->where("value", "=", 1)->count() }}</td>
                             <td>19</td>
                             <td>3</td>
                         </tr>
@@ -127,13 +127,13 @@
                                     @if(Auth::user()->ratedUser(Auth::id()) == -1)
                                         <i class="bi bi-dash-circle-fill text-danger"></i>
                                     @else
-                                        <button class="hover-scale btn btn-link p-0" type="submit" value="-1">
+                                        <button class="hover-scale btn btn-link p-0" type="submit" name="value" value="-1">
                                             <i class="bi bi-dash-circle text-danger"></i>
                                         </button>
                                     @endif
                                 </td>
                             @endcan
-                            <td>6</td>
+                            <td>{{ $user->ratings()->where("value", "=", -1)->count() }}</td>
                             <td>1</td>
                             <td>1</td>
                         </tr>
