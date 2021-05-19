@@ -20,11 +20,8 @@ Route::get('user/search', 'SearchResultsController@search_users')->name('search_
 Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
 
-
-
 // Authenticated only
 Route::middleware(['auth'])->group(function () {
-
     // Authentication
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -37,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
     // User Profile
     Route::get("users/me", "UserController@showMyProfile")->name('my_profile');
+    Route::post("users/{username}/rate", "UserController@rate")->name("rate_user");
 
     // Auction Report
     Route::post("auction/{id}/report", "AuctionController@report")->where('id', '[0-9]+')->name("auction_report");
@@ -66,7 +64,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
 });
-
 
 // User Profile
 Route::get("users/{username}", "UserController@showProfile")->name('user_profile');

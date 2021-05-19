@@ -14,8 +14,8 @@ class MemberPolicy {
     /**
      * Determine whether the user can edit another
      *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $target
+     * @param Member $member
+     * @param Member $target
      * @return mixed
      */
     public function edit(Member $member, Member $target) {
@@ -25,8 +25,8 @@ class MemberPolicy {
     /**
      * Determine whether the user can report another
      *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $target
+     * @param Member $member
+     * @param Member $target
      * @return mixed
      */
     public function report(Member $member, Member $target) {
@@ -36,7 +36,7 @@ class MemberPolicy {
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Member  $member
+     * @param Member $member
      * @return mixed
      */
     public function update(Member $member) {
@@ -46,10 +46,21 @@ class MemberPolicy {
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Member  $member
+     * @param Member $member
      * @return mixed
      */
     public function delete(Member $member) {
         return Auth::id() === $member->id;
+    }
+
+    /**
+     * Determine whether the user can rate another.
+     *
+     * @param Member $member
+     * @param Member $target
+     * @return bool
+     */
+    public function rate(Member $member, Member $target) {
+        return $member->id != $target->id;
     }
 }

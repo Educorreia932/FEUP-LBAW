@@ -89,38 +89,57 @@
             {{-- Feedback --}}
             <section class="col-12 col-md-6">
                 <h2 class="fs-bold">Feedback</h2>
-                <table id="bid-history" class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Total</th>
-                        <th scope="col">6 months</th>
-                        <th scope="col">Last month</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <button class="hover-scale btn btn-link p-0">
-                                <i class="bi bi-plus-circle text-success"></i>
-                            </button>
-                        </td>
-                        <td>23</td>
-                        <td>19</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="hover-scale btn btn-link p-0">
-                                <i class="bi bi-dash-circle text-danger "></i>
-                            </button>
-                        </td>
-                        <td>6</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
-                </table>
+
+                <form action="{{ route("rate_user", [ "username" => Auth::user()->username ]) }}" method="post">
+                    @csrf
+
+                    <table id="bid-history" class="table">
+                        <thead>
+                        <tr>
+                            @can("rate", $user)
+                                <th scope="col"></th>
+                            @endcan
+                            <th scope="col">Total</th>
+                            <th scope="col">6 months</th>
+                            <th scope="col">Last month</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            @can("rate", $user)
+                                <td>
+                                    @if(Auth::user()->ratedUser(Auth::id()) == 1)
+                                        <i class="bi bi-plus-circle-fill text-success"></i>
+                                    @else
+                                        <button class="hover-scale btn btn-link p-0" type="submit" value="1">
+                                            <i class="bi bi-plus-circle text-success"></i>
+                                        </button>
+                                    @endif
+                                </td>
+                            @endcan
+                            <td>23</td>
+                            <td>19</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            @can("rate", $user)
+                                <td>
+                                    @if(Auth::user()->ratedUser(Auth::id()) == -1)
+                                        <i class="bi bi-dash-circle-fill text-danger"></i>
+                                    @else
+                                        <button class="hover-scale btn btn-link p-0" type="submit" value="-1">
+                                            <i class="bi bi-dash-circle text-danger"></i>
+                                        </button>
+                                    @endif
+                                </td>
+                            @endcan
+                            <td>6</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
             </section>
 
             {{-- Insights --}}
