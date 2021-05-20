@@ -93,4 +93,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
 
     Route::put("ban/{id}", "AdminController@banUser")->where('id', '[0-9]+')->name("ban_user");
     Route::put("unban/{id}", "AdminController@unbanUser")->where('id', '[0-9]+')->name("unban_user");
+    Route::put("revoke_sell/{id}", "AdminController@revokeSell")->where('id', '[0-9]+')->name('revoke_sell');
+    Route::put("restore_sell/{id}", "AdminController@restoreSell")->where('id', '[0-9]+')->name('restore_sell');
+    Route::put("revoke_bid/{id}", "AdminController@revokeBid")->where('id', '[0-9]+')->name('revoke_bid');
+    Route::put("restore_bid/{id}", "AdminController@restoreBid")->where('id', '[0-9]+')->name('restoreBid');
 });

@@ -31,7 +31,7 @@ user_entries.forEach(elem => {
             request = new Request('/admin/ban/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("BaNiDo");
+                    console.log("User banned");
                 }
             });
         } else {
@@ -39,7 +39,67 @@ user_entries.forEach(elem => {
             request = new Request('/admin/unban/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("DeSbANiDo")
+                    console.log("User unbanned");
+                }
+            });
+        }
+    }, false);
+
+
+    sell.addEventListener('change', function(ev) {
+        // send ajax request (ban or unban user)
+        let csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+        let myHeaders = new Headers();
+        myHeaders.append('X-CSRF-TOKEN', csrf);
+
+        let user_id = elem.getAttribute("user_id");
+        if (!sell.checked) {
+            // Is now banned
+            request = new Request('/admin/revoke_sell/' + user_id, { method: 'PUT', headers: myHeaders });
+            fetch(request).then(function(response) {
+                if (response.ok) {
+                    console.log("Selling privilege revoked");
+                }
+            }).catch((e) => {
+                console.log("Error");
+                console.error(e);
+
+            });
+        } else {
+            // Unban
+            request = new Request('/admin/restore_sell/' + user_id, { method: 'PUT', headers: myHeaders });
+            fetch(request).then(function(response) {
+                if (response.ok) {
+                    console.log("Selling privilege restored");
+                }
+            });
+        }
+    }, false);
+
+
+    bid.addEventListener('change', function(ev) {
+        // send ajax request (ban or unban user)
+        let csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+        let myHeaders = new Headers();
+        myHeaders.append('X-CSRF-TOKEN', csrf);
+
+        let user_id = elem.getAttribute("user_id");
+        if (!bid.checked) {
+            // Is now banned
+            request = new Request('/admin/revoke_bid/' + user_id, { method: 'PUT', headers: myHeaders });
+            fetch(request).then(function(response) {
+                if (response.ok) {
+                    console.log("Bidding privilege revoked");
+                }
+            });
+        } else {
+            // Unban
+            request = new Request('/admin/restore_bid/' + user_id, { method: 'PUT', headers: myHeaders });
+            fetch(request).then(function(response) {
+                if (response.ok) {
+                    console.log("Bidding privilege restored");
                 }
             });
         }

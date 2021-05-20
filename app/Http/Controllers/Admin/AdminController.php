@@ -26,4 +26,36 @@ class AdminController extends Controller
 
         return response()->json(["Ok" => "User unbanned"]);
     }
+
+    public function revokeSell($id) {
+        $member = Member::findOrFail($id);
+        $member->sell_permission = false;
+        $member->save();
+
+        return response()->json(["Ok" => "Selling permission revoked"]);
+    }
+
+    public function restoreSell($id) {
+        $member = Member::findOrFail($id);
+        $member->sell_permission = true;
+        $member->save();
+
+        return response()->json(["Ok" => "Selling permission restored"]);
+    }
+
+    public function revokeBid($id) {
+        $member = Member::findOrFail($id);
+        $member->bid_permission = false;
+        $member->save();
+
+        return response()->json(["Ok" => "Bidding permission revoked"]);
+    }
+
+    public function restoreBid($id) {
+        $member = Member::findOrFail($id);
+        $member->bid_permission = true;
+        $member->save();
+
+        return response()->json(["Ok" => "Bidding permission restored"]);
+    }
 }
