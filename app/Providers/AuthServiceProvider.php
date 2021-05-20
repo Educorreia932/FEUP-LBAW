@@ -6,7 +6,7 @@ use App\Models\Auction;
 use App\Models\Member;
 use App\Policies\AuctionPolicy;
 use App\Policies\MemberPolicy;
-
+use App\Policies\MessagePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -20,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Member::class => MemberPolicy::class,
         Auction::class => AuctionPolicy::class,
+        Message::class => MessagePolicy::class
     ];
 
     /**

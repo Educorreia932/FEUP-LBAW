@@ -5,10 +5,3 @@
  */
 
 require('./bootstrap');
-
-Echo.private('message_thread')
-    .listen('MessageSent', (e) => {
-        let messages = document.getElementById("messages");
-
-        messages.innerHTML += e.message;
-    });

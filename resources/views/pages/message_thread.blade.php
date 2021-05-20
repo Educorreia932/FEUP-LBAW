@@ -1,32 +1,35 @@
 @extends('layouts.app', ['title' => 'Message Thread'])
 
 @section("content")
-    <script defer src="{{ asset("js/send_message.js") }}"></script>
+    <script defer src="{{ asset("js/message_thread.js") }}"></script>
 
-    <section class="container-fluid big-boy bg-light-grey p-4">
-        <h1 class="mt-4">{{ $thread->title() }}</h1>
+    <section class="container-fluid px-0 big-boy bg-light-grey">
+        <div class="pt-2 px-4">
+            <h1 class="mt-2" id="thread-title" data-id="{{ $thread->id }}">{{ $thread->title() }}</h1>
 
-        @include("partials.breadcrumbs", [ "pages" => [
-            ["title" => "Home", "href" => route('home')],
-            ["title" => "Messages", "href" => route('inbox')],
-            ["title" => "Message Thread"]
-        ]])
+            @include("partials.breadcrumbs", [ "pages" => [
+                ["title" => "Home", "href" => route('home')],
+                ["title" => "Messages", "href" => route('inbox')],
+                ["title" => "Message Thread"]
+            ]])
+        </div>
 
-        <div class="px-5 big-boy position-relative">
+        <div class="big-boy">
             {{-- Messages --}}
-            <section id="messages" class="d-flex flex-column overflow-auto" style="height: 20em">
+            <section id="messages" class="d-flex flex-column flex-grow-1 overflow-auto" style="height: 1em;">
                 @foreach($thread->messages as $message)
-                    @include("partials.message")
+                    @include("partials.message", ['self' => Auth::id() == $message->sender->id])
                 @endforeach
             </section>
 
             {{-- Send message --}}
-            <form id="send-message-form" class="input-group my-4 position-absolute bottom-0 start-50 translate-middle-x" style="width: 30em">
+            <form id="send-message-form" class="input-group my-2 bottom-0 start-50 translate-middle-x px-4 w-75">
                 @csrf
 
                 <input
                     id="body"
                     type="text"
+                    autocomplete="off"
                     class="form-control"
                     placeholder="Write a message"
                     aria-label="Write a message"

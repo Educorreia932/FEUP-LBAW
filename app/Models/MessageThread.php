@@ -21,6 +21,10 @@ class MessageThread extends Model {
         return $this->participants()->where("participant_id", "<>", Auth::id())->get();
     }
 
+    public function isParticipant($user_id) {
+        return $this->participants()->where("participant_id", "=", $user_id)->exists();
+    }
+
     public function participants() {
         return $this->hasManyThrough(
             Member::class,

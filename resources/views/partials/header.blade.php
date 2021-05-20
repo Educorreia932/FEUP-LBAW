@@ -26,7 +26,7 @@
             <hr class="d-md-none text-white-50">
 
             <ul class="navbar-nav flex-row ms-md-auto me-md-4">
-                @if (Auth::check())
+                @auth
                     {{-- Notifications --}}
                     <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
                             type="button"
@@ -38,7 +38,8 @@
                     </button>
 
                     {{-- Logged-in User --}}
-                    <li class="d-none d-md-flex nav-item dropdown px-1">
+                    <li class="d-none d-md-flex nav-item dropdown px-1" id="user-data"
+                        data-username="{{ Auth::user()->username }}" data-name="{{ Auth::user()->name }}" data-id="{{ Auth::user()->id }}">
                         <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                 id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2">{{ Auth::user()->name }}</span>
@@ -86,7 +87,6 @@
                         <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
                     </div>
-
                 @else
                     {{-- Authentication --}}
                     <li class="nav-item col-6 col-md-auto">
@@ -99,7 +99,7 @@
                             Sign up
                         </a>
                     </li>
-                @endif
+                @endauth
             </ul>
         </div>
     </nav>

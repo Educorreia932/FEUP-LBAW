@@ -11,7 +11,7 @@ use App\Models\MessageThreadParticipant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MessagesController extends Controller {
+class MessageController extends Controller {
     public function showInbox() {
         $threads = Auth::user()->messageThreads;
 
@@ -25,10 +25,6 @@ class MessagesController extends Controller {
             abort(403);
 
         return view('pages.message_thread', ["thread" => $message_thread]);
-    }
-
-    public function showMessage($message) {
-        return view("partials.message", ["message" => $message]);
     }
 
     public function createMessageThread(Request $request) {
@@ -47,13 +43,16 @@ class MessagesController extends Controller {
     }
 
     public function sendMessage($thread_id, SendMessageRequest $request) {
+        $thread = MessageThread::findOrFail($thread_id);
+        // $this->authorize('sendMessage', $thread);
+
         $validated = $request->validated();
         $validated += ["thread_id" => $thread_id];
 
         $message = Message::create($validated);
         $message = Message::find($message->id);
 
-        MessageSent::dispatch($this->showMessage($message));
+        broadcast(new MessageSent($message))->toOthers();
 
         return ['status' => 'Message Sent!'];
     }

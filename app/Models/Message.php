@@ -25,4 +25,8 @@ class Message extends Model {
     public function sender() {
         return $this->hasOne(Member::class, "id", "sender_id");
     }
+
+    public function thread() {
+        return $this->hasOne(MessageThread::class, "id", "thread_id");
+    }
 }

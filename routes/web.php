@@ -67,11 +67,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
 
     // Messages
-    Route::get("messages", "MessagesController@showInbox")->name("inbox");
-    Route::post("messages", "MessagesController@createMessageThread")->name("create_message_thread");
-    Route::get("messages/{thread_id}", "MessagesController@showMessageThread")->name("message_thread");
-    Route::put("messages/{thread_id}", "MessagesController@sendMessage")->name("send_message");
-    Route::post("messages/{thread_id}/add_participant", "MessagesController@addParticipantToThread")->name("add_participant_to_message_thread");
+    Route::get("messages", "MessageController@showInbox")->name("inbox");
+    Route::post("messages", "MessageController@createMessageThread")->name("create_message_thread");
+    Route::get("messages/{thread_id}", "MessageController@showMessageThread")->name("message_thread");
+    Route::put("messages/{thread_id}", "MessageController@sendMessage")->name("send_message");
+    Route::post("messages/{thread_id}/add_participant", "MessageController@addParticipantToThread")->name("add_participant_to_message_thread");
 });
 
 
