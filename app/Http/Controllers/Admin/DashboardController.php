@@ -43,5 +43,15 @@ class DashboardController extends Controller {
         return view('pages.admin.user_management', [ "user" => Auth::guard('admin')->user(), "reports" => $reports]);
     }
 
+    public function reportedUsers() {
+
+        $query = DB::table('user_report')
+                    ->join('member', 'reported_id', 'member.id')
+                    ->select('user_report.*', 'member.id as member_id',  'username');
+        
+        $reports = $query->paginate(15);
+        return view('pages.admin.reported_users',  [ "user" => Auth::guard('admin')->user(), "reports" => $reports]);
+    }
+
     
 }

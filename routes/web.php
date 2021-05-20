@@ -87,7 +87,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
     // Home (Dashboard)
     Route::get("dashboard", fn() => redirect("admin/dashboard/user_management"))->name("home");
     Route::get("dashboard/user_management", "DashboardController@manageUsers")->name("user_management");
-    Route::get("dashboard/bidded_auctions", "DashboardController@reportedUsers")->name("reported_users");
+    Route::get("dashboard/reported_users", "DashboardController@reportedUsers")->name("reported_users");
     // Route::get("dashboard/bookmarked_auctions", "DashboardController@bookmarkedAuctions")->name("dashboard_bookmarked_auctions");
     // Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
 
