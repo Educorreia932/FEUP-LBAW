@@ -42,4 +42,6 @@ class DashboardController extends Controller {
         $request->flash();
         return view('pages.admin.user_management', [ "user" => Auth::guard('admin')->user(), "reports" => $reports]);
     }
+
+    
 }
