@@ -1,14 +1,13 @@
-@extends('layouts.dashboard', ['sub' => 'user_management'])
+@extends('layouts.dashboard', ['sub' => 'auction_managment'])
 
 @section('subpage')
-    <script defer src={{ asset("js/admin_dashboard_users.js") }}></script>
+    <script defer src={{ asset("js/admin_dashboard_auctions.js") }}></script>
 
     <div class="container-fluid mb-4">
         <div class="my-4">
-            <h2>User Management</h2>
+            <h2>Auction Management</h2>
 
             @include("partials.breadcrumbs", [ "pages" => [
-                ["title" => "Home", "href" => "/"],
                 ["title" => "Dashboard", "href" => "/dashboard"]
             ]])
         </div>
@@ -17,7 +16,7 @@
             {{-- search section --}}
             <section class="col-12">
                 {{-- search text input --}}
-                <form action="{{route("admin.user_management")}}" id="search-form" method="GET" role="search" class="row">
+                <form action="{{route("admin.auction_management")}}" id="search-form" method="GET" role="search" class="row">
                     <nav class="mb-4 col-10 d-flex flex-row">
                         {{-- Search bar --}}
                         <section class="container input-group w-50">
@@ -44,21 +43,21 @@
                 <table class="table table-hover table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">Username</th>
+                    <th scope="col">Auction</th>
                     <th scope="col">Restrictions</th>
                     <th scope="col">Restricted for</th>
-                    <th scope="col">Account created</th>
+                    <th scope="col">Schedule</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{-- Reported user entries --}}
                     @foreach ($reports as $report)
-                        <tr class="user-entry align-middle" user_id="{{$report->member_id}}">
-                            <th scope="row">{{$report->username}}</th>
+                        <tr class="user-entry align-middle">
+                            <th scope="row">{{$report->title}}</th>
                             <td class="master-checkbox-reverse">
-                                @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
+                                {{-- @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
                                 @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])
-                                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned])
+                                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned]) --}}
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
@@ -70,7 +69,16 @@
                                     @endif
                                 </div>
                             </td>
-                            <td>{{\Carbon\Carbon::parse($report->joined)->format('d M Y')}}</td>
+                            <td>
+                                <span class="d-flex flex-row">
+                                    <h6 class="me-2 fw-bold">Starts</h6>
+                                    {{\Carbon\Carbon::parse($report->start_date)->format('d M Y')}}
+                                </span>
+                                <span class="d-flex flex-row">
+                                    <h6 class="me-3 fw-bold">Ends</h6>
+                                    {{\Carbon\Carbon::parse($report->end_date)->format('d M Y')}}
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -8,7 +8,6 @@
 
             @include("partials.breadcrumbs", [ "pages" => [
                 ["title" => "Home", "href" => "/"],
-                ["title" => "Me", "href" => "/users/me"],
                 ["title" => "Dashboard", "href" => "/dashboard"]
             ]])
         </div>
@@ -35,7 +34,7 @@
                         <td>
                             {{ $report->description}}
                         </td>
-                        <td>{{$report->timestamp}}</td>
+                        <td>{{\Carbon\Carbon::parse($report->timestamp)->format('d M Y')}}</td>
                     </tr>
                 @endforeach
             </tbody>

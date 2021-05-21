@@ -53,5 +53,26 @@ class DashboardController extends Controller {
         return view('pages.admin.reported_users',  [ "user" => Auth::guard('admin')->user(), "reports" => $reports]);
     }
 
+    public function manageAuctions(Request $request) {
+        // select only reported users
+        if ($request->has('filter') && $request->filter === 'report'){
+            $query = DB::table('auction_report')
+                    ->join('auction', 'reported_id', 'auction.id')
+                    ->select('auction_report.*', 'auction.id as auction_id', 'auction.title as title',  'start_date', 'end_date');
+        }
+        else {
+            // select all users
+            $query = Auction::query();
+            $query = $query->leftJoin('auction_report', 'auction_report.reported_id', 'auction.id')
+                        ->select('auction_report.*', 'auction.id as auction_id', 'auction.title as title',  'start_date', 'end_date');
+        }
+
+        $reports = $query->paginate(15);
+
+        $request->flash();
+
+        return view('pages.admin.auction_management', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);
+    }
+
     
 }

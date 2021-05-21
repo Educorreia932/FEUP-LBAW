@@ -12,8 +12,8 @@
                         <ul class="nav flex-column">
                             @include("partials.sidebar_anchor", [ "active" => ($sub == "user_management"), "name" => "User Management", "url" => route("admin.user_management")])
                             @include("partials.sidebar_anchor", [ "active" => ($sub == "reported_users"), "name" => "Reported Users", "url" => route("admin.reported_users")])
-                            {{-- @include("partials.sidebar_anchor", [ "active" => ($sub == "auction_management"), "name" => "Auction Management", "url" => route("auction_management")]) --}}
-                            {{-- @include("partials.sidebar_anchor", [ "active" => ($sub == "reported_auctions"), "name" => "Reported Auctions", "url" => route("reported_auctions")]) --}}
+                            @include("partials.sidebar_anchor", [ "active" => ($sub == "auction_management"), "name" => "Auction Management", "url" => route("admin.auction_management")])
+                            {{-- @include("partials.sidebar_anchor", [ "active" => ($sub == "reported_auctions"), "name" => "Reported Auctions", "url" => route("admin.reported_auctions")]) --}}
                         </ul>
                     @else
                         <ul class="nav flex-column">
