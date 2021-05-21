@@ -44,7 +44,7 @@
                 <thead>
                     <tr>
                     <th scope="col">Auction</th>
-                    <th scope="col">Restrictions</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Restricted for</th>
                     <th scope="col">Schedule</th>
                     </tr>
@@ -53,11 +53,23 @@
                     {{-- Reported user entries --}}
                     @foreach ($reports as $report)
                         <tr class="user-entry align-middle">
-                            <th scope="row">{{$report->title}}</th>
+                            <th scope="row" class="col-md-4 col-lg-4 col-3">{{$report->title}}</th>
                             <td class="master-checkbox-reverse">
-                                {{-- @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
-                                @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])
-                                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned]) --}}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status_radio_{{$report->auction_id}}" id="radio_active" 
+                                    value="active" {{ $report->status === "Active" ? "checked" : ""}}>
+                                    <label class="form-check-label" for="radio_active">
+                                      Active
+                                    </label>
+                                </div>
+                                <input class="form-check-input" type="radio" name="status_radio_{{$report->auction_id}}" id="radio_term" 
+                                value="teminated" {{ $report->status === "Terminated" ? "checked" : ""}}>
+                                    <label class="form-check-label" for="radio_term">
+                                      Terminated
+                                    </label>
+                                <div class="form-check">
+                                    
+                                </div>
                             </td>
                             <td>
                                 <div class="d-flex flex-column">
@@ -85,7 +97,6 @@
                 </table>
             </div>  
         </div>  
-
 
         <nav class="d-flex justify-content-center my-4">
             {!! $reports->appends(request()->except('page'))->links() !!}

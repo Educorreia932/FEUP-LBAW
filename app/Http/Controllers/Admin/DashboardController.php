@@ -58,17 +58,20 @@ class DashboardController extends Controller {
         if ($request->has('filter') && $request->filter === 'report'){
             $query = DB::table('auction_report')
                     ->join('auction', 'reported_id', 'auction.id')
-                    ->select('auction_report.*', 'auction.id as auction_id', 'auction.title as title',  'start_date', 'end_date');
+                    ->select('auction_report.*', 'auction.id as auction_id', 
+                            'auction.title as title',  'start_date', 'end_date', 'status');
         }
         else {
             // select all users
             $query = Auction::query();
             $query = $query->leftJoin('auction_report', 'auction_report.reported_id', 'auction.id')
-                        ->select('auction_report.*', 'auction.id as auction_id', 'auction.title as title',  'start_date', 'end_date');
+                        ->select('auction_report.*', 'auction.id as auction_id', 
+                                'auction.title as title',  'start_date', 'end_date', 'status');
         }
 
         $reports = $query->paginate(15);
 
+        // dd($reports);
         $request->flash();
 
         return view('pages.admin.auction_management', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);
