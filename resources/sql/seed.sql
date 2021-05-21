@@ -98,7 +98,8 @@ CREATE TABLE follow (
 );
 
 CREATE TABLE message_thread (
-    id                      SERIAL PRIMARY KEY
+    id                      SERIAL PRIMARY KEY,
+    topic                   TEXT DEFAULT NULL
 );
 
 CREATE TABLE message_thread_participant (
@@ -203,7 +204,7 @@ CREATE INDEX message_tsvector_index ON message USING GIST(ts_search);
 -- There must not exist an Admin with the same username as a Member
 
 DROP FUNCTION IF EXISTS admin_member_identity CASCADE;
-CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS
+CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS 
 $BODY$
 BEGIN
     IF EXISTS (SELECT username FROM member WHERE NEW.username = member.username) THEN
@@ -216,8 +217,8 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS admin_member_identity on admin CASCADE;
 CREATE TRIGGER admin_member_identity
-    BEFORE INSERT OR UPDATE ON admin
-    FOR EACH ROW
+    BEFORE INSERT OR UPDATE ON admin 
+    FOR EACH ROW 
     EXECUTE PROCEDURE admin_member_identity();
 -- Trigger 10
 -- When a user is outbidded in an auction they bidded on, an *Auction Outbid* notification is generated for that user
@@ -245,7 +246,7 @@ BEGIN
         INSERT INTO auction_notification(notification_id, auction_id)
             VALUES (notif_id, NEW.auction_id);
     END IF;
-
+	
 	RETURN NEW;
 END
 $BODY$
@@ -312,7 +313,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS user_followed_notification on follow CASCADE;
-CREATE TRIGGER user_followed_notification
+CREATE TRIGGER user_followed_notification 
     AFTER INSERT ON follow
     FOR EACH ROW
 	EXECUTE PROCEDURE user_followed_notification();
@@ -326,14 +327,14 @@ DECLARE temprow RECORD;
 DECLARE notif_id INTEGER;
 BEGIN
 	FOR temprow IN
-        SELECT participant_id
+        SELECT participant_id 
 		FROM message_thread_participant
 		WHERE thread_id = NEW.thread_id
     LOOP
 		IF NEW.sender_id <> temprow.participant_id THEN
 			INSERT INTO notification (type, member_id)
 				VALUES ('Message Received', temprow.participant_id)
-				RETURNING id INTO notif_id;
+				RETURNING id INTO notif_id; 
 
 			INSERT INTO message_notification (notification_id, message_id)
 			VALUES (notif_id, NEW.id);
@@ -346,14 +347,14 @@ $BODY$
 LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS message_received_notification on message CASCADE;
-CREATE TRIGGER message_received_notification
+CREATE TRIGGER message_received_notification 
     AFTER INSERT ON message
     FOR EACH ROW
     EXECUTE PROCEDURE message_received_notification();
 -- Trigger 14
 -- Pre-calculate auction ts vector
 DROP FUNCTION IF EXISTS auction_tsvector CASCADE;
-CREATE FUNCTION auction_tsvector() RETURNS TRIGGER AS
+CREATE FUNCTION auction_tsvector() RETURNS TRIGGER AS 
 $BODY$
 DECLARE member_username TEXT;
 DECLARE member_name TEXT;
@@ -382,13 +383,13 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS auction_tsvector on auction CASCADE;
 CREATE TRIGGER auction_tsvector
-    BEFORE INSERT OR UPDATE ON auction
-    FOR EACH ROW
+    BEFORE INSERT OR UPDATE ON auction 
+    FOR EACH ROW 
     EXECUTE PROCEDURE auction_tsvector();
 -- Trigger 15
 -- Pre-calculate user ts vector
 DROP FUNCTION IF EXISTS member_tsvector CASCADE;
-CREATE FUNCTION member_tsvector() RETURNS TRIGGER AS
+CREATE FUNCTION member_tsvector() RETURNS TRIGGER AS 
 $BODY$
 DECLARE member_username TEXT;
 DECLARE member_name TEXT;
@@ -425,13 +426,13 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS member_tsvector on member CASCADE;
 CREATE TRIGGER member_tsvector
-    BEFORE INSERT OR UPDATE ON member
-    FOR EACH ROW
+    BEFORE INSERT OR UPDATE ON member 
+    FOR EACH ROW 
     EXECUTE PROCEDURE member_tsvector();
 -- Trigger 16
 -- Pre-calculate message ts vector
 DROP FUNCTION IF EXISTS message_tsvector CASCADE;
-CREATE FUNCTION message_tsvector() RETURNS TRIGGER AS
+CREATE FUNCTION message_tsvector() RETURNS TRIGGER AS 
 $BODY$
 DECLARE member_username TEXT;
 DECLARE member_name TEXT;
@@ -451,8 +452,8 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS message_tsvector on message CASCADE;
 CREATE TRIGGER message_tsvector
-    BEFORE INSERT OR UPDATE ON message
-    FOR EACH ROW
+    BEFORE INSERT OR UPDATE ON message 
+    FOR EACH ROW 
     EXECUTE PROCEDURE message_tsvector();
 -- Trigger 17
 -- A banned member or a member without sell_permission cannot post an auction
@@ -483,7 +484,7 @@ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS member_auction_permission_check on auction CASCADE;
 CREATE TRIGGER member_auction_permission_check
     BEFORE INSERT ON auction
-    FOR EACH ROW
+    FOR EACH ROW 
     EXECUTE PROCEDURE member_auction_permission_check();
 -- Trigger 17
 -- A banned member or a member without bid_permission cannot post a bid
@@ -537,7 +538,7 @@ CREATE TRIGGER default_next_bid
 -- Trigger 2
 -- There must not exist a Member with the same username as an Admin
 DROP FUNCTION IF EXISTS member_admin_identity CASCADE;
-CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS
+CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS 
 $BODY$
 BEGIN
     IF EXISTS (SELECT username FROM admin WHERE NEW.username = admin.username) THEN
@@ -550,8 +551,8 @@ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
 CREATE TRIGGER member_admin_identity
-    BEFORE INSERT OR UPDATE ON member
-    FOR EACH ROW
+    BEFORE INSERT OR UPDATE ON member 
+    FOR EACH ROW 
     EXECUTE PROCEDURE member_admin_identity();
 -- Trigger 3
 -- A message's author must be a participant in the thread to which the message is being sent
@@ -561,8 +562,8 @@ CREATE FUNCTION message_sent() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF NOT EXISTS (
-        SELECT participant_id
-        FROM message_thread_participant
+        SELECT participant_id 
+        FROM message_thread_participant 
         WHERE NEW.sender_id = message_thread_participant.participant_id AND NEW.thread_id = message_thread_participant.thread_id
     ) THEN
         RAISE EXCEPTION 'A message''s author must be a participant in the thread to which the message is being sent.';
@@ -595,7 +596,7 @@ LANGUAGE plpgsql;
 DROP TRIGGER IF EXISTS self_bidding on bid CASCADE;
 CREATE TRIGGER self_bidding
     BEFORE INSERT ON bid
-    FOR EACH ROW
+    FOR EACH ROW 
     EXECUTE PROCEDURE self_bidding();
 -- Trigger 6
 -- Set the most recent bid reference on the auction and update the next_bid
@@ -688,7 +689,7 @@ DECLARE temprow RECORD;
 DECLARE notif_id INTEGER;
 BEGIN
 	FOR temprow IN
-        (SELECT follower_id
+        (SELECT follower_id 
 		    FROM follow
                 INNER JOIN auction ON follow.followed_id = auction.seller_id
 		    WHERE follow.followed_id = NEW.seller_id)

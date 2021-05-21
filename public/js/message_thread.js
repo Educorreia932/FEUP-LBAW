@@ -1,24 +1,25 @@
 function genMessage(body, user_id, username, name, isOwn) {
     return `
-        <div class="message mb-3 d-flex align-items-center ${isOwn ? 'align-self-end' : 'align-self-start'}" style="max-width: 70%">
-            <img style="border-radius:50%;" width="40" height="40"
-                src="/images/users/${user_id}_small.jpg"
-                alt="Profile Image"
-                class="m-3"
-            >
+        <div class="message mb-3 d-flex align-items-center
+        ${isOwn ? 'align-self-end flex-row-reverse' : 'align-self-start flex-row'}"
+        style="max-width: 70%; min-width: 45%;">
 
-            <div class="${isOwn ? 'bg-info' : 'bg-white'} d-inline-block p-2 rounded px-3">
-                <a class="link-dark text-decoration-none"
-                href="/users/${username}">
-                    <strong>${name}</strong>
-                </a>
-                <p class="m-0">${body}</p>
-            </div>
+        <img style="border-radius:50%;" width="40" height="40"
+            src="/images/users/${user_id}_small.jpg"
+            alt="Profile Image"
+            class="m-3"
+        >
 
-            <p class="m-1 text-muted flex-shrink-0">
-                Just now
-            </p>
+        <div class="flex-grow-1 ${isOwn ? 'bg-info' : 'bg-white'} d-inline-block p-2 rounded px-3">
+            <a class="link-dark text-decoration-none"
+            href="/users/${username}">
+                <strong>${name}</strong>
+            </a>
+            <p class="m-0">${body}</p>
         </div>
+
+        <p class="m-1 text-muted flex-shrink-0">Just now</p>
+    </div>
     `;
 }
 

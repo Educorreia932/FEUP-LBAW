@@ -20,11 +20,12 @@ class MessageController extends Controller {
 
     public function showMessageThread($thread_id) {
         $message_thread = MessageThread::find($thread_id);
+        $threads = Auth::user()->messageThreads;
 
         if (!$message_thread->participants()->where('participant_id', '=', Auth::id())->count() > 0)
             abort(403);
 
-        return view('pages.message_thread', ["thread" => $message_thread]);
+        return view('pages.message_thread', ["thread" => $message_thread, "threads" => $threads]);
     }
 
     public function createMessageThread(Request $request) {
