@@ -3,6 +3,8 @@
 @section("content")
     <script defer src="{{ asset("js/message_thread.js") }}"></script>
 
+    <link href="{{ asset('css/scrollbars.css') }}" rel="stylesheet">
+
     <section class="big-boy flex-row px-0 bg-light-grey">
         {{-- <div class="pt-2 px-4">
             <h1 class="mt-2" id="thread-title" data-id="{{ $thread->id }}">{{ $thread->title() }}</h1>
@@ -24,12 +26,13 @@
                 <div class="list-group list-group-flush border-bottom scrollarea">
 
                     @foreach ($threads as $t)
-                    <a href="{{ route('message_thread', ['thread_id' => $t->id]) }}" class="list-group-item list-group-item-action py-3 lh-tight @if ($t->id == $thread->id) active @endif">
+                    <a href="{{ route('message_thread', ['thread_id' => $t->id]) }}" data-thread-id="{{ $t->id }}"
+                        class="message-thread-entry list-group-item list-group-item-action py-3 lh-tight @if ($t->id == $thread->id) active @endif">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                            <strong class="mb-1">Thread Name</strong>
-                            <small class="@if ($t->id != $thread->id) text-muted @endif">{{ $t->messages->last() != null ? $t->messages->last()->timestamp->shortAbsoluteDiffForHumans() : "-" }}</small>
+                            <strong class="mb-1">{{ $thread->topic }}</strong>
+                            <small class="message-thread-timestamp @if ($t->id != $thread->id) text-muted @endif">{{ $t->messages->last() != null ? $t->messages->last()->timestamp->shortAbsoluteDiffForHumans() : "-" }}</small>
                         </div>
-                        <div class="col-10 mb-1 small">{{ $t->messages->last() != null ? $t->messages->last()->body : "none" }}</div>
+                        <div class="message-thread-body col-10 mb-1 small">{{ $t->messages->last() != null ? $t->messages->last()->body : "none" }}</div>
                     </a>
                     @endforeach
 
@@ -39,7 +42,7 @@
 
         <div class="big-boy">
             {{-- Header --}}
-            <div class="p-2 bg-white border-bottom">
+            <div id='thread-identifier' data-thread-id="{{ $thread->id }}" class="p-2 bg-white border-bottom">
                 <div class="d-flex flex-row align-items-center">
                     <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                             data-bs-target="#edit-modal">

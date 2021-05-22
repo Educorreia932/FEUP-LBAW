@@ -8,8 +8,8 @@
          class="m-3"
     >
 
-    <div class="flex-grow-1 @if ($self) bg-info @else bg-white @endif d-inline-block p-2 rounded px-3">
-        <a class="link-dark text-decoration-none"
+    <div class="flex-grow-1 @if ($self) bg-primary text-white @else bg-white @endif d-inline-block p-2 rounded px-3">
+        <a class="@if ($self) link-light @else link-dark @endif text-decoration-none"
            href="{{ route("user_profile", [ "username" => $message->sender->username ]) }}">
             <strong>{{ $message->sender->name }}</strong>
         </a>
