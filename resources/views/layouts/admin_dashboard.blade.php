@@ -41,17 +41,15 @@
                                         </button>
                                     </section>
                                 </nav>
-            
-                                {{-- filter options --}}
-                                <div class="col-md-2">
-                                    <select class="form-select input-sm" name="filter">
-                                        <option {{ old('filter') ? "" : "selected" }}>All</option>
-                                        <option value="report" {{ old('filter') === "report" ? "selected" : "" }}>Reported</option>
-                                    </select>
-                                </div>
+
+                                @yield("filter_options")
+
+                                <p>Results for: <u class="fst-italic"> @if(isset($detail_search)) {{ $detail_search }} @else {{ old('fts') ? old('fts') : 'All' }} @endif </u> ({{ $reports->total() }})</p>    
                             </form>
                         <section>
-            
+
+                        
+                        
                         {{-- @each("partials.auction_entry", $auctions, "auction") --}}
                         <div class="table-responsive col-12">
                             <table class="table table-hover table-striped">

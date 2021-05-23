@@ -88,8 +88,10 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
     Route::get("dashboard", fn() => redirect("admin/dashboard/user_management"))->name("home");
     Route::get("dashboard/user_management", "DashboardController@manageUsers")->name("user_management");
     Route::get("dashboard/reported_users", "DashboardController@reportedUsers")->name("reported_users");
+    Route::get("dashboard/reported_users/{username}", "DashboardController@userReports")->name("user_reports");
     Route::get("dashboard/auction_management", "DashboardController@manageAuctions")->name("auction_management");
     Route::get("dashboard/reported_auctions", "DashboardController@reportedAuctions")->name("reported_auctions");
+    Route::get("dashboard/reported_auctions/{id}", "DashboardController@auctionReports")->where('id', '[0-9]+')->name("auction_reports");
 
     Route::put("ban/{id}", "AdminController@banUser")->where('id', '[0-9]+')->name("ban_user");
     Route::put("unban/{id}", "AdminController@unbanUser")->where('id', '[0-9]+')->name("unban_user");

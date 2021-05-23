@@ -14,6 +14,16 @@
     </div>
 @endsection
 
+@section('filter_options')
+    {{-- filter options --}}
+    <div class="col-md-2">
+        <select class="form-select input-sm" name="filter">
+            <option {{ old('filter') ? "" : "selected" }}>All</option>
+            <option value="report" {{ old('filter') === "report" ? "selected" : "" }}>Reported</option>
+        </select>
+    </div>
+@endsection
+
 @section('columns')
     <tr>
         <th scope="col">Auction</th>
@@ -49,7 +59,7 @@
                 <div class="d-flex flex-column">
                     @if ($report->reason)
                         <span>{{$report->reason}}</span>
-                        <a href="#">See details »</a>
+                        <a href="{{route('admin.auction_reports', ['id' => $report->auction_id, 'title' => $report->title])}}">See details »</a>
                     @else
                         <span class="text-muted">No reports</span>
                     @endif

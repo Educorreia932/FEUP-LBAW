@@ -11,6 +11,9 @@
     </div>
 @endsection
 
+@section('filter_options')
+@endsection
+
 @section('columns')
     <tr>
         <th scope="col">Auction</th>
