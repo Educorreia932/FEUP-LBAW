@@ -1,4 +1,4 @@
-@extends('layouts.dashboard', ['sub' => 'user_management'])
+@extends('layouts.admin_dashboard', ['sub' => 'user_management'])
 
 @section('subpage')
     <script defer src={{ asset("js/admin_dashboard_users.js") }}></script>

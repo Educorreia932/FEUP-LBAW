@@ -47,7 +47,8 @@ class DashboardController extends Controller {
 
         $query = DB::table('user_report')
                     ->join('member', 'reported_id', 'member.id')
-                    ->select('user_report.*', 'member.id as member_id',  'username');
+                    ->select('user_report.*', 'member.id as member_id',  'username')
+                    ->orderByDesc('user_report.timestamp');
         
         $reports = $query->paginate(15);
         return view('pages.admin.reported_users',  [ "user" => Auth::guard('admin')->user(), "reports" => $reports]);
@@ -81,7 +82,8 @@ class DashboardController extends Controller {
 
         $query = DB::table('auction_report')
                     ->join('auction', 'reported_id', 'auction.id')
-                    ->select('auction_report.*', 'auction.id as auction_id',  'title');
+                    ->select('auction_report.*', 'auction.id as auction_id',  'title')
+                    ->orderByDesc('auction_report.timestamp');
 
         $reports = $query->paginate(15);
         return view('pages.admin.reported_auctions', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);
