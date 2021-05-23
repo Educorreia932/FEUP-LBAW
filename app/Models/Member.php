@@ -94,6 +94,14 @@ class Member extends Authenticatable {
         );
     }
 
+    public function orderedThreads() {
+        return $this->messageThreads()
+            ->getQuery()
+            ->select(DB::raw('message_thread.*, COALESCE(message.timestamp, message_thread.created) AS latest_activity'))
+            ->leftJoin('message', 'message_thread.latest_message', '=', 'message.id')
+            ->orderBy('latest_activity', 'desc');
+    }
+
     public function messageThreads() {
         return $this->hasManyThrough(
             MessageThread::class,

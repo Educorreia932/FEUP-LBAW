@@ -20,6 +20,17 @@ class MessageThread extends Model {
         'topic' => 'Thread Topic'
     ];
 
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
+    protected $casts = [
+        'created' => 'datetime'
+    ];
+
     protected $fillable = [
         'topic',
     ];
@@ -36,6 +47,10 @@ class MessageThread extends Model {
 
     public function isParticipant($user_id) {
         return $this->participants()->where("participant_id", "=", $user_id)->exists();
+    }
+
+    public function latest() {
+        return $this->hasOne(Message::class, "id", "latest_message");
     }
 
     public function participants() {

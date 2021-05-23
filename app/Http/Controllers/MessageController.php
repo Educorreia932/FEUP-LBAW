@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller {
     public function showInbox() {
-        $threads = Auth::user()->messageThreads;
+        $latest_thread = Auth::user()->orderedThreads()->first();
 
-        return view('pages.message_inbox', ["threads" => $threads]);
+        if ($latest_thread == null)
+            return view('pages.empty_inbox');
+
+        return redirect(route('message_thread', ['thread_id' => $latest_thread->id]));
     }
 
     public function showMessageThread($thread_id) {

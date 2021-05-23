@@ -17,14 +17,14 @@
                 <div class="list-group list-group-flush border-bottom scrollarea">
 
                     {{-- All Threads --}}
-                    @foreach ($threads as $t)
+                    @foreach (Auth::user()->orderedThreads()->get() as $t)
                     <a href="{{ route('message_thread', ['thread_id' => $t->id]) }}" data-thread-id="{{ $t->id }}"
                         class="message-thread-entry d-flex flex-column align-items-stretch list-group-item list-group-item-action py-3 lh-tight @if ($t->id == $thread->id) active @endif">
                         <div class="d-flex w-100 align-items-center justify-content-between">
                             <strong class="mb-1 text-truncate">{{ $t->topic }}</strong>
-                            <small class="message-thread-timestamp @if ($t->id != $thread->id) text-muted @endif">{{ $t->messages->last() != null ? $t->messages->last()->timestamp->shortAbsoluteDiffForHumans() : "-" }}</small>
+                            <small class="message-thread-timestamp @if ($t->id != $thread->id) text-muted @endif">{{ $t->latest != null ? $t->latest->timestamp->shortAbsoluteDiffForHumans() : "-" }}</small>
                         </div>
-                        <small class="message-thread-body mb-1 text-truncate">{{ $t->messages->last() != null ? $t->messages->last()->body : "none" }}</small>
+                        <small class="message-thread-body mb-1 text-truncate">{{ $t->latest != null ? $t->latest->body : "none" }}</small>
                     </a>
                     @endforeach
 
@@ -55,6 +55,12 @@
 
             {{-- Messages --}}
             <section id="messages" class="d-flex flex-column flex-grow-1 overflow-auto" style="height: 1em;">
+
+                <div class="m-4 mt-2 border-bottom">
+                    <p class="m-0">Welcome to the beginning of the <strong>{{ $thread->topic }}</strong> thread!</p>
+                    <p>Created {{ $thread->created->toDayDateTimeString() }}</p>
+                </div>
+
                 @foreach($thread->messages as $message)
                     @include("partials.message", ['self' => Auth::id() == $message->sender->id])
                 @endforeach

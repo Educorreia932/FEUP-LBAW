@@ -99,13 +99,9 @@ CREATE TABLE follow (
 
 CREATE TABLE message_thread (
     id                      SERIAL PRIMARY KEY,
-    topic                   TEXT DEFAULT NULL
-);
-
-CREATE TABLE message_thread_participant (
-    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
-    participant_id      INTEGER REFERENCES member(id) NOT NULL,
-    PRIMARY KEY (thread_id, participant_id)
+    topic                   TEXT DEFAULT 'Thread Topic' NOT NULL,
+    created                 TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    latest_message          INTEGER DEFAULT NULL
 );
 
 CREATE TABLE message (
@@ -115,6 +111,14 @@ CREATE TABLE message (
     sender_id              INTEGER REFERENCES member(id) NOT NULL,
     "timestamp"            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     ts_search              TSVECTOR DEFAULT NULL
+);
+
+ALTER TABLE message_thread ADD CONSTRAINT message_foreign_key FOREIGN KEY(latest_message) REFERENCES message(id);
+
+CREATE TABLE message_thread_participant (
+    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
+    participant_id      INTEGER REFERENCES member(id) NOT NULL,
+    PRIMARY KEY (thread_id, participant_id)
 );
 
 CREATE TABLE auction_report (
