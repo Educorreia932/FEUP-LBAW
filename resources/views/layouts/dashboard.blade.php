@@ -8,23 +8,12 @@
                 <div class="position-sticky pt-3">
                     <h4>Dashboard</h4>
 
-                    @admin
-                        <ul class="nav flex-column">
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "user_management"), "name" => "User Management", "url" => route("admin.user_management")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "reported_users"), "name" => "Reported Users", "url" => route("admin.reported_users")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "auction_management"), "name" => "Auction Management", "url" => route("admin.auction_management")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "reported_auctions"), "name" => "Reported Auctions", "url" => route("admin.reported_auctions")])
-                        </ul>
-                    @else
-                        <ul class="nav flex-column">
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "created"), "name" => "Created Auctions", "url" => route("dashboard_created_auctions")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "bidded"), "name" => "Bidded Auctions", "url" => route("dashboard_bidded_auctions")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "bookmarked"), "name" => "Bookmarked Auctions", "url" => route("dashboard_bookmarked_auctions")])
-                            @include("partials.sidebar_anchor", [ "active" => ($sub == "followed"), "name" => "Followed", "url" => route("dashboard_followed")])
-                        </ul>
-                    @endadmin
-                   
-
+                    <ul class="nav flex-column">
+                        @include("partials.sidebar_anchor", [ "active" => ($sub == "created"), "name" => "Created Auctions", "url" => route("dashboard_created_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => ($sub == "bidded"), "name" => "Bidded Auctions", "url" => route("dashboard_bidded_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => ($sub == "bookmarked"), "name" => "Bookmarked Auctions", "url" => route("dashboard_bookmarked_auctions")])
+                        @include("partials.sidebar_anchor", [ "active" => ($sub == "followed"), "name" => "Followed", "url" => route("dashboard_followed")])
+                    </ul>
                 </div>
             </nav>
 
