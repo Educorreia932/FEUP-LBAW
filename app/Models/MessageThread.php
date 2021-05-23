@@ -11,6 +11,19 @@ class MessageThread extends Model {
 
     protected $table = 'message_thread';
 
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'topic' => 'Thread Topic'
+    ];
+
+    protected $fillable = [
+        'topic',
+    ];
+
     public $timestamps = false;
 
     public function messages() {

@@ -29,7 +29,7 @@
                     <a href="{{ route('message_thread', ['thread_id' => $t->id]) }}" data-thread-id="{{ $t->id }}"
                         class="message-thread-entry list-group-item list-group-item-action py-3 lh-tight @if ($t->id == $thread->id) active @endif">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                            <strong class="mb-1">{{ $thread->topic }}</strong>
+                            <strong class="mb-1">{{ $t->topic }}</strong>
                             <small class="message-thread-timestamp @if ($t->id != $thread->id) text-muted @endif">{{ $t->messages->last() != null ? $t->messages->last()->timestamp->shortAbsoluteDiffForHumans() : "-" }}</small>
                         </div>
                         <div class="message-thread-body col-10 mb-1 small">{{ $t->messages->last() != null ? $t->messages->last()->body : "none" }}</div>
@@ -48,7 +48,7 @@
                             data-bs-target="#edit-modal">
                         <i class="bi bi-pencil" style="font-size: 1.25em; text-align: right"></i>
                     </button>
-                    <h3 class='m-0'>Thread Name</h3>
+                    <h3 class='m-0'>{{ $thread->topic }}</h3>
                 </div>
                 <h6 class='m-0 ps-5'>
                 @foreach($thread->other_participants as $participant)
@@ -96,7 +96,7 @@
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">
     <div class="modal-dialog">
         <form class="modal-content" id="edit-form" method="post"
-              action="">
+              action="{{ route('rename_thread', ['thread_id' => $thread->id]) }}">
             @csrf
 
             <div class="modal-header">
@@ -107,9 +107,9 @@
             <div class="modal-body">
                 {{-- Auction name --}}
                 <div class="form-group col-md-12 mt-3">
-                    <label for="inputName" class="sr-only">Topic</label>
-                    <input type="text" id="inputName" value="{{ $thread->topic }}" class="form-control"
-                        name="title">
+                    <label for="inputTopic" class="sr-only">Topic</label>
+                    <input type="text" autocomplete="off" placeholder="{{ $thread->topic }}" id="inputTopic" value="{{ $thread->topic }}" class="form-control"
+                        name="topic">
                 </div>
             </div>
 

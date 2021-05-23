@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("messages/{thread_id}", "MessageController@showMessageThread")->name("message_thread");
     Route::put("messages/{thread_id}", "MessageController@sendMessage")->name("send_message");
     Route::post("messages/{thread_id}/add_participant", "MessageController@addParticipantToThread")->name("add_participant_to_message_thread");
+    Route::post("messages/{thread_id}/rename", "MessageController@renameThread")->name("rename_thread");
 });
 
 

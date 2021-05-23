@@ -10,6 +10,7 @@ use App\Models\MessageThread;
 use App\Models\MessageThreadParticipant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller {
     public function showInbox() {
@@ -19,33 +20,35 @@ class MessageController extends Controller {
     }
 
     public function showMessageThread($thread_id) {
-        $message_thread = MessageThread::find($thread_id);
+        $thread = MessageThread::findOrFail($thread_id);
+        $this->authorize('view', $thread);
+
         $threads = Auth::user()->messageThreads;
 
-        if (!$message_thread->participants()->where('participant_id', '=', Auth::id())->count() > 0)
-            abort(403);
-
-        return view('pages.message_thread', ["thread" => $message_thread, "threads" => $threads]);
+        return view('pages.message_thread', ["thread" => $thread, "threads" => $threads]);
     }
 
     public function createMessageThread(Request $request) {
-        $message_thread = MessageThread::create();
-        $message_thread->addParticipant($request->get("user_id"));
-        $message_thread->addParticipant(Auth::id());
+        $thread = MessageThread::create();
+        $thread->addParticipant($request->get("user_id"));
+        $thread->addParticipant(Auth::id());
 
-        return redirect(route("message_thread", ["thread_id" => $message_thread->id]));
+        return redirect(route("message_thread", ["thread_id" => $thread->id]));
     }
 
     public function addParticipantToThread(Request $request) {
-        $message_thread = MessageThread::find($request->get("thread_id"));
-        $message_thread->addParticipant($request->get("user_id"));
+        $thread = MessageThread::findOrFail($request->get("thread_id"));
+        $other = Member::findOrFail($request->get("user_id"));
+        $this->authorize('addUser', [$thread, $other]);
 
-        return redirect(route("message_thread", ["thread_id" => $message_thread->id]));
+        $thread->addParticipant($request->get("user_id"));
+
+        return redirect(route("message_thread", ["thread_id" => $thread->id]));
     }
 
     public function sendMessage($thread_id, SendMessageRequest $request) {
         $thread = MessageThread::findOrFail($thread_id);
-        // $this->authorize('sendMessage', $thread);
+        $this->authorize('sendMessage', $thread);
 
         $validated = $request->validated();
         $validated += ["thread_id" => $thread_id];
@@ -56,5 +59,24 @@ class MessageController extends Controller {
         broadcast(new MessageSent($message))->toOthers();
 
         return ['status' => 'Message Sent!'];
+    }
+
+    public function renameThread($thread_id, Request $request) {
+        $thread = MessageThread::findOrFail($thread_id);
+        $this->authorize('renameTopic', $thread);
+
+        $rules = array(
+            'topic' => ['required', 'string', 'min:1', 'max:50']
+        );
+
+        $messages = array(
+            'required' => ':attribute must be filled',
+            'min' => ':attribute must have at least :min characters'
+        );
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        $thread->update($validator->validated());
+
+        return redirect(route('message_thread', ['thread_id' => $thread_id]));
     }
 }
