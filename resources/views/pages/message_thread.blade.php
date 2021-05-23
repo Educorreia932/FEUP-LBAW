@@ -34,23 +34,32 @@
 
         <div class="col-9 d-flex flex-column p-0">
             {{-- Header --}}
-            <div id='thread-identifier' data-thread-id="{{ $thread->id }}" class="p-2 bg-white border-bottom">
+            <div id='thread-identifier' data-thread-id="{{ $thread->id }}" class="p-2 d-flex flex-row justify-content-between bg-white border-bottom">
                 <div class="d-flex flex-row align-items-center">
                     <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                             data-bs-target="#edit-modal">
-                        <i class="bi bi-pencil" style="font-size: 1.25em; text-align: right"></i>
+                        <i class="bi bi-pencil" style="font-size: 1.5em;"></i>
                     </button>
-                    <h3 class='m-0 text-truncate'>{{ $thread->topic }}</h3>
-                </div>
-                <h6 class='m-0 ps-5 text-truncate'>
-                @foreach($thread->other_participants as $participant)
-                    @if ($loop->iteration == 3)
-                        {{ $participant->name }}@if ($loop->remaining > 0) & {{ $loop->remaining }} others @endif
-                        @break
-                    @endif
 
-                    {{ $participant->name }}@if (!$loop->last), @endif
-                @endforeach</h6>
+                    <div>
+                        <h3 class='m-0 text-truncate'>{{ $thread->topic }}</h3>
+                        <h6 class='m-0 text-truncate'>
+                        @foreach($thread->other_participants as $participant)
+                            @if ($loop->iteration == 3)
+                                {{ $participant->name }}@if ($loop->remaining > 0) & {{ $loop->remaining }} others @endif
+                                @break
+                            @endif
+
+                            {{ $participant->name }}@if (!$loop->last), @endif
+                        @endforeach</h6>
+                    </div>
+                </div>
+
+                <button type="button" class="btn hover-scale" data-bs-toggle="modal"
+                        data-bs-target="#add-user-modal">
+                    <i class="bi-person-plus" style="font-size: 1.5em;"></i>
+                </button>
+
             </div>
 
             {{-- Messages --}}
@@ -90,6 +99,38 @@
 
     </section>
 
+
+{{-- Contact modal --}}
+<section class="modal fade" id="add-user-modal" tabindex="-1" aria-labelledby="add-user-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="send-message-modal-title">
+                    Add user to current Thread
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="contact-user-form" method="post" action="{{ route('add_participant_to_message_thread', ['thread_id' => $thread->id]) }}">
+                @csrf
+
+                <div class="modal-body">
+                    <p class="fw-bold my-0">Username</p>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 {{-- Edit modal --}}
 <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="modalLable" aria-hidden="true">

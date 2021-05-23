@@ -39,12 +39,15 @@ class MessageController extends Controller {
         return redirect(route("message_thread", ["thread_id" => $thread->id]));
     }
 
-    public function addParticipantToThread(Request $request) {
-        $thread = MessageThread::findOrFail($request->get("thread_id"));
-        $other = Member::findOrFail($request->get("user_id"));
+    public function addParticipantToThread($thread_id, Request $request) {
+        $thread = MessageThread::findOrFail($thread_id);
+        $other = Member::all()->where('username', '=', $request->get("username"))->first();
+        if ($other == null)
+            return abort(404);
+
         $this->authorize('addUser', [$thread, $other]);
 
-        $thread->addParticipant($request->get("user_id"));
+        $thread->addParticipant($other->id);
 
         return redirect(route("message_thread", ["thread_id" => $thread->id]));
     }

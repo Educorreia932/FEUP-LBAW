@@ -184,35 +184,13 @@ aria-hidden="true">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form id="contact-user-form" method="post" action="/messages">
+            <form id="contact-user-form" method="post" action="{{ route('create_message_thread') }}">
                 @csrf
 
                 <input hidden name="user_id" value="{{ $user->id }}">
 
                 <div class="modal-body">
-                    <p class="fw-bold my-0">Destination</p>
-
-                    <div class="mb-3 d-flex flex-column" id="destination-div">
-                        <label class="form-check-label my-1">
-                            <input type="radio" id="create-thread-radio" name="destination"
-                                    class="form-check-input" value="create-thread" checked>
-                            Create new thread
-                        </label>
-
-                        <label class="form-check-label my-1">
-                            <input type="radio" id="add-to-thread-radio" name="destination"
-                                    class="form-check-input" value="add-to-thread">
-                            Add to existing thread
-                        </label>
-
-                        <select id="thread-select" class="form-select my-1" name="thread_id" disabled>
-                            @foreach(Auth::user()->messageThreads as $message_thread)
-                                <option value="{{ $message_thread->id }}">
-                                    {{ $message_thread->title() }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <p class="my-0">Are you sure you want to start a new thread with @<strong>{{ $user->username }}</strong>?</p>
                 </div>
 
                 <div class="modal-footer">
