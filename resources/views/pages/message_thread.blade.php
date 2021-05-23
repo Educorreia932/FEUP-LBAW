@@ -5,18 +5,9 @@
 
     <link href="{{ asset('css/scrollbars.css') }}" rel="stylesheet">
 
-    <section class="big-boy flex-row px-0 bg-light-grey">
-        {{-- <div class="pt-2 px-4">
-            <h1 class="mt-2" id="thread-title" data-id="{{ $thread->id }}">{{ $thread->title() }}</h1>
+    <section class="row flex-grow-1 px-0 bg-light-grey m-0">
 
-            @include("partials.breadcrumbs", [ "pages" => [
-                ["title" => "Home", "href" => route('home')],
-                ["title" => "Messages", "href" => route('inbox')],
-                ["title" => "Message Thread"]
-            ]])
-        </div> --}}
-
-        <div class="big-boy align-items-stretch bg-white flex-grow-0 flex-shrink-0 border-end" style="width: 340px;">
+        <div class="col-3 p-0 align-items-stretch bg-white flex-grow-0 flex-shrink-0 border-end">
             <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
                 <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                 <span class="fs-5 fw-semibold">Inbox</span>
@@ -41,7 +32,7 @@
             </section>
         </div>
 
-        <div class="big-boy">
+        <div class="col-9 d-flex flex-column p-0">
             {{-- Header --}}
             <div id='thread-identifier' data-thread-id="{{ $thread->id }}" class="p-2 bg-white border-bottom">
                 <div class="d-flex flex-row align-items-center">
@@ -49,9 +40,9 @@
                             data-bs-target="#edit-modal">
                         <i class="bi bi-pencil" style="font-size: 1.25em; text-align: right"></i>
                     </button>
-                    <h3 class='m-0'>{{ $thread->topic }}</h3>
+                    <h3 class='m-0 text-truncate'>{{ $thread->topic }}</h3>
                 </div>
-                <h6 class='m-0 ps-5'>
+                <h6 class='m-0 ps-5 text-truncate'>
                 @foreach($thread->other_participants as $participant)
                     @if ($loop->iteration == 3)
                         {{ $participant->name }}@if ($loop->remaining > 0) & {{ $loop->remaining }} others @endif
@@ -90,6 +81,7 @@
                 <input hidden id="thread_id" name="thread_id" value={{ $thread->id }}>
             </form>
         </div>
+
     </section>
 
 
