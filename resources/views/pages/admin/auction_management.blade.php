@@ -52,17 +52,17 @@
                 <tbody>
                     {{-- Reported user entries --}}
                     @foreach ($reports as $report)
-                        <tr class="user-entry align-middle">
+                        <tr class="auction-entry align-middle" auction_id="{{$report->auction_id}}">
                             <th scope="row" class="col-md-4 col-lg-4 col-3">{{$report->title}}</th>
-                            <td class="master-checkbox-reverse">
+                            <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_radio_{{$report->auction_id}}" id="radio_active" 
+                                    <input class="form-check-input active-input" type="radio" name="status_radio_{{$report->auction_id}}"
                                     value="active" {{ $report->status === "Active" ? "checked" : ""}}>
                                     <label class="form-check-label" for="radio_active">
                                       Active
                                     </label>
                                 </div>
-                                <input class="form-check-input" type="radio" name="status_radio_{{$report->auction_id}}" id="radio_term" 
+                                <input class="form-check-input term-input" type="radio" name="status_radio_{{$report->auction_id}}"
                                 value="teminated" {{ $report->status === "Terminated" ? "checked" : ""}}>
                                     <label class="form-check-label" for="radio_term">
                                       Terminated

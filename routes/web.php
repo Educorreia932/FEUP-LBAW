@@ -97,4 +97,6 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
     Route::put("restore_sell/{id}", "AdminController@restoreSell")->where('id', '[0-9]+')->name('restore_sell');
     Route::put("revoke_bid/{id}", "AdminController@revokeBid")->where('id', '[0-9]+')->name('revoke_bid');
     Route::put("restore_bid/{id}", "AdminController@restoreBid")->where('id', '[0-9]+')->name('restoreBid');
+    Route::put("terminate_auction/{id}", "AdminController@terminateAuction")->where('id', '[0-9]+')->name('terminate_auction');
+    Route::put("activate_auction/{id}", "AdminController@activateAuction")->where('id', '[0-9]+')->name('activate_auction');
 });

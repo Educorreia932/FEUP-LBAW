@@ -58,4 +58,21 @@ class AdminController extends Controller
 
         return response()->json(["Ok" => "Bidding permission restored"]);
     }
+
+    public function terminateAuction($id) {
+        $auction = Auction::findOrFail($id);
+        $auction->status = "Terminated";
+        $auction->save();
+
+        // TODO: return user money
+        return response()->json(["Ok" => "Auction Terminated"]);
+    }
+
+    public function activateAuction($id) {
+        $auction = Auction::findOrFail($id);
+        $auction->status = "Active";
+        $auction->save();
+
+        return response()->json(["Ok" => "Auction Activated"]);
+    }
 }
