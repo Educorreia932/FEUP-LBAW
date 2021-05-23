@@ -77,5 +77,15 @@ class DashboardController extends Controller {
         return view('pages.admin.auction_management', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);
     }
 
+    public function reportedAuctions() {
+
+        $query = DB::table('auction_report')
+                    ->join('auction', 'reported_id', 'auction.id')
+                    ->select('auction_report.*', 'auction.id as auction_id',  'title');
+
+        $reports = $query->paginate(15);
+        return view('pages.admin.reported_auctions', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);
+    }
+
     
 }

@@ -89,7 +89,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
     Route::get("dashboard/user_management", "DashboardController@manageUsers")->name("user_management");
     Route::get("dashboard/reported_users", "DashboardController@reportedUsers")->name("reported_users");
     Route::get("dashboard/auction_management", "DashboardController@manageAuctions")->name("auction_management");
-    // Route::get("dashboard/followed", "DashboardController@followed")->name("dashboard_followed");
+    Route::get("dashboard/reported_auctions", "DashboardController@reportedAuctions")->name("reported_auctions");
 
     Route::put("ban/{id}", "AdminController@banUser")->where('id', '[0-9]+')->name("ban_user");
     Route::put("unban/{id}", "AdminController@unbanUser")->where('id', '[0-9]+')->name("unban_user");
