@@ -126,18 +126,18 @@
 
                 <div class="d-flex flex-column">
                     <p>
-                        <span class="text-muted">Negative rating</span>
-                        <span>{{ $user->ratings->where("value", -1)->count() }}</span>
+                        <span class="text-muted">Positive rating</span>
+                        <span class="float-end">{{ $user->ratings->where("value", 1)->count() }}</span>
                     </p>
 
                     <p class="pb-2 border-bottom">
-                        <span class="text-muted">Positive rating</span>
-                        <span style="margin-left: auto">+ {{ $user->ratings->where("value", 1)->count() }}</span>
+                        <span class="text-muted">Negative rating</span>
+                        <span class="float-end">- {{ $user->ratings->where("value", -1)->count() }}</span>
                     </p>
 
                     <p>
                         <span class="text-muted">Total rating</span>
-                        <span>{{ $user->rating }}</span>
+                        <span class="float-end">{{ $user->rating }}</span>
                     </p>
                 </div>
             </section>
