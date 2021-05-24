@@ -105,9 +105,14 @@ class Member extends Authenticatable {
     }
 
     public function ratedUser($id) {
-        return 0;
+        $user = Member::find($id);
+        $rating = $user->ratings()->where("ratee_id", "=", Auth::id())->first();
 
-//        return $this->follows()->where('followed_id', '=', $id)->first() != null
+        if ($rating == null)
+            return 0;
+
+        else
+            return $rating->value;
     }
 
     public function ratings() {
