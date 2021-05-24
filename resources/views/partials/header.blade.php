@@ -22,9 +22,9 @@
                     
                     @includeWhen(!Auth::guard('admin')->check(), "partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
 
-                    @admin
+                    {{-- @admin
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "user_management", "title" => "Dashboard", "route" => "admin.user_management"])
-                    @endadmin
+                    @endadmin --}}
                 </section>
             </ul>
 
@@ -69,7 +69,7 @@
                 @else
 
                     {{-- Admin logged-in --}}
-                    @if (Auth::guard('admin')->check()) 
+                    @admin
                         <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
                                 type="button"
                                 data-bs-toggle="modal" data-bs-target="#notifications-modal">
@@ -110,7 +110,7 @@
                                 Sign up
                             </a>
                         </li>
-                    @endif
+                    @endadmin
                 @endif
             </ul>
         </div>

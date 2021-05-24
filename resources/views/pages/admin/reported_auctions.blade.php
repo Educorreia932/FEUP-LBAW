@@ -28,11 +28,13 @@
 
     @foreach ($reports as $report)
     <tr class="auction-entry align-middle">
-        <th scope="row" class="col-md-4">{{$report->title}}</th>
+        <th scope="row" class="col-4">
+            <a href="{{route("auction", ["id" => $report->auction_id])}}" class="text-decoration-none text-dark">{{$report->title}}</a>
+        </th>
         <td>
             {{$report->reason}}
         </td>
-        <td>
+        <td class="col-4">
             {{ $report->description}}
         </td>
         <td>{{\Carbon\Carbon::parse($report->timestamp)->format('d M Y')}}</td>

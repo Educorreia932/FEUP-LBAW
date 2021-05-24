@@ -27,7 +27,9 @@
     {{-- Reported user entries --}}
     @foreach ($reports as $report)
         <tr class="user-entry align-middle" user_id="{{$report->member_id}}">
-            <th scope="row">{{$report->username}}</th>
+            <th scope="row">
+                <a href="{{route("user_profile", ["username" => $report->username])}}" class="text-decoration-none text-dark">{{$report->username}}</a>
+            </th>
             <td>
                 {{$report->reason}}
             </td>

@@ -37,7 +37,9 @@
     {{-- Reported user entries --}}
     @foreach ($reports as $report)
         <tr class="user-entry align-middle" user_id="{{$report->member_id}}">
-            <th scope="row">{{$report->username}}</th>
+            <th scope="row">
+                <a href="{{route("user_profile", ["username" => $report->username])}}" class="text-decoration-none text-dark">{{$report->username}}</a>
+            </th>
             <td class="master-checkbox-reverse">
                 @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
                 @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])

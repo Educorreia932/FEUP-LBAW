@@ -103,7 +103,6 @@ class DashboardController extends Controller {
 
         $reports = $query->paginate(10);
 
-        // dd($reports);
         $request->flash();
 
         return view('pages.admin.auction_management', ['user' => Auth::guard('admin')->user(), 'reports' => $reports]);

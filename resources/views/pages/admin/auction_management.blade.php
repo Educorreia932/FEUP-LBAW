@@ -37,8 +37,11 @@
     {{-- Reported user entries --}}
     @foreach ($reports as $report)
         <tr class="auction-entry align-middle" auction_id="{{$report->auction_id}}">
-            <th scope="row" class="col-md-4 col-lg-4 col-3">{{$report->title}}</th>
+            <th scope="row" class="col-md-4 col-lg-4 col-3">
+                <a href="{{route("auction", ["id" => $report->auction_id])}}" class="text-decoration-none text-dark">{{$report->title}}</a>
+            </th>
             <td>
+                {{-- Auction actions --}}
                 <div class="form-check">
                     <input class="form-check-input active-input" type="radio" name="status_radio_{{$report->auction_id}}"
                     value="active" {{ $report->status === "Active" ? "checked" : ""}}>
@@ -46,16 +49,16 @@
                         Active
                     </label>
                 </div>
-                <input class="form-check-input term-input" type="radio" name="status_radio_{{$report->auction_id}}"
-                value="teminated" {{ $report->status === "Terminated" ? "checked" : ""}}>
+                <div class="form-check">
+                    <input class="form-check-input term-input" type="radio" name="status_radio_{{$report->auction_id}}"
+                    value="teminated" {{ $report->status === "Terminated" ? "checked" : ""}}>
                     <label class="form-check-label" for="radio_term">
                         Terminated
                     </label>
-                <div class="form-check">
-                    
                 </div>
             </td>
             <td>
+                {{-- Report details --}}
                 <div class="d-flex flex-column">
                     @if ($report->reason)
                         <span>{{$report->reason}}</span>
@@ -66,6 +69,7 @@
                 </div>
             </td>
             <td>
+                {{-- Start and end dates --}}
                 <span class="d-flex flex-row">
                     <h6 class="me-2 fw-bold">Starts</h6>
                     {{\Carbon\Carbon::parse($report->start_date)->format('d M Y')}}
