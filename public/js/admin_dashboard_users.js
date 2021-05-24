@@ -1,4 +1,17 @@
 const user_entries = document.querySelectorAll('.user-entry');
+const page_head = document.querySelector('.alert-section');
+
+function createPopUpAlert(status, message) {
+    let alert_span = document.createElement("span");
+    alert_span.className = "alert alert-success alert-dismissible fade show fixed-top w-25 mt-5 translate-middle start-50";
+    alert_span.role = "alert";
+    alert_span.innerHTML = '<strong>' + status + '</strong> ' + message + 
+                           '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+    setTimeout(function() {
+        alert_span.remove();
+    }, 2000);
+    page_head.appendChild(alert_span);
+}
 
 user_entries.forEach(elem => {
 
@@ -31,7 +44,7 @@ user_entries.forEach(elem => {
             request = new Request('/admin/ban/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("User banned");
+                    this.createPopUpAlert("Ok", "User banned.")
                 }
             });
         } else {
@@ -39,7 +52,7 @@ user_entries.forEach(elem => {
             request = new Request('/admin/unban/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("User unbanned");
+                   this.createPopUpAlert("Ok", "User unbanned.")
                 }
             });
         }
@@ -59,7 +72,8 @@ user_entries.forEach(elem => {
             request = new Request('/admin/revoke_sell/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("Selling privilege revoked");
+                    this.createPopUpAlert("Ok", "Selling privilege revoked.")
+                   
                 }
             }).catch((e) => {
                 console.log("Error");
@@ -71,7 +85,7 @@ user_entries.forEach(elem => {
             request = new Request('/admin/restore_sell/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("Selling privilege restored");
+                    this.createPopUpAlert("Ok", "Selling privilege restored.")
                 }
             });
         }
@@ -91,7 +105,8 @@ user_entries.forEach(elem => {
             request = new Request('/admin/revoke_bid/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("Bidding privilege revoked");
+                    this.createPopUpAlert("Ok", "Bidding privilege revoked.")
+
                 }
             });
         } else {
@@ -99,7 +114,7 @@ user_entries.forEach(elem => {
             request = new Request('/admin/restore_bid/' + user_id, { method: 'PUT', headers: myHeaders });
             fetch(request).then(function(response) {
                 if (response.ok) {
-                    console.log("Bidding privilege restored");
+                    this.createPopUpAlert("Ok", "Bidding privilege restored.")
                 }
             });
         }

@@ -24,8 +24,10 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="container-fluid mb-4">
                     
+                    <section class="alert-section"></section>
+                    
                     @yield("page_head")
-            
+
                     <div class="row">
                         {{-- search section --}}
                         <section class="col-12">
@@ -47,8 +49,6 @@
                                 <p>Results for: <u class="fst-italic"> @if(isset($detail_search)) {{ $detail_search }} @else {{ old('fts') ? old('fts') : 'All' }} @endif </u> ({{ $reports->total() }})</p>    
                             </form>
                         <section>
-
-                        
                         
                         {{-- @each("partials.auction_entry", $auctions, "auction") --}}
                         <div class="table-responsive col-12">
