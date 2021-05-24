@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RateUserRequest;
 use App\Models\Member;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -11,15 +14,43 @@ class UserController extends Controller {
         if ($user == null)
             return abort(404);
 
-        return view('pages.user_profile', [ "user" => $user]);
+        return view('pages.user_profile', ["user" => $user]);
     }
 
     public function showMyProfile() {
-        return view('pages.user_profile', [ "user" => Auth::user()]);
+        return view('pages.user_profile', ["user" => Auth::user()]);
+    }
+
+    public function rate($username, RateUserRequest $request) {
+        $user = Member::all()->where('username', '=', $username)->first();
+        $validated = $request->validated();
+        $rating = Auth::user()->ratedUser($user->id);
+
+        if ($validated["value"] == 0) {
+            Rating::where("ratee_id", $user->id)
+                ->where("rater_id", Auth::id())
+                ->delete();
+        }
+
+        // User had already been rated
+        else if ($rating)
+            Rating::where("ratee_id", $user->id)
+                ->where("rater_id", Auth::id())
+                ->update(["value" => $validated["value"]]);
+
+        else
+            Rating::create([
+                'value' => $validated["value"],
+                "ratee_id" => $user->id,
+                "rater_id" => Auth::id()
+            ]);
+
+        return redirect(route("user_profile", [ "username" => $username]));
     }
 
     public function follow($username) {
         $user = Member::all()->where('username', '=', $username)->first();
+
         if ($user == null)
             return;
 
@@ -31,6 +62,7 @@ class UserController extends Controller {
 
     public function unfollow($username) {
         $user = Member::all()->where('username', '=', $username)->first();
+
         if ($user == null)
             return;
 
