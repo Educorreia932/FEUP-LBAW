@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class Member extends Authenticatable {
      * @var array
      */
     protected $casts = [
-        'joined' => 'datetime'
+        'joined' => 'datetime',
     ];
 
     /**
@@ -33,12 +34,14 @@ class Member extends Authenticatable {
     protected $dateFormat = 'Y-m-d H:i:sO';
 
     protected $fillable = [
-        "username", 'name', 'email', 'password', "credit"
+        'username', 'name', 'email', 'password', 'credit', 'bio'
     ];
 
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public static $default_bio = "This user hasn't developed a stand yet";
 
     public function getHasAuctionsAttribute() {
         return $this->createdAuctions()->count();
@@ -96,11 +99,30 @@ class Member extends Authenticatable {
         );
     }
 
+    public function orderedThreads() {
+        return $this->messageThreads()
+            ->getQuery()
+            ->select(DB::raw('message_thread.*, COALESCE(message.timestamp, message_thread.created) AS latest_activity'))
+            ->leftJoin('message', 'message_thread.latest_message', '=', 'message.id')
+            ->orderBy('latest_activity', 'desc');
+    }
+
+    public function messageThreads() {
+        return $this->hasManyThrough(
+            MessageThread::class,
+            MessageThreadParticipant::class,
+            'participant_id',
+            'id',
+            'id',
+            'thread_id'
+        );
+    }
+
     public function notifications() {
 
     }
 
-    public function getImage($type='small') {
+    public function getImage($type = 'small') {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
     }
 }

@@ -3,9 +3,6 @@
 namespace App\Policies;
 
 use App\Models\Member;
-use App\Models\Auction;
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MemberPolicy {
@@ -30,26 +27,61 @@ class MemberPolicy {
      * @return mixed
      */
     public function report(Member $member, Member $target) {
-        return $member->id != $target->id;
+        return !$member->banned && $member->id != $target->id;
+    }
+
+    /**
+     * Determine whether the user can report another
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function contact(Member $member, Member $target) {
+        return !$member->banned && $member->id != $target->id;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function update(Member $member) {
-        return Auth::id() === $member->id;
+    public function update(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function change_password(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function toggle_privacy_settings(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function delete(Member $member) {
-        return Auth::id() === $member->id;
+    public function delete(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
 }

@@ -6,14 +6,14 @@
 
     <div class="my-4">
         <h2>User Management</h2>
-        
+
 
         @include("partials.breadcrumbs", [ "pages" => [
             ["title" => "Home", "href" => "/"],
             ["title" => "Dashboard", "href" => "/dashboard"]
         ]])
 
-        
+
     </div>
 @endsection
 
@@ -52,7 +52,9 @@
                 <div class="d-flex flex-column">
                     @if ($report->reason)
                         <span>{{$report->reason}}</span>
-                        <a href="{{route('admin.user_reports', ['username' => $report->username])}}">See details »</a>
+                        <a class="text-decoration-none" href="{{route('admin.user_reports', ['username' => $report->username])}}">
+                            <i class="bi bi-box-arrow-right"></i> See details
+                        </a>
                     @else
                         <span class="text-muted">No reports</span>
                     @endif

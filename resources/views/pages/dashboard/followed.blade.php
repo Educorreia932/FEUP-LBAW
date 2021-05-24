@@ -1,13 +1,23 @@
-@extends('layouts.dashboard', ['sub' => 'followed'])
+@extends('layouts.dashboard', ['sub' => 'followed', 'title' => 'Followed Users'])
 
 @section('subpage')
     <div class="container-fluid mb-4">
         <div class="my-4">
-            <h2>Followed</h2>
+            @include("partials.breadcrumbs", [
+                "title" => "Followed Users",
+                "pages" => [
+                    ["title" => "Home", "href" => route('home')],
+                    ["title" => "Me", "href" => route('my_profile')],
+                    ["title" => "Dashboard", "href" => route('dashboard')],
+                    ["title" => "Followed Users", "href" => route('dashboard_followed')]
+                ]
+            ])
         </div>
 
         <div class="container">
-            @each ("partials.user_entry", $followers, "member")
+            @foreach ($followers as $member)
+                @include('partials.user_entry', ['member' => $member, 'last' => $loop->last])
+            @endforeach
         </div>
     </div>
 @endsection

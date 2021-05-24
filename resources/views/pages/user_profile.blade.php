@@ -1,18 +1,23 @@
-@extends('layouts.app', ['current_page' => 'users'])
+@extends('layouts.app', ['current_page' => 'users', 'title' => $user->username . ' Profile'])
 
 @section('content')
+
+<script defer src="{{ asset("js/contact_user.js") }}"></script>
+
 {{-- User Information --}}
 <section class="container">
     <div class="row justify-content-center">
 
         <div class="row px-0 my-2">
             {{-- Breadcrumbs --}}
-            <h1>User Profile</h1>
-            @include("partials.breadcrumbs", [ "pages" => [
-                ["title" => "Home", "href" => route('home')],
-                ["title" => "Users", "href" => route('search_users')],
-                ["title" => $user->username, "href" => route('user_profile', ['username' => $user->username])]
-            ]])
+            @include("partials.breadcrumbs", [
+                "title" => "User Profile",
+                "pages" => [
+                    ["title" => "Home", "href" => route('home')],
+                    ["title" => "Users", "href" => route('search_users')],
+                    ["title" => $user->username, "href" => route('user_profile', ['username' => $user->username])]
+                ]
+            ])
         </div>
 
         <div class="d-flex flex-column flex-md-row border border-4">
@@ -54,6 +59,15 @@
                         <span>Open Auctions</span>
                     </a>
 
+                    @can('contact', $user)
+                    {{-- Contact --}}
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#send-message-modal"
+                        class="btn ms-2 p-0 hover-scale">
+                        <i class="bi bi-envelope"></i>
+                        <span>Contact</span>
+                    </button>
+                    @endcan
+
                     @can('report', $user)
                     <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal"
                             class="btn ms-2 p-0 hover-scale">
@@ -70,10 +84,10 @@
                     @endcan
                 </div>
                 <div class="user-description d-flex flex-column-reverse w-100">
-                    <a role="button" class="collapsed description-toggler" data-bs-toggle="collapse"
+                    <a role="button" class="collapsed description-toggler text-decoration-none" data-bs-toggle="collapse"
                         href="#user-description" aria-expanded="false" aria-controls="user-description"></a>
                     <p class="collapse mb-1" id="user-description">
-                        {{ $user->bio }}
+                        {{ $user->bio ?? $user::$default_bio }}
                     </p>
                 </div>
             </div>
@@ -159,8 +173,42 @@
 </section>
 @endif
 
-{{-- Modal --}}
-@can('edit', $user)
+{{-- Modals --}}
+
+{{-- Contact modal --}}
+@can('contact', $user)
+<section class="modal fade" id="send-message-modal" tabindex="-1" aria-labelledby="send-message-modal-title"
+aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="send-message-modal-title">
+                    Contact {{ $user->name }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="contact-user-form" method="post" action="{{ route('create_message_thread') }}">
+                @csrf
+
+                <input hidden name="user_id" value="{{ $user->id }}">
+
+                <div class="modal-body">
+                    <p class="my-0">Are you sure you want to start a new thread with @<strong>{{ $user->username }}</strong>?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+@endcan
+
+
+@can('report', $user)
 <section class="modal fade" id="report-user-modal" tabindex="-1" aria-labelledby="report-user-modal-title"
         aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

@@ -1,15 +1,17 @@
-@extends('layouts.dashboard', ['sub' => 'created'])
+@extends('layouts.dashboard', ['sub' => 'created', 'title' => 'Created Auctions'])
 
 @section('subpage')
     <div class="container-fluid mb-4">
         <div class="my-4">
-            <h2>Created Auctions</h2>
-
-            @include("partials.breadcrumbs", [ "pages" => [
-                ["title" => "Home", "href" => "/"],
-                ["title" => "Me", "href" => "/users/me"],
-                ["title" => "Dashboard", "href" => "/dashboard"]
-            ]])
+            @include("partials.breadcrumbs", [
+                "title" => "Created Auctions",
+                "pages" => [
+                    ["title" => "Home", "href" => route('home')],
+                    ["title" => "Me", "href" => route('my_profile')],
+                    ["title" => "Dashboard", "href" => route('dashboard')],
+                    ["title" => "Created Auctions", "href" => route('dashboard_created_auctions')]
+                ]
+            ])
         </div>
 
         <div>

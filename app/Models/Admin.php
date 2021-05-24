@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Authenticatable {
-    
+
 
     protected $table = 'admin';
 
@@ -26,5 +26,5 @@ class Admin extends Authenticatable {
     public function getImage($type='small') {
         return asset('images/admin/' . $this->id. '.png');
     }
-    
+
 }

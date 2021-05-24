@@ -26,3 +26,9 @@ bootstrap/cache/
 
 __pycache__/
 .vscode/
+
+composer.lock
+
+yarn.lock
+
+package-lock.json

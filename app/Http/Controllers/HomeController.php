@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller {
     public function show() {
-        $open_auctions = Auction::all()
+        $open_auctions = Auction::query()
             ->where('start_date', '<', Carbon::now())
             ->where('end_date', '>', Carbon::now())
-            ->take(6);
+            ->limit(6);
+
+        if (!Auth::check() || !Auth::user()->nsfw_consent)
+            $open_auctions = $open_auctions->where('nsfw', '=', 'FALSE');
+
+        $open_auctions = $open_auctions->get();
 
         $vars = ["open_auctions" => $open_auctions];
 

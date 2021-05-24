@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => $current_page])
+@extends('layouts.app', ['current_page' => $current_page, 'title' => $title])
 
 @section('content')
     <script defer src="{{ asset("js/screen_size_toggle_collapse.js") }}"></script>
@@ -26,8 +26,9 @@
                     </nav>
 
                     <section class="col">
-                        <h1 class="mt-4">Search Results</h1>
+                        <div class="mt-4">
                             @yield('breadcrumbs')
+                        </div>
 
                         <div class="d-flex flex-row py-4">
                             {{-- search text input --}}

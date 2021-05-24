@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'create_auction'])
+@extends('layouts.app', ['current_page' => 'create_auction', 'title' => 'Create Auction'])
 
 @section('content')
     <script defer src={{ asset("js/create_auction.js") }}></script>
@@ -6,13 +6,14 @@
     <div class="container-fluid">
         <div class="flex-shrink-0">
             <section class="row m-4">
-                <h1>Create Auction</h1>
-
-                @include("partials.breadcrumbs", [ "pages" => [
-                    ["title" => "Home", "href" => "/"],
-                    ["title" => "Auctions", "href" => "/auction/search_results"],
-                    ["title" => "Create Auction", "href" => "/create_auction"]
-                ]])
+                @include("partials.breadcrumbs", [
+                    "title" => "Create Auction",
+                    "pages" => [
+                        ["title" => "Home", "href" => "/"],
+                        ["title" => "Auctions", "href" => "/auction/search_results"],
+                        ["title" => "Create Auction", "href" => "/create_auction"]
+                    ]
+                ])
             </section>
 
             @if ($errors->any())

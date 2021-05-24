@@ -52,7 +52,7 @@ class DashboardController extends Controller {
                     ->join('member', 'reported_id', 'member.id')
                     ->select('user_report.*', 'member.id as member_id',  'username')
                     ->orderByDesc('user_report.timestamp');
-        
+
         // search by username
         if ($request->has('fts') && strlen($request->fts)) {
             $query = $query->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts])
@@ -78,7 +78,7 @@ class DashboardController extends Controller {
 
         $user_reports = $query->paginate(15);
 
-        return view('pages.admin.reported_users',  [ "user" => Auth::guard('admin')->user(), "reports" => $user_reports, "detail_search" => $username]); 
+        return view('pages.admin.reported_users',  [ "user" => Auth::guard('admin')->user(), "reports" => $user_reports, "detail_search" => $username]);
     }
 
 
@@ -90,14 +90,14 @@ class DashboardController extends Controller {
         if ($request->has('filter') && $request->filter === 'report'){
             $query = DB::table('auction_report')
                     ->join('auction', 'reported_id', 'auction.id')
-                    ->select('auction_report.*', 'auction.id as auction_id', 
+                    ->select('auction_report.*', 'auction.id as auction_id',
                             'auction.title as title',  'start_date', 'end_date', 'status');
         }
         else {
             // select all users
             $query = Auction::query();
             $query = $query->leftJoin('auction_report', 'auction_report.reported_id', 'auction.id')
-                        ->select('auction_report.*', 'auction.id as auction_id', 
+                        ->select('auction_report.*', 'auction.id as auction_id',
                                 'auction.title as title',  'start_date', 'end_date', 'status');
         }
 
@@ -135,14 +135,14 @@ class DashboardController extends Controller {
 
         $query = DB::table('auction_report')
                     ->leftJoin('auction', 'reported_id', 'auction.id')
-                    ->select('auction_report.*', 'title')
+                    ->select('auction_report.*', 'auction.id AS auction_id', 'title')
                     ->where('auction.id', $id)
                     ->orderByDesc('auction_report.timestamp');
 
         $user_reports = $query->paginate(15);
 
-        return view('pages.admin.reported_auctions',  [ "user" => Auth::guard('admin')->user(), "reports" => $user_reports, "detail_search" => $title]); 
+        return view('pages.admin.reported_auctions',  [ "user" => Auth::guard('admin')->user(), "reports" => $user_reports, "detail_search" => $title]);
     }
 
-    
+
 }

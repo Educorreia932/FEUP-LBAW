@@ -62,7 +62,9 @@
                 <div class="d-flex flex-column">
                     @if ($report->reason)
                         <span>{{$report->reason}}</span>
-                        <a href="{{route('admin.auction_reports', ['id' => $report->auction_id])}}">See details »</a>
+                        <a class="text-decoration-none" href="{{ route('admin.auction_reports', ['id' => $report->auction_id]) }}">
+                            <i class="bi bi-box-arrow-right"></i>  See details
+                        </a>
                     @else
                         <span class="text-muted">No reports</span>
                     @endif

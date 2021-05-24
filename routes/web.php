@@ -21,7 +21,6 @@ Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->nam
 Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
 
 
-
 // Authenticated only
 Route::middleware(['auth'])->group(function () {
 
@@ -64,7 +63,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
     Route::put("user/settings/account", "SettingsController@save_account_changes")->name("save_account_changes");
     Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
+    Route::put("user/settings/privacy/toggle", "SettingsController@toggle_settings")->name("toggle_settings");
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
+    Route::put("user/settings/security/password", "SettingsController@change_password")->name("change_password");
+
+    // Messages
+    Route::get("messages", "MessageController@showInbox")->name("inbox");
+    Route::post("messages", "MessageController@createMessageThread")->name("create_message_thread");
+    Route::get("messages/{thread_id}", "MessageController@showMessageThread")->name("message_thread");
+    Route::put("messages/{thread_id}", "MessageController@sendMessage")->name("send_message");
+    Route::post("messages/{thread_id}/add_participant", "MessageController@addParticipantToThread")->name("add_participant_to_message_thread");
+    Route::post("messages/{thread_id}/rename", "MessageController@renameThread")->name("rename_thread");
 });
 
 

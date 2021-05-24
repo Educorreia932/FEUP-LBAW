@@ -14,15 +14,19 @@
     overflow: hidden;
 }
 
+.user-description .description-toggler[aria-expanded="true"] + #user-description.collapse {
+    min-height: 157.5px!important;
+}
+
 .user-description .description-toggler[aria-expanded="false"] + #user-description.collapsing {
     height: 157.5px!important;
 }
 
 
 .user-description a.collapsed:after {
-    content: 'Show more';
+    content: '˅ Show more';
 }
 
 .user-description a:not(.collapsed):after {
-    content: 'Show less';
+    content: '˄ Show less';
 }
