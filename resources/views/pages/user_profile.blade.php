@@ -96,7 +96,10 @@
 
                         @can("rate", $user)
                             @if(Auth::user()->ratedUser($user->id) == 1)
-                                <i class="bi bi-plus-circle-fill text-success"></i>
+                                <button class="hover-scale btn btn-link p-0" type="submit" name="value"
+                                        value="0">
+                                    <i class="bi bi-plus-circle-fill text-success"></i>
+                                </button>
                             @else
                                 <button class="hover-scale btn btn-link p-0" type="submit" name="value"
                                         value="1">
@@ -107,7 +110,10 @@
 
                         @can("rate", $user)
                             @if(Auth::user()->ratedUser($user->id) == -1)
-                                <i class="bi bi-dash-circle-fill text-danger"></i>
+                                <button class="hover-scale btn btn-link p-0" type="submit" name="value"
+                                        value="0">
+                                    <i class="bi bi-dash-circle-fill text-danger"></i>
+                                </button>
                             @else
                                 <button class="hover-scale btn btn-link p-0" type="submit" name="value"
                                         value="-1">
@@ -119,19 +125,19 @@
                 </div>
 
                 <div class="d-flex flex-column">
-                    <p class="d-inline">
-                        <strong>Negative rating:</strong>
-                        {{ $user->ratings->where("value", -1)->count() }}
+                    <p>
+                        <span class="text-muted">Negative rating</span>
+                        <span>{{ $user->ratings->where("value", -1)->count() }}</span>
                     </p>
 
-                    <p class="d-inline">
-                        <strong>Positive rating:</strong>
-                        {{ $user->ratings->where("value", 1)->count() }}
+                    <p class="pb-2 border-bottom">
+                        <span class="text-muted">Positive rating</span>
+                        <span style="margin-left: auto">+ {{ $user->ratings->where("value", 1)->count() }}</span>
                     </p>
 
-                    <p class="d-inline">
-                        <strong>Total rating:</strong>
-                        {{ $user->rating }}
+                    <p>
+                        <span class="text-muted">Total rating</span>
+                        <span>{{ $user->rating }}</span>
                     </p>
                 </div>
             </section>

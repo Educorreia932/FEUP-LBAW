@@ -23,11 +23,17 @@ class UserController extends Controller {
 
     public function rate($username, RateUserRequest $request) {
         $user = Member::all()->where('username', '=', $username)->first();
-
         $validated = $request->validated();
+        $rating = Auth::user()->ratedUser($user->id);
+
+        if ($validated["value"] == 0) {
+            Rating::where("ratee_id", $user->id)
+                ->where("rater_id", Auth::id())
+                ->delete();
+        }
 
         // User had already been rated
-        if (Auth::user()->ratedUser($user->id))
+        else if ($rating)
             Rating::where("ratee_id", $user->id)
                 ->where("rater_id", Auth::id())
                 ->update(["value" => $validated["value"]]);
