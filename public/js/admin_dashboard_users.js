@@ -1,5 +1,5 @@
 const user_entries = document.querySelectorAll('.user-entry');
-const page_head = document.querySelector('.alert-section');
+const alert_section = document.querySelector('.alert-section');
 
 function createPopUpAlert(status, message) {
     let alert_span = document.createElement("span");
@@ -10,7 +10,7 @@ function createPopUpAlert(status, message) {
     setTimeout(function() {
         alert_span.remove();
     }, 2000);
-    page_head.appendChild(alert_span);
+    alert_section.appendChild(alert_span);
 }
 
 user_entries.forEach(elem => {
