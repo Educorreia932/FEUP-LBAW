@@ -18,7 +18,7 @@
 @endsection
 
 @section("results")
-    <p>Results for: <u>{{ old('fts', 'All') }}</u> ({{ $members->total() }})</p>
+    <p>Results {{$members->firstItem()}}-{{$members->lastItem()}} for: <u>{{ old('fts', 'All') }}</u> ({{ $members->total() }})</p>
 
     {{-- display users --}}
     @foreach($members as $member)

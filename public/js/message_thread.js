@@ -66,10 +66,12 @@ function sendMessage() {
             if (response.ok) {
                 return response.json();
             } else {
+                console.log(response);
+                console.log(response.text());
                 throw new Error('Something went wrong on api server!');
             }
         })
-        .then(response => {
+        .then(() => {
             const user = document.getElementById('user-data');
             let messages = document.getElementById('messages');
             messages.innerHTML += genMessage(body_elem.value, user.dataset.id, user.dataset.username, user.dataset.name, true);

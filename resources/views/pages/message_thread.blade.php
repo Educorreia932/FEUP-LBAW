@@ -46,11 +46,11 @@
                         <h6 class='m-0 text-truncate'>
                         @foreach($thread->other_participants as $participant)
                             @if ($loop->iteration == 3)
-                                {{ $participant->name }}@if ($loop->remaining > 0) & {{ $loop->remaining }} others @endif
+                                <a class="text-decoration-none link-dark" href="{{ route('user_profile', ['username' => $participant->username ]) }}">{{ $participant->name }}</a>@if ($loop->remaining > 0) & {{ $loop->remaining }} others @endif
                                 @break
                             @endif
 
-                            {{ $participant->name }}@if (!$loop->last), @endif
+                            <a class="text-decoration-none link-dark" href="{{ route('user_profile', ['username' => $participant->username ]) }}">{{ $participant->name }}@if (!$loop->last), @endif
                         @endforeach</h6>
                     </div>
                 </div>

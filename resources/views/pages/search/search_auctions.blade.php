@@ -21,7 +21,7 @@
 @endsection
 
 @section("results")
-    <p>Results for: <u>{{ old('fts', 'All') }}</u> ({{ $auctions->total() }})</p>
+    <p>Results {{$auctions->firstItem()}}-{{$auctions->lastItem()}} for: <u>{{ old('fts', 'All') }}</u> ({{ $auctions->total() }})</p>
 
     {{-- display auctions --}}
     @foreach($auctions as $auction)
