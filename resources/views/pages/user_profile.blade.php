@@ -88,13 +88,13 @@
         <div class="row">
             {{-- Feedback --}}
             <section class="col-12 col-md-6">
-                <h2 class="fs-bold">Feedback</h2>
+                <div class="d-flex flex-row align-items-center">
+                    <h2 class="fs-bold me-2">Feedback</h2>
 
-                <form action="{{ route("rate_user", [ "username" => $user->username ]) }}" method="post">
-                    @csrf
+                    <form action="{{ route("rate_user", [ "username" => $user->username ]) }}" method="post">
+                        @csrf
 
-                    @can("rate", $user)
-                        <td>
+                        @can("rate", $user)
                             @if(Auth::user()->ratedUser($user->id) == 1)
                                 <i class="bi bi-plus-circle-fill text-success"></i>
                             @else
@@ -103,15 +103,9 @@
                                     <i class="bi bi-plus-circle text-success"></i>
                                 </button>
                             @endif
-                        </td>
-                    @endcan
+                        @endcan
 
-                    <h3 class="d-inline">
-                        {{ $user->rating }}
-                    </h3>
-
-                    @can("rate", $user)
-                        <td>
+                        @can("rate", $user)
                             @if(Auth::user()->ratedUser($user->id) == -1)
                                 <i class="bi bi-dash-circle-fill text-danger"></i>
                             @else
@@ -120,9 +114,26 @@
                                     <i class="bi bi-dash-circle text-danger"></i>
                                 </button>
                             @endif
-                        </td>
-                    @endcan
-                </form>
+                        @endcan
+                    </form>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <p class="d-inline">
+                        <strong>Negative rating:</strong>
+                        {{ $user->ratings->where("value", -1)->count() }}
+                    </p>
+
+                    <p class="d-inline">
+                        <strong>Positive rating:</strong>
+                        {{ $user->ratings->where("value", 1)->count() }}
+                    </p>
+
+                    <p class="d-inline">
+                        <strong>Total rating:</strong>
+                        {{ $user->rating }}
+                    </p>
+                </div>
             </section>
 
             {{-- Insights --}}

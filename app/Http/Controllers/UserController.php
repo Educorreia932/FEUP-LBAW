@@ -26,16 +26,20 @@ class UserController extends Controller {
 
         $validated = $request->validated();
 
-        if ($user->ratedUser(Auth::id()))
+        // User had already been rated
+        if (Auth::user()->ratedUser($user->id))
             Rating::where("ratee_id", $user->id)
                 ->where("rater_id", Auth::id())
                 ->update(["value" => $validated["value"]]);
 
-        Rating::create([
-            'value' => $validated["value"],
-            "ratee_id" => $user->id,
-            "rater_id" => Auth::id()
-        ]);
+        else
+            Rating::create([
+                'value' => $validated["value"],
+                "ratee_id" => $user->id,
+                "rater_id" => Auth::id()
+            ]);
+
+        return redirect(route("user_profile", [ "username" => $username]));
     }
 
     public function follow($username) {
