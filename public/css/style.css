@@ -30,7 +30,7 @@ input.hide-appearence::-webkit-inner-spin-button {
 }
 
 .hover-right {
-    transition: 0.5;
+    transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
 }
@@ -40,7 +40,7 @@ input.hide-appearence::-webkit-inner-spin-button {
 }
 
 .hover-scale {
-    transition: 0.5;
+    transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
 }
@@ -50,7 +50,7 @@ input.hide-appearence::-webkit-inner-spin-button {
 }
 
 .hover-highlight {
-    transition: 0.5;
+    transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
 }
