@@ -1,9 +1,9 @@
-<?php
-if (!isset($current_page))
-    $current_page = "";
-?>
+@php
+    if (!isset($current_page))
+        $current_page = "";
+@endphp
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" class="bg-dark" style="height: 100vh">
 
 <head>
@@ -14,7 +14,11 @@ if (!isset($current_page))
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @isset($title)
+    <title>{{ $title . ' | ' . config('app.name', 'Laravel') }}</title>
+    @else
     <title>{{ config('app.name', 'Laravel') }}</title>
+    @endisset
 
     <!-- Bootstrap responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,6 +43,8 @@ if (!isset($current_page))
         // Fix for Firefox autofocus CSS bug
         // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
     </script>
+
+    <script src="{{ asset("js/app.js") }}" type="text/javascript"></script>
 </head>
 
 <body style="min-height: 100vh; display: flex; flex-direction:column;">

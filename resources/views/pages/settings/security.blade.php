@@ -1,4 +1,4 @@
-@extends('layouts.settings', ['active' => 'security'])
+@extends('layouts.settings', ['active' => 'security', 'title' => 'Security'])
 
 @section('subpage')
     <h2 class="my-4">Security</h2>

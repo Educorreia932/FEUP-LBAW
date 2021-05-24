@@ -35,11 +35,10 @@ class SettingsController extends Controller {
     public function save_account_changes(Request $request) {
         $this->authorize('update', $request->user());
 
+        $user = Member::findOrFail(Auth::id());
+
         $rules = array(
-            'name' => ['required_without_all:username,email,image'],
-            'username' => ['required_without_all:name,email,image'],
-            'email' => ['required_without_all:name,username,image'],
-            'image' => ['required_without_all:name,username,email']
+            'bio' => ['nullable', 'max: 500']
         );
 
         $messages = array(
@@ -48,6 +47,15 @@ class SettingsController extends Controller {
             'email' => 'Email :input is not valid',
             'unique' => ':attribute :input already exists'
         );
+
+        // Bio unchanged
+        if ($request['bio'] === $user->bio) {
+            $rules['name'] = ['required_without_all:username,email,image'];
+            $rules['username'] = ['required_without_all:name,email,image'];
+            $rules['email'] = ['required_without_all:name,username,image'];
+            $rules['image'] = ['required_without_all:name,username,email'];
+        }
+
         $validator = Validator::make($request->all(), $rules, $messages);
 
         $validator->sometimes('name', 'required|min:1', function ($input) {
@@ -67,9 +75,7 @@ class SettingsController extends Controller {
         try {
             $validated_data = $validator->validate();
 
-            $id = Auth::id();
-
-            $user = Member::findOrFail($id);
+            $user->bio = $validated_data['bio'];
 
             if (!empty($validated_data['name'])) {
                 $user->name = $validated_data['name'];
@@ -86,7 +92,7 @@ class SettingsController extends Controller {
             if (!empty($validated_data['image'])) {
                 $path = public_path() . '/images/users/';
 
-                ImageHelper::save_user_image($validated_data['image'], $path, $id);
+                ImageHelper::save_user_image($validated_data['image'], $path, Auth::id());
             }
 
             $user->save();
@@ -95,11 +101,6 @@ class SettingsController extends Controller {
             return redirect()->back()->with(
                 'error',
                 $validator->errors()->all()
-            );
-        } catch (ModelNotFoundException $e) {
-            return redirect()->back()->with(
-                'error',
-                ['This user doesn\'t exist.']
             );
         }
         return redirect()->back()->with(
@@ -124,7 +125,7 @@ class SettingsController extends Controller {
         $validator = Validator::make($request->all(), $rules, $messages);
 
         try {
-            
+
             $validated_data = $validator->validate();
 
             $id = Auth::id();
@@ -159,30 +160,30 @@ class SettingsController extends Controller {
             "success", ["Password changed successfully."]
         );
     }
-    
+
     public function toggle_settings(Request $request) {
         $this->authorize('toggle_privacy_settings', $request->user());
 
         $rules = array(
             "setting" => ['required', 'string', Rule::in(['nsfw_consent', 'data_consent', 'notifications', 'outbid_notifications', 'start_auction_notifications', 'followed_user_activity'])]
         );
-        
+
         $messages = array(
             "in" => "Invalid request."
         );
 
         $validator = Validator::make($request->all(), $rules, $messages);
-        
+
         try {
-            
+
             $validated_data = $validator->validate();
 
             $id = Auth::id();
 
             $user = Member::findOrFail($id);
-            
+
             $setting = $validated_data['setting'];
-            
+
             $user[$setting] = !$user[$setting];
 
             $user->save();

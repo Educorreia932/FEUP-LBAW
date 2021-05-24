@@ -11,5 +11,5 @@ class Admin extends Model {
     protected $table = 'admin';
 
     public $timestamps = false;
-    
+
 }

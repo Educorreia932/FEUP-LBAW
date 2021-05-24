@@ -2,8 +2,9 @@
 
 <div class="row auction-entry py-2 pe-md-2 hover-highlight rounded-3">
     <!-- Product image -->
-    <a href={{route('auction', ['id' => $auction->id])}} class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center justify-content-center">
-        <img class="img-thumbnail @if($auction->nsfw) nsfw @endif" src={{ $auction->getThumbnail('card') }}>
+    <a href="{{ route('auction', ['id' => $auction->id]) }}" class="col-md-3 col-lg-2 mb-2 mb-md-0 d-flex align-items-center
+       justify-content-center">
+    <img class="img-thumbnail @if($auction->nsfw) nsfw @endif" src={{ $auction->getThumbnail('card') }}>
     </a>
 
     <div class="col-md d-flex flex-column justify-content-between">
@@ -25,10 +26,11 @@
             </div>
 
             @auth
-            <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start" auction_id="{{ $auction->id }}">
-                <i class="bi @if (Auth::user()->bookmarkedAuction($auction->id)) bi-bookmark-dash-fill @else bi-bookmark-plus @endif"
-                    style="font-size: 2.5em; text-align: right"></i>
-            </button>
+                <button type="button" class="btn auction-bookmark hover-scale p-0 align-self-start"
+                        auction_id="{{ $auction->id }}">
+                    <i class="bi @if (Auth::user()->bookmarkedAuction($auction->id)) bi-bookmark-dash-fill @else bi-bookmark-plus @endif"
+                       style="font-size: 2.5em; text-align: right"></i>
+                </button>
             @endauth
         </div>
 

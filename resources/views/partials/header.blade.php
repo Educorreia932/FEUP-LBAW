@@ -1,9 +1,9 @@
 <header class="navbar navbar-expand-md navbar-dark bg-dark py-2">
     {{-- Main Navigation Bar --}}
-    <nav class="container-fluid flex-wrap flex-md-nowrap mx-0" aria-label="Main Navigation">
-        <a class="navbar-brand p-0 me-md-3 mx-auto fs-4" aria-label="Trade-a-Bid" href="/">
-            <img src={{ asset('images/logo.svg') }} width="60" height="60" alt="Trade-a-Bid">
-            <span>Trade-a-Bid</span>
+    <nav class="container-fluid flex-wrap align-items-center flex-md-nowrap mx-0" aria-label="Main Navigation">
+        <a class="navbar-brand d-flex align-items-center p-0 me-md-3 mx-auto" aria-label="Trade-a-Bid" href="/">
+            <img class="me-1" src={{ asset('images/logo.svg') }} width="40" height="40" alt="Trade-a-Bid">
+            <span class="fs-4">Trade-a-Bid</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteHeader"
@@ -12,21 +12,19 @@
         </button>
 
         <div class="collapse navbar-collapse ps-2 ps-md-0" id="siteHeader">
-            <ul class="container-fluid navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
-                @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "home", "title" => "Home", "route" => "home"])
+            <ul class="row navbar-nav flex-row flex-wrap m-0 p-0 mt-2 mt-md-0 pt-2 pt-md-0">
 
                 {{-- Navigation Anchors --}}
-                <section class="d-flex p-0 col-6 col-md-auto flex-column flex-md-row" id="headerAuctionSection">
+                    @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "home", "title" => "Home", "route" => "home"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "auctions", "title" => "Auctions", "route" => "search_auctions"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "users", "title" => "Users", "route" => "search_users"])
                     @include("partials.navigation_anchor", [ "current_page" => $current_page, "page_name" => "create_auction", "title" => "Sell Item", "route" => "create_auction"])
-                </section>
             </ul>
 
             <hr class="d-md-none text-white-50">
 
             <ul class="navbar-nav flex-row ms-md-auto me-md-4">
-                @if (Auth::check())
+                @auth
                     {{-- Notifications --}}
                     <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
                             type="button"
@@ -38,21 +36,25 @@
                     </button>
 
                     {{-- Logged-in User --}}
-                    <li class="d-none d-md-flex nav-item dropdown px-1">
+                    <li class="d-none d-md-flex nav-item dropdown px-1" id="user-data"
+                        data-username="{{ Auth::user()->username }}" data-name="{{ Auth::user()->name }}" data-id="{{ Auth::user()->id }}">
                         <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                 id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2">{{ Auth::user()->name }}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40"
-                                     src={{ Auth::user()->getImage('small') }}
+                                     src="{{ Auth::user()->getImage('small') }}"
                                      alt="Profile Image">
                             </div>
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
                             <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
-                            <li><a class="dropdown-item"
-                                   href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
+                            <li><a class="dropdown-item" href={{ route('inbox') }}>Messages</a></li>
+                            <li>
+                                <a class="dropdown-item" href={{ route('user_profile', ['username' => 'me']) }}>
+                                    Profile
+                                </a>
                             </li>
                             <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
                             <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
@@ -63,12 +65,12 @@
                     <div class="d-flex d-md-none flex-wrap flex-row w-100">
                         <li class="nav-item col-12 d-flex justify-content-between">
                             <div class="col-6 d-flex align-items-center">
-                                <div class="d-flex p-0 align-self-center" style="width: 32px; height: 32px;">
-                                    <img style="border-radius:50%;" width="32" height="32"
-                                         src="https://i.pinimg.com/originals/1a/7d/32/1a7d32cb2bb09613bd771ac289fbaa7d.jpg"
+                                <div class="d-flex p-0 align-self-center align-items-center" style="width: 32px; height: 32px;">
+                                    <img style="border-radius:50%;" width="30" height="30"
+                                         src="{{ Auth::user()->getImage('small') }}"
                                          alt="Profile Image">
                                 </div>
-                                <span class="ms-1 navbar-text">Educorreia932</span>
+                                <span class="ms-1 navbar-text">{{ Auth::user()->name }}</span>
                             </div>
                             <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button"
                                     data-bs-toggle="modal" data-bs-target="#notifications-modal">
@@ -76,14 +78,15 @@
                                         class="bi bi-bell text-muted"></i> Notifications (42)</span>
                             </button>
                         </li>
+
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('settings') }}>Settings</a></li>
                         <li class="nav-item col-6"><a class="nav-link"
                                                       href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
                         </li>
-                        <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
+                        <li class="nav-item col-6"><a class="nav-link" href={{ route('inbox') }}>Messages</a></li>
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
+                        <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
                     </div>
-
                 @else
                     {{-- Authentication --}}
                     <li class="nav-item col-6 col-md-auto">
@@ -96,7 +99,7 @@
                             Sign up
                         </a>
                     </li>
-                @endif
+                @endauth
             </ul>
         </div>
     </nav>

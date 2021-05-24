@@ -1,4 +1,4 @@
-@extends("layouts.search", ['current_page' => 'users', 'search_route' => 'search_users'])
+@extends("layouts.search", ['current_page' => 'users', 'search_route' => 'search_users', 'title' => 'Users Search'])
 
 @section("breadcrumbs")
 @include("partials.breadcrumbs", [ "pages" => [
@@ -15,7 +15,7 @@
 @endsection
 
 @section("results")
-    <p>Results for: <u>{{ old('fts') ? old('fts') : 'All' }}</u> ({{ $members->total() }})</p>
+    <p>Results for: <u>{{ old('fts', 'All') }}</u> ({{ $members->total() }})</p>
 
     {{-- display users --}}
     @foreach($members as $member)

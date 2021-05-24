@@ -1,4 +1,4 @@
-@extends('layouts.dashboard', ['sub' => 'followed'])
+@extends('layouts.dashboard', ['sub' => 'followed', 'title' => 'Followed Users'])
 
 @section('subpage')
     <div class="container-fluid mb-4">
@@ -7,7 +7,9 @@
         </div>
 
         <div class="container">
-            @each ("partials.user_entry", $followers, "member")
+            @foreach ($followers as $member)
+                @include('partials.user_entry', ['member' => $member, 'last' => $loop->last])
+            @endforeach
         </div>
     </div>
 @endsection

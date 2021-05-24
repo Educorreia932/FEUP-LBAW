@@ -1,4 +1,4 @@
-@extends("layouts.search", ['current_page' => 'auctions', 'search_route' => 'search_auctions'])
+@extends("layouts.search", ['current_page' => 'auctions', 'search_route' => 'search_auctions', 'title' => 'Auction Search'])
 
 @inject('auc', 'App\Models\Auction')
 
@@ -19,7 +19,7 @@
 @endsection
 
 @section("results")
-    <p>Results for: <u>{{ old('fts') ? old('fts') : 'All' }}</u> ({{ $auctions->total() }})</p>
+    <p>Results for: <u>{{ old('fts', 'All') }}</u> ({{ $auctions->total() }})</p>
 
     {{-- display auctions --}}
     @foreach($auctions as $auction)

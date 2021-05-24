@@ -31,6 +31,17 @@ class MemberPolicy {
     }
 
     /**
+     * Determine whether the user can report another
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function contact(Member $member, Member $target) {
+        return $member->id != $target->id;
+    }
+
+    /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member

@@ -10,8 +10,8 @@
 /* Chrome, Safari, Edge, Opera */
 input.hide-appearence::-webkit-outer-spin-button,
 input.hide-appearence::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .big-boy {
@@ -61,7 +61,7 @@ input.hide-appearence::-webkit-inner-spin-button {
 
 /* Firefox */
 input[type=number].hide-appearence {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .text-overflow-ellipsis {
@@ -112,4 +112,12 @@ input[type=number].hide-appearence {
 
 .noUi-connect {
     background-color: var(--bs-primary);
+}
+
+
+@media (min-width: 576px) {
+    #footer-copyright::after {
+        content: ".  ";
+        white-space: pre;
+    }
 }

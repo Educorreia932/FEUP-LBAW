@@ -1,4 +1,4 @@
-@extends('layouts.app', ['current_page' => 'auctions'])
+@extends('layouts.app', ['current_page' => 'auctions', 'title' => $auction->title])
 
 @inject('helper', \App\Helpers\LbawUtils::class)
 

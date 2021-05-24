@@ -98,13 +98,10 @@ CREATE TABLE follow (
 );
 
 CREATE TABLE message_thread (
-    id                      SERIAL PRIMARY KEY
-);
-
-CREATE TABLE message_thread_participant (
-    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
-    participant_id      INTEGER REFERENCES member(id) NOT NULL,
-    PRIMARY KEY (thread_id, participant_id)
+    id                      SERIAL PRIMARY KEY,
+    topic                   TEXT DEFAULT 'Thread Topic' NOT NULL,
+    created                 TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    latest_message          INTEGER DEFAULT NULL
 );
 
 CREATE TABLE message (
@@ -114,6 +111,14 @@ CREATE TABLE message (
     sender_id              INTEGER REFERENCES member(id) NOT NULL,
     "timestamp"            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     ts_search              TSVECTOR DEFAULT NULL
+);
+
+ALTER TABLE message_thread ADD CONSTRAINT message_foreign_key FOREIGN KEY(latest_message) REFERENCES message(id);
+
+CREATE TABLE message_thread_participant (
+    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
+    participant_id      INTEGER REFERENCES member(id) NOT NULL,
+    PRIMARY KEY (thread_id, participant_id)
 );
 
 CREATE TABLE auction_report (
@@ -553,6 +558,28 @@ CREATE TRIGGER member_admin_identity
     BEFORE INSERT OR UPDATE ON member 
     FOR EACH ROW 
     EXECUTE PROCEDURE member_admin_identity();
+-- Trigger 20
+-- Set the last_message in the thread
+
+DROP FUNCTION IF EXISTS most_recent_message CASCADE;
+CREATE FUNCTION most_recent_message() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+
+    UPDATE message_thread
+        SET latest_message = NEW.id
+        WHERE message_thread.id = NEW.thread_id;
+
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS most_recent_message on message CASCADE;
+CREATE TRIGGER most_recent_message
+    AFTER INSERT ON message
+    FOR EACH ROW
+    EXECUTE PROCEDURE most_recent_message();
 -- Trigger 3
 -- A message's author must be a participant in the thread to which the message is being sent
 

@@ -1,4 +1,4 @@
-@extends('layouts.settings', ['active' => 'account'])
+@extends('layouts.settings', ['active' => 'account', 'title' => 'Account'])
 
 @section('subpage')
     <script defer src={{ asset("js/account_settings.js") }}></script>
@@ -33,23 +33,32 @@
                     @method('PUT')
                     @csrf
                     <div class="row mt-2 justify-content-between">
-                        <div class="col-lg-8 order-lg-2">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img id="image-preview" class="img-fluid rounded-3"
-                                            src={{ Auth::user()->getImage('medium') }}
-                                            alt={{ Auth::user()->username . ' profile picture' }}>
+                        <div class="col-lg-8 order-lg-2 big-boy">
+                            <div class="row flex-grow-1">
+                                <div class="col-12 col-sm-4 d-flex flex-column align-items-center justify-content-center">
+                                    <img id="image-preview" class="img-fluid rounded-3 mb-2"
+
+                                        src={{ Auth::user()->getImage('medium') }}
+                                        alt={{ Auth::user()->username . ' profile picture' }}>
 
                                     <input type="file" class="form-control" id="imageFile" name="image"/>
                                 </div>
-                                <div class="col-7">
-                                    <h3>{{ Auth::user()->name }}</h3>
-                                    <h4 class="text-muted">{{ '@' . Auth::user()->username }}</h4>
+
+                                <div class="col-12 col-sm-8 d-flex justify-content-between flex-column">
+                                    <div>
+                                        <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                                        <h6 class="mb-4 text-muted">{{ '@' . Auth::user()->username }}</h6>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="bio">Bio</label>
+                                        <textarea class="form-control" name="bio" id="bio" rows="4" maxlength="500" placeholder="{{ Auth::user()::$default_bio }}" style="resize: none">{{ Auth::user()->bio }}</textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 order-lg-1">
+                        <div class="col-lg-4 order-lg-1 d-flex flex-column justify-content-around">
                             <div class="mb-3">
                                 <label class="form-label" for="name">Name</label>
                                 <input class="form-control" autocomplete="off" type="text" id="name" name="name" placeholder="{{ Auth::user()->name }}">
