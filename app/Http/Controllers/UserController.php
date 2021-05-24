@@ -26,6 +26,11 @@ class UserController extends Controller {
 
         $validated = $request->validated();
 
+        if ($user->ratedUser(Auth::id()))
+            Rating::where("ratee_id", $user->id)
+                ->where("rater_id", Auth::id())
+                ->update(["value" => $validated["value"]]);
+
         Rating::create([
             'value' => $validated["value"],
             "ratee_id" => $user->id,

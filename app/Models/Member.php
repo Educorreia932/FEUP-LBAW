@@ -104,15 +104,20 @@ class Member extends Authenticatable {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
     }
 
+    /**
+     * Checks if a user has been rated by the authenticated user
+     *
+     * @param $id User's whose rating value is being checked
+     * @return int User's given rating value by the authenticated user
+     */
     public function ratedUser($id) {
         $user = Member::find($id);
-        $rating = $user->ratings()->where("ratee_id", "=", Auth::id())->first();
+        $rating = $user->ratings()->where("rater_id", "=", Auth::id())->first();
 
         if ($rating == null)
             return 0;
 
-        else
-            return $rating->value;
+        return $rating->value;
     }
 
     public function ratings() {

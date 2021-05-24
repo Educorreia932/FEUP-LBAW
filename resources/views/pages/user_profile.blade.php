@@ -95,7 +95,7 @@
 
                     @can("rate", $user)
                         <td>
-                            @if(Auth::user()->ratedUser(Auth::id()) == 1)
+                            @if(Auth::user()->ratedUser($user->id) == 1)
                                 <i class="bi bi-plus-circle-fill text-success"></i>
                             @else
                                 <button class="hover-scale btn btn-link p-0" type="submit" name="value"
@@ -112,7 +112,7 @@
 
                     @can("rate", $user)
                         <td>
-                            @if(Auth::user()->ratedUser(Auth::id()) == -1)
+                            @if(Auth::user()->ratedUser($user->id) == -1)
                                 <i class="bi bi-dash-circle-fill text-danger"></i>
                             @else
                                 <button class="hover-scale btn btn-link p-0" type="submit" name="value"
