@@ -159,4 +159,47 @@ class SettingsController extends Controller {
             "success", ["Password changed successfully."]
         );
     }
+    
+    public function toggle_settings(Request $request) {
+        $this->authorize('toggle_privacy_settings', $request->user());
+
+        $rules = array(
+            "setting" => ['required', 'string', Rule::in(['nsfw_consent', 'data_consent', 'notifications', 'outbid_notifications', 'start_auction_notifications', 'followed_user_activity'])]
+        );
+        
+        $messages = array(
+            "in" => "Invalid request."
+        );
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        
+        try {
+            
+            $validated_data = $validator->validate();
+
+            $id = Auth::id();
+
+            $user = Member::findOrFail($id);
+            
+            $setting = $validated_data['setting'];
+            
+            $user[$setting] = !$user[$setting];
+
+            $user->save();
+
+        } catch (ValidationException $e) {
+            return response()->json(
+                $validator->errors()->all(), 400
+            );
+        } catch (ModelNotFoundException $e) {
+            // return redirect()->back()->with(
+            //     'error',
+            //     ['This user doesn\'t exist.']
+            // );
+        }
+
+        return response()->json(array(
+            "success" => "Saved changes!"
+        ));
+    }
 }

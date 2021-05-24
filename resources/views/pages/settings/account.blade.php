@@ -1,7 +1,7 @@
 @extends('layouts.settings', ['active' => 'account'])
 
 @section('subpage')
-    <script defer src={{ asset("js/settings.js") }}></script>
+    <script defer src={{ asset("js/account_settings.js") }}></script>
 
     <div class="container-fluid">
         <h2 class="my-4">Account</h2>
@@ -52,19 +52,19 @@
                         <div class="col-lg-4 order-lg-1">
                             <div class="mb-3">
                                 <label class="form-label" for="name">Name</label>
-                                <input class="form-control" autocomplete="off" type="text" id="name" name="name" placeholder={{ Auth::user()->name }}>
+                                <input class="form-control" autocomplete="off" type="text" id="name" name="name" placeholder="{{ Auth::user()->name }}">
                             </div>
 
                             <label class="form-label" for="username">Username</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input autocomplete="off" type="text" class="form-control" id="username" name="username" placeholder={{ Auth::user()->username }}
+                                <input autocomplete="off" type="text" class="form-control" id="username" name="username" placeholder="{{ Auth::user()->username}}"
                                     aria-label="Username" aria-describedby="basic-addon1">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="email">Email</label>
-                                <input autocomplete="email" class="form-control" type="text" id="email" name="email" placeholder={{ Auth::user()->email }}>
+                                <input autocomplete="email" class="form-control" type="text" id="email" name="email" placeholder="{{ Auth::user()->email }}">
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                         </div>

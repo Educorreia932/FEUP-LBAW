@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class Member extends Authenticatable {
      * @var array
      */
     protected $casts = [
-        'joined' => 'datetime'
+        'joined' => 'datetime',
     ];
 
     /**

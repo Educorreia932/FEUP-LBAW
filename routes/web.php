@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
     Route::put("user/settings/account", "SettingsController@save_account_changes")->name("save_account_changes");
     Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
+    Route::put("user/settings/privacy/toggle", "SettingsController@toggle_settings")->name("toggle_settings");
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
     Route::put("user/settings/security", "SettingsController@change_password")->name("change_password");
 });

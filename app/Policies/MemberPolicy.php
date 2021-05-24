@@ -53,6 +53,17 @@ class MemberPolicy {
     }
 
     /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function toggle_privacy_settings(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
+
+    /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Member  $member
