@@ -161,9 +161,13 @@
                         </div>
 
                         @guest
-                        <a class="row mt-2" href="{{ route('login') }}">
-                            <button type="button" class="btn btn-primary offset-2 col-6" aria-label="Login to bid">Login to Bid</button>
-                        </a>
+                            @admin
+                                {{-- When admin is loged in --}}
+                            @else
+                                <a class="row mt-2" href="{{ route('login') }}">
+                                    <button type="button" class="btn btn-primary offset-2 col-6" aria-label="Login to bid">Login to Bid</button>
+                                </a>
+                            @endadmin
                         @else
                             @if($auction->holdsLatestBid(Auth::id()) && $auction->seller_id != Auth::id())
                                 <h5><strong>You hold the lastest bid</strong></h5>
