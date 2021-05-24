@@ -30,6 +30,10 @@ function toggle_setting(setting) {
                 status.appendChild(ul);
                 status_div.innerHTML = '';
                 status_div.appendChild(status);
+
+                setTimeout(() => {
+                    document.getElementById('status-messages').innerHTML = '';
+                }, 3000);
                 
             });
         });
