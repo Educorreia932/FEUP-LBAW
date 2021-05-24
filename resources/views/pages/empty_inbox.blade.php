@@ -4,13 +4,15 @@
 
 <div class="row m-2">
     {{-- Breadcrumbs --}}
-    <h1>Inbox</h1>
-    @include("partials.breadcrumbs", [ "pages" => [
-        ["title" => "Home", "href" => route('home')],
-        ["title" => "Users", "href" => route('search_users')],
-        ["title" => "me", "href" => route('user_profile', ['username' => Auth::user()->username])],
-        ["title" => "Inbox", "href" => route('inbox')]
-    ]])
+    @include("partials.breadcrumbs", [
+        "title" => "Inbox",
+        "pages" => [
+            ["title" => "Home", "href" => route('home')],
+            ["title" => "Users", "href" => route('search_users')],
+            ["title" => "me", "href" => route('user_profile', ['username' => Auth::user()->username])],
+            ["title" => "Inbox", "href" => route('inbox')]
+        ]
+    ])
 
     <hr>
 

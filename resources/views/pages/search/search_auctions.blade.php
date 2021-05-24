@@ -3,11 +3,13 @@
 @inject('auc', 'App\Models\Auction')
 
 @section("breadcrumbs")
-
-    @include("partials.breadcrumbs", [ "pages" => [
-        ["title" => "Home", "href" => route('home')],
-        ["title" => "Auctions", "href" => route('search_auctions')]
-    ]])
+    @include("partials.breadcrumbs", [
+        "title" => "Search Results",
+        "pages" => [
+            ["title" => "Home", "href" => route('home')],
+            ["title" => "Auctions", "href" => route('search_auctions')]
+        ]
+    ])
 @endsection
 
 @section("sorting")

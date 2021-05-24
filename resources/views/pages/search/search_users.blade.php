@@ -1,10 +1,13 @@
 @extends("layouts.search", ['current_page' => 'users', 'search_route' => 'search_users', 'title' => 'Users Search'])
 
 @section("breadcrumbs")
-@include("partials.breadcrumbs", [ "pages" => [
-    ["title" => "Home", "href" => route('home')],
-    ["title" => "Users", "href" => route('search_users')]
-]])
+    @include("partials.breadcrumbs", [
+        "title" => "Search Results",
+        "pages" => [
+            ["title" => "Home", "href" => route('home')],
+            ["title" => "Users", "href" => route('search_users')]
+        ]
+    ])
 @endsection
 
 @section("sorting")

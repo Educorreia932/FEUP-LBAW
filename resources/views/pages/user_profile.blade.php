@@ -10,12 +10,14 @@
 
         <div class="row px-0 my-2">
             {{-- Breadcrumbs --}}
-            <h1>User Profile</h1>
-            @include("partials.breadcrumbs", [ "pages" => [
-                ["title" => "Home", "href" => route('home')],
-                ["title" => "Users", "href" => route('search_users')],
-                ["title" => $user->username, "href" => route('user_profile', ['username' => $user->username])]
-            ]])
+            @include("partials.breadcrumbs", [
+                "title" => "User Profile",
+                "pages" => [
+                    ["title" => "Home", "href" => route('home')],
+                    ["title" => "Users", "href" => route('search_users')],
+                    ["title" => $user->username, "href" => route('user_profile', ['username' => $user->username])]
+                ]
+            ])
         </div>
 
         <div class="d-flex flex-column flex-md-row border border-4">

@@ -9,13 +9,15 @@
 <script defer src={{ asset("js/auction.js") }}></script>
 
 <div class="row m-2">
-    <h1>Auction Details & Bids</h1>
-    @include("partials.breadcrumbs", [ "pages" => [
-        ["title" => "Home", "href" => route('home')],
-        ["title" => "Auctions", "href" => route('search_auctions')],
-        ["title" => $auction->title, "href" => route('auction', ['id' => $auction->id])],
-        ["title" => "Auction Details", "href" => route('auction_details', ['id' => $auction->id])],
-    ]])
+    @include("partials.breadcrumbs", [
+        "title" => "Auction Details & Bids",
+        "pages" => [
+            ["title" => "Home", "href" => route('home')],
+            ["title" => "Auctions", "href" => route('search_auctions')],
+            ["title" => $auction->title, "href" => route('auction', ['id' => $auction->id])],
+            ["title" => "Auction Details", "href" => route('auction_details', ['id' => $auction->id])],
+        ]
+    ])
 </div>
 
 {{-- Bid history table --}}

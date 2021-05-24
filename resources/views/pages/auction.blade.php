@@ -11,13 +11,15 @@
 @endauth
 
 <div class="row m-2">
-    {{-- Breadcrumbs --}}
-    <h1>Auction</h1>
-    @include("partials.breadcrumbs", [ "pages" => [
-        ["title" => "Home", "href" => route('home')],
-        ["title" => "Auctions", "href" => route('search_auctions')],
-        ["title" => $auction->title, "href" => route('auction', ['id' => $auction->id])]
-    ]])
+    {{-- Page header --}}
+    @include("partials.breadcrumbs", [
+        "title" => "Auction",
+        "pages" => [
+            ["title" => "Home", "href" => route('home')],
+            ["title" => "Auctions", "href" => route('search_auctions')],
+            ["title" => $auction->title, "href" => route('auction', ['id' => $auction->id])]
+        ]
+    ])
 </div>
 
 <section class="container-fluid bg-light">
@@ -222,7 +224,9 @@
     <div class="row d-flex flex-row">
         <span class="d-flex align-items-end">
             <h3 class="m-0 p-0">Bid History</h3>
-            <a class="ms-2" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>See more</a>
+            <a class="ms-3 text-decoration-none" style="font-size: smaller;" href={{route('auction_details', ['id' => $auction->id])}}>
+                <i class="bi bi-box-arrow-right"></i> See full history
+            </a>
         </span>
 
         <hr class="my-1">
