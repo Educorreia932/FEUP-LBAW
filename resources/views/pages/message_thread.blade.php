@@ -37,7 +37,7 @@
             <div id='thread-identifier' data-thread-id="{{ $thread->id }}" class="p-2 d-flex flex-row justify-content-between bg-white border-bottom">
                 <div class="d-flex flex-row align-items-center">
                     <button type="button" class="btn hover-scale" data-bs-toggle="modal"
-                            data-bs-target="#edit-modal">
+                                data-bs-target="#edit-modal">
                         <i class="bi bi-pencil" style="font-size: 1.5em;"></i>
                     </button>
 
@@ -50,7 +50,7 @@
                                 @break
                             @endif
 
-                            <a class="text-decoration-none link-dark" href="{{ route('user_profile', ['username' => $participant->username ]) }}">{{ $participant->name }}@if (!$loop->last), @endif
+                            <a class="text-decoration-none link-dark" href="{{ route('user_profile', ['username' => $participant->username ]) }}">{{ $participant->name }}</a>@if (!$loop->last), @endif
                         @endforeach</h6>
                     </div>
                 </div>
