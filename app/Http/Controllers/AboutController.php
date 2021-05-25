@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 class AboutController extends Controller {
-    public function about() {
+    public function show() {
         return view('pages.about');
-    }
-
-    public function faq() {
-        return view('pages.faq');
     }
 }

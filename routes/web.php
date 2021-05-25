@@ -79,8 +79,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get("users/{username}", "UserController@showProfile")->name('user_profile');
 
 // Other
-Route::get('about', "AboutController@about")->name("about");
-Route::get('faq', "AboutController@faq")->name("faq");
+Route::get('about', "AboutController@show")->name("about");
+Route::get('faq', "FaqController@show")->name("faq");
 
 // Administration
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
