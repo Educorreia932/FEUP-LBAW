@@ -35,7 +35,6 @@
     <link href="{{ asset('css/authentication.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap_extension.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user_profile.css') }}" rel="stylesheet">
 

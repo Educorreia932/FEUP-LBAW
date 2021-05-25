@@ -39,6 +39,7 @@
     <script defer src={{ asset("js/bookmark.js") }}></script>
     <script defer src={{ asset("js/master_checkboxes.js") }}></script>
 
+    <script defer src={{ asset("js/init_tooltips.js") }}></script>
 
     {{-- Categories --}}
     <section>

@@ -5,6 +5,7 @@
 @inject('helper', \App\Helpers\LbawUtils::class)
 
 <script defer src={{ asset("js/auction.js") }}></script>
+<script defer src={{ asset("js/init_tooltips.js") }}></script>
 
 @auth
 <script defer src={{ asset("js/bookmark.js") }}></script>
@@ -70,9 +71,7 @@
             <div class="row" id="product-information">
                 <div class="row">
                     <h2 class="col mb-0 d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
-                        <i class="bi bi-circle-fill me-2
-                            @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->scheduled) text-warning @elseif($auction->open) text-success @endif"
-                            style="font-size: 0.5em;"></i>
+                        @auctionStatus($auction)
                         {{$auction->title}}
                     </h2>
                     <div

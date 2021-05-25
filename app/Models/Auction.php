@@ -102,10 +102,6 @@ class Auction extends Model {
         return $this->started && !$this->ended;
     }
 
-    public function getInterruptedAttribute() {
-        return in_array($this->status, array('Canceled', 'Frozen', 'Terminated'));
-    }
-
     public function getIncrementString() {
         if ($this->increment_fixed != null)
             return LbawUtils::formatCurrency($this->increment_fixed) . " φ";

@@ -9,9 +9,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <h4 class="d-flex align-items-center mb-0">
-                    <i class="bi bi-circle-fill me-2
-                    @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->scheduled) text-warning @elseif($auction->open) text-success @endif"
-                    style="font-size: 0.5em;"></i>
+                    @auctionStatus($auction)
                     <a class="text-decoration-none link-dark" href={{route('auction', ['id' => $auction->id])}}>{{ $auction->title }}</a>
                 </h4>
                 <span class="text-muted">
