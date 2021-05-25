@@ -1,3 +1,5 @@
+import { createPopUpAlert } from "./alerts.js";
+
 function toggle_setting(setting) {
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
@@ -10,31 +12,7 @@ function toggle_setting(setting) {
     fetch(request)
         .then(response => {
             response.json().then(json => {
-                const status_div = document.getElementById('status-messages');
-                const status = document.createElement('div');
-                if (response.ok) {
-                    status.classList.add('alert', 'alert-success');
-                    status.id = 'status_ok';
-                } else {
-                    status.classList.add('alert', 'alert-danger');
-                    status.id = 'status_error';
-                }
-                
-                const ul = document.createElement('ul');
-                Object.values(json).forEach(message => {
-                    const li = document.createElement('li');
-                    li.innerHTML = message;
-                    ul.appendChild(li);
-                });
-
-                status.appendChild(ul);
-                status_div.innerHTML = '';
-                status_div.appendChild(status);
-
-                setTimeout(() => {
-                    document.getElementById('status-messages').innerHTML = '';
-                }, 3000);
-                
+                createPopUpAlert(response.ok, json);
             });
         });
 }

@@ -2,17 +2,17 @@
 
 @section('page_head')
 
-    <script defer src={{ asset("js/admin_dashboard_users.js") }}></script>
+    <script defer type="module" src={{ asset("js/admin_dashboard_users.js") }}></script>
 
     <div class="my-4">
-        <h2>User Management</h2>
-
-
-        @include("partials.breadcrumbs", [ "pages" => [
-            ["title" => "Home", "href" => "/"],
-            ["title" => "Dashboard", "href" => "/dashboard"]
-        ]])
-
+        @include("partials.breadcrumbs", [
+            "title" => "User Management",
+            "pages" => [
+                ["title" => "Home", "href" => route('home') ],
+                ["title" => "Dashboard", "href" => route('admin.dashboard') ],
+                ["title" => "User Management", "href" => "."]
+            ]
+        ])
 
     </div>
 @endsection

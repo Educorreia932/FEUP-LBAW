@@ -54,6 +54,8 @@
 
 {{-- Main --}}
 <main id="content" class="big-boy">
+    <section class="alert-section"></section>
+
     @yield('content')
 </main>
 

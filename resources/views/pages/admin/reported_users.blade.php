@@ -2,12 +2,14 @@
 
 @section('page_head')
     <div class="my-4">
-        <h2>Reported Users</h2>
-
-        @include("partials.breadcrumbs", [ "pages" => [
-            ["title" => "Home", "href" => "/"],
-            ["title" => "Dashboard", "href" => "/dashboard"]
-        ]])
+        @include("partials.breadcrumbs", [
+            "title" => "Reported Users",
+            "pages" => [
+                ["title" => "Home", "href" => route('home') ],
+                ["title" => "Dashboard", "href" => route('admin.dashboard') ],
+                ["title" => "Reported Users", "href" => "."]
+            ]
+        ])
     </div>
 @endsection
 

@@ -23,9 +23,6 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="container-fluid mb-4">
-                    
-                    <section class="alert-section"></section>
-                    
                     @yield("page_head")
 
                     <div class="row">

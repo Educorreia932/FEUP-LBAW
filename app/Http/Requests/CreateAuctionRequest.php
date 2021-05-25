@@ -8,15 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Rules\AfterToday;
 use Carbon\Carbon;
 
-class CreateAuctionRequest extends FormRequest
-{
+class CreateAuctionRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return Auth::check();
     }
 
@@ -25,8 +23,7 @@ class CreateAuctionRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'title' => 'required|min:5|max:50',
             'description' => 'required|min:10|max:255',
@@ -47,8 +44,7 @@ class CreateAuctionRequest extends FormRequest
      *
      * @return void
      */
-    protected function prepareForValidation()
-    {
+    protected function prepareForValidation() {
 
         // converting date and hour to datetime
         if ($this->has(['start_date', 'start_time'])) {

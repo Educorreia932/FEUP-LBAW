@@ -2,15 +2,17 @@
 
 @section('page_head')
 
-    <script defer src={{ asset("js/admin_dashboard_auctions.js") }}></script>
+    <script defer type="module" src={{ asset("js/admin_dashboard_auctions.js") }}></script>
 
     <div class="my-4">
-        <h2>Auction Management</h2>
-
-        @include("partials.breadcrumbs", [ "pages" => [
-            ["title" => "Home", "href" => "/"],
-            ["title" => "Dashboard", "href" => "/dashboard"]
-        ]])
+        @include("partials.breadcrumbs", [
+            "title" => "Auction Management",
+            "pages" => [
+                ["title" => "Home", "href" => route('home') ],
+                ["title" => "Dashboard", "href" => route('admin.dashboard') ],
+                ["title" => "Auction Management", "href" => "."]
+            ]
+        ])
     </div>
 @endsection
 

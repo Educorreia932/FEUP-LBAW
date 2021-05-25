@@ -92,7 +92,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
     // Home (Dashboard)
-    Route::get("dashboard", fn() => redirect("admin/dashboard/user_management"))->name("home");
+    Route::get("dashboard", fn() => redirect("admin/dashboard/user_management"))->name("dashboard");
     Route::get("dashboard/user_management", "DashboardController@manageUsers")->name("user_management");
     Route::get("dashboard/reported_users", "DashboardController@reportedUsers")->name("reported_users");
     Route::get("dashboard/reported_users/{username}", "DashboardController@userReports")->name("user_reports");
