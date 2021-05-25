@@ -43,9 +43,7 @@
                                 id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2">{{ Auth::user()->name }}</span>
                             <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                                <img style="border-radius:50%;" width="40" height="40"
-                                     src="{{ Auth::user()->getImage('small') }}"
-                                     alt="Profile Image">
+                                <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::user(), small)>
                             </div>
                         </button>
 
@@ -82,9 +80,7 @@
                         <li class="nav-item col-12 d-flex justify-content-between">
                             <div class="col-6 d-flex align-items-center">
                                 <div class="d-flex p-0 align-self-center align-items-center" style="width: 32px; height: 32px;">
-                                    <img style="border-radius:50%;" width="30" height="30"
-                                         src="{{ Auth::user()->getImage('small') }}"
-                                         alt="Profile Image">
+                                    <img style="border-radius:50%;" width="30" height="30" @profilepic(Auth::user(), small)>
                                 </div>
                                 <span class="ms-1 navbar-text">{{ Auth::user()->name }}</span>
                             </div>
@@ -117,9 +113,7 @@
                                     id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
                                 <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                                    <img style="border-radius:50%;" width="40" height="40"
-                                        src={{ Auth::guard('admin')->user()->getImage('small') }}
-                                        alt="Profile Image">
+                                    <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
                                 </div>
                             </button>
 

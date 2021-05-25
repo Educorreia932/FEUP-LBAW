@@ -17,6 +17,10 @@ class Auction extends Model {
 
     protected $table = "auction";
 
+    const STATUS = [
+        'Active', 'Terminated'
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -47,7 +51,8 @@ class Auction extends Model {
      * @var array
      */
     protected $attributes = [
-        'nsfw' => 'false'
+        'nsfw' => 'false',
+        'status' => 'Active'
     ];
 
     /**
@@ -77,9 +82,9 @@ class Auction extends Model {
         'Others' => 'oth',
     ];
 
-    const STATUS = [
-        'Active', 'Terminated'
-    ];
+    public function getPrettyUrlAttribute() {
+        return LbawUtils::slugify($this->title);
+    }
 
     public function getEndedAttribute() {
         return Carbon::now() > $this->end_date;

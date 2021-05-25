@@ -128,6 +128,10 @@ class Member extends Authenticatable {
         return asset('images/users/' . $this->id . '_' . $type . '.jpg');
     }
 
+    public function getDefaultImage($type = 'small') {
+        return asset('images/default/users/' . $type . '.jpg');
+    }
+
     /**
      * Checks if a user has been rated by the authenticated user
      *

@@ -1,5 +1,3 @@
-@inject('helper', \App\Helpers\LbawUtils::class)
-
 <tr>
     @isset($bid_no)
     <td>{{ $bid_no }}</td>
@@ -31,13 +29,13 @@
         @else
         <td>
             <i class="bi bi-person-circle mx-2" style="font-size: 1.2rem;"></i>
-            <span>{{ $helper->encodeUsername($auction, $bid->bidder_id)}}</span>
+            <span>@encodeUsername($auction, $bid->bidder_id)</span>
             @if ($bid->id == $auction->latest_bid)
             <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
             @endif
         </td>
         @endif
 
-    <td>{{ $helper->formatCurrency($value) }} &phi;</td>
+    <td>@currency($value) &phi;</td>
     <td>{{ $time }}</td>
 </tr>
