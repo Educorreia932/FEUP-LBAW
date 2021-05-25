@@ -165,10 +165,12 @@
 
                         <div class="d-flex flex-row  justify-content-end  mt-3  mb-3">
                             {{-- NSFW --}}
+                            @can('viewNsfw', App\Models\Auction::class))
                             <div class="mt-2 me-3 col-sm-3 form-check form-switch">
                                 <input class="form-check-input" name="nsfw" type="checkbox" id="switch-nsfw" value=true>
                                 <label class="form-check-label" for="switch-nsfw">NSFW</label>
                             </div>
+                            @endcan
 
                             <button class="btn btn-lg btn-primary btn-block text-end" type="submit">
                                 Create Auction

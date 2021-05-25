@@ -23,6 +23,8 @@ class UserController extends Controller {
 
     public function rate($username, RateUserRequest $request) {
         $user = Member::all()->where('username', '=', $username)->first();
+        $this->authorize('report', $user);
+        
         $validated = $request->validated();
         $rating = Auth::user()->ratedUser($user->id);
 

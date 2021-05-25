@@ -77,6 +77,6 @@ class AuctionPolicy
      * @return mixed
      */
     public function report(Member $member, Auction $auction) {
-        return $member->id != $auction->seller_id;
+        return !$member->banned && $member->id != $auction->seller_id;
     }
 }

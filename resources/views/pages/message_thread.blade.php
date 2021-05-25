@@ -88,7 +88,8 @@
                         placeholder="Aa"
                         aria-label="Write a message"
                         aria-describedby="send-addon"
-                        name="body">
+                        name="body"
+                        @if (Auth::user()->banned) disabled @endif>
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="bi bi-arrow-up-right"></i></button>
                 </div>
 

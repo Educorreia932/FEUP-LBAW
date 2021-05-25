@@ -93,6 +93,6 @@ class MemberPolicy {
      * @return bool
      */
     public function rate(Member $member, Member $target) {
-        return $member->id != $target->id;
+        return !$member->banned && $member->id != $target->id;
     }
 }
