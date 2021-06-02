@@ -1,13 +1,13 @@
 @extends('layouts.app', ['title' => 'Log In'])
 
 @section('content')
-    
+
     <div class="container-fluid" style="flex:auto;">
         <section class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
                 <form class="form-signin" method="POST" action="{{ route("login") }}">
                     @csrf
-                
+
                     <h1 class="mb-3">Sign In</h1>
 
                     @if ($errors->any())
@@ -39,10 +39,10 @@
                     <span class="divider-text text-black-50">Or</span>
                 </div>
 
-                <button class="btn btn-lg btn-secondary btn-block" type="button">
+                <a class="btn btn-lg btn-secondary btn-block" type="button" href="{{ route("callback", [ "provider" => "github"]) }}">
                     <i class=" bi bi-github"></i>
                     Sign in with GitHub
-                </button>
+                </a>
 
                 <div class="m-2 text-secondary mt-3">
                     <p>

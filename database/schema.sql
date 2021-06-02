@@ -42,6 +42,7 @@ CREATE TABLE member (
     email                               TEXT UNIQUE,
     password                            TEXT,
     remember_token                      TEXT,
+    github_id                           TEXT,
     name                                TEXT,
     bio                                 TEXT,
     phone_number                        TEXT,

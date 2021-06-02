@@ -11,6 +11,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
 Route::post('login', 'Auth\LoginController@login')->name("login");
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register_form');
 Route::post('register', 'Auth\RegisterController@register')->name("register");
+Route::get("auth/redirect/{provider}", "SocialController@redirect")->name("auth_redirect");
+Route::get("callback/{provider}", "SocialController@callback")->name("callback");
 
 // Search Results
 Route::get('auction/search', 'SearchResultsController@search_auctions')->name('search_auctions');
@@ -85,7 +87,7 @@ Route::get('about', "AboutController@show")->name("about");
 Route::get('faq', "FaqController@show")->name("faq");
 
 // Administration
-Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     // // Authentication
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
     Route::post('login', 'Auth\LoginController@login')->name("login");

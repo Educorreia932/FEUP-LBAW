@@ -38,10 +38,11 @@
             <span class="divider-text text-black-50">Or</span>
         </div>
 
-        <button class="btn btn-lg btn-secondary btn-block" type="button">
+        <a class="btn btn-lg btn-secondary btn-block" type="button"
+           href="{{ route("auth_redirect", [ "provider" => "github"]) }}">
             <i class=" bi bi-github"></i>
             Sign up with GitHub
-        </button>
+        </a>
 
         <div class="m-2 text-secondary mt-3 mb-5">
             <p>Already have an account?

@@ -13,9 +13,9 @@ class Member extends Authenticatable {
 
     protected $table = 'member';
 
-    protected $guard = 'member';
+    protected string $guard = 'member';
 
-    public $timestamps  = false;
+    public $timestamps = false;
 
     /**
      * The attributes that should be cast to native types.
@@ -34,14 +34,14 @@ class Member extends Authenticatable {
     protected $dateFormat = 'Y-m-d H:i:sO';
 
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'credit', 'bio'
+        'username', 'name', 'email', 'password', 'credit', 'bio', "github_id"
     ];
 
     protected $hidden = [
         'password', 'remember_token'
     ];
 
-    public static $default_bio = "This user hasn't developed a stand yet";
+    public static string $default_bio = "This user hasn't developed a stand yet";
 
     public function getHasAuctionsAttribute() {
         return $this->createdAuctions()->count();
