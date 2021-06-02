@@ -37,6 +37,10 @@ class SocialController extends Controller {
                 'provider' => $provider,
                 'github_id' => $get_info->id
             ]);
+
+            file_put_contents("images/users/" . $user->id . "_original.png", file($get_info->avatar));
+            file_put_contents("images/users/" . $user->id . "_medium.jpg", file($get_info->avatar . "?s=200"));
+            file_put_contents("images/users/" . $user->id . "_small.jpg", file($get_info->avatar . "?s=40"));
         }
 
         return $user;
