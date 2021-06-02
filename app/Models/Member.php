@@ -34,7 +34,7 @@ class Member extends Authenticatable {
     protected $dateFormat = 'Y-m-d H:i:sO';
 
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'credit', 'bio', "github_id"
+        'username', 'name', 'email', 'password', 'credit', 'bio', "github_id", "provider"
     ];
 
     protected $hidden = [

@@ -42,6 +42,8 @@ CREATE TABLE member (
     email                               TEXT UNIQUE,
     password                            TEXT,
     remember_token                      TEXT,
+    provider                            TEXT,
+    github_id                           TEXT,
     name                                TEXT,
     bio                                 TEXT,
     phone_number                        TEXT,
@@ -204,26 +206,6 @@ CREATE INDEX bookmark_auction_index on bookmarked_auction USING hash(auction_id)
 CREATE INDEX auction_tsvector_index ON auction USING GIN(ts_search);
 CREATE INDEX member_tsvector_index ON member USING GIN(ts_search);
 CREATE INDEX message_tsvector_index ON message USING GIST(ts_search);
--- Trigger 1
--- There must not exist an Admin with the same username as a Member
-
-DROP FUNCTION IF EXISTS admin_member_identity CASCADE;
-CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS 
-$BODY$
-BEGIN
-    IF EXISTS (SELECT username FROM member WHERE NEW.username = member.username) THEN
-        RAISE EXCEPTION 'There must not exist an Admin with the same username as a Member.';
-    END IF;
-    RETURN NEW;
-END
-$BODY$
-LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS admin_member_identity on admin CASCADE;
-CREATE TRIGGER admin_member_identity
-    BEFORE INSERT OR UPDATE ON admin 
-    FOR EACH ROW 
-    EXECUTE PROCEDURE admin_member_identity();
 -- Trigger 10
 -- When a user is outbidded in an auction they bidded on, an *Auction Outbid* notification is generated for that user
 
@@ -539,25 +521,26 @@ CREATE TRIGGER default_next_bid
     BEFORE INSERT ON auction
     FOR EACH ROW
     EXECUTE PROCEDURE default_next_bid();
--- Trigger 2
--- There must not exist a Member with the same username as an Admin
-DROP FUNCTION IF EXISTS member_admin_identity CASCADE;
-CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS 
+-- Trigger 1
+-- There must not exist an Admin with the same username as a Member
+
+DROP FUNCTION IF EXISTS admin_member_identity CASCADE;
+CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS 
 $BODY$
 BEGIN
-    IF EXISTS (SELECT username FROM admin WHERE NEW.username = admin.username) THEN
-        RAISE EXCEPTION 'There must not exist a Member with the same username as an Admin.';
+    IF EXISTS (SELECT username FROM member WHERE NEW.username = member.username) THEN
+        RAISE EXCEPTION 'There must not exist an Admin with the same username as a Member.';
     END IF;
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
-CREATE TRIGGER member_admin_identity
-    BEFORE INSERT OR UPDATE ON member 
+DROP TRIGGER IF EXISTS admin_member_identity on admin CASCADE;
+CREATE TRIGGER admin_member_identity
+    BEFORE INSERT OR UPDATE ON admin 
     FOR EACH ROW 
-    EXECUTE PROCEDURE member_admin_identity();
+    EXECUTE PROCEDURE admin_member_identity();
 -- Trigger 20
 -- Set the last_message in the thread
 
@@ -580,6 +563,25 @@ CREATE TRIGGER most_recent_message
     AFTER INSERT ON message
     FOR EACH ROW
     EXECUTE PROCEDURE most_recent_message();
+-- Trigger 2
+-- There must not exist a Member with the same username as an Admin
+DROP FUNCTION IF EXISTS member_admin_identity CASCADE;
+CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+    IF EXISTS (SELECT username FROM admin WHERE NEW.username = admin.username) THEN
+        RAISE EXCEPTION 'There must not exist a Member with the same username as an Admin.';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
+CREATE TRIGGER member_admin_identity
+    BEFORE INSERT OR UPDATE ON member 
+    FOR EACH ROW 
+    EXECUTE PROCEDURE member_admin_identity();
 -- Trigger 3
 -- A message's author must be a participant in the thread to which the message is being sent
 
