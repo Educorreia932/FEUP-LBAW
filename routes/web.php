@@ -1,6 +1,8 @@
 <?php
 
 use Facade\FlareClient\View;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -22,6 +24,23 @@ Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id',
 
 // Authenticated only
 Route::middleware(['auth'])->group(function () {
+    // Email Verification
+    Route::get('/email/verify', function() {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect('/users/me');
+    })->middleware('signed')->name('verification.verify');
+
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->SendEmailVerificationNotification();
+
+        return back()->with('message', 'Verification link sent');
+    })->middleware('throttle:6,1')->name('verification.send');  
+
     // Authentication
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -84,7 +103,7 @@ Route::get('faq', "FaqController@show")->name("faq");
 
 // Administration
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function() {
-    // // Authentication
+    // Authentication
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login_form');
     Route::post('login', 'Auth\LoginController@login')->name("login");
 
