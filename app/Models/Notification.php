@@ -18,7 +18,7 @@ class Notification extends Model {
 
     protected $dateFormat = 'Y-m-d H:i:sO';
 
-    public function subNotification() {
+    public function child() {
         switch ($this->type) {
             case "User Followed":
                 return UserNotification::where("notification_id", $this->id)->first();

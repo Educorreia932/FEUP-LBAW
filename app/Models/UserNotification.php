@@ -16,4 +16,14 @@ class UserNotification extends Model {
             "member_id"
         );
     }
+
+    public function notification() {
+        return $this->belongsTo(Notification::class, "notification_id", "id");
+    }
+
+    public function partial() {
+        return view("partials.notifications.user_followed", [
+            "user" => $this->user
+        ]);
+    }
 }

@@ -162,68 +162,9 @@
                                     <small>{{ $notification->time->shortRelativeDiffForHumans() }}</small>
                                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                                 </div>
+
                                 <div class="toast-body d-flex flex-row align-items-center">
-                                    {{-- Notification information --}}
-                                    <div style="order: 2;">
-                                        @switch($notification->type)
-                                            @case("User Followed")
-                                            @php
-                                                $user = $notification->subNotification()->user;
-                                            @endphp
-                                            <a href="{{ route("user_profile", ["username" => $user->username] ) }}">{{ $user->name }}</a> has started following you.
-                                            @break
-                                            @case("Auction Outbid")
-                                            @php
-                                                $auction = $notification->subNotification()->auction;
-                                                $icon = "graph-up";
-                                            @endphp
-                                            You were outbid in auction
-                                            <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
-                                                {{ $auction->title }}</a>.
-                                            @break
-                                            @case("Bookmarked Auction")
-                                            @php
-                                                $auction = $notification->subNotification()->auction;
-                                                $icon = "bookmark";
-                                            @endphp
-                                            The auction <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
-                                                {{ $auction->title }}</a> you had bookmarked has opened.
-                                            @break
-                                            @case("Created Auction")
-                                            @php
-                                                $auction = $notification->subNotification()->auction;
-                                                $user = $auction->seller;
-                                            @endphp
-                                            <a href="{{ route("user_profile", [ "username" => $user->username ] ) }}">
-                                                {{ $user->name }}</a>
-                                            created a new auction
-                                            <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
-                                                {{ $auction->title }}</a>.
-                                            @break
-                                            @case("Message Received")
-                                            @php
-                                                $message = $notification->subNotification()->message;
-                                                $user = $message->sender;
-                                            @endphp
-                                            You have a new
-                                            <a href="{{ route("message_thread", ["thread_id" => $message->thread->id]) }}">message</a> from
-                                            <a href="{{ route("user_profile", ["username" => $user->username] ) }}">{{ $user->name }}</a>.
-                                        @endswitch
-                                    </div>
-
-                                    <div class="me-2" style="order: 1">
-                                        {{-- User profile picture --}}
-                                        @if(isset($user))
-                                            <img style="border-radius:50%;" width="40" height="40" @profilepic($user, small)>
-
-                                            @php
-                                                $user = null;
-                                            @endphp
-                                        {{-- Icon --}}
-                                        @else
-                                            <i class="bi bi-{{$icon}} fs-3"></i>
-                                        @endif
-                                    </div>
+                                    {{ $notification->child()->partial() }}
                                 </div>
                             </div>
                         @endforeach

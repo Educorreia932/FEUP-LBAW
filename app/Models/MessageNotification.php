@@ -16,4 +16,15 @@ class MessageNotification extends Model {
             "message_id"
         );
     }
+
+    public function notification() {
+        return $this->belongsTo(Notification::class, "notification_id", "id");
+    }
+
+    public function partial() {
+        return view("partials.notifications.message_received", [
+            "message" => $this->message,
+            "user" => $this->message->sender
+        ]);
+    }
 }

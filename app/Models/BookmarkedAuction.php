@@ -15,5 +15,4 @@ class BookmarkedAuction extends Model {
     ];
 
     protected $table = 'bookmarked_auction';
-
 }
