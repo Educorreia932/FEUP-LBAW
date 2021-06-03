@@ -3,10 +3,7 @@
     style="max-width: 70%; min-width: 45%;">
 
     <a href="{{ route("user_profile", [ "username" => $message->sender->username ]) }}">
-        <img style="border-radius:50%;" width="40" height="40"
-            src="{{ $message->sender->getImage('small') }} "
-            alt="Profile Image"
-            class="m-3">
+        <img style="border-radius:50%;" width="40" height="40" class="m-3" @profilepic($message->sender, small)>
     </a>
 
     <div class="flex-grow-1 @if ($self) bg-primary text-white @else bg-white @endif d-inline-block p-2 rounded px-3">

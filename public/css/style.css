@@ -121,3 +121,7 @@ input[type=number].hide-appearence {
         white-space: pre;
     }
 }
+
+div.noUi-connect {
+    background-color: #007bff;
+}

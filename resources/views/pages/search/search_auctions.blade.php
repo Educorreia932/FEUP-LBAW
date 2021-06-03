@@ -31,12 +31,15 @@
 
 @section("filters")
     {{-- https://refreshless.com/nouislider/ --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" rel="stylesheet">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"
             integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg=="
             crossorigin="anonymous"></script>
     <script defer src={{ asset("js/search_results_auction.js") }}></script>
     <script defer src={{ asset("js/bookmark.js") }}></script>
     <script defer src={{ asset("js/master_checkboxes.js") }}></script>
+
+    <script defer src={{ asset("js/init_tooltips.js") }}></script>
 
     {{-- Categories --}}
     <section>
@@ -121,22 +124,22 @@
         <label class="text-secondary" for="price-range">Current bid (Φ)</label>
 
         <div class="row">
-            <div class="d-flex">
+            <div class="d-flex d-none d-md-flex">
                 <div id="price-range-slider" class="my-2 mx-4 w-100"></div>
             </div>
+        </div>
 
-            <div class="row mb-3">
-                <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
-                    <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
-                    <input type="number" min="0" class="form-control hide-appearence" id="input-number-left"
-                           aria-label="Amount" name="min_bid" value="{{ old('min_bid') }}">
-                </div>
+        <div class="row mb-3">
+            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                <label for="input-number-left" class="form-label text-secondary mb-0">Min</label>
+                <input type="number" min="0" class="form-control hide-appearence" id="input-number-left"
+                        aria-label="Amount" name="min_bid" value="{{ old('min_bid', 0) }}">
+            </div>
 
-                <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
-                    <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
-                    <input type="number" min="0" class="form-control hide-appearence" id="input-number-right"
-                           aria-label="Amount" name="max_bid" value="{{ old('max_bid') }}">
-                </div>
+            <div class="col-sm col-md-12 col-lg d-flex flex-column align-items-stretch">
+                <label for="input-number-right" class="form-label text-secondary mb-0">Max</label>
+                <input type="number" min="0" class="form-control hide-appearence" id="input-number-right"
+                        aria-label="Amount" name="max_bid" value="{{ old('max_bid', 500) }}">
             </div>
         </div>
     </div>

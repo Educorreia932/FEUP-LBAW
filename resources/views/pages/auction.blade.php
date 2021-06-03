@@ -1,10 +1,11 @@
 @extends('layouts.app', ['current_page' => 'auctions', 'title' => $auction->title])
 
-@inject('helper', \App\Helpers\LbawUtils::class)
-
 @section('content')
 
+@inject('helper', \App\Helpers\LbawUtils::class)
+
 <script defer src={{ asset("js/auction.js") }}></script>
+<script defer src={{ asset("js/init_tooltips.js") }}></script>
 
 @auth
 <script defer src={{ asset("js/bookmark.js") }}></script>
@@ -70,9 +71,7 @@
             <div class="row" id="product-information">
                 <div class="row">
                     <h2 class="col mb-0 d-flex order-2 order-sm-1 order-md-2 order-lg-1 align-items-center">
-                        <i class="bi bi-circle-fill me-2
-                            @if ($auction->ended or $auction->interrupted) text-danger @elseif ($auction->scheduled) text-warning @elseif($auction->open) text-success @endif"
-                            style="font-size: 0.5em;"></i>
+                        @auctionStatus($auction)
                         {{$auction->title}}
                     </h2>
                     <div
@@ -112,13 +111,12 @@
                 <div
                     class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
                     <h3 class="d-sm-none">Seller</h3>
+                    <h5 class="d-none d-sm-block text-muted">Seller</h5>
                     <a href={{route('user_profile', ['username' => $auction->seller->username])}}
                         class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
                         <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
                         <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                            <img style="border-radius:50%;" width="40" height="40"
-                                    src={{ $auction->seller->getImage('small') }}
-                                    alt="Seller Profile Image">
+                            <img style="border-radius:50%;" width="40" height="40" @profilepic($auction->seller, small)>
                         </div>
                     </a>
                 </div>
@@ -130,7 +128,7 @@
                         <div class="row">
                             <div class="col d-flex flex-column">
                                 @if ($auction->current_bid != null)
-                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                <h4>@currency($auction->current_bid) &phi;</h4>
                                 @else
                                 <h4>No bids were made</h4>
                                 @endif
@@ -151,14 +149,14 @@
                             <div class="col d-flex flex-column">
                                 <span>Current bid</span>
                                 @if ($auction->current_bid != null)
-                                <h4>{{$helper->formatCurrency($auction->current_bid)}} &phi;</h4>
+                                <h4>@currency($auction->current_bid) &phi;</h4>
                                 @else
                                 <h4>No bids</h4>
                                 @endif
                             </div>
                             <div class="col d-flex flex-column">
                                 <span>Next bid starts at</span>
-                                <h4>{{$helper->formatCurrency($auction->next_bid)}} &phi;</h4>
+                                <h4>@currency($auction->next_bid) &phi;</h4>
                             </div>
                         </div>
 

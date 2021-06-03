@@ -1,7 +1,8 @@
-<div class="row">
-    <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex justify-content-center">
-        <a href={{route('user_profile', ['username' => $member->username])}}><img style="border-radius: 50%;" width="120" height="120" src={{ $member->getImage('medium') }}
-                                        alt="User profile image"></a>
+<div class="row hover-highlight py-2 pe-md-2 rounded-3">
+    <div class="col-5 col-sm-3 col-lg-2 p-0 d-flex align-content-center justify-content-center">
+        <a href={{route('user_profile', ['username' => $member->username])}}>
+            <img style="border-radius: 50%;" width="120" height="120" @profilepic($member, medium)>
+        </a>
     </div>
     <div class="col-7 col-sm-9 col-lg-10">
         <div class="d-flex flex-column mb-3 mb-md-0">

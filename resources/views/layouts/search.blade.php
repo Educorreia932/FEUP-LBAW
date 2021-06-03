@@ -6,7 +6,7 @@
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
 
-            <form action="{{route($search_route)}}" id="search-form" method="GET" role="search">
+            <form action="{{ route($search_route) }}" id="search-form" method="GET" role="search">
                 @csrf
 
                 <div class="row">

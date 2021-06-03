@@ -19,8 +19,10 @@ Route::get('auction/search', 'SearchResultsController@search_auctions')->name('s
 Route::get('user/search', 'SearchResultsController@search_users')->name('search_users');
 
 // Auctions
-Route::get("auction/{id}", "AuctionController@show")->where('id', '[0-9]+')->name("auction");
-Route::get("auction/{id}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details");
+Route::get("auction/{id}/details", "AuctionController@redirectPrettyUrlDetails")->where('id', '[0-9]+')->name("auction_details");
+Route::get("auction/{id}-{prettyurl}/details", "AuctionController@showDetails")->where('id', '[0-9]+')->name("auction_details_pretty_url");
+Route::get("auction/{id}", "AuctionController@redirectPrettyUrl")->where('id', '[0-9]+')->name("auction");
+Route::get("auction/{id}-{prettyurl}", "AuctionController@show")->where('id', '[0-9]+')->name("auction_pretty_url");
 
 // Authenticated only
 Route::middleware(['auth'])->group(function () {

@@ -21,16 +21,37 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AuctionController extends Controller {
-    public function show($id) {
+
+    public function redirectPrettyUrl($id) {
         $auction = Auction::findOrFail($id);
         $this->authorize('view', $auction);
+
+        return redirect(route('auction_pretty_url', ['id' => $id, 'prettyurl' => $auction->pretty_url]));
+    }
+
+    public function show($id, $prettyurl) {
+        $auction = Auction::findOrFail($id);
+        $this->authorize('view', $auction);
+
+        if ($prettyurl !== $auction->pretty_url)
+            return redirect(route('auction_pretty_url', ['id' => $id, 'prettyurl' => $auction->pretty_url]));
 
         return view('pages.auction', ['auction' => $auction]);
     }
 
-    public function showDetails($id) {
+    public function redirectPrettyUrlDetails($id) {
         $auction = Auction::findOrFail($id);
         $this->authorize('view', $auction);
+
+        return redirect(route('auction_details_pretty_url', ['id' => $id, 'prettyurl' => $auction->pretty_url]));
+    }
+
+    public function showDetails($id, $prettyurl) {
+        $auction = Auction::findOrFail($id);
+        $this->authorize('view', $auction);
+
+        if ($prettyurl !== $auction->pretty_url)
+            return redirect(route('auction_details_pretty_url', ['id' => $id, 'prettyurl' => $auction->pretty_url]));
 
         return view('pages.auction_details', ['auction' => $auction]);
     }
@@ -52,13 +73,15 @@ class AuctionController extends Controller {
     }
 
     public function bid(Request $request, $id) {
+
         $auction = Auction::findOrFail($id);
         $this->authorize('bid', $auction);
 
         if (!$request->has('bid'))
             abort(400);
 
-        $request->merge(['bid' => intval(preg_replace("/[^0-9]/", "", $request['bid']))]);
+        if ($request->has('bid'))
+            $request->merge(['bid' => intval(floatval($request['bid']) * 100)]);
 
         // Validate request
         $rules = array(
@@ -102,7 +125,6 @@ class AuctionController extends Controller {
 
         $auction = new Auction($validated);
         $auction->seller_id = Auth::id();
-        $auction->status = 'Scheduled';
 
         $auction->save();
 

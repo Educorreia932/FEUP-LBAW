@@ -23,9 +23,7 @@
                 <div
                     class="col-12 col-md-8 user-details d-flex flex-column flex-md-row align-items-center align-items-md-start">
                     <div class="profile-avatar m-0 m-md-3">
-                        <img width="200" height="200"
-                             src={{ $user->getImage('medium') }}
-                                 alt={{ $user->username . " profile picture" }}>
+                        <img width="200" height="200" @profilepic($user, medium)>
                     </div>
 
                     <div class="col-12 col-md-4 d-flex flex-column mt-md-5 ps-2 me-2">

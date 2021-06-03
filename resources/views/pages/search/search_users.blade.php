@@ -22,11 +22,18 @@
 
     {{-- display users --}}
     @foreach($members as $member)
-        @include('partials.user_entry', ['member' => $member])
+        @include('partials.user_entry', ['member' => $member, 'last' => $loop->last])
     @endforeach
 @endsection
 
 @section("filters")
+
+{{-- https://refreshless.com/nouislider/ --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"
+        integrity="sha512-EnXkkBUGl2gBm/EIZEgwWpQNavsnBbeMtjklwAa7jLj60mJk932aqzXFmdPKCG6ge/i8iOCK0Uwl1Qp+S0zowg=="
+        crossorigin="anonymous"></script>
+<script defer src={{ asset("js/search_results_user.js") }}></script>
 
 <script defer src={{ asset("js/follow_users.js") }}></script>
 
@@ -63,17 +70,30 @@
     </div>
 
     {{-- User's minimum rating --}}
+    @admin
     <p class="my-0 text-secondary">Rating</p>
+    @endadmin
     <div class="row mb-3">
-        <div class="col-6 w-50">
-            <label class="text-secondary" for="user_min_rating">Min</label>
-            <input type="number" class="form-control hide-appearence" step="1" placeholder="0" value="{{ old('user_min_rating') }}" id="input-number-left" name="user_min_rating" aria-label="User Min Rating">
+
+        @admin
+        <div class="row">
+            <div class="d-none d-md-flex">
+                <div id="rating-range-slider" class="my-2 mx-4 w-100"></div>
+            </div>
+        </div>
+        @endadmin
+
+        <div class="@admin col-6 @endadmin">
+            <label class="text-secondary" for="user_min_rating">Min @unlessadmin Rating @endadmin</label>
+            <input type="number" class="form-control hide-appearence" step="1" placeholder="0" value="{{ old('user_min_rating', -5) }}" id="input-number-left" name="user_min_rating" aria-label="User Min Rating">
         </div>
 
-        <div class="col-6 w-50">
+        @admin
+        <div class="col-6">
             <label class="text-secondary" for="user_max_rating">Max</label>
-            <input type="number" class="form-control hide-appearence" step="1" placeholder="1000" value="{{ old('user_max_rating') }}" id="input-number-right" name="user_max_rating" aria-label="User Max Rating">
+            <input type="number" class="form-control hide-appearence" step="1" placeholder="1000" value="{{ old('user_max_rating', 5000) }}" id="input-number-right" name="user_max_rating" aria-label="User Max Rating">
         </div>
+        @endadmin
     </div>
 
     <div class="form-group mt-3">

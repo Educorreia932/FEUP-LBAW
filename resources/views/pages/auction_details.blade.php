@@ -87,7 +87,7 @@
                             <td></td>
                             <td>Starting Bid</td>
 
-                            <td>{{ $helper->formatCurrency($auction->starting_bid) }} &phi;</td>
+                            <td>@currency($auction->starting_bid) &phi;</td>
                             <td>{{ $auction->start_date }}</td>
                         </tfoot>
                         </tbody>
