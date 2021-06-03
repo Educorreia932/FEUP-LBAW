@@ -175,19 +175,16 @@
                                             @case("Auction Outbid")
                                             @php
                                                 $auction = $notification->subNotification()->auction;
-                                                $user = $auction->latest->bidder;
+                                                $icon = "graph-up";
                                             @endphp
                                             You were outbid in auction
                                             <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
-                                                {{ $auction->title }}</a>
-                                            by
-                                            <a href="{{ route("user_profile", ["username" => $user->username ]) }}">
-                                                {{ $user->username }}</a>.
+                                                {{ $auction->title }}</a>.
                                             @break
                                             @case("Bookmarked Auction")
                                             @php
                                                 $auction = $notification->subNotification()->auction;
-                                                $user = $auction->seller;
+                                                $icon = "bookmark";
                                             @endphp
                                             The auction <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
                                                 {{ $auction->title }}</a> you had bookmarked has opened.
@@ -206,7 +203,7 @@
                                             @case("Message Received")
                                             @php
                                                 $message = $notification->subNotification()->message;
-                                                $user = $auction->seller;
+                                                $user = $message->sender;
                                             @endphp
                                             You have a new
                                             <a href="{{ route("message_thread", ["thread_id" => $message->thread->id]) }}">message</a> from
@@ -214,9 +211,18 @@
                                         @endswitch
                                     </div>
 
-                                    {{-- User profile picture --}}
                                     <div class="me-2" style="order: 1">
-                                        <img style="border-radius:50%;" width="40" height="40" @profilepic($user, small)>
+                                        {{-- User profile picture --}}
+                                        @if(isset($user))
+                                            <img style="border-radius:50%;" width="40" height="40" @profilepic($user, small)>
+
+                                            @php
+                                                $user = null;
+                                            @endphp
+                                        {{-- Icon --}}
+                                        @else
+                                            <i class="bi bi-{{$icon}} fs-3"></i>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
