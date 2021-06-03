@@ -155,7 +155,7 @@
                     </div>
 
                     <div class="modal-body">
-                        @foreach(Auth::user()->notifications()->get() as $notification)
+                        @foreach(Auth::user()->notifications()->orderBy("time", "desc")->get() as $notification)
                             <div class="toast mb-3 w-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
                                 <div class="toast-header">
                                     <strong class="me-auto">{{ $notification->type }}</strong>
@@ -175,7 +175,7 @@
                                                 $auction = $notification->subNotification()->auction;
                                                 $user = $auction->latest->bidder;
                                             @endphp
-                                            You were outbidded in auction
+                                            You were outbid in auction
                                             <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
                                                 {{ $auction->title }}</a>
                                             by
