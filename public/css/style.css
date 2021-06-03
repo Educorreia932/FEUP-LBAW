@@ -2,7 +2,7 @@
     --light-grey: #f5f5f5;
     --hightlight-grey: #cfcfcf80;
 
-    --bs-primary: #6618DA;
+    --primary: #6618DA;
 }
 
 .bg-light-grey {
@@ -112,10 +112,6 @@ input[type=number].hide-appearence {
     border-radius: 50%;
 }
 
-.noUi-connect {
-    background-color: var(--bs-primary);
-}
-
 
 @media (min-width: 576px) {
     #footer-copyright::after {
@@ -125,7 +121,7 @@ input[type=number].hide-appearence {
 }
 
 div.noUi-connect {
-    background-color: #007bff;
+    background-color: var(--primary);
 }
 
 
@@ -139,7 +135,7 @@ div.noUi-connect {
 
 #home-banner-title {
     color: white;
-    background-color: #6618DA;
+    background-color: var(--primary);
     border-radius: 20px;
 }
 
@@ -149,7 +145,7 @@ div.noUi-connect {
 
 .home-category-all {
     border-radius: 15%;
-    background-color: #6618DA;
+    background-color: var(--primary);
     width: 9.2em;
     text-decoration: none;
 }
@@ -197,7 +193,7 @@ div.noUi-connect {
 }
 
 .home-category svg {
-    color:#6618DA;
+    color: var(--primary);
 }
 
 .home-category {

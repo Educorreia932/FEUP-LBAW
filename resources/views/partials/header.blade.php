@@ -130,7 +130,7 @@
                         </li>
 
                         <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2 text-light"
+                            <a class="d-inline-block d-md-block nav-link border border-primary rounded-3 px-2 bg-primary text-white"
                             href={{ route('register_form') }}>
                                 Sign up
                             </a>

@@ -11,9 +11,8 @@ if (chart_elem != null) {
     });
 
     let colors = {
-        line: "#0D6EFD",
-        points: "#0A2FB3",
-        yellow: "#ffff00"
+        line: "#6618DA",
+        points: "#4c07b5"
     }
 
     let data = {
