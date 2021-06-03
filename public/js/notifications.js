@@ -9,6 +9,5 @@ toasts.forEach(function (e) {
     toastInstances.push(toastInstance);
 })
 
-for (const toastInstance of toastInstances) {
+for (const toastInstance of toastInstances)
     toastInstance.show();
-}

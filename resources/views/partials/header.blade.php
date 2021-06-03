@@ -156,14 +156,59 @@
 
                     <div class="modal-body">
                         @foreach(Auth::user()->notifications()->get() as $notification)
-                            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                            <div class="toast mb-3 w-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
                                 <div class="toast-header">
-                                    <strong class="me-auto">Bootstrap</strong>
-                                    <small>11 mins ago</small>
+                                    <strong class="me-auto">{{ $notification->type }}</strong>
+                                    <small>{{ $notification->time->shortRelativeDiffForHumans() }}</small>
                                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                                 </div>
                                 <div class="toast-body">
-                                    Hello, world! This is a toast message.
+                                    @switch($notification->type)
+                                        @case("User Followed")
+                                            @php
+                                                $user = $notification->subNotification()->user;
+                                            @endphp
+                                            <a href="{{ route("user_profile", ["username" => $user->username] ) }}">{{ $user->name }}</a> has started following you.
+                                            @break
+                                        @case("Auction Outbid")
+                                            @php
+                                                $auction = $notification->subNotification()->auction;
+                                                $user = $auction->latest->bidder;
+                                            @endphp
+                                            You were outbidded in auction
+                                            <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
+                                                {{ $auction->title }}</a>
+                                            by
+                                            <a href="{{ route("user_profile", ["username" => $user->username ]) }}">
+                                                {{ $user->username }}</a>.
+                                            @break
+                                        @case("Bookmarked Auction")
+                                            @php
+                                                $auction = $notification->subNotification()->auction;
+                                            @endphp
+                                            The auction <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
+                                            {{ $auction->title }}</a> you had bookmarked has opened.
+                                            @break
+                                        @case("Created Auction")
+                                            @php
+                                                $auction = $notification->subNotification()->auction;
+                                                $user = $auction->seller;
+                                            @endphp
+                                            <a href="{{ route("user_profile", [ "username" => $user->username ] ) }}">
+                                                {{ $user->name }}</a>
+                                            created a new auction
+                                            <a href="{{ route("auction", [ "id" => $auction->id ]) }}">
+                                            {{ $auction->title }}</a>.
+                                            @break
+                                        @case("Message Received")
+                                            @php
+                                                $message = $notification->subNotification()->message;
+                                                $user = $auction->seller;
+                                            @endphp
+                                            You have a new
+                                            <a href="{{ route("message_thread", ["thread_id" => $message->thread->id]) }}">message</a> from
+                                            <a href="{{ route("user_profile", ["username" => $user->username] ) }}">{{ $user->name }}</a>.
+                                    @endswitch
                                 </div>
                             </div>
                         @endforeach

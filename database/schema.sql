@@ -170,21 +170,18 @@ CREATE TABLE notification (
 );
 
 CREATE TABLE auction_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_auction_id           INTEGER REFERENCES auction(id)
+    auction_id           INTEGER REFERENCES auction(id)
 );
 
 CREATE TABLE user_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_member_id            INTEGER REFERENCES member(id)
+    member_id            INTEGER REFERENCES member(id)
 );
 
 CREATE TABLE message_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_message_id           INTEGER REFERENCES message(id)
+    message_id           INTEGER REFERENCES message(id)
 );
 
 CREATE TABLE auction_image (
