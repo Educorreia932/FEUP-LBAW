@@ -187,7 +187,17 @@ div.noUi-connect {
     border-radius: 50%;
     padding: 1em;
     margin-bottom: 0.75em;
-    border: solid white 3px;
+
+    border-style: solid;
+    border-width: 3px;
+    border-color: transparent;
+
+    transition: border-color 500ms ease;
+    -webkit-transition: border-color 500ms ease;
+    -moz-transition: border-color 500ms ease;
+    -ms-transition: border-color 500ms ease;
+    -o-transition: border-color 500ms ease;
+
     width: min-content;
     height: min-content;
 }
@@ -202,13 +212,23 @@ div.noUi-connect {
 
 .home-category span {
     font-size: 1.2em;
+
+    text-decoration: underline;
+    text-decoration-color: transparent;
+
+    transition: text-decoration-color 500ms ease;
+    -webkit-transition: text-decoration-color 500ms ease;
+    -moz-transition: text-decoration-color 500ms ease;
+    -ms-transition: text-decoration-color 500ms ease;
+    -o-transition: text-decoration-color 500ms ease;
 }
 
 .home-category:hover span {
-    text-decoration: underline;
+    text-decoration-color: black;
 }
 
 .home-category:hover div:first-child {
-    border: solid lightgrey 3px;
+    border-color: grey;
 }
+
 

@@ -30,7 +30,7 @@
 
     <!-- Categories -->
     <section class="container">
-        <h3>Explore popular categories</h3>
+        <h2 class="pb-1 mb-3 border-bottom">Explore popular categories</h3>
 
         @php $cat_svg_size = "3em"; @endphp
 
@@ -156,22 +156,23 @@
             {{-- Recent bids --}}
             <section class="col-xl-6 mt-sm-4">
                 <hr class="d-sm-none">
-                <span class="d-flex flex-row mb-2 align-items-center">
-                                <h4>Recent bids</h4>
-                                <a href="search_results.php" class="ms-2 link-secondary text-decoration-none">See all <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </span>
+                <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
+                    <h2>Recent bids</h2>
+                    <a href="search_results.php" class="ms-2 text-decoration-none text-primary" style="font-size: small;"">
+                        See all <i class="bi bi-arrow-right"></i>
+                    </a>
+                </span>
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                     @each ("partials.auction_card", $bidded_auctions, "auction")
                 </div>
             </section>
 
-                {{-- Followed Users' Auctions --}}
-                <section class="col-xl-6 mt-sm-4">
-                    <hr class="d-sm-none">
-                    <span class="d-flex flex-row mb-2 align-items-center">
-                    <h4>Followed Users' Auctions</h4>
-                    <a href="search_results.php" class="ms-2 text-secondary text-decoration-none">
+            {{-- Followed Users' Auctions --}}
+            <section class="col-xl-6 mt-sm-4">
+                <hr class="d-sm-none">
+                <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
+                    <h2>Followed Users' Auctions</h2>
+                    <a href="search_results.php" class="ms-2 text-decoration-none  text-primary" style="font-size: small;"">
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
                 </span>
@@ -184,13 +185,13 @@
 
         @if(count($open_auctions))
             {{-- Open Auctions --}}
-            <section class="row mt-sm-4 col-lg-12">
+            <section class="row mt-sm-4 col-lg-12 py-3">
                 <hr class="d-sm-none">
 
-                <span class="d-flex flex-row mb-2 align-items-center">
-                    <h4>Today's auctions</h4>
+                <span class="d-flex flex-row align-items-baseline pb-1 mb-3 border-bottom">
+                    <h2>Today's auctions</h2>
                     <a href="search_results.php"
-                    class="ms-2 link-secondary text-decoration-none align-items-center">
+                    class="ms-2 link-secondary text-decoration-none text-primary" style="font-size: small;">
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
                 </span>
@@ -219,6 +220,103 @@
     </section>
     @endguest
 
+    {{-- Cool site features --}}
+    <section class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom">What we offer</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-hammer text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+              </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Sell & Bid</h4>
+              <p>I’m willing to see <strong>our transaction</strong> through, are you sir?</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-bookmark-plus text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Bookmarks</h4>
+              <p>Bookmark auctions to help <strong>keep track</strong> of your activity and interests.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-heart text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Follow sellers</h4>
+              <p>Simp for your favorite sellers and <strong>get notified of their auctions</strong>.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-graph-up text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Data availability</h4>
+              <p>Detailed <strong>charts</strong> to analyze any auction with ease.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-envelope text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Messaging</h4>
+              <p><strong>Communicate with others</strong> for questions, follow-ups and more.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-hourglass-split text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Scheduling</h4>
+              <p>Want everyone to be ready for your auction? <strong>Schedule it for later</strong>.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-piggy-bank text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.138-1.496A6.613 6.613 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.602 7.602 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962z"/>
+                <path fill-rule="evenodd" d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595zM2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.558 6.558 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.649 4.649 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393zm12.621-.857a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Credit system</h4>
+              <p><strong>Limited wallets</strong> ensure the <strong>fairness</strong> of our auctions to everyone.</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75em" height="1.75em"
+                    class="bi bi-shield-lock text-muted flex-shrink-0 me-3" viewBox="0 0 16 16">
+                <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+                <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+            </svg>
+            <div>
+              <h4 class="fw-bold mb-0">Safe</h4>
+              <p>Our platform <strong>safeguards your interests and privacy</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 @endsection

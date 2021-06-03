@@ -130,7 +130,7 @@
                         </li>
 
                         <li class="nav-item btn btn-primary col-6 col-md-auto py-0 px-2" style="box-sizing: content-box;">
-                            <a class="nav-link rounded-3"
+                            <a class="nav-link rounded-3 text-white"
                             href={{ route('register_form') }}>
                                 Sign up
                             </a>
