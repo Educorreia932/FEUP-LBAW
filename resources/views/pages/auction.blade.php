@@ -111,10 +111,12 @@
                 <div
                     class="col-sm-4 col-xl-6 order-sm-2 d-flex flex-column align-items-sm-end justify-content-sm-end mb-4 mb-sm-0 ml-1">
                     <h3 class="d-sm-none">Seller</h3>
-                    <h5 class="d-none d-sm-block text-muted">Seller</h5>
                     <a href={{route('user_profile', ['username' => $auction->seller->username])}}
                         class="text-decoration-none link-dark d-flex align-items-center flex-row-reverse justify-content-end flex-sm-row justify-content-sm-start">
-                        <span class="ms-3 ms-sm-0 me-0 me-sm-3">{{$auction->seller->name}}</span>
+                        <div class="d-flex flex-column align-items-end ms-3 ms-sm-0 me-0 me-sm-3">
+                            <h6 class="d-none d-sm-block text-end text-muted m-0">Seller</h6>
+                            <span class="text-end">{{$auction->seller->name}}</span>
+                        </div>
                         <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                             <img style="border-radius:50%;" width="40" height="40" @profilepic($auction->seller, small)>
                         </div>

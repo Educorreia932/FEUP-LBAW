@@ -30,22 +30,20 @@
                             @yield('breadcrumbs')
                         </div>
 
-                        <div class="d-flex flex-row py-4">
+                        <div class="d-flex flex-row justify-content-between py-4">
                             {{-- search text input --}}
-                            <nav class="col-md-10 d-flex flex-row">
+                            <nav class="col-md-10 d-flex flex-row justify-content-start">
                                 <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#sidebar" aria-expanded="false">
                                     <i class="bi bi-caret-right-fill"></i>
                                 </button>
 
                                 {{-- Search bar --}}
-                                <section class="container input-group">
-                                    <input type="search" class="form-control" placeholder="Search" aria-label="Search"
-                                        aria-describedby="search-addon" name="fts" value="{{ old('fts') }}">
-                                    <button type="submit" class="input-group-text border-0" id="search-addon" >
-                                        <i class="bi bi-search"></i>
-                                    </button>
-                                </section>
+                                <div class="input-group mx-3">
+                                    <input type="search" class="form-control" placeholder="Search auctions" aria-label="Search for auctions" aria-describedby="search-addon"
+                                        name="fts" value={{ old("fts") }}>
+                                    <button class="btn btn-outline-secondary" type="submit" id="search-addon"><i class="bi bi-search"></i></button>
+                                </div>
                             </nav>
 
                             {{-- sort by options --}}

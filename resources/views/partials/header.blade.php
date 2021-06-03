@@ -24,7 +24,7 @@
 
             <hr class="d-md-none text-white-50">
 
-            <ul class="navbar-nav flex-row ms-md-auto me-md-4">
+            <ul class="navbar-nav flex-row ms-md-auto me-md-1">
                 @auth
                     {{-- Notifications --}}
                     <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
@@ -125,12 +125,12 @@
                         </li>
                     @else
                         {{-- User not logged in --}}
-                        <li class="nav-item col-6 col-md-auto">
+                        <li class="nav-item col-6 col-md-auto me-2 border border-secondary rounded-3 px-2">
                             <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
                         </li>
 
                         <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2"
+                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2 text-light"
                             href={{ route('register_form') }}>
                                 Sign up
                             </a>

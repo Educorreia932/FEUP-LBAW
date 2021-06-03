@@ -6,7 +6,7 @@
             <div class="col-md-4 d-flex flex-column align-items-center justify-content-center text-center">
                 <figure>
                     <blockquote class="blockquote">
-                        <p>It's a website.</p>
+                        <h1>It's a website.</h1>
                     </blockquote>
                     <figcaption class="blockquote-footer">
                         João Correia Lopes & Sérgio Nunes in <cite title="Source Title">LBAW</cite>
@@ -19,19 +19,15 @@
             </div>
         </div>
 
-        <section class="row my-4 justify-content-center">
+        <section class="row my-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-10">
-                <div class="text-center">
-                    <h3>Celebrating over 3 weeks in development!</h3>
-                </div>
+                <h2>Celebrating over 3 weeks in development!</h2>
 
-                <div class="text-start">
-                    <p>Currently, most websites that provide auction services focus on physical items that must be
-                        transported from the seller to the buyer, which entails various complications such as creating
-                        false addresses to bypass shipping costs and using built-in or third-party messaging
-                        applications to transfer the item bought.</p>
-                    <p>Therefore we offer a unique web platform to auction exclusively digital products.</p>
-                </div>
+                <p class="text-start">Currently, most websites that provide auction services focus on physical items that must be
+                    transported from the seller to the buyer, which entails various complications such as creating
+                    false addresses to bypass shipping costs and using built-in or third-party messaging
+                    applications to transfer the item bought.</p>
+                <p>Therefore we offer a unique web platform to auction exclusively digital products.</p>
             </div>
         </section>
 
@@ -48,7 +44,7 @@
 
         {{-- Statistics --}}
         <section class="row m-4">
-            <h3>Statistics</h3>
+            <h2>Statistics</h2>
 
             <div class="container-fluid">
                 <div class="row">
@@ -72,16 +68,19 @@
             </div>
         </section>
 
-        {{-- Team --}}
-        <section class="row m-4">
-            <h3>Meet our Team</h3>
+        <hr class="my-5">
 
-            <div class="d-flex flex-row align-items-stretch justify-content-between overflow-auto">
+        {{-- Team --}}
+        <section class="row m-4 pb-5">
+            <h2>Meet our Team</h2>
+
+            <div class="d-flex flex-row align-items-stretch justify-content-between overflow-auto my-4">
                 @include("partials.team_card", ["name" => "Eduardo Correia", "username" => "Educorreia932", "img" => asset("images/team/skelizard.png")])
                 @include("partials.team_card", ["name" => "Ivo Saavedra", "username" => "ivSaav", "img" => asset("images/team/i_haz_bucket.png")])
                 @include("partials.team_card", ["name" => "Telmo Baptista", "username" => "Telmooo", "img" => asset("images/team/toilmo.png")])
                 @include("partials.team_card", ["name" => "Tiago Silva", "username" => "tiagodusilva", "img" => asset("images/team/homelessBanjoGuy.png")])
             </div>
         </section>
+
     </div>
 @endsection
