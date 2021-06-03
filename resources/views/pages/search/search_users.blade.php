@@ -20,10 +20,19 @@
 @section("results")
     <p>Results {{$members->firstItem()}}-{{$members->lastItem()}} for: <u>{{ old('fts', 'All') }}</u> ({{ $members->total() }})</p>
 
-    {{-- display users --}}
-    @foreach($members as $member)
-        @include('partials.user_entry', ['member' => $member, 'last' => $loop->last])
-    @endforeach
+    @if (count($members))
+        {{-- display users --}}
+        @foreach($members as $member)
+            @include('partials.user_entry', ['member' => $member, 'last' => $loop->last])
+        @endforeach
+    @else
+        {{-- No matches --}}
+        <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+            <i class="bi bi-search display-3 mb-2"></i>
+            <h5 class="mb-1">No matches found</h5>
+            <h6>Try changing some filters</h6>
+        </div>
+    @endif
 @endsection
 
 @section("filters")

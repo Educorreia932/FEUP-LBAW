@@ -23,10 +23,27 @@
 @section("results")
     <p>Results {{$auctions->firstItem()}}-{{$auctions->lastItem()}} for: <u>{{ old('fts', 'All') }}</u> ({{ $auctions->total() }})</p>
 
-    {{-- display auctions --}}
-    @foreach($auctions as $auction)
-        @include('partials.auction_entry', ['auction' => $auction])
-    @endforeach
+    @if (count($auctions))
+        {{-- display auctions --}}
+        @foreach($auctions as $auction)
+            @include('partials.auction_entry', ['auction' => $auction])
+        @endforeach
+    @else
+        {{-- No matches --}}
+        <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+            <i class="bi bi-search display-3 mb-2"></i>
+            <h5 class="mb-1">No matches found</h5>
+            @if($request->has("filter_check_timeframe") && !in_array('end', $request->filter_check_timeframe))
+                @php
+                    $params = $request->all();
+                    array_push($params["filter_check_timeframe"], "end");
+                @endphp
+                <h6>Looking for <a href="{{ route("search_auctions", $params) }}">auctions that have ended</a>?</h6>
+            @else
+                <h6>Try changing some filters</h6>
+            @endif
+        </div>
+    @endif
 @endsection
 
 @section("filters")
