@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller {
     public function show() {
         $open_auctions = Auction::query()
-            // ->where('start_date', '<', Carbon::now())
-            // ->where('end_date', '>', Carbon::now())
+            ->where('start_date', '<', Carbon::now())
+            ->where('end_date', '>', Carbon::now())
             ->limit(6);
 
         if (!Auth::check() || !Auth::user()->nsfw_consent)

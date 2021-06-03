@@ -47,7 +47,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -64,7 +64,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="sem" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -82,7 +82,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="sftw" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -98,7 +98,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="music" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -116,7 +116,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="book" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -132,7 +132,7 @@
             <li>
                 <form action="{{ route("search_auctions") }}" class="home-category text-dark" >
                     @csrf
-                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="game" checked hidden disabled>
+                    <input class="form-check-input" name="filter_check_category[]" type="checkbox" value="cem" checked hidden>
 
                     <button class="text-decoration-none" type="submit">
                         <div>
@@ -154,7 +154,7 @@
         @auth
         <div class="row">
             {{-- Recent bids --}}
-            <section class="col-xl-6 mt-sm-4">
+            <section class="d-flex flex-column col-xl-6 mt-sm-4">
                 <hr class="d-sm-none">
                 <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
                     <h2>Recent bids</h2>
@@ -162,13 +162,20 @@
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
                 </span>
+                @if (count($bidded_auctions))
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                     @each ("partials.auction_card", $bidded_auctions, "auction")
                 </div>
+                @else
+                <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+                    <i class="bi bi-wallet2 display-3"></i>
+                    <h5 class="">Bidded auctions will show up here!</h5>
+                </div>
+                @endif
             </section>
 
             {{-- Followed Users' Auctions --}}
-            <section class="col-xl-6 mt-sm-4">
+            <section class="d-flex flex-column col-xl-6 mt-sm-4">
                 <hr class="d-sm-none">
                 <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
                     <h2>Followed Users' Auctions</h2>
@@ -176,33 +183,44 @@
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
                 </span>
+                @if(count($followed_auctions))
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                     @each ("partials.auction_card", $followed_auctions, "auction")
                 </div>
+                @else
+                <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+                    <i class="bi bi-people display-3"></i>
+                    <h5 class="">Follow more sellers to track their activity!</h5>
+                </div>
+                @endif
             </section>
         </div>
         @endauth
 
-        @if(count($open_auctions))
-            {{-- Open Auctions --}}
-            <section class="row mt-sm-4 col-lg-12 py-3">
-                <hr class="d-sm-none">
+        {{-- Open Auctions --}}
+        <section class="row mt-sm-4 col-lg-12 py-3">
+            <hr class="d-sm-none">
 
-                <span class="d-flex flex-row align-items-baseline pb-1 mb-3 border-bottom">
-                    <h2>Today's auctions</h2>
-                    <a href="search_results.php"
-                    class="ms-2 link-secondary text-decoration-none text-primary" style="font-size: small;">
-                        See all <i class="bi bi-arrow-right"></i>
-                    </a>
-                </span>
+            <span class="d-flex flex-row align-items-baseline pb-1 mb-3 border-bottom">
+                <h2>Today's auctions</h2>
+                <a href="search_results.php"
+                class="ms-2 link-secondary text-decoration-none text-primary" style="font-size: small;">
+                    See all <i class="bi bi-arrow-right"></i>
+                </a>
+            </span>
 
-                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
-                    @each ("partials.auction_card", $open_auctions, "auction")
-                </div>
-            </section>
-        @else
+            @if (count($open_auctions))
+            <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                @each ("partials.auction_card", $open_auctions, "auction")
+            </div>
+            @else
+            <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+                <i class="bi bi-door-open display-3"></i>
+                <h5 class="">Looks like there are no items for sale right now, come back later!</h5>
+            </div>
+            @endif
+        </section>
 
-        @endempty
     </section>
 
 

@@ -42,7 +42,7 @@
                         <h4 class="mb-0">No bids were made</h4>
                         @endif
                     </div>
-                    @else
+                    @elseif ($auction->started)
                     <div class="col">
                         @if ($auction->latest_bid != null)
                         <span>Current bid</span>
