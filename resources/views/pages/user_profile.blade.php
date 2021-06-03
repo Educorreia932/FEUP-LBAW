@@ -53,9 +53,10 @@
                 <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
                     <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
                         {{-- OTHERS' PROFILE --}}
-                        <a class="p-0 link-dark text-decoration-none hover-scale" href="search_results.php">
+                        <a class="p-0 link-dark text-decoration-none hover-scale"
+                                href="{{ route("search_auctions", ["owner_filter" => "username", "fts_user" => $user->username]) }}">
                             <i class="bi bi-shop"></i>
-                            <span>Open Auctions</span>
+                            <span>Upcoming Auctions</span>
                         </a>
 
                         @can('contact', $user)
