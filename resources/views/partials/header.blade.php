@@ -125,12 +125,12 @@
                         </li>
                     @else
                         {{-- User not logged in --}}
-                        <li class="nav-item col-6 col-md-auto me-2 border border-secondary rounded-3 px-2">
-                            <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
+                        <li class="nav-item btn btn-dark col-6 col-md-auto me-2 border border-secondary rounded-3 py-0 px-2" style="box-sizing: content-box;">
+                            <a class="nav-link" href={{ route('login_form') }}>Sign in</a>
                         </li>
 
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-primary rounded-3 px-2 bg-primary text-white"
+                        <li class="nav-item btn btn-primary col-6 col-md-auto py-0 px-2" style="box-sizing: content-box;">
+                            <a class="nav-link rounded-3"
                             href={{ route('register_form') }}>
                                 Sign up
                             </a>

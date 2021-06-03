@@ -35,13 +35,13 @@
                             <script defer src={{ asset("js/follow_users.js") }}></script>
 
                             @if (Auth::user()->followsMember($user->id))
-                                <button type="button" class="follow btn btn-danger w-100"
+                                <button type="button" class="follow btn btn-primary w-100"
                                         member_username="{{ $user->username }}">
                                     <i class="bi bi-heart-fill"></i>
                                     <span>Following</span>
                                 </button>
                             @else
-                                <button type="button" class="follow btn btn-outline-danger w-100"
+                                <button type="button" class="follow btn btn-outline-primary w-100"
                                         member_username="{{ $user->username }}">
                                     <i class="bi bi-heart"></i>
                                     <span>Follow</span>
@@ -70,7 +70,7 @@
                         @can('report', $user)
                             <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal"
                                     class="btn ms-2 p-0 hover-scale">
-                                <i class="bi bi-flag-fill text-danger"></i>
+                                <i class="bi bi-flag"></i>
                                 <span>Report user</span>
                             </button>
                         @endcan

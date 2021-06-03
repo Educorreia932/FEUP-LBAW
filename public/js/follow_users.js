@@ -18,8 +18,8 @@ marks.forEach(elem => {
                 if (response.ok) {
                     target.classList.remove("bi-heart");
                     target.classList.add("bi-heart-fill");
-                    elem.classList.add("btn-danger");
-                    elem.classList.remove("btn-outline-danger");
+                    elem.classList.add("btn-primary");
+                    elem.classList.remove("btn-outline-primary");
                     target_span.innerHTML = "Following";
                 }
             });
@@ -30,8 +30,8 @@ marks.forEach(elem => {
                 if (response.ok) {
                     target.classList.add("bi-heart");
                     target.classList.remove("bi-heart-fill");
-                    elem.classList.add("btn-outline-danger");
-                    elem.classList.remove("btn-danger");
+                    elem.classList.add("btn-outline-primary");
+                    elem.classList.remove("btn-primary");
                     target_span.innerHTML = "Follow";
                 }
             });

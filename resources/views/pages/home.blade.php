@@ -4,7 +4,7 @@
     <script src={{ asset("js/auction-card.js") }}></script>
 
     {{-- Site Banner --}}
-    <section id="home-banner" class="mb-4 text-center d-flex flex-column justify-content-between">
+    <section id="home-banner" class="mb-5 text-center d-flex flex-column justify-content-between">
         <div id="home-banner-inner" class="p-3 p-xl-5 h-100 w-100">
             <div id="home-banner-title" class="col-10 col-sm-8 col-md-5 col-xl-4 p-2 mx-auto mt-md-5 mb-4">
                 <h1 class="display-4 fw-normal">Trade-a-Bid</h1>
@@ -149,7 +149,8 @@
     </section>
 
 
-    <div class="py-sm-3 my-4 container">
+    {{-- Showcased auctions --}}
+    <section class="container py-sm-3 my-4">
         @auth
         <div class="row">
             {{-- Recent bids --}}
@@ -201,5 +202,23 @@
         @else
 
         @endempty
-    </div>
+    </section>
+
+
+    @guest
+    {{-- Join us full width --}}
+    <section class="container-fluid d-flex justify-content-center align-items-center bg-primary text-white py-4 my-5">
+        <div class="d-flex flex-column align-items-end justify-content-center me-5">
+            <h2 class="text-end fw-bold mb-0">Sign up</h2>
+            <h4 class="text-end">Start bidding now</h4>
+        </div>
+
+        <a class="btn btn-light rounded-3 fs-5 text-primary px-3" role="button" href={{ route('register_form') }}>
+            Join us!
+        </a>
+    </section>
+    @endguest
+
+
+
 @endsection

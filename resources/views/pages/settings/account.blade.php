@@ -36,7 +36,7 @@
                         <div class="col-lg-8 order-lg-2 big-boy">
                             <div class="row flex-grow-1">
                                 <div class="col-12 col-sm-4 d-flex flex-column align-items-center justify-content-center">
-                                    <img id="image-preview" class="img-fluid rounded-3 mb-2" @profilepic($user, medium)>
+                                    <img id="image-preview" class="img-fluid rounded-3 mb-2" @profilepic(Auth::user(), medium)>
 
                                     <input type="file" class="form-control" id="imageFile" name="image"/>
                                 </div>

@@ -11,7 +11,7 @@
     {{-- Footer --}}
     <div class="card-footer d-flex">
         @if (!$auction->ended)
-        <span class="badge bg-secondary">@currency($auction->next_bid) &phi;</span>
+        <span class="badge bg-primary">@currency($auction->next_bid) &phi;</span>
         @endif
         <small class="text-muted ms-auto">{{ $auction->getTimeRemainingString() }}</small>
     </div>
