@@ -1,4 +1,7 @@
 <header class="navbar navbar-expand-md navbar-dark bg-dark py-2">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="{{ asset("js/notifications.js") }}"></script>
+
     {{-- Main Navigation Bar --}}
     <nav class="container-fluid flex-wrap align-items-center flex-md-nowrap mx-0" aria-label="Main Navigation">
         <a class="navbar-brand d-flex align-items-center p-0 me-md-3 mx-auto" aria-label="Trade-a-Bid" href="/">
@@ -142,23 +145,36 @@
     </nav>
 
     {{-- Notifications Modal --}}
-    <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Notifications</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+    @auth
+        <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifications</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                <div class="modal-body">
+                    <div class="modal-body">
+                        @foreach(Auth::user()->notifications()->get() as $notification)
+                            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                                <div class="toast-header">
+                                    <strong class="me-auto">Bootstrap</strong>
+                                    <small>11 mins ago</small>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                                <div class="toast-body">
+                                    Hello, world! This is a toast message.
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
 
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">View All</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">View All</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endauth
 </header>
