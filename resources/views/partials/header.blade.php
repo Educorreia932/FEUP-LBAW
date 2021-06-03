@@ -36,7 +36,7 @@
                         <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white"
                            style="font-size:xx-large;"></i>
                         <span class="position-absolute top-50 start-50 translate-middle text-center text-white"
-                              style="font-size:small; font-weight: bold;">42</span>
+                              style="font-size:small; font-weight: bold;">{{ Auth::user()->notifications()->count() }}</span>
                     </button>
 
                     {{-- Logged-in User --}}
@@ -90,7 +90,7 @@
                             <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button"
                                     data-bs-toggle="modal" data-bs-target="#notifications-modal">
                                 <span class="navbar-text"><i
-                                        class="bi bi-bell text-muted"></i> Notifications (42)</span>
+                                        class="bi bi-bell text-muted"></i> Notifications ({{ Auth::user()->notifications()->count() }})</span>
                             </button>
 
                             {{-- Dropdown menu --}}
