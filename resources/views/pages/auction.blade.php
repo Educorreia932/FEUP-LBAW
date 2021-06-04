@@ -78,7 +78,7 @@
                         {{-- button for reporting auction --}}
                         <button type="button" class="btn hover-scale" data-bs-toggle="modal"
                                 data-bs-target="#report-modal">
-                            <i class="bi bi-flag-fill text-danger" style="font-size:1.5em;"></i>
+                            <i class="bi bi-flag" style="font-size:1.15em;"></i>
                             <span>Report auction</span>
                         </button>
                         @endcan
@@ -305,7 +305,7 @@
             <span class="d-md-none d-flex align-items-end">
                 <h3 class="m-0 p-0">Auction Data</h3>
             </span>
-            <hr class="my-1 mb-3">
+            <hr class="d-md-none my-1 mb-3">
 
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -326,19 +326,8 @@
                             <!-- Chart.JS -->
                             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" crossorigin="anonymous"></script>
 
-                            @php
-                                $bid_list = $auction->bids()->orderBy('date', 'desc')->get();
-                            @endphp
-
-                            {{-- Data for chart.js --}}
-                            <ol id="chart-data" style="display: none;">
-                                @foreach ($bid_list as $bid)
-                                <li bid_value={{ $bid->value }} bid_timestamp="{{ $bid->date->timestamp }}"></li>
-                                @endforeach
-                            </ol>
-
                             {{-- Bid history chart --}}
-                            <canvas class="mt-4" id="bid-history-chart"></canvas>
+                            <canvas data-bids="{{ $auction->getBidDataJson($bids) }}" class="mt-4" id="bid-history-chart"></canvas>
                         @else
                             <div class="d-flex flex-column align-items-center justify-content-center p-5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" fill="currentColor"
@@ -365,7 +354,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($bid_list as $bid)
+                                    @foreach ($bids as $bid)
                                         @include("partials.bid_table_entry", [
                                             "bid_no" => $loop->remaining + 1,
                                             "auction" => $auction,

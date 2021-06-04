@@ -134,6 +134,10 @@ class Auction extends Model {
             && $memberId == $this->latest->bidder_id;
     }
 
+    public function getOrderedBids() {
+        return $this->bids()->orderBy('date', 'desc')->get();
+    }
+
     public function images() {
         return $this->hasMany(AuctionImage::class, "auction_id", "id");
     }
@@ -164,5 +168,18 @@ class Auction extends Model {
         if ($this->ended)
             return "Ended";
         return $this->end_date->shortAbsoluteDiffForHumans();
+    }
+
+    public function getBidDataJson($bids): String {
+        $ret = array();
+        $ret['value'] = array();
+        $ret['timestamp'] = array();
+
+        foreach ($bids as $bid) {
+            array_push($ret['value'], $bid->value);
+            array_push($ret['timestamp'], $bid->date->timestamp);
+        }
+
+        return json_encode($ret);
     }
 }
