@@ -13,7 +13,7 @@ auction_entries.forEach(elem => {
         const myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
-        const auction_id = elem.getAttribute("auction_id");
+        const auction_id = elem.getAttribute("id");
         if (active.checked) {
             // Is now banned
             const request = new Request('/admin/activate_auction/' + auction_id, { method: 'PUT', headers: myHeaders });
@@ -34,7 +34,7 @@ auction_entries.forEach(elem => {
         const myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
-        const auction_id = elem.getAttribute("auction_id");
+        const auction_id = elem.getAttribute("id");
         if (term.checked) {
             // Auction terminated
             const request = new Request('/admin/terminate_auction/' + auction_id, { method: 'PUT', headers: myHeaders });
