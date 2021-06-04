@@ -13,7 +13,7 @@
 @endsection
 
 @section("sorting")
-    <option {{ old('sort') ? "" : "checked" }}>Best Match</option>
+    <option>Best Match</option>
     <option value="price" {{ old('sort') === "price" ? "checked" : "" }}>Bid Price</option>
     <option value="time" {{ old('sort') === "time" ? "checked" : "" }}>Remaining Time</option>
     <option value="date" {{ old('sort') === "date" ? "checked" : "" }}>Opening Date</option>
@@ -59,7 +59,7 @@
     <script defer src={{ asset("js/init_tooltips.js") }}></script>
 
     {{-- Categories --}}
-    <section role="group" aria-labelledby="ctg_title">
+    <section aria-labelledby="ctg_title">
         <h6 id="ctg_title" class="text-secondary my-2">Category</h6>
 
         <div class="row">
@@ -83,7 +83,7 @@
 
     @can('viewNsfw', App\Models\Auction::class)
     {{-- Nsfw --}}
-    <section class="my-3" id="auction-safety" role="group" aria-labelledby="age_filter_title">
+    <section class="my-3" id="auction-safety" aria-labelledby="age_filter_title">
         <h6 id="age_filter_title" class="text-secondary my-2">Age Rating</h6>
 
         @include('partials.filter_checkbox', ["name" => "Everyone", "group" => "nsfw", "value" => "sfw", "request" => $request, "default" => true])
@@ -92,7 +92,7 @@
     @endcan
 
     {{-- Auction Owner --}}
-    <section class="my-3" id="auction-owner-radios" role="group" aria-labelledby="auction_filter_title">
+    <section class="my-3" id="auction-owner-radios" aria-labelledby="auction_filter_title">
         <h6 id="auction_filter_title" class="text-secondary my-2">Auction Owner</h6>
 
         <div class="form-check">
@@ -124,7 +124,7 @@
     </section>
 
     {{-- Auction timeframe --}}
-    <section class="my-3" role="group" aria-labelledby="auction_time_title">
+    <section class="my-3" aria-labelledby="auction_time_title">
         <h6 id="auction_time_title" class="text-secondary my-2">Auction timeframe</h6>
 
         @include('partials.filter_checkbox', ["name" => "Scheduled", "group" => "timeframe", "value" => "sched", "request" => $request, "default" => true])
@@ -137,7 +137,7 @@
         <h6 id="current_bid_title" class="text-secondary">Current bid (Φ)</h6>
 
         <div class="d-flex d-none d-md-flex">
-            <div id="price-range-slider" role="slider" class="my-2 mx-4 w-100"></div>
+            <div id="price-range-slider" role="slider" class="my-2 mx-4 w-100" aria-valuemin="0" aria-valuemax="10000" aria-valuenow="500"></div>
         </div>
 
         <div class="row mb-3">
