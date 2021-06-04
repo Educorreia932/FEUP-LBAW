@@ -5,6 +5,7 @@ DROP TYPE IF EXISTS user_report_reason CASCADE;
 DROP TYPE IF EXISTS notification_type CASCADE;
 
 DROP TABLE IF EXISTS member CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
 DROP TABLE IF EXISTS auction CASCADE;
 DROP TABLE IF EXISTS follow CASCADE;
 DROP TABLE IF EXISTS bid CASCADE;
@@ -57,7 +58,15 @@ CREATE TABLE member (
     bid_permission                      BOOLEAN DEFAULT TRUE NOT NULL,
     sell_permission                     BOOLEAN DEFAULT TRUE NOT NULL,
     banned                              BOOLEAN DEFAULT FALSE NOT NULL,
-    ts_search                           TSVECTOR DEFAULT NULL
+    ts_search                           TSVECTOR DEFAULT NULL,
+    email_verified_at                   TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE password_resets (
+    id          SERIAL PRIMARY KEY,
+    email       TEXT REFERENCES member(email),
+    token       TEXT NOT NULL,
+    created_at  TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE auction (

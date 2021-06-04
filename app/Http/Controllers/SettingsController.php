@@ -193,10 +193,9 @@ class SettingsController extends Controller {
                 $validator->errors()->all(), 400
             );
         } catch (ModelNotFoundException $e) {
-            // return redirect()->back()->with(
-            //     'error',
-            //     ['This user doesn\'t exist.']
-            // );
+            response()->json(array(
+                "error" => "User doesn't exist"
+            ));
         }
 
         return response()->json(array(

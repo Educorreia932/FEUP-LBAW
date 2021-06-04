@@ -16,6 +16,11 @@
                 </ul>
             </div>
             @endif
+            @if (Session::has('status'))
+                <div class="alert alert-success">
+                    {{ Session::get('status') }}
+                </div>
+            @endif
             @if (Session::has('error'))
             <div class="alert alert-danger">
                 <ul>
@@ -70,7 +75,16 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="email">Email</label>
-                                <input autocomplete="email" class="form-control" type="text" id="email" name="email" placeholder="{{ Auth::user()->email }}">
+                                <div class="input-group">
+                                    <input autocomplete="email" class="form-control" type="text" id="email" name="email" placeholder="{{ Auth::user()->email }}">
+                                    @if (!Auth::user()->email_verified_at)
+                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Email not verified">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-danger bi bi-x-lg" viewBox="0 0 16 16">
+                                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                        </svg>
+                                    </span>
+                                    @endif
+                                </div>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                         </div>
@@ -84,6 +98,28 @@
                 </form>
             </div>
         </div>
+        
+        @if (!Auth::user()->email_verified_at)
+            <div class="row">
+                <div class="container-fluid my-4 border rounded">
+                    <div class="row bg-light-grey border-rounded border-bottom">
+                        <h4>Verify email</h4>
+                    </div>
+                    <div class="row">
+                        <span>Your email is not verified. Please verify it to gain access to our features, if you can't find the email click the button to resend verification.</span>
+                    </div>
+                    <form id="email_verification" action="{{ route('verification.send') }}" method="POST">
+                        @method('POST')
+                        @csrf
+                        <div class="row">
+                            <div class="my-2 d-grid gap-2 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-danger" >Resend Verification</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endif
 
         <div class="row">
             <div class="container-fluid my-4 border rounded">
