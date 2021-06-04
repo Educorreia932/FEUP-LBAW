@@ -105,36 +105,38 @@
                         <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
                     </ul>
                 @else
-                    @admin
-                        {{-- Admin logged-in --}}
-                        <li class="d-none d-md-flex nav-item dropdown px-1">
-                            <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
-                                    id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
-                                <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                                    <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
-                                </div>
-                            </button>
+                    <ul class="d-flex d-md-none flex-wrap flex-row w-100">
+                        @admin
+                            {{-- Admin logged-in --}}
+                            <li class="d-none d-md-flex nav-item dropdown px-1">
+                                <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
+                                        id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
+                                    <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                        <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
+                                    </div>
+                                </button>
 
-                            {{-- Dropdown menu --}}
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href={{ route('admin.user_management') }}>Dashboard</a></li>
-                                <li><a class="dropdown-item" href={{ route('admin.logout') }}>Sign out</a></li>
-                            </ul>
-                        </li>
-                    @else
-                        {{-- User not logged in --}}
-                        <li class="nav-item btn btn-dark col-6 col-md-auto me-2 border border-secondary rounded-3 py-0 px-2" style="box-sizing: content-box;">
-                            <a class="nav-link" href={{ route('login_form') }}>Sign in</a>
-                        </li>
+                                {{-- Dropdown menu --}}
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
+                                    <li><a class="dropdown-item" href={{ route('admin.user_management') }}>Dashboard</a></li>
+                                    <li><a class="dropdown-item" href={{ route('admin.logout') }}>Sign out</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            {{-- User not logged in --}}
+                            <li class="nav-item btn btn-dark col-6 col-md-auto me-2 border border-secondary rounded-3 py-0 px-2" style="box-sizing: content-box;">
+                                <a class="nav-link" href={{ route('login_form') }}>Sign in</a>
+                            </li>
 
-                        <li class="nav-item btn btn-primary col-6 col-md-auto py-0 px-2" style="box-sizing: content-box;">
-                            <a class="nav-link rounded-3 text-white"
-                            href={{ route('register_form') }}>
-                                Sign up
-                            </a>
-                        </li>
-                    @endadmin
+                            <li class="nav-item btn btn-primary col-6 col-md-auto py-0 px-2" style="box-sizing: content-box;">
+                                <a class="nav-link rounded-3 text-white"
+                                href={{ route('register_form') }}>
+                                    Sign up
+                                </a>
+                            </li>
+                        @endadmin
+                    </ul>
                 @endauth
             </div>
         </div>
