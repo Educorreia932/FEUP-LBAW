@@ -29,7 +29,7 @@
                     </label>
 
                     <div class="forgot-password-container ">
-                        <a href="#" class="text-secondary">Forgot password?</a>
+                        <a href="{{ route('password.request') }}" class="text-secondary">Forgot password?</a>
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
