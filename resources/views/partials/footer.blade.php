@@ -1,4 +1,4 @@
-<footer class="container-fluid mt-auto bg-dark py-2 d-flex flex-row justify-content-between align-items-stretch">
+<footer id="footer" class="container-fluid mt-auto bg-dark py-2 d-flex flex-row justify-content-between align-items-stretch">
     <div class="ms-1">
         <a href="{{ route('home') }}" class="text-decoration-none">
             <h5 class="m-0 text-light">Trade-a-Bid</h5>

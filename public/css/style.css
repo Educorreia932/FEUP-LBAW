@@ -273,3 +273,22 @@ div.noUi-connect {
 .auction-image-gallery img {
     object-fit: cover;
 }
+
+.d-print {
+    display: none !important;
+}
+
+@media print {
+    .d-not-print {
+        display: none !important;
+    }
+
+    .d-print {
+        display: block !important;
+    }
+
+    .page-break {
+        break-before: page;
+        page-break-before: always;
+    }
+}
