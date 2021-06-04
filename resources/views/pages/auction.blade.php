@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link href="{{ asset("css/print_auction.css") }}" rel="stylesheet" media="print" type="text/css" />
+
 <script defer src={{ asset("js/auction.js") }}></script>
 <script defer src={{ asset("js/init_tooltips.js") }}></script>
 
@@ -21,7 +23,7 @@
     ])
 </div>
 
-<section class="container-fluid bg-light">
+<section class="container-fluid bg-light" id="auction-header">
     <div class="row">
         {{-- Product images --}}
         <div id="product-images" class="carousel slide col-md-5" data-bs-ride="carousel">
@@ -302,7 +304,7 @@
         {{-- TABBED AREA --}}
         <section class="col-12 col-md-8 order-md-0 my-2">
 
-            <span class="d-md-none d-flex align-items-end">
+            <span id="auction-data-sep" class="d-md-none d-flex align-items-end page-break">
                 <h3 class="m-0 p-0">Auction Data</h3>
             </span>
             <hr class="d-md-none my-1 mb-3">
@@ -321,7 +323,13 @@
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-                    <section class="tab-pane fade show active" id="graph-tab" role="tabpanel" aria-labelledby="graph-tab">
+
+                    <span class="d-print d-flex align-items-end">
+                        <h3 class="m-0 p-0">Bid Chart</h3>
+                    </span>
+                    <hr class="d-print my-1 mb-3">
+
+                    <section class="tab-pane fade show active " id="graph-tab" role="tabpanel" aria-labelledby="graph-tab" has-bids="{{ $auction->has_bids }}">
                         @if ($auction->has_bids)
                             <!-- Chart.JS -->
                             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" crossorigin="anonymous"></script>
@@ -340,8 +348,13 @@
                         @endif
                     </section>
 
+                    <span class="d-print d-flex align-items-end">
+                        <h3 class="m-0 p-0">Bid Table</h3>
+                    </span>
+                    <hr class="d-print my-1 mb-3">
+
                     {{-- TAB 2 --}}
-                    <section class="tab-pane fade" id="bid-table-tab" role="tabpanel" aria-labelledby="bid-table-tab">
+                    <section class="tab-pane fade " id="bid-table-tab" role="tabpanel" aria-labelledby="bid-table-tab" has-bids="{{ $auction->has_bids }}">
                         @if ($auction->has_bids)
                             {{-- Bid history table --}}
                             <table id="bid-history" class="table table-striped table-hover" style="height: min-content;">
@@ -374,7 +387,7 @@
 
                                     <tfoot>
                                         <td>
-                                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".bid-table-collapsible" aria-expanded="false" aria-controls="bid-table-collapsible">Collapse</button>
+                                            <button class="btn btn-primary d-not-print" type="button" data-bs-toggle="collapse" data-bs-target=".bid-table-collapsible" aria-expanded="false" aria-controls="bid-table-collapsible">Collapse</button>
                                         </td>
                                         <td>Starting Bid</td>
                                         <td>@currency($auction->starting_bid) &phi;</td>
@@ -395,8 +408,14 @@
                         @endif
                     </section>
 
+                    <span class="d-print d-flex align-items-end">
+                        <h3 class="m-0 p-0">Image Gallery</h3>
+                    </span>
+                    <hr class="d-print my-1 mb-3">
+
                     {{-- TAB 3 --}}
-                    <section class="tab-pane fade auction-image-gallery p-4" id="gallery-tab" role="tabpanel" aria-labelledby="gallery-tab">
+                    <section class="tab-pane fade auction-image-gallery p-4 " id="gallery-tab" role="tabpanel" aria-labelledby="gallery-tab">
+
                         <div style="grid-area: thumb;">
                             <img src={{$auction->getThumbnail('medium')}} alt="Auction image">
                         </div>
