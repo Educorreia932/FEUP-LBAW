@@ -75,6 +75,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put("messages/{thread_id}", "MessageController@sendMessage")->name("send_message");
     Route::post("messages/{thread_id}/add_participant", "MessageController@addParticipantToThread")->name("add_participant_to_message_thread");
     Route::post("messages/{thread_id}/rename", "MessageController@renameThread")->name("rename_thread");
+
+    // Notifications
+    Route::delete("notification/{id}", "NotificationController@markAsRead")->name("remove_notification");
 });
 
 // User Profile

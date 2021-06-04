@@ -36,7 +36,7 @@
                         <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white"
                            style="font-size:xx-large;"></i>
                         <span class="position-absolute top-50 start-50 translate-middle text-center text-white"
-                              style="font-size:small; font-weight: bold;">{{ Auth::user()->notifications()->count() }}</span>
+                              style="font-size:small; font-weight: bold;">{{ Auth::user()->notifications()->where("read", "false")->count() }}</span>
                     </button>
 
                     {{-- Logged-in User --}}
@@ -90,7 +90,7 @@
                             <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button"
                                     data-bs-toggle="modal" data-bs-target="#notifications-modal">
                                 <span class="navbar-text"><i
-                                        class="bi bi-bell text-muted"></i> Notifications ({{ Auth::user()->notifications()->count() }})</span>
+                                        class="bi bi-bell text-muted"></i> Notifications ({{ Auth::user()->notifications()->where("read", "false")->count() }})</span>
                             </button>
 
                             {{-- Dropdown menu --}}
@@ -146,6 +146,7 @@
 
     {{-- Notifications Modal --}}
     @auth
+        @csrf
         <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -155,8 +156,11 @@
                     </div>
 
                     <div class="modal-body">
-                        @foreach(Auth::user()->notifications()->orderBy("time", "desc")->get() as $notification)
+                        {{-- Notifications --}}
+                        @foreach(Auth::user()->notifications()->where("read", "false")->orderBy("time", "desc")->get() as $notification)
                             <div class="toast mb-3 w-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                                <span class="d-none" id="notification_id">{{ $notification->id }}</span>
+
                                 <div class="toast-header">
                                     <strong class="me-auto">{{ $notification->type }}</strong>
                                     <small>{{ $notification->time->shortRelativeDiffForHumans() }}</small>
