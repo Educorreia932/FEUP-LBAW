@@ -14,6 +14,7 @@
 }
 
 .sidebar .nav-link.active {
-    color: #007bff;
-    border-left: 1px solid black;
+    color: var(--primary);
+    font-size: large;
+    border-left: 1px solid var(--primary);
 }

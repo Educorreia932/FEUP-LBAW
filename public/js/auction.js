@@ -2,18 +2,14 @@ let chart_elem = document.getElementById("bid-history-chart");
 if (chart_elem != null) {
     let ctx = chart_elem.getContext('2d');
 
-    let bid_values = []
-    let bid_timestamps = []
+    let bid_data = JSON.parse(chart_elem.dataset.bids);
 
-    document.getElementById('chart-data').querySelectorAll('li').forEach(li => {
-        bid_values.push(li.getAttribute('bid_value') / 100);
-        bid_timestamps.push(li.getAttribute('bid_timestamp') * 1000);
-    });
+    let bid_values = bid_data.value.map(val => val / 100);
+    let bid_timestamps = bid_data.timestamp.map(timestamp => timestamp * 1000);
 
     let colors = {
-        line: "#0D6EFD",
-        points: "#0A2FB3",
-        yellow: "#ffff00"
+        line: "#6618DA",
+        points: "#4c07b5"
     }
 
     let data = {

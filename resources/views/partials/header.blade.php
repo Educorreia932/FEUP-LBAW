@@ -24,7 +24,7 @@
 
             <hr class="d-md-none text-white-50">
 
-            <ul class="navbar-nav flex-row ms-md-auto me-md-4">
+            <div class="navbar-nav flex-row ms-md-auto me-md-1">
                 @auth
                     {{-- Notifications --}}
                     <button class="d-none d-md-block btn hover-scale position-relative align-middle me-2 px-4"
@@ -37,14 +37,14 @@
                     </button>
 
                     {{-- Logged-in User --}}
-                    <li class="d-none d-md-flex nav-item dropdown px-1" id="user-data"
+                    <div class="d-none d-md-flex nav-item dropdown px-1" id="user-data"
                         data-username="{{ Auth::user()->username }}" data-name="{{ Auth::user()->name }}" data-id="{{ Auth::user()->id }}">
                         <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
-                                id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2">{{ Auth::user()->name }}</span>
-                            <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                            <span class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                 <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::user(), small)>
-                            </div>
+                            </span>
                         </button>
 
                         {{-- Dropdown menu --}}
@@ -59,24 +59,23 @@
                             <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
                             <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
                         </ul>
-                    </li>
+                    </div>
 
-                         {{-- Dropdown menu --}}
-                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                            <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
-                            <li><a class="dropdown-item" href={{ route('inbox') }}>Messages</a></li>
-                            <li>
-                                <a class="dropdown-item" href={{ route('user_profile', ['username' => 'me']) }}>
-                                    Profile
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
-                            <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
-                        </ul>
-                    </li>
+                     {{-- Dropdown menu --}}
+                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
+                        <li><a class="dropdown-item" href={{ route('dashboard') }}>Dashboard</a></li>
+                        <li><a class="dropdown-item" href={{ route('inbox') }}>Messages</a></li>
+                        <li>
+                            <a class="dropdown-item" href={{ route('user_profile', ['username' => 'me']) }}>
+                                Profile
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href={{ route('settings') }}>Settings</a></li>
+                        <li><a class="dropdown-item" href={{ route('logout') }}>Sign out</a></li>
+                    </ul>
 
                     {{-- Dropdown Menu --}}
-                    <div class="d-flex d-md-none flex-wrap flex-row w-100">
+                    <ul class="d-flex d-md-none flex-wrap flex-row w-100 px-0">
                         <li class="nav-item col-12 d-flex justify-content-between">
                             <div class="col-6 d-flex align-items-center">
                                 <div class="d-flex p-0 align-self-center align-items-center" style="width: 32px; height: 32px;">
@@ -98,57 +97,59 @@
                         </li>
 
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('settings') }}>Settings</a></li>
-                        <li class="nav-item col-6"><a class="nav-link"
-                                                      href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
+                        <li class="nav-item col-6">
+                            <a class="nav-link" href={{ route('user_profile', ['username' => 'me']) }}>Profile</a>
                         </li>
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('inbox') }}>Messages</a></li>
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
                         <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
-                    </div>
-                @else
-                    @admin
-                        {{-- Admin logged-in --}}
-                        <li class="d-none d-md-flex nav-item dropdown px-1">
-                            <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
-                                    id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
-                                <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
-                                    <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
-                                </div>
-                            </button>
-
-                            {{-- Dropdown menu --}}
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
-                                <li><a class="dropdown-item" href={{ route('admin.user_management') }}>Dashboard</a></li>
-                                <li><a class="dropdown-item" href={{ route('admin.logout') }}>Sign out</a></li>
-                            </ul>
-                        </li>
+                    </ul>
                     @else
-                        {{-- User not logged in --}}
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="nav-link px-2" href={{ route('login_form') }}>Sign in</a>
-                        </li>
+                    <ul class="d-flex flex-wrap flex-row align-items-center justify-content-center w-100 m-0 p-0">
+                        @admin
+                            {{-- Admin logged-in --}}
+                            <li class="d-none d-md-flex nav-item dropdown px-1">
+                                <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
+                                        id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
+                                    <picture class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                        <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
+                                    </picture>
+                                </button>
 
-                        <li class="nav-item col-6 col-md-auto">
-                            <a class="d-inline-block d-md-block nav-link border border-white rounded-3 px-2"
-                            href={{ route('register_form') }}>
-                                Sign up
-                            </a>
-                        </li>
-                    @endadmin
+                                {{-- Dropdown menu --}}
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-dropdown">
+                                    <li><a class="dropdown-item" href={{ route('admin.user_management') }}>Dashboard</a></li>
+                                    <li><a class="dropdown-item" href={{ route('admin.logout') }}>Sign out</a></li>
+                                </ul>
+                            </li>
+                        @else
+                            {{-- User not logged in --}}
+                            <li class="nav-item btn btn-dark col-6 col-md-auto border border-secondary rounded-3 m-2 my-md-0 mx-md-2 py-md-0 px-2" style="box-sizing: content-box;">
+                                <a class="nav-link" href={{ route('login_form') }}>Sign in</a>
+                            </li>
+
+                            <li class="nav-item btn btn-primary col-6 col-md-auto m-2 my-md-0 mx-md-2 py-md-0 px-2" style="box-sizing: content-box;">
+                                <a class="nav-link rounded-3 text-white"
+                                href={{ route('register_form') }}>
+                                    Sign up
+                                </a>
+                            </li>
+                        @endadmin
+                    </ul>
                 @endauth
-            </ul>
+            </div>
         </div>
     </nav>
 
     {{-- Notifications Modal --}}
-    <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
+    <div class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <section class="modal-header">
                     <h5 class="modal-title">Notifications</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                </section>
 
                 <div class="modal-body">
 
@@ -160,5 +161,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </header>

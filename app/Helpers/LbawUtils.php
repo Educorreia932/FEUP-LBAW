@@ -27,7 +27,7 @@ class LbawUtils {
         $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
 
         // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        // $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
 
         // remove unwanted characters
         $text = preg_replace('~[^-\w]+~', '', $text);

@@ -6,6 +6,19 @@
             @csrf
 
             <h1 class="mb-3">Sign Up</h1>
+            @if (Session::has('status'))
+                <div class="alert alert-success">
+                    {{ Session::get('status') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+
             <label for="username" class="sr-only float-start">Username*</label>
             <input type="text" id="username" class="form-control" name="username" required>
 
@@ -22,7 +35,7 @@
             <input type="password" id="password" class="form-control" name="password" required>
 
             <label for="password-confirm" class="sr-only float-start">Comfirm Password*</label>
-            <input type="password" id="password-confirm" class="form-control" required>
+            <input type="password" id="password-confirm" name="password_confirmation" class="form-control" required>
 
             <div class="d-flex flex-row align-items-baseline text-start mt-2">
                 <input type="checkbox" id="termsCheckbox" class="me-2" required>

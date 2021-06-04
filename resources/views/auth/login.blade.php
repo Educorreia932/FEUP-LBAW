@@ -9,7 +9,11 @@
                     @csrf
                 
                     <h1 class="mb-3">Sign In</h1>
-
+                    @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                        </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger" role="alert">
                             @foreach($errors->all() as $error)
@@ -29,7 +33,7 @@
                     </label>
 
                     <div class="forgot-password-container ">
-                        <a href="#" class="text-secondary">Forgot password?</a>
+                        <a href="{{ route('password.request') }}" class="text-secondary">Forgot password?</a>
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

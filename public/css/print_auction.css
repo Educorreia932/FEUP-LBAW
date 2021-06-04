@@ -1,0 +1,30 @@
+ul.nav.nav-tabs {
+    display: none;
+}
+
+#auction-data-sep,
+#auction-data-sep *,
+#auction-data-sep + hr {
+    display: none;
+}
+
+.tab-pane#gallery-tab {
+    display: grid;
+    opacity: 1;
+}
+
+#bid-table-tab[has-bids="0"],
+#graph-tab[has-bids="0"] {
+    display: none;
+    opacity: 1;
+}
+
+#bid-table-tab[has-bids="1"],
+#graph-tab[has-bids="1"] {
+    display: block;
+    opacity: 1;
+}
+
+footer#footer {
+    display: none !important;
+}

@@ -36,7 +36,7 @@ class AuctionController extends Controller {
         if ($prettyurl !== $auction->pretty_url)
             return redirect(route('auction_pretty_url', ['id' => $id, 'prettyurl' => $auction->pretty_url]));
 
-        return view('pages.auction', ['auction' => $auction]);
+        return view('pages.auction', ['auction' => $auction, 'bids' => $auction->getOrderedBids()]);
     }
 
     public function redirectPrettyUrlDetails($id) {

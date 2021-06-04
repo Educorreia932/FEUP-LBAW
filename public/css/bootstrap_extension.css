@@ -120,7 +120,7 @@
 
     /* ------------------- END SIZING -------------------*/
 }
- 
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
      /* ------------------ BEGIN SIZING ------------------*/
@@ -226,7 +226,7 @@
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
     /* ------------------ BEGIN SIZING ------------------*/
     /* Width */
     .w-lg-25 {
@@ -328,9 +328,9 @@
 
     /* ------------------- END SIZING -------------------*/
 }
- 
+
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
     /* ------------------ BEGIN SIZING ------------------*/
     /* Width */
     .w-xl-25 {
@@ -432,7 +432,7 @@
 
     /* ------------------- END SIZING -------------------*/
 }
- 
+
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
     /* ------------------ BEGIN SIZING ------------------*/
