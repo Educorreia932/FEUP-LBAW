@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
         $request->user()->SendEmailVerificationNotification();
 
         return back()->with('status', 'Verification link sent');
-    })->middleware('throttle:6,1')->name('verification.send');  
+    })->middleware('throttle:6,1')->name('verification.send');
 
     // Authentication
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
