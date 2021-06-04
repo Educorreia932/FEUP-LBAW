@@ -150,7 +150,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
             'id',
             'id',
             'thread_id'
-        )->withTrashed();
+        )->withTrashedParents();
     }
 
     public function notifications() {

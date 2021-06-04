@@ -61,7 +61,7 @@ class MessageThread extends Model {
             "id",
             "id",
             "participant_id"
-        )->withTrashed();
+        )->withTrashedParents();
     }
 
     public function title() {
