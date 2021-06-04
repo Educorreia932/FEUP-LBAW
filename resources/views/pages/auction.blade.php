@@ -205,8 +205,108 @@
 <div class="container-fluid my-4">
     <div class="row">
 
-        <div class="col-8">
-            {{-- TODO: TESTING --}}
+        {{-- BOTTOM SIDEBAR --}}
+        <section class="col-12 col-md-4 order-md-1 my-2">
+            <div class="position-sticky" style="top: 2rem;">
+                {{-- Auction details --}}
+                <span class="d-flex align-items-end">
+                    <h3 class="m-0 p-0">Auction Details</h3>
+                </span>
+                <hr class="my-1">
+
+                <div id="auction-detail-grid">
+
+                    <div class="auction-detail-2-col border rounded-3" style="grid-area: time;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
+                                class="bi bi-clock-history position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
+                            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+                            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+
+                        @if ($auction->open)
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Closes in</h6>
+                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
+                        </div>
+                        @elseif ($auction->scheduled)
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Opens in</h6>
+                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
+                        </div>
+                        @endif
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Duration</h6>
+                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
+                        </div>
+
+                        @if ($auction->ended)
+                        <div></div>
+                        @endif
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Start Date</h6>
+                            <time>{{ $auction->start_date }}</time>
+                        </div>
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">End Date</h6>
+                            <time>{{ $auction->end_date }}</time>
+                        </div>
+                    </div>
+
+
+                    <div class="auction-detail-1-col border rounded-3" style="grid-area stats;">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
+                                class="bi bi-clipboard-data position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
+                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Bidders</h6>
+                            <span>{{ $auction->n_bidders }}</span>
+                        </div>
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Bids</h6>
+                            <span>{{ $auction->n_bids }}</span>
+                        </div>
+                    </div>
+
+                    <div class="auction-detail-1-col border rounded-3" style="grid-area: money;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
+                                class="bi bi-coin position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
+                            <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
+                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+                        </svg>
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Starting Bid</h6>
+                            <span>@currency($auction->starting_bid)</span>
+                        </div>
+
+                        <div class="m-2 p-1">
+                            <h6 class="text-muted m-0">Bid Increment</h6>
+                            <span>{{ $auction->getIncrementString() }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- TABBED AREA --}}
+        <section class="col-12 col-md-8 order-md-0 my-2">
+
+            <span class="d-md-none d-flex align-items-end">
+                <h3 class="m-0 p-0">Auction Data</h3>
+            </span>
+            <hr class="my-1 mb-3">
+
             <div class="container-fluid">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -318,101 +418,6 @@
                         </div>
                         @endforeach
                     </section>
-                </div>
-            </div>
-        </div>
-
-        {{-- BOTTOM SIDEBAR --}}
-        <section class="col-4">
-            <div class="position-sticky" style="top: 2rem;">
-                {{-- Auction details --}}
-                <span class="d-flex align-items-end">
-                    <h3 class="m-0 p-0">Auction Details</h3>
-                </span>
-
-                <hr class="my-1">
-
-                <div id="auction-detail-grid">
-
-                    <div class="auction-detail-2-col border rounded-3" style="grid-area: time;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
-                                class="bi bi-clock-history position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
-                            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-                            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-
-                        @if ($auction->open)
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Closes in</h6>
-                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
-                        </div>
-                        @elseif ($auction->scheduled)
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Opens in</h6>
-                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
-                        </div>
-                        @endif
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Duration</h6>
-                            <span>{{ $auction->end_date->longAbsoluteDiffForHumans() }}</span>
-                        </div>
-
-                        @if ($auction->ended)
-                        <div></div>
-                        @endif
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Start Date</h6>
-                            <time>{{ $auction->start_date }}</time>
-                        </div>
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">End Date</h6>
-                            <time>{{ $auction->end_date }}</time>
-                        </div>
-                    </div>
-
-
-                    <div class="auction-detail-1-col border rounded-3" style="grid-area stats;">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
-                                class="bi bi-clipboard-data position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
-                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
-                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                        </svg>
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Bidders</h6>
-                            <span>{{ $auction->n_bidders }}</span>
-                        </div>
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Bids</h6>
-                            <span>{{ $auction->n_bids }}</span>
-                        </div>
-                    </div>
-
-                    <div class="auction-detail-1-col border rounded-3" style="grid-area: money;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2.2rem" height="2.2rem" fill="currentColor"
-                                class="bi bi-coin position-absolute top-0 start-50 translate-middle bg-white fs-2" viewBox="0 0 16 16">
-                            <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
-                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path fill-rule="evenodd" d="M8 13.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
-                        </svg>
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Starting Bid</h6>
-                            <span>@currency($auction->starting_bid)</span>
-                        </div>
-
-                        <div class="m-2 p-1">
-                            <h6 class="text-muted m-0">Bid Increment</h6>
-                            <span>{{ $auction->getIncrementString() }}</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
