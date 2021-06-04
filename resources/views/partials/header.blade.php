@@ -35,7 +35,7 @@
                             data-bs-toggle="modal" data-bs-target="#notifications-modal">
                         <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white"
                            style="font-size:xx-large;"></i>
-                        <span class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                        <span id="notification-count" class="position-absolute top-50 start-50 translate-middle text-center text-white"
                               style="font-size:small; font-weight: bold;">{{ Auth::user()->notifications()->where("read", "false")->count() }}</span>
                     </button>
 

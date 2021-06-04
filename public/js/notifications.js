@@ -1,4 +1,5 @@
 const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+const notificationCount = document.getElementById("notification-count");
 let toasts = document.querySelectorAll(".toast");
 let toastInstances = []
 
@@ -21,8 +22,10 @@ for (const toastInstance of toastInstances) {
         request.setRequestHeader('X-CSRF-TOKEN', csrf);
         request.send();
 
-        request.addEventListener("error", function() {
-            console.log(this.response.text);
+        request.addEventListener("load", function() {
+            const responseJson = JSON.parse(this.responseText);
+
+            notificationCount.innerText = `${responseJson.unread_count}`;
         })
     });
 }
