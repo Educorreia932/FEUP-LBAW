@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Auction;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 use App\Rules\AfterToday;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class CreateAuctionRequest extends FormRequest {
     /**
@@ -32,7 +34,7 @@ class CreateAuctionRequest extends FormRequest {
             'starting_bid' => 'required|integer',
             'increment_percent' => 'required_without:increment_fixed|numeric|integer|min:1|max:50',
             'increment_fixed' => 'required_without:increment_percent|numeric|integer|min:1',
-            'category' => 'required|string',
+            'category' => ['required', 'string', Rule::in(Auction::CATEGORY)],
             'nsfw' => 'nullable',
             'image' => 'required',
             'image.*' => 'required|image|mimes:jpeg,jpg,png'
