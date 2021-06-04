@@ -102,7 +102,11 @@
 
                 </div>
                 <p class="text-muted">{{ $auction->category }}</p>
-                <p class="text-overflow-ellipsis">{{$auction->description}}</p>
+                @empty($auction->description)
+                    <p class="text-muted text-overflow-ellipsis">No description was given for this item</p>
+                @else
+                    <p class="text-overflow-ellipsis">{{$auction->description}}</p>
+                @endempty
             </div>
 
             <div class="row">
@@ -254,6 +258,7 @@
                             <table id="bid-history" class="table table-striped table-hover" style="height: min-content;">
                                 <thead>
                                 <tr>
+                                    <th scope="col">No.</th>
                                     <th scope="col">Bidder</th>
                                     <th scope="col">Bid</th>
                                     <th scope="col">Date</th>
@@ -261,25 +266,34 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($bid_list as $bid)
-                                        @include("partials.bid_table_entry", ["auction" => $auction, "bid_id" => $bid->id, "value" => $bid->value, "time" => $bid->date->diffForHumans()])
+                                        @include("partials.bid_table_entry", [
+                                            "bid_no" => $loop->remaining + 1,
+                                            "auction" => $auction,
+                                            "bid_id" => $bid->id,
+                                            "value" => $bid->value,
+                                            "time" => $bid->date->diffForHumans(),
+                                            "hide" => $loop->iteration > 8
+                                        ])
                                     @endforeach
 
-                                    @if ($auction->n_bids != count($bid_list))
-                                    <tr>
+                                    <tr class="bid-table-collapsible">
                                         <td></td>
                                         <td>...</td>
                                         <td></td>
+                                        <td></td>
                                     </tr>
-                                    @endif
 
                                     <tfoot>
+                                        <td>
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".bid-table-collapsible" aria-expanded="false" aria-controls="bid-table-collapsible">Collapse</button>
+                                        </td>
                                         <td>Starting Bid</td>
-
                                         <td>@currency($auction->starting_bid) &phi;</td>
                                         <td>{{ $auction->start_date->diffForHumans() }}</td>
                                     </tfoot>
                                 </tbody>
                             </table>
+
                         @else
                             <div class="d-flex flex-column align-items-center justify-content-center p-5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" fill="currentColor"
