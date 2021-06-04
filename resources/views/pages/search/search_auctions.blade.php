@@ -13,11 +13,10 @@
 @endsection
 
 @section("sorting")
-    <option>Best Match</option>
-    <option value="price" {{ old('sort') === "price" ? "checked" : "" }}>Bid Price</option>
-    <option value="time" {{ old('sort') === "time" ? "checked" : "" }}>Remaining Time</option>
-    <option value="date" {{ old('sort') === "date" ? "checked" : "" }}>Opening Date</option>
-    {{-- <option value="bidders" {{ old('sort') === "bidders" ? "checked" : "" }}>Bidders</option> --}}
+    <option value="best" {{ (!$request->has('sort') || old('sort') === "price") ? "selected" : "" }}>Best Match</option>
+    <option value="price" {{ old('sort') === "price" ? "selected" : "" }}>Bid Price</option>
+    <option value="time" {{ old('sort') === "time" ? "selected" : "" }}>Remaining Time</option>
+    <option value="date" {{ old('sort') === "date" ? "selected" : "" }}>Opening Date</option>
 @endsection
 
 @section("results")

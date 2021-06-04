@@ -12,10 +12,15 @@ class SearchResultsController extends Controller {
     public function search_auctions(Request $request) {
         $query = Auction::query();
 
+        // sort order
+        $order = $request->has('sort_order') && in_array('asc', $request->sort_order) ? 'asc' : 'desc';
+        $any_sort_done = false;
+
         // FTS - Full Text Search
         if ($request->has('fts') && strlen($request->fts)) {
             $query = $query->whereRaw("auction.ts_search @@ plainto_tsquery('english', ?)", [$request->fts])
-            ->orderByRaw("ts_rank(auction.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts]);
+                ->orderByRaw("ts_rank(auction.ts_search, plainto_tsquery('english', ?)) " . $order, [$request->fts]);
+            $any_sort_done = true;
         }
 
         // category filters
@@ -37,8 +42,9 @@ class SearchResultsController extends Controller {
             }
             else if ($request->owner_filter === "username") {
                 $query = $query->select('auction.*')->join('member', 'member.id', '=', 'auction.seller_id')
-                ->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts_user])
-                ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts_user]);
+                    ->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts_user])
+                    ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) " . $order, [$request->fts_user]);
+                $any_sort_done = true;
             }
         }
 
@@ -116,18 +122,24 @@ class SearchResultsController extends Controller {
                 $query = $query->where('next_bid', '<=', round($request->max_bid * 100));
         }
 
-
         // sort
-        if ($request->has('sort') && $request->sort){
+        if ($request->has('sort') && $request->sort) {
             if ($request->sort === 'price') {
-                $query->orderBy('next_bid');
+                $query->orderBy('next_bid', $order);
+                $any_sort_done = true;
             }
             else if ($request->sort === 'time') {
-                $query = $query->orderByDesc('end_date');
+                $query = $query->orderBy('end_date', $order);
+                $any_sort_done = true;
             }
             else if ($request->sort === 'date') {
-                $query = $query->orderByDesc('start_date');
+                $query = $query->orderBy('start_date', $order);
+                $any_sort_done = true;
             }
+        }
+
+        if (!$any_sort_done) {
+            $query = $query->orderBy('id', $order);
         }
 
         // display 15 auctions per page
@@ -144,10 +156,15 @@ class SearchResultsController extends Controller {
         // select all members
         $query = Member::query();
 
+        // sort order
+        $order = $request->has('sort_order') && in_array('asc', $request->sort_order) ? 'asc' : 'desc';
+        $any_sort_done = false;
+
         // FTS - Full Text Search
         if ($request->has('fts') && strlen($request->fts)) {
             $query = $query->whereRaw("member.ts_search @@ plainto_tsquery('english', ?)", [$request->fts])
-            ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) DESC", [$request->fts]);
+                ->orderByRaw("ts_rank(member.ts_search, plainto_tsquery('english', ?)) " . $order, [$request->fts]);
+            $any_sort_done = true;
         }
 
         // selecting all users who have at least one auction
@@ -184,17 +201,24 @@ class SearchResultsController extends Controller {
         // sort
         if ($request->has('sort') && $request->sort){
             if ($request->sort === 'rating') {
-                $query->orderBy('rating');
+                $query->orderBy('rating', $order);
+                $any_sort_done = true;
             }
             else if ($request->sort === 'auctions') {
                 $query = $query->selectRaw('member.*, COUNT(auction.seller_id) as num_auctions')
-                ->leftJoin('auction', 'auction.seller_id', '=', 'member.id')
-                ->groupBy('member.id')
-                ->orderByDesc('num_auctions');
+                    ->leftJoin('auction', 'auction.seller_id', '=', 'member.id')
+                    ->groupBy('member.id')
+                    ->orderBy('num_auctions', $order);
+                $any_sort_done = true;
             }
             else if ($request->sort === 'date') {
-                $query = $query->orderByDesc('joined');
+                $query = $query->orderBy('joined', $order);
+                $any_sort_done = true;
             }
+        }
+
+        if (!$any_sort_done) {
+            $query = $query->orderBy('id', $order);
         }
 
         // display 15 members per page
