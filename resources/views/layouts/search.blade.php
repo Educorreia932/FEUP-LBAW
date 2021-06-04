@@ -30,7 +30,7 @@
                     @yield('breadcrumbs')
                 </div>
 
-                <div class="d-flex flex-row justify-content-between mt-4" aria-label="search options">
+                <div class="d-flex flex-row justify-content-between mt-4">
                     {{-- search text input --}}
                     <nav class="col-md-10 d-flex flex-row justify-content-start">
                         <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"

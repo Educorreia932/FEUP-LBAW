@@ -11,7 +11,7 @@
 @endsection
 
 @section("sorting")
-<option {{ old('sort') ? "" : "checked" }}>Best Match</option>
+<option>Best Match</option>
 <option value="rating" {{ old('sort') === 'rating' ? "checked" : "" }}>Rating</option>
 <option value="auctions" {{ old('sort') === 'auctions' ? "checked" : "" }}>Total Auctions</option>
 <option value="date" {{ old('sort') === 'date' ? "checked" : "" }}>Date Joined</option>
@@ -49,7 +49,7 @@
 
 
      <!-- Options -->
-     <section role="group" aria-labelledby="option_filter_title">
+     <section aria-labelledby="option_filter_title">
         <h6 id="option_filter_title" class="text-secondary my-2">Options</h6>
 
         <div class="col">
@@ -59,7 +59,7 @@
 
 
     {{-- Followed / All Users --}}
-    <section class="my-3" role="group" aria-labelledby="user_filter_title">
+    <section class="my-3" aria-labelledby="user_filter_title">
         <h6 id="user_filter_title" class="text-secondary my-2">Shown Users</h6>
 
         <input class="form-check-input" type="radio" name="owner_filter" id="radio-owner-any" {{ old('owner_filter') === 'follow' ? "" : "checked" }} value="all">
@@ -86,19 +86,19 @@
         @endadmin
 
         <div class="@admin col-6 @endadmin">
-            <label class="text-secondary" for="user_min_rating">Min @unlessadmin Rating @endadmin</label>
+            <label class="text-secondary" for="input-number-left">Min @unlessadmin Rating @endadmin</label>
             <input type="number" class="form-control hide-appearence" step="1" placeholder="0" value="{{ old('user_min_rating', -5) }}" id="input-number-left" name="user_min_rating" aria-label="User Min Rating">
         </div>
 
         @admin
         <div class="col-6">
-            <label class="text-secondary" for="user_max_rating">Max</label>
+            <label class="text-secondary" for="input-number-right">Max</label>
             <input type="number" class="form-control hide-appearence" step="1" placeholder="1000" value="{{ old('user_max_rating', 5000) }}" id="input-number-right" name="user_max_rating" aria-label="User Max Rating">
         </div>
         @endadmin
     </section>
 
-    <section class="form-group mt-3" role="group" aria-labelledby="joined_filter_title">
+    <section class="form-group mt-3" aria-labelledby="joined_filter_title">
         <h6 id="joined_filter_title" class="text-secondary my-2">Joined</h6>
         <div class="input-group">
             <span class="input-group-text" style="padding-right: 15px;">From</span>
