@@ -19,7 +19,7 @@ class SearchResultsController extends Controller {
         // FTS - Full Text Search
         if ($request->has('fts') && strlen($request->fts)) {
             $query = $query->whereRaw("auction.ts_search @@ plainto_tsquery('english', ?)", [$request->fts])
-            ->orderByRaw("ts_rank(auction.ts_search, plainto_tsquery('english', ?)) " . $order, [$request->fts]);
+                ->orderByRaw("ts_rank(auction.ts_search, plainto_tsquery('english', ?)) " . $order, [$request->fts]);
             $any_sort_done = true;
         }
 
