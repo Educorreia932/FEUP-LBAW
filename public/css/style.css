@@ -45,7 +45,8 @@ input.hide-appearence::-webkit-inner-spin-button {
     transform: translate(10px);
 }
 
-.hover-scale {
+.hover-scale,
+.hover-scale-big {
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -53,6 +54,11 @@ input.hide-appearence::-webkit-inner-spin-button {
 
 .hover-scale:hover {
     transform: scale(1.075, 1.075);
+}
+
+.hover-scale-big:hover {
+    transform: scale(1.75, 1.75);
+    z-index: 1000;
 }
 
 .hover-highlight {
@@ -309,4 +315,20 @@ div.noUi-connect {
         break-before: page;
         page-break-before: always;
     }
+}
+
+
+#sort-desc + label {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+#sort-desc:checked + label .bi-sort-down,
+#sort-desc:not(:checked) + label .bi-sort-up {
+    display: none;
+}
+
+#sort-desc:not(:checked) + label .bi-sort-down,
+#sort-desc:checked + label .bi-sort-up {
+    display: block;
 }
