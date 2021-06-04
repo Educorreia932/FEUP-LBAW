@@ -48,6 +48,7 @@
                         @endif
                     </div>
                 </div>
+
                 <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
                     <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
                         {{-- OTHERS' PROFILE --}}
@@ -108,13 +109,20 @@
             <hr>
 
             <ul class="list-unstyled d-flex flex-wrap" style="padding-left: 10px; padding-top: 10px;">
-                @foreach ($user->followedBy()->limit(24)->get() as $fol)
-                <li class="hover-scale-big" style="margin-left: -10px; margin-top: -10px; z-index={{$loop->iteration}}">
-                    <a href="{{ route("user_profile", [ "username" => $fol->username ]) }}">
-                        <img style="border-radius:50%;" width="40" height="40" @profilepic($fol, small)>
-                    </a>
-                </li>
-                @endforeach
+                @if ($user->followedBy()->count() > 0)
+                    @foreach ($user->followedBy()->limit(24)->get() as $fol)
+                    <li class="hover-scale-big" style="margin-left: -10px; margin-top: -10px; z-index={{$loop->iteration}}">
+                        <a href="{{ route("user_profile", [ "username" => $fol->username ]) }}">
+                            <img style="border-radius:50%;" width="40" height="40" @profilepic($fol, small)>
+                        </a>
+                    </li>
+                    @endforeach
+                @else
+                <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
+                    <i class="bi bi-people display-5"></i>
+                    <h6>No one is following this user</h6>
+                </div>
+                @endif
             </ul>
 
         </section>
