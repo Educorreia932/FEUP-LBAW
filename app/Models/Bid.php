@@ -38,7 +38,7 @@ class Bid extends Model {
     ];
 
     public function bidder() {
-        return $this->hasOne(Member::class, "id", "bidder_id");
+        return $this->hasOne(Member::class, "id", "bidder_id")->withTrashed();
     }
 
 }

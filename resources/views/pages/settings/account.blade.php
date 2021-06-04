@@ -130,9 +130,13 @@
                     <span>Deleting your account means you cannot access it again. All your personal information will be lost. Think carefully before doing so.</span>
                 </div>
                 <div class="row">
-                    <div class="my-2 d-grid gap-2 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger">Delete Account</button>
-                    </div>
+                    <form action="{{ route('delete-account') }}" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="my-2 d-grid gap-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-danger">Delete Account</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

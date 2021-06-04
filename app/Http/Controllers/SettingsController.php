@@ -2,13 +2,16 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ImageHelper;
+use App\Http\Controllers\Admin\AdminController;
 use App\Models\Member;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
@@ -158,6 +161,72 @@ class SettingsController extends Controller {
 
         return redirect()->back()->with(
             "success", ["Password changed successfully."]
+        );
+    }
+
+    public function delete_account(Request $request) {
+        $this->authorize('delete', $request->user());
+
+        try {
+            $id = Auth::id();
+
+            $user = Member::findOrFail($id);
+
+            $createdAuctions = $user->createdAuctions()->get();
+
+            foreach ($createdAuctions as $auction) {
+                if ($auction->getOpenAttribute()) {
+                    return redirect()->back()->with(
+                        'error',
+                        ['There are auctions still active in your account.']
+                    );
+                }
+            }
+
+            $recentAuctions = $user->createdAuctions()
+                            ->where('end_date', '>', Carbon::now()->subWeek())
+                            ->get();
+
+            if (!$recentAuctions->isEmpty()) {
+                return redirect()->back()->with(
+                    'error',
+                    ['You have auctions that ended recently. Please wait a week after your actions ended to delete your account.']
+                );
+            }
+
+            // ACCOUNT DELETION
+            foreach ($createdAuctions as $auction) {
+                (new AdminController)->terminateAuction($auction->id);
+            }
+
+            // User fields -> null except id
+            $user->delete_info();
+            Auth::logout();
+            $user->save();
+
+            DB::table('follow')->where('follower_id', $id)
+                                ->orWhere('followed_id', $id)->delete();
+
+            DB::table('rating')->where('ratee_id', $id)
+                                ->orWhere('rater_id', $id)->delete();
+
+            DB::table('bookmarked_auction')->where('member_id', $id)->delete();
+
+            File::delete(public_path($user->getRawImagePath('original')));
+            File::delete(public_path($user->getRawImagePath('medium')));
+            File::delete(public_path($user->getRawImagePath('small')));
+
+        } catch (ValidationException $e) {
+            return response()->json(array(
+                'error' => 'Account could not be deleted'
+            ));
+        } catch (ModelNotFoundException $e) {
+            response()->json(array(
+                "error" => "User doesn't exist"
+            ));
+        }
+        return redirect()->route('home')->with(
+            "success", ["Account deleted."]
         );
     }
 

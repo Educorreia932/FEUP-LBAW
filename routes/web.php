@@ -122,6 +122,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get("user/settings/", fn() => redirect("user/settings/account"))->name("settings");
     Route::get("user/settings/account", "SettingsController@account")->name("settings_account");
     Route::put("user/settings/account", "SettingsController@save_account_changes")->name("save_account_changes");
+    // Account deletion
+    Route::post("user/settings/account/delete", "SettingsController@delete_account")->name("delete-account");
+
     Route::get("user/settings/privacy", "SettingsController@privacy")->name("settings_privacy");
     Route::put("user/settings/privacy/toggle", "SettingsController@toggle_settings")->name("toggle_settings");
     Route::get("user/settings/security", "SettingsController@security")->name("settings_security");
