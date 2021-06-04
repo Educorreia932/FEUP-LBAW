@@ -27,16 +27,23 @@
         {{-- display auctions --}}
         @foreach($auctions as $auction)
             @include('partials.auction_entry', ['auction' => $auction])
+            @if (!$loop->last)
+                <hr class="d-md-none">
+            @endif
         @endforeach
     @else
         {{-- No matches --}}
         <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
             <i class="bi bi-search display-3 mb-2"></i>
             <h5 class="mb-1">No matches found</h5>
-            @if($request->has("filter_check_timeframe") && !in_array('end', $request->filter_check_timeframe))
+
+            @if(!$request->has("filter_check_timeframe") || !in_array('end', $request['filter_check_timeframe']))
                 @php
                     $params = $request->all();
-                    array_push($params["filter_check_timeframe"], "end");
+                    if (!$request->has("filter_check_timeframe"))
+                        $params["filter_check_timeframe"] = ["sched", "open", "end"];
+                    else
+                        array_push($params["filter_check_timeframe"], "end");
                 @endphp
                 <h6>Looking for <a href="{{ route("search_auctions", $params) }}">auctions that have ended</a>?</h6>
             @else

@@ -106,8 +106,8 @@ input[type=number].hide-appearence {
 }
 
 .auction-entry img {
-    height: 10em;
-    width: 10em;
+    /* height: 12em; */
+    width: 12em;
 }
 
 .profile-avatar img {
