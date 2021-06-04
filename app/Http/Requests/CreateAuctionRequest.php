@@ -2,20 +2,21 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Auction;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 use App\Rules\AfterToday;
+use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
-class CreateAuctionRequest extends FormRequest
-{
+class CreateAuctionRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize() {
         return Auth::check();
     }
 
@@ -24,8 +25,7 @@ class CreateAuctionRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             'title' => 'required|min:5|max:50',
             'description' => 'required|min:10|max:255',
@@ -34,7 +34,7 @@ class CreateAuctionRequest extends FormRequest
             'starting_bid' => 'required|integer',
             'increment_percent' => 'required_without:increment_fixed|numeric|integer|min:1|max:50',
             'increment_fixed' => 'required_without:increment_percent|numeric|integer|min:1',
-            'category' => 'required|string',
+            'category' => ['required', 'string', Rule::in(Auction::CATEGORY)],
             'nsfw' => 'nullable',
             'image' => 'required',
             'image.*' => 'required|image|mimes:jpeg,jpg,png'
@@ -46,17 +46,17 @@ class CreateAuctionRequest extends FormRequest
      *
      * @return void
      */
-    protected function prepareForValidation()
-    {
+    protected function prepareForValidation() {
 
         // converting date and hour to datetime
         if ($this->has(['start_date', 'start_time'])) {
-            $start_datetime = $this->input('start_date')." ".$this->input('start_time');
+            $start_datetime = Carbon::createFromFormat('Y-m-d H:i', $this->input('start_date')." ".$this->input('start_time'));
+            $start_datetime->setTimezone('Europe/London');
             $this->merge(['start_date' => $start_datetime]);
         }
 
         if ($this->has(['end_date', 'end_time'])) {
-            $end_datetime = $this->input('end_date')." ".$this->input('end_time');
+            $end_datetime = Carbon::createFromFormat('Y-m-d H:i', $this->input('end_date')." ".$this->input('end_time'));
             $this->merge(['end_date' => $end_datetime]);
         }
 

@@ -1,4 +1,4 @@
-.form-signin, .form-signup {
+.form-signin, .form-signup, .form-forgot-password, .form-reset-password {
     width: 100%;
     max-width: 330px;
     padding: 15px;

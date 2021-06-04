@@ -271,7 +271,7 @@ class Gen:
 
 
     def add_rating(self, u:int, r:int, isPositive:bool):
-        statement = f"""INSERT INTO rating (ratee_id, rater_id, value) VALUES ({u}, {r}, {1 if isPositive else -1});\n"""
+        statement = f"""INSERT INTO rating (ratee_id, rater_id, value) VALUES ({u}, {r}, {1 if isPositive else -1}) ON CONFLICT DO NOTHING;\n"""
         self.outFile.write(statement)
 
     def genRatings(self):
@@ -280,11 +280,11 @@ class Gen:
             if a['winner'] == None:
                 continue
 
-            if random.random() < 0.3:
-                self.add_rating(a['seller'], a['winner'], bool(random.randint(0, 1)))
+            if random.random() < 0.75:
+                self.add_rating(a['seller'], a['winner'], random.random() < .8)
                 ratings += 1
-            if random.random() < 0.3:
-                self.add_rating(a['winner'], a['seller'], bool(random.randint(0, 1)))
+            if random.random() < 0.75:
+                self.add_rating(a['winner'], a['seller'], random.random() < .8)
                 ratings += 1
         return ratings
 
@@ -413,16 +413,8 @@ class Gen:
                 start_date = random_limit_date(user['join_date'])
                 end_date = random_auction_closing_date(start_date)
 
-                # TODO: Add chance of 'Canceled', 'Frozen', 'Terminated' auctions
-                status = None
-                if cmp_time_now(start_date) < 0:
-                    status = 'Scheduled'
-                else:
-                    status = {
-                        -1: 'Closed',
-                        0: 'Active',
-                        1: 'Active',
-                    }[cmp_time_now(end_date)]
+                # TODO: Add chance of 'Terminated' auctions
+                status = 'Active'
 
                 category = None
                 if item['type'] == 'game':
@@ -459,6 +451,7 @@ class Gen:
                     'seller': user['id'],
                     'thumbnail_url': item['header_image'],
                     'images': auction_imgs,
+                    'nsfw': nsfw == 'TRUE',
                 }
 
                 last_bidder = None
@@ -491,7 +484,9 @@ class Gen:
         user_id = 1
         for character in characters:
 
-            if character['bio'].startswith('This is a list of minor characters') or character['bio'].startswith('This is a list of unnamed characters'):
+            if character['bio'].startswith('This is a list of minor characters') \
+                or character['bio'].startswith('This is a list of unnamed characters') \
+                or '#' in character['anchor']:
                 continue
 
             if uniqueSalts:

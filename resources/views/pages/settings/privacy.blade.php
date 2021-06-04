@@ -1,8 +1,9 @@
-@extends('layouts.settings', ['active' => 'privacy'])
+@extends('layouts.settings', ['active' => 'privacy', 'title' => 'Privacy & Notification'])
 
 @section('subpage')
 
-    <script defer src={{ asset('js/master_checkboxes.js') }}></script>
+    <script defer src="{{ asset('js/master_checkboxes.js') }}"></script>
+    <script defer type="module" src="{{ asset('js/account_privacy.js') }}"></script>
 
     <h2 class="my-4">Privacy & Notifications</h2>
 

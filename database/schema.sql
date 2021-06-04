@@ -5,6 +5,7 @@ DROP TYPE IF EXISTS user_report_reason CASCADE;
 DROP TYPE IF EXISTS notification_type CASCADE;
 
 DROP TABLE IF EXISTS member CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
 DROP TABLE IF EXISTS auction CASCADE;
 DROP TABLE IF EXISTS follow CASCADE;
 DROP TABLE IF EXISTS bid CASCADE;
@@ -26,7 +27,7 @@ DROP TABLE IF EXISTS auction_image CASCADE;
 
 CREATE TYPE auction_category AS ENUM ( 'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others' );
 
-CREATE TYPE auction_status AS ENUM ( 'Active', 'Closed', 'Scheduled', 'Canceled', 'Frozen', 'Terminated' );
+CREATE TYPE auction_status AS ENUM ( 'Active', 'Terminated' );
 
 CREATE TYPE auction_report_reason AS ENUM ( 'Fraudalent Auction', 'Improper product pictures', 'Improper auction title', 'Other' );
 
@@ -57,7 +58,16 @@ CREATE TABLE member (
     bid_permission                      BOOLEAN DEFAULT TRUE NOT NULL,
     sell_permission                     BOOLEAN DEFAULT TRUE NOT NULL,
     banned                              BOOLEAN DEFAULT FALSE NOT NULL,
-    ts_search                           TSVECTOR DEFAULT NULL
+    deleted_at                          TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+    ts_search                           TSVECTOR DEFAULT NULL,
+    email_verified_at                   TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE password_resets (
+    id          SERIAL PRIMARY KEY,
+    email       TEXT REFERENCES member(email),
+    token       TEXT NOT NULL,
+    created_at  TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE auction (
@@ -74,6 +84,7 @@ CREATE TABLE auction (
     nsfw                            BOOLEAN NOT NULL DEFAULT FALSE,
     seller_id                       INTEGER REFERENCES member(id) NOT NULL,
     latest_bid                      INTEGER DEFAULT NULL,
+    next_bid                        INTEGER DEFAULT 1 NOT NULL CONSTRAINT next_bid_ck CHECK (next_bid > 0),
     ts_search                       TSVECTOR DEFAULT NULL,
     CONSTRAINT increment_xor_ck     CHECK ((increment_fixed IS NULL AND increment_percent IS NOT NULL) OR (increment_fixed IS NOT NULL AND increment_percent IS NULL)),
     CONSTRAINT dates_ck             CHECK (end_date > start_date)
@@ -97,13 +108,10 @@ CREATE TABLE follow (
 );
 
 CREATE TABLE message_thread (
-    id                      SERIAL PRIMARY KEY
-);
-
-CREATE TABLE message_thread_participant (
-    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
-    participant_id      INTEGER REFERENCES member(id) NOT NULL,
-    PRIMARY KEY (thread_id, participant_id)
+    id                      SERIAL PRIMARY KEY,
+    topic                   TEXT DEFAULT 'Thread Topic' NOT NULL,
+    created                 TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    latest_message          INTEGER DEFAULT NULL
 );
 
 CREATE TABLE message (
@@ -113,6 +121,14 @@ CREATE TABLE message (
     sender_id              INTEGER REFERENCES member(id) NOT NULL,
     "timestamp"            TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     ts_search              TSVECTOR DEFAULT NULL
+);
+
+ALTER TABLE message_thread ADD CONSTRAINT message_foreign_key FOREIGN KEY(latest_message) REFERENCES message(id);
+
+CREATE TABLE message_thread_participant (
+    thread_id           INTEGER REFERENCES message_thread(id) NOT NULL,
+    participant_id      INTEGER REFERENCES member(id) NOT NULL,
+    PRIMARY KEY (thread_id, participant_id)
 );
 
 CREATE TABLE auction_report (
@@ -164,21 +180,18 @@ CREATE TABLE notification (
 );
 
 CREATE TABLE auction_notification (
-    notification_id     INTEGER REFERENCES notification(id),
-    auction_id          INTEGER REFERENCES auction(id),
-    PRIMARY KEY (notification_id, auction_id)
+    notification_id            INTEGER UNIQUE REFERENCES notification(id),
+    auction_id           INTEGER REFERENCES auction(id)
 );
 
 CREATE TABLE user_notification (
-    notification_id      INTEGER REFERENCES notification(id),
-    member_id            INTEGER REFERENCES member(id),
-    PRIMARY KEY (notification_id, member_id)
+    notification_id            INTEGER UNIQUE REFERENCES notification(id),
+    member_id            INTEGER REFERENCES member(id)
 );
 
 CREATE TABLE message_notification (
-    notification_id      INTEGER REFERENCES notification(id),
-    message_id           INTEGER REFERENCES message(id),
-    PRIMARY KEY (notification_id, message_id)
+    notification_id            INTEGER UNIQUE REFERENCES notification(id),
+    message_id           INTEGER REFERENCES message(id)
 );
 
 CREATE TABLE auction_image (

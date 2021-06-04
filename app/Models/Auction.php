@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 use App\Helpers\LbawUtils;
 use Carbon\Carbon;
@@ -15,12 +13,23 @@ class Auction extends Model {
 
     protected $table = "auction";
 
+    const STATUS = [
+        'Active', 'Terminated'
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
 
     /**
      * The attributes that should be cast to native types.
@@ -38,7 +47,8 @@ class Auction extends Model {
      * @var array
      */
     protected $attributes = [
-        'nsfw' => 'false'
+        'nsfw' => 'false',
+        'status' => 'Active'
     ];
 
     /**
@@ -53,8 +63,23 @@ class Auction extends Model {
         'seller_id', 'latest_bid', 'ts_search'
     ];
 
-    public static function getCategoryNames() {
-        return DB::select('SELECT unnest(enum_range(NULL::auction_category))::text');
+    public const CATEGORY = [
+        'Games', 'Software', 'E-Books', 'Skins', 'Music', 'Series & Movies', 'Comics & Manga', 'Others'
+    ];
+
+    public const CATEGORY_FORM = [
+        'Games' => 'game',
+        'Software' => 'sftw',
+        'E-Books' => 'book',
+        'Skins' => 'skin',
+        'Music' => 'music',
+        'Series & Movies' => 'sem',
+        'Comics & Manga' => 'cem',
+        'Others' => 'oth',
+    ];
+
+    public function getPrettyUrlAttribute() {
+        return LbawUtils::slugify($this->title);
     }
 
     public function getEndedAttribute() {
@@ -62,11 +87,15 @@ class Auction extends Model {
     }
 
     public function getStartedAttribute() {
-        return Carbon::now() > $this->end_date;
+        return Carbon::now() > $this->start_date;
     }
 
-    public function getInterruptedAttribute() {
-        return in_array($this->status, array('Canceled', 'Frozen', 'Terminated'));
+    public function getScheduledAttribute() {
+        return Carbon::now() < $this->start_date;
+    }
+
+    public function getOpenAttribute() {
+        return $this->started && !$this->ended;
     }
 
     public function getIncrementString() {
@@ -84,15 +113,6 @@ class Auction extends Model {
         return $this->latest == null ? null : $this->latest->value;
     }
 
-    public function getNextBidAttribute() {
-        if ($this->latest == null)
-            return $this->starting_bid;
-        if ($this->increment_fixed != null)
-            return $this->latest->value + $this->increment_fixed;
-        else
-            return ceil($this->latest->value * (100 + $this->increment_percent) / 100);
-    }
-
     public function getNBiddersAttribute() {
         return $this->bids->groupBy('bidder_id')->count();
     }
@@ -103,6 +123,15 @@ class Auction extends Model {
 
     public function getHasBidsAttribute() {
         return $this->latest_bid != null;
+    }
+
+    public function holdsLatestBid($memberId) {
+        return isset($this->latest_bid)
+            && $memberId == $this->latest->bidder_id;
+    }
+
+    public function getOrderedBids() {
+        return $this->bids()->orderBy('date', 'desc')->get();
     }
 
     public function images() {
@@ -118,22 +147,37 @@ class Auction extends Model {
     }
 
     public function seller() {
-        return $this->hasOne(Member::class, "id", "seller_id");
+        return $this->hasOne(Member::class, "id", "seller_id")->withTrashed();
     }
 
     public function getThumbnail($type='card') {
-        return asset('images/auctions/' . $this->id . '/thumbnail_' . $type . '.jpg');
+        $extension = ($type == 'original') ? '.png' : '.jpg';
+        return asset('images/auctions/' . $this->id . '/thumbnail_' . $type . $extension);
     }
 
     public function genImages($type='card') {
+        $extension = ($type == 'original') ? '.png' : '.jpg';
         foreach ($this->images as $img) {
-            yield asset('images/auctions/' . $this->id . '/' . $img->id . '_' . $type . '.jpg');
+            yield asset('images/auctions/' . $this->id . '/' . $img->id . '_' . $type . $extension);
         }
     }
 
     public function getTimeRemainingString(): string {
         if ($this->ended)
             return "Ended";
-        return $this->end_date->diffForHumans();
+        return $this->end_date->shortAbsoluteDiffForHumans();
+    }
+
+    public function getBidDataJson($bids): String {
+        $ret = array();
+        $ret['value'] = array();
+        $ret['timestamp'] = array();
+
+        foreach ($bids as $bid) {
+            array_push($ret['value'], $bid->value);
+            array_push($ret['timestamp'], $bid->date->timestamp);
+        }
+
+        return json_encode($ret);
     }
 }

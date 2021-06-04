@@ -3,83 +3,96 @@
 namespace App\Policies;
 
 use App\Models\Member;
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MemberPolicy {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the user can edit another
      *
-     * @param  \App\Models\Member  $member
+     * @param Member $member
+     * @param Member $target
      * @return mixed
      */
-    /*public function viewAny(Member $member) {
-        //
-    }*/
+    public function edit(Member $member, Member $target) {
+        return $member->id == $target->id;
+    }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the user can report another
      *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
+     * @param Member $member
+     * @param Member $target
      * @return mixed
      */
-    /*public function view(Member $member, Member $member) {
-        //
-    }*/
+    public function report(Member $member, Member $target) {
+        return !$member->banned && $member->id != $target->id;
+    }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can report another
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    /*public function create(Member $member) {
-        //
-    }*/
+    public function contact(Member $member, Member $target) {
+        return !$member->banned && $member->id != $target->id;
+    }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function update(Member $member) {
-        return Auth::id() === $member->id;
+    public function update(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function change_password(Member $member, Member $target) {
+        return $member->id === $target->id;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
+     * @return mixed
+     */
+    public function toggle_privacy_settings(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Member  $member
+     * @param  \App\Models\Member  $target
      * @return mixed
      */
-    public function delete(Member $member) {
-        return Auth::id() === $member->id;
+    public function delete(Member $member, Member $target) {
+        return $member->id === $target->id;
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the user can rate another.
      *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
-     * @return mixed
+     * @param Member $member
+     * @param Member $target
+     * @return bool
      */
-    /*public function restore(Member $member, Member $member) {
-        
-    }*/
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\Member  $member
-     * @param  \App\Models\Member  $member
-     * @return mixed
-     */
-    /*public function forceDelete(Member $member, Member $member) {
-        
-    }*/
+    public function rate(Member $member, Member $target) {
+        return !$member->banned && $member->id != $target->id;
+    }
 }

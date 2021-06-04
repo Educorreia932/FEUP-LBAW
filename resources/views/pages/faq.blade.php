@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'FAQ'])
 
 @section('content')
 <main class="container-fluid p-4" style="flex:auto;">

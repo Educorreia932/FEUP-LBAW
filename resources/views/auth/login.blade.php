@@ -1,16 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Log In'])
 
 @section('content')
+    
     <div class="container-fluid" style="flex:auto;">
         <section class="d-flex align-items-center justify-content-center">
             <div class="container-lg text-center">
-                <form class="form-signin" method="post" action="{{ route("login") }}">
+                <form class="form-signin" method="POST" action="{{ route("login") }}">
                     @csrf
-
+                
                     <h1 class="mb-3">Sign In</h1>
+                    @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
 
-                    <label for="inputEmail" class="sr-only float-start">Email</label>
-                    <input type="email" id="inputEmail" class="form-control" name="email" required>
+                    <label for="inputEmail" class="sr-only float-start">Email/Username</label>
+                    <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" required>
 
                     <label for="inputPassword" class="sr-only float-start">Password</label>
                     <input type="password" id="inputPassword" class="form-control" name="password" required>
@@ -20,7 +33,7 @@
                     </label>
 
                     <div class="forgot-password-container ">
-                        <a href="#" class="text-secondary">Forgot password?</a>
+                        <a href="{{ route('password.request') }}" class="text-secondary">Forgot password?</a>
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

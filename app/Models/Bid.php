@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model {
     use HasFactory;
 
+    protected $table = 'bid';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -17,5 +26,19 @@ class Bid extends Model {
         'date' => 'datetime',
     ];
 
-    protected $table = 'bid';
+    /**
+     * Sets the format of datetimes in this model
+     *
+     * @var string
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
+    protected $fillable = [
+        'value', 'bidder_id', 'auction_id'
+    ];
+
+    public function bidder() {
+        return $this->hasOne(Member::class, "id", "bidder_id")->withTrashed();
+    }
+
 }
