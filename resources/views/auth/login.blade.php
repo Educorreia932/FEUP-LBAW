@@ -9,7 +9,11 @@
                     @csrf
                 
                     <h1 class="mb-3">Sign In</h1>
-
+                    @if (Session::has('status'))
+                        <div class="alert alert-success">
+                            {{ Session::get('status') }}
+                        </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger" role="alert">
                             @foreach($errors->all() as $error)
