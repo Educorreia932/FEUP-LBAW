@@ -153,7 +153,7 @@
                                         </option>
                                         <option value="Skins" {{ old('category') == 'Skins' ? "selected" : "" }}>Skins
                                         </option>
-                                        <option value="Other" {{ old('category') == 'Other' ? "selected" : "" }}>Other
+                                        <option value="Others" {{ old('category') == 'Others' ? "selected" : "" }}>Others
                                         </option>
                                     </select>
                                 </div>
