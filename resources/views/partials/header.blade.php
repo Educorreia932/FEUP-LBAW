@@ -75,7 +75,7 @@
                     </ul>
 
                     {{-- Dropdown Menu --}}
-                    <ul class="d-flex d-md-none flex-wrap flex-row w-100">
+                    <ul class="d-flex d-md-none flex-wrap flex-row w-100 px-0">
                         <li class="nav-item col-12 d-flex justify-content-between">
                             <div class="col-6 d-flex align-items-center">
                                 <div class="d-flex p-0 align-self-center align-items-center" style="width: 32px; height: 32px;">
@@ -104,8 +104,8 @@
                         <li class="nav-item col-6"><a class="nav-link" href={{ route('dashboard') }}>Dashboard</a></li>
                         <li class="nav-item col-6"><a class="nav-link" href="">Sign out</a></li>
                     </ul>
-                @else
-                    <ul class="d-flex d-md-none flex-wrap flex-row w-100">
+                    @else
+                    <ul class="d-flex flex-wrap flex-row align-items-center justify-content-center w-100 m-0 p-0">
                         @admin
                             {{-- Admin logged-in --}}
                             <li class="d-none d-md-flex nav-item dropdown px-1">
@@ -125,11 +125,11 @@
                             </li>
                         @else
                             {{-- User not logged in --}}
-                            <li class="nav-item btn btn-dark col-6 col-md-auto me-2 border border-secondary rounded-3 py-0 px-2" style="box-sizing: content-box;">
+                            <li class="nav-item btn btn-dark col-6 col-md-auto border border-secondary rounded-3 m-2 my-md-0 mx-md-2 py-md-0 px-2" style="box-sizing: content-box;">
                                 <a class="nav-link" href={{ route('login_form') }}>Sign in</a>
                             </li>
 
-                            <li class="nav-item btn btn-primary col-6 col-md-auto py-0 px-2" style="box-sizing: content-box;">
+                            <li class="nav-item btn btn-primary col-6 col-md-auto m-2 my-md-0 mx-md-2 py-md-0 px-2" style="box-sizing: content-box;">
                                 <a class="nav-link rounded-3 text-white"
                                 href={{ route('register_form') }}>
                                     Sign up
