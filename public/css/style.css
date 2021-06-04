@@ -316,3 +316,19 @@ div.noUi-connect {
         page-break-before: always;
     }
 }
+
+
+#sort-desc + label {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+#sort-desc:checked + label .bi-sort-down,
+#sort-desc:not(:checked) + label .bi-sort-up {
+    display: none;
+}
+
+#sort-desc:not(:checked) + label .bi-sort-down,
+#sort-desc:checked + label .bi-sort-up {
+    display: block;
+}

@@ -11,10 +11,10 @@
 @endsection
 
 @section("sorting")
-<option>Best Match</option>
-<option value="rating" {{ old('sort') === 'rating' ? "checked" : "" }}>Rating</option>
-<option value="auctions" {{ old('sort') === 'auctions' ? "checked" : "" }}>Total Auctions</option>
-<option value="date" {{ old('sort') === 'date' ? "checked" : "" }}>Date Joined</option>
+<option value="best" {{ (!$request->has('sort') || old('sort') === "price") ? "selected" : "" }}>Best Match</option>
+<option value="rating" {{ old('sort') === 'rating' ? "selected" : "" }}>Rating</option>
+<option value="auctions" {{ old('sort') === 'auctions' ? "selected" : "" }}>Total Auctions</option>
+<option value="date" {{ old('sort') === 'date' ? "selected" : "" }}>Date Joined</option>
 @endsection
 
 @section("results")
