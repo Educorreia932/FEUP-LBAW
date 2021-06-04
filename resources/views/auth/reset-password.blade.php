@@ -25,10 +25,10 @@
 
                     <input type="hidden" name="token" value="{{ $token }}">
 
-                    <label for="inputEmail" class="sr-only float-start">Email</label>
+                    <label for="inputEmail" class="sr-only float-start">Email*</label>
                     <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                    <label for="password" class="sr-only float-start">Password*</label>
+                    <label for="password" class="sr-only float-start">New Password*</label>
                     <input type="password" id="password" class="form-control" name="password" required>
 
                     <label for="password-confirm" class="sr-only float-start">Comfirm Password*</label>

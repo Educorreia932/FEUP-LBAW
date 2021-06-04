@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <label for="inputEmail" class="sr-only float-start">Email</label>
+                    <label for="inputEmail" class="sr-only float-start">Email*</label>
                     <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" required>
 
                     <button class="mt-2 mb-4 btn btn-lg btn-primary btn-block" type="submit">Send recovery email</button>
