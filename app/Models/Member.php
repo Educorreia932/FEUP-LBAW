@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Member extends Authenticatable implements MustVerifyEmail, CanResetPassword {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $table = 'member';
 
@@ -25,6 +27,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
      */
     protected $casts = [
         'joined' => 'datetime',
+        'deleted_at' => 'datetime'
     ];
 
     /**
@@ -42,7 +45,36 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
         'password', 'remember_token'
     ];
 
+    protected $nullable = ['username', 'email', 'password', 'remember_token', 'name', 'bio', 'phone_number', 'ts_search', 'email_verified_at'];
+
     public static string $default_bio = "This user hasn't developed a stand yet";
+
+    public function delete_info() {
+        foreach($this->nullable as $field) {
+            $this->{$field} = null;
+        }
+
+        $this->credit = 0;
+        $this->nsfw_consent = false;
+        $this->data_consent = false;
+        $this->notifications = false;
+        $this->outbid_notifications = false;
+        $this->start_auction_notifications = false;
+        $this->followed_user_activity = false;
+        $this->bid_permission = false;
+        $this->sell_permission = false;
+        $this->banned = false;
+
+        $this->deleted_at = Carbon::now();
+    }
+
+    public function getUsernameAttribute($value) {
+        return ($value == null) ? "Deleted user" : $value;
+    }
+
+    public function getNameAttribute($value) {
+        return ($value == null) ? "Deleted user" : $value;
+    }
 
     public function getHasAuctionsAttribute() {
         return $this->createdAuctions()->count();
@@ -118,19 +150,26 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
             'id',
             'id',
             'thread_id'
-        );
+        )->withTrashed();
     }
 
     public function notifications() {
         return $this->hasMany(Notification::class);
     }
 
+    public function getRawImagePath($type = 'small') {
+        $extension = ($type == 'original') ? '.png' : '.jpg';
+        return '/images/users/' . $this->id . '_' . $type . $extension;
+    }
+
     public function getImage($type = 'small') {
-        return asset('images/users/' . $this->id . '_' . $type . '.jpg');
+        $extension = ($type == 'original') ? '.png' : '.jpg';
+        return asset('images/users/' . $this->id . '_' . $type . $extension);
     }
 
     public function getDefaultImage($type = 'small') {
-        return asset('images/default/users/' . $type . '.jpg');
+        $extension = ($type == 'original') ? '.png' : '.jpg';
+        return asset('images/default/users/' . $type . $extension);
     }
 
     /**

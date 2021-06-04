@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller {
     public function showProfile($username) {
         $user = Member::all()->where('username', '=', $username)->first();
-        if ($user == null)
+        if ($user == null || $user->deleted)
             return abort(404);
 
         return view('pages.user_profile', ["user" => $user]);

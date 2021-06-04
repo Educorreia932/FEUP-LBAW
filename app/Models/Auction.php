@@ -147,16 +147,18 @@ class Auction extends Model {
     }
 
     public function seller() {
-        return $this->hasOne(Member::class, "id", "seller_id");
+        return $this->hasOne(Member::class, "id", "seller_id")->withTrashed();
     }
 
     public function getThumbnail($type='card') {
-        return asset('images/auctions/' . $this->id . '/thumbnail_' . $type . '.jpg');
+        $extension = ($type == 'original') ? '.png' : '.jpg';
+        return asset('images/auctions/' . $this->id . '/thumbnail_' . $type . $extension);
     }
 
     public function genImages($type='card') {
+        $extension = ($type == 'original') ? '.png' : '.jpg';
         foreach ($this->images as $img) {
-            yield asset('images/auctions/' . $this->id . '/' . $img->id . '_' . $type . '.jpg');
+            yield asset('images/auctions/' . $this->id . '/' . $img->id . '_' . $type . $extension);
         }
     }
 

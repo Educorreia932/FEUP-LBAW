@@ -131,11 +131,39 @@
                 </div>
                 <div class="row">
                     <div class="my-2 d-grid gap-2 d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger">Delete Account</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account-modal">Delete Account</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Account delete modal --}}
+    <section class="modal fade" id="delete-account-modal" tabindex="-1" aria-labelledby="delete-account-modal-title"
+                aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-account-modal-title">
+                        Delete account
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="{{ route('delete-account') }}" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="modal-body">
+                        <p class="my-0">Are you sure you want to delete your account? This operation is irreversible and you won't be able to access it anymore</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 @endsection
 

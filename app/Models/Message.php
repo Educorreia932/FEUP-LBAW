@@ -23,7 +23,7 @@ class Message extends Model {
     protected $dateFormat = 'Y-m-d H:i:sO';
 
     public function sender() {
-        return $this->hasOne(Member::class, "id", "sender_id");
+        return $this->hasOne(Member::class, "id", "sender_id")->withTrashed();
     }
 
     public function thread() {
