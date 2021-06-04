@@ -30,9 +30,9 @@
                     @yield('breadcrumbs')
                 </div>
 
-                <div class="d-flex flex-row justify-content-between mt-4">
+                <div class="d-flex flex-row align-items-center justify-content-between mt-4">
                     {{-- search text input --}}
-                    <nav class="col-md-10 d-flex flex-row justify-content-start">
+                    <nav class="col-md-9 d-flex flex-row justify-content-start">
                         <button class="btn btn-secondary" id="btn-sidebar" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#sidebar" aria-expanded="false" aria-label="togle sidebar">
                             <i class="bi bi-caret-right-fill"></i>
@@ -47,10 +47,19 @@
                     </nav>
 
                     {{-- sort by options --}}
-                    <div class="col-md-2">
-                        <select class="form-select input-sm" name="sort">
-                            @yield('sorting')
-                        </select>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input type="checkbox" name="sort_order[]" class="d-none" id="sort-desc" value="asc" autocomplete="off"
+                                    @if ($request->has('sort_order') && in_array('asc', $request->input('sort_order'))) checked @endif>
+                            <label class="btn btn-outline-secondary" type="button" for="sort-desc">
+                                <i class="bi bi-sort-up"></i>
+                                <i class="bi bi-sort-down"></i>
+                            </label>
+
+                            <select class="form-select input-sm" name="sort" aria-label="Sort type">
+                                @yield('sorting')
+                            </select>
+                          </div>
                     </div>
                 </div>
 

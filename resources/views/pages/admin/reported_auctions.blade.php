@@ -22,7 +22,6 @@
         <th scope="col">Reported for</th>
         <th scope="col">Details</th>
         <th scope="col">Date</th>
-        {{-- <th scope="col">Action</th> --}}
     </tr>
 @endsection
 
@@ -39,7 +38,9 @@
         <td class="col-4">
             {{ $report->description}}
         </td>
-        <td>{{\Carbon\Carbon::parse($report->timestamp)->format('d M Y')}}</td>
+        <td>
+            {{\Carbon\Carbon::parse($report->timestamp)->format('d M Y')}}
+        </td>
     </tr>
     @endforeach
 

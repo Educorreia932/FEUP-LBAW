@@ -3,9 +3,9 @@ import { createPopUpAlert } from './alerts.js';
 const user_entries = document.querySelectorAll('.user-entry');
 user_entries.forEach(elem => {
 
-    const banned = elem.querySelector('#filter_check_actions_banned');
-    const sell = elem.querySelector('#filter_check_actions_sell');
-    const bid = elem.querySelector('#filter_check_actions_bid');
+    const banned = elem.querySelector('.check_banned');
+    const sell = elem.querySelector('.check_sell');
+    const bid = elem.querySelector('.check_bid');
 
     banned.addEventListener('change', function(ev) {
 
@@ -26,7 +26,7 @@ user_entries.forEach(elem => {
         const myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
-        const user_id = elem.getAttribute("user_id");
+        const user_id = elem.getAttribute("id");
         if (banned.checked) {
             // Is now banned
             const request = new Request('/admin/ban/' + user_id, { method: 'PUT', headers: myHeaders });
@@ -56,7 +56,7 @@ user_entries.forEach(elem => {
         const myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
-        const user_id = elem.getAttribute("user_id");
+        const user_id = elem.getAttribute("id");
         if (!sell.checked) {
             // Is now banned
             const request = new Request('/admin/revoke_sell/' + user_id, { method: 'PUT', headers: myHeaders });
@@ -86,7 +86,7 @@ user_entries.forEach(elem => {
         const myHeaders = new Headers();
         myHeaders.append('X-CSRF-TOKEN', csrf);
 
-        const user_id = elem.getAttribute("user_id");
+        const user_id = elem.getAttribute("id");
         if (!bid.checked) {
             // Is now banned
             const request = new Request('/admin/revoke_bid/' + user_id, { method: 'PUT', headers: myHeaders });

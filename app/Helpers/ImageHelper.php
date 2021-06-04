@@ -82,7 +82,7 @@ class ImageHelper {
 
         // Generate filenames for original, small and medium files
         $originalFileName = $path . "/$id" . "_original." . $file->extension();
-        
+
         $mediumFileName = $path . "/$id" . "_medium.jpg";
         $smallFileName = $path . "/$id" . "_small.jpg";
 
@@ -90,6 +90,6 @@ class ImageHelper {
 
         ImageHelper::save_upscaled_image($original, $mediumFileName, 200);
         ImageHelper::save_upscaled_image($original, $smallFileName, 40);
-    
+
     }
 }

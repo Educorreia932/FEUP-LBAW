@@ -10,7 +10,9 @@ use App\Models\MessageThread;
 use App\Models\MessageThreadParticipant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use RuntimeException;
 
 class MessageController extends Controller {
     public function showInbox() {
@@ -62,7 +64,11 @@ class MessageController extends Controller {
         $message = Message::create($validated);
         $message = Message::find($message->id);
 
-        broadcast(new MessageSent($message))->toOthers();
+        try {
+            broadcast(new MessageSent($message))->toOthers();
+        } catch (RuntimeException $e) {
+            Log::error("Failed on send message:\n" . $e);
+        }
 
         return ['status' => 'Message Sent!'];
     }

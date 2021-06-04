@@ -1,4 +1,7 @@
 <header class="navbar navbar-expand-md navbar-dark bg-dark py-2">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="{{ asset("js/notifications.js") }}"></script>
+
     {{-- Main Navigation Bar --}}
     <nav class="container-fluid flex-wrap align-items-center flex-md-nowrap mx-0" aria-label="Main Navigation">
         <a class="navbar-brand d-flex align-items-center p-0 me-md-3 mx-auto" aria-label="Trade-a-Bid" href="/">
@@ -32,8 +35,8 @@
                             data-bs-toggle="modal" data-bs-target="#notifications-modal">
                         <i class="bi bi-bell position-absolute top-50 start-50 translate-middle text-center text-white"
                            style="font-size:xx-large;"></i>
-                        <span class="position-absolute top-50 start-50 translate-middle text-center text-white"
-                              style="font-size:small; font-weight: bold;">42</span>
+                        <span id="notification-count" class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                              style="font-size:small; font-weight: bold;">{{ Auth::user()->notifications()->where("read", "false")->count() }}</span>
                     </button>
 
                     {{-- Logged-in User --}}
@@ -86,7 +89,7 @@
                             <button class="col-6 btn hover-scale d-flex align-items-center p-0" type="button"
                                     data-bs-toggle="modal" data-bs-target="#notifications-modal">
                                 <span class="navbar-text"><i
-                                        class="bi bi-bell text-muted"></i> Notifications (42)</span>
+                                        class="bi bi-bell text-muted"></i> Notifications ({{ Auth::user()->notifications()->where("read", "false")->count() }})</span>
                             </button>
 
                             {{-- Dropdown menu --}}
@@ -112,9 +115,9 @@
                                 <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                         id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
-                                    <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                    <picture class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                         <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
-                                    </div>
+                                    </picture>
                                 </button>
 
                                 {{-- Dropdown menu --}}
@@ -143,16 +146,32 @@
     </nav>
 
     {{-- Notifications Modal --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
+    @auth
+    <section class="modal fade" tabindex="-1" role="dialog" id="notifications-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <section class="modal-header">
+                <div class="modal-header">
                     <h5 class="modal-title">Notifications</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </section>
+                </div>
 
                 <div class="modal-body">
+                    {{-- Notifications --}}
+                    @foreach(Auth::user()->notifications()->where("read", "false")->orderBy("time", "desc")->get() as $notification)
+                        <div class="toast mb-3 w-100" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                            <span class="d-none" id="notification_id">{{ $notification->id }}</span>
 
+                            <div class="toast-header">
+                                <strong class="me-auto">{{ $notification->type }}</strong>
+                                <small>{{ $notification->time->shortRelativeDiffForHumans() }}</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+
+                            <div class="toast-body d-flex flex-row align-items-center">
+                                {{ $notification->child()->partial() }}
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
 
                 <div class="modal-footer">
@@ -161,5 +180,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    @endauth
 </header>
