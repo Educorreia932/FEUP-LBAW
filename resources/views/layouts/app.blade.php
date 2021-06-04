@@ -41,12 +41,12 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user_profile.css') }}" rel="stylesheet">
 
-    <script type="text/javascript">
+    <script>
         // Fix for Firefox autofocus CSS bug
         // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
     </script>
 
-    <script src="{{ asset("js/app.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("js/app.js") }}"></script>
 </head>
 
 <body style="min-height: 100vh; display: flex; flex-direction:column;">
@@ -56,7 +56,7 @@
 
 {{-- Main --}}
 <main id="content" class="big-boy">
-    <section class="alert-section"></section>
+    <div class="alert-section"></div>
 
     @yield('content')
 </main>

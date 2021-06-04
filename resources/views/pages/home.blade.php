@@ -19,7 +19,7 @@
 
                 <div class="input-group">
                     <input type="search" class="form-control" placeholder="Search auctions" aria-label="Search for auctions" aria-describedby="search-addon"
-                        name="fts" value={{ old("fts") }}>
+                        name="fts" value="{{ old("fts") }}">
                     <button class="btn btn-outline-secondary input-group-button-background" type="submit" id="search-addon">
                         <i class="bi bi-search"></i>
                     </button>
@@ -30,7 +30,7 @@
 
     <!-- Categories -->
     <section class="container">
-        <h2 class="pb-1 mb-3 border-bottom">Explore popular categories</h3>
+        <h2 class="pb-1 mb-3 border-bottom">Explore popular categories</h2>
 
         @php $cat_svg_size = "3em"; @endphp
 
@@ -40,7 +40,9 @@
                 <a class="text-center d-flex flex-column align-items-stretch justify-content-between text-light h-100 w-100 p-3"
                         href="{{ route("search_auctions") }}">
                     <p class="text-start p-0 m-0">There are more categories to explore!</p>
-                    <span class="text-end">See all <i class="bi bi-arrow-right-short"></i><span>
+                    <span class="text-end">
+                        See all <i class="bi bi-arrow-right-short"></i>
+                    </span>
                 </a>
             </li>
 
@@ -120,18 +122,18 @@
 
 
     {{-- Showcased auctions --}}
-    <section class="container py-sm-3 my-4">
+    <div class="container py-sm-3 my-4">
         @auth
         <div class="row">
             {{-- Recent bids --}}
             <section class="d-flex flex-column col-xl-6 mt-sm-4">
                 <hr class="d-sm-none">
-                <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
+                <div class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
                     <h2>Recent bids</h2>
-                    <a href="search_results.php" class="ms-2 text-decoration-none text-primary" style="font-size: small;"">
+                    <a href="search_results.php" class="ms-2 text-decoration-none text-primary" style="font-size: small;">
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
-                </span>
+                </div>
                 @if (count($bidded_auctions))
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                     @each ("partials.auction_card", $bidded_auctions, "auction")
@@ -139,7 +141,7 @@
                 @else
                 <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
                     <i class="bi bi-wallet2 display-3"></i>
-                    <h5 class="">Bidded auctions will show up here!</h5>
+                    <h5>Bidded auctions will show up here!</h5>
                 </div>
                 @endif
             </section>
@@ -147,12 +149,12 @@
             {{-- Followed Users' Auctions --}}
             <section class="d-flex flex-column col-xl-6 mt-sm-4">
                 <hr class="d-sm-none">
-                <span class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
+                <div class="d-flex flex-row mb-2 align-items-baseline pb-1 mb-3 border-bottom">
                     <h2>Followed Users' Auctions</h2>
-                    <a href="search_results.php" class="ms-2 text-decoration-none  text-primary" style="font-size: small;"">
+                    <a href="search_results.php" class="ms-2 text-decoration-none  text-primary" style="font-size: small;">
                         See all <i class="bi bi-arrow-right"></i>
                     </a>
-                </span>
+                </div>
                 @if(count($followed_auctions))
                 <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                     @each ("partials.auction_card", $followed_auctions, "auction")
@@ -160,7 +162,7 @@
                 @else
                 <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
                     <i class="bi bi-people display-3"></i>
-                    <h5 class="">Follow more sellers to track their activity!</h5>
+                    <h5>Follow more sellers to track their activity!</h5>
                 </div>
                 @endif
             </section>
@@ -171,13 +173,13 @@
         <section class="row mt-sm-4 col-lg-12 py-3">
             <hr class="d-sm-none">
 
-            <span class="d-flex flex-row align-items-baseline pb-1 mb-3 border-bottom">
+            <div class="d-flex flex-row align-items-baseline pb-1 mb-3 border-bottom">
                 <h2>Today's auctions</h2>
                 <a href="search_results.php"
                 class="ms-2 link-secondary text-decoration-none text-primary" style="font-size: small;">
                     See all <i class="bi bi-arrow-right"></i>
                 </a>
-            </span>
+            </div>
 
             @if (count($open_auctions))
             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
@@ -186,13 +188,11 @@
             @else
             <div class="d-flex flex-column align-items-center justify-content-center text-muted flex-grow-1">
                 <i class="bi bi-door-open display-3"></i>
-                <h5 class="">Looks like there are no items for sale right now, come back later!</h5>
+                <h5>Looks like there are no items for sale right now, come back later!</h5>
             </div>
             @endif
         </section>
-
-    </section>
-
+    </div>
 
     @guest
     {{-- Join us full width --}}
