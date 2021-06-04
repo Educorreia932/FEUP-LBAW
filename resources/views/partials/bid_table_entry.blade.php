@@ -11,7 +11,7 @@
             </div>
             <span>{{ $bid->bidder->username }}</span>
             @if ($bid->id == $auction->latest_bid)
-            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            <i class="bi bi-trophy-fill ms-2 text-primary"></i>
             @endif
         </td>
         @elseif(Auth::id() == $bid->bidder_id)
@@ -23,7 +23,7 @@
             </div>
             <span>Me</span>
             @if ($bid->id == $auction->latest_bid)
-            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            <i class="bi bi-trophy-fill ms-2 text-primary"></i>
             @endif
         </td>
         @else
@@ -31,7 +31,7 @@
             <i class="bi bi-person-circle mx-2" style="font-size: 1.2rem;"></i>
             <span>@encodeUsername($auction, $bid->bidder_id)</span>
             @if ($bid->id == $auction->latest_bid)
-            <i class="bi bi-trophy-fill ms-2" style="color: #6618DA;"></i>
+            <i class="bi bi-trophy-fill ms-2 text-primary"></i>
             @endif
         </td>
         @endif

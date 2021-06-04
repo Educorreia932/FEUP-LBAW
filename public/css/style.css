@@ -130,7 +130,7 @@ div.noUi-connect {
 
 
 
-
+/* HOME PAGE */
 #home-banner {
     background-image: url("/images/banner.svg");
     background-repeat: no-repeat;
@@ -226,3 +226,50 @@ div.noUi-connect {
 }
 
 
+/* AUCTION PAGE */
+.auction-detail-1-col,
+.auction-detail-2-col {
+    display: grid;
+
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    padding-top: 1rem;
+}
+
+.auction-detail-2-col {
+    grid-template-columns: 1fr;
+}
+
+.auction-detail-2-col {
+    grid-template-columns: 1fr 1fr;
+}
+
+#auction-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    grid-template-areas:
+        "time time"
+        "stats money"
+}
+
+.auction-image-gallery.active {
+    display: grid;
+}
+
+.auction-image-gallery {
+    justify-items: stretch;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "thumb thumb";
+    gap: 0;
+}
+
+.auction-image-gallery img {
+    width: 100%;
+    height: 100%;
+}
+
+.auction-image-gallery img {
+    object-fit: cover;
+}
