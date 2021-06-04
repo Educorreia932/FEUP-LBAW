@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 # Install dependencies
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends libpq-dev vim nginx php7.4-fpm php7.4-mbstring php7.4-curl php7.4-xml php7.4-pgsql
+RUN apt-get install -y --no-install-recommends libpq-dev vim nginx php7.4-fpm php7.4-mbstring php7.4-curl php7.4-xml php7.4-pgsql php7.4-gd
 
 # Copy project code and install project dependencies
 COPY . /var/www/
