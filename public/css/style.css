@@ -116,12 +116,30 @@ input[type=number].hide-appearence {
     border-radius: 50%;
 }
 
-
+/* sm breakpoint */
 @media (min-width: 576px) {
     #footer-copyright::after {
         content: ".  ";
         white-space: pre;
     }
+}
+
+/* md breakpoint */
+@media (min-width: 768px) {
+    .auction-entry-img-container {
+        width: 10em;
+        height: 10em;
+    }
+}
+
+.auction-entry-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auction-entry-img-container img {
+    object-fit: cover;
 }
 
 div.noUi-connect {
