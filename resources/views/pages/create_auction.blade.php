@@ -35,7 +35,7 @@
                 <div class="row g-3 align-items-center">
                     <!-- Gallery column -->
                     <section class="col-lg-5" aria-label="image upload">
-                        <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6  m-auto mt-3"
+                        <div id="uploadPreview" class="carousel carousel-dark slide col-sm-6 p-3 m-3 w-100"
                              data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <!-- images are inserted here through js -->
@@ -66,7 +66,7 @@
 
                         <div class="image-area mt-4">
                             <img id="imageResult" src="#" alt=""
-                                 class="img-fluid rounded shadow-sm mx-auto d-block">
+                                 class="img-fluid rounded shadow-sm mx-auto d-block" style="object-fit: cover">
                         </div>
                     </section>
 
@@ -162,7 +162,7 @@
 
                         <div class="d-flex flex-row  justify-content-end  mt-3  mb-3">
                             {{-- NSFW --}}
-                            @can('viewNsfw', App\Models\Auction::class))
+                            @can('viewNsfw', App\Models\Auction::class)
                             <div class="mt-2 me-3 col-sm-3 form-check form-switch" aria-labelledby="nsfw_label">
                                 <input class="form-check-input" name="nsfw" type="checkbox" id="switch-nsfw" value=true>
                                 <label class="form-check-label" id="nsfw_label" for="switch-nsfw">NSFW</label>

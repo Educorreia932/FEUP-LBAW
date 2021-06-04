@@ -289,13 +289,18 @@ div.noUi-connect {
     gap: 0;
 }
 
+.auction-image-gallery div {
+    max-height: 12rem;
+    margin: .25rem;
+}
+
 .auction-image-gallery img {
     width: 100%;
     height: 100%;
 }
 
 .auction-image-gallery img {
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .d-print {

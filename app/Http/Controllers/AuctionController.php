@@ -150,7 +150,7 @@ class AuctionController extends Controller {
             }
         }
 
-        return Redirect::to(route('auction', ['id', $auction->id]));
+        return Redirect::to(route('auction', ['id' => $auction->id]));
     }
 
     public function report($id, ReportRequest $request) {
