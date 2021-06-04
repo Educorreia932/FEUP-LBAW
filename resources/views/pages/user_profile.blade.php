@@ -1,8 +1,6 @@
 @extends('layouts.app', ['current_page' => 'users', 'title' => $user->username . ' Profile'])
 
 @section('content')
-    <script defer src="{{ asset("js/contact_user.js") }}"></script>
-
     {{-- User Information --}}
     <section class="container">
         <div class="row justify-content-center">
@@ -19,17 +17,17 @@
                 ])
             </div>
 
-            <div class="d-flex flex-column flex-md-row border border-4">
-                <div
-                    class="col-12 col-md-8 user-details d-flex flex-column flex-md-row align-items-center align-items-md-start">
+            <div class="d-flex flex-column flex-md-row border rounded-3" style="border-width: 3px !important;">
+                <div class="col-12 col-md-7 col-xl-6 user-details d-flex flex-column flex-md-row align-items-center align-items-md-stretch">
                     <div class="profile-avatar m-0 m-md-3">
                         <img width="200" height="200" @profilepic($user, medium)>
                     </div>
 
-                    <div class="col-12 col-md-4 d-flex flex-column mt-md-5 ps-2 me-2">
-                        <h2 class="fw-bold">{{ $user->name }}</h2>
-
-                        <span class="fst-italic mb-2">{{ '@' . $user->username }}</span>
+                    <div class="col-12 col-md-5 col-xl-6 d-flex flex-column justify-content-between flex-grow-1 my-md-4 ps-2 me-2">
+                        <div>
+                            <h2 class="fw-bold">{{ $user->name }}</h2>
+                            <span class="fst-italic mb-2">{{ '@' . $user->username }}</span>
+                        </div>
 
                         @if (Auth::check() && Auth::id() != $user->id )
                             <script defer src={{ asset("js/follow_users.js") }}></script>
@@ -85,7 +83,7 @@
                         @endcan
                     </div>
                     <div class="user-description d-flex flex-column-reverse w-100">
-                        <a role="button" class="collapsed description-toggler text-decoration-none"
+                        <a role="button" class="collapsed description-toggler text-decoration-none align-self-end"
                            data-bs-toggle="collapse"
                            href="#user-description" aria-expanded="false" aria-controls="user-description"></a>
                         <p class="collapse mb-1" id="user-description">
@@ -100,10 +98,32 @@
 
     <div class="container mt-4">
         <div class="row">
+
+        {{-- FOLLOWERS --}}
+        <section class="col-12 col-md-3 my-3 my-md-0">
+            <h2 class="fs-bold position-relative" style="width: min-content">
+                Followers
+                <span class="position-absolute top-0 start-100 fs-6">({{$user->followedBy()->count()}})</span>
+            </h2>
+            <hr>
+
+            <ul class="list-unstyled d-flex flex-wrap" style="padding-left: 10px; padding-top: 10px;">
+                @foreach ($user->followedBy()->limit(24)->get() as $fol)
+                <li class="hover-scale-big" style="margin-left: -10px; margin-top: -10px; z-index={{$loop->iteration}}">
+                    <a href="{{ route("user_profile", [ "username" => $fol->username ]) }}">
+                        <img style="border-radius:50%;" width="40" height="40" @profilepic($fol, small)>
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+
+        </section>
+
+
             {{-- Feedback --}}
-            <section class="col-12 col-md-6">
+            <section class="col-12 col-md-3 my-3 my-md-0">
                 <div class="d-flex flex-row align-items-center">
-                    <h2 class="fs-bold me-2">Feedback</h2>
+                    <h2 class="fs-bold me-2 mb-0">Feedback</h2>
 
                     <form action="{{ route("rate_user", [ "username" => $user->username ]) }}" method="post">
                         @csrf
@@ -137,6 +157,7 @@
                         @endcan
                     </form>
                 </div>
+                <hr>
 
                 <div class="d-flex flex-column">
                     <p>
@@ -157,10 +178,10 @@
             </section>
 
             {{-- Insights --}}
-            <section class="col col-md-6 d-flex flex-column justify-content-center">
+            <section class="col-12 col-md-6 d-flex flex-column justify-content-start my-3 my-md-0">
                 <h2 class="fs-bold">Insights</h2>
 
-                <div class="container border border-3 p-0">
+                <div class="container border rounded-3 p-0">
                     <div class="row p-2 m-0 align-items-center justify-content-center w-100 h-100">
                         <div class="col text-center">
                             <small>Joined</small>
@@ -182,7 +203,7 @@
 
     {{-- Created Auctions --}}
     @if ($user->has_auctions)
-        <section class="container my-4">
+        <section class="container mt-4 mb-5">
             <h2 class="fs-bold">Created Auctions</h2>
             <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
                 @each("partials.auction_card", $user->getProfileAuctions(), "auction")
