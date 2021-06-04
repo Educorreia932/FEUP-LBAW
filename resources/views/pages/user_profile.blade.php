@@ -35,13 +35,13 @@
                             <script defer src={{ asset("js/follow_users.js") }}></script>
 
                             @if (Auth::user()->followsMember($user->id))
-                                <button type="button" class="follow btn btn-danger w-100"
+                                <button type="button" class="follow btn btn-primary w-100"
                                         member_username="{{ $user->username }}">
                                     <i class="bi bi-heart-fill"></i>
                                     <span>Following</span>
                                 </button>
                             @else
-                                <button type="button" class="follow btn btn-outline-danger w-100"
+                                <button type="button" class="follow btn btn-outline-primary w-100"
                                         member_username="{{ $user->username }}">
                                     <i class="bi bi-heart"></i>
                                     <span>Follow</span>
@@ -53,9 +53,10 @@
                 <div class="user-details-side d-flex flex-column align-items-md-end ms-2 w-100">
                     <div class="user-actions d-flex flex-row flex-md-column flex-lg-row align-items-end mt-1 mb-2">
                         {{-- OTHERS' PROFILE --}}
-                        <a class="p-0 link-dark text-decoration-none hover-scale" href="search_results.php">
+                        <a class="p-0 link-dark text-decoration-none hover-scale"
+                                href="{{ route("search_auctions", ["owner_filter" => "username", "fts_user" => $user->username]) }}">
                             <i class="bi bi-shop"></i>
-                            <span>Open Auctions</span>
+                            <span>Upcoming Auctions</span>
                         </a>
 
                         @can('contact', $user)
@@ -70,7 +71,7 @@
                         @can('report', $user)
                             <button type="button" data-bs-toggle="modal" data-bs-target="#report-user-modal"
                                     class="btn ms-2 p-0 hover-scale">
-                                <i class="bi bi-flag-fill text-danger"></i>
+                                <i class="bi bi-flag"></i>
                                 <span>Report user</span>
                             </button>
                         @endcan

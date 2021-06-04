@@ -2,15 +2,11 @@
 
 namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 use App\Helpers\LbawUtils;
 use Carbon\Carbon;
-
-use function PHPUnit\Framework\returnSelf;
 
 class Auction extends Model {
     use HasFactory;
@@ -134,6 +130,10 @@ class Auction extends Model {
             && $memberId == $this->latest->bidder_id;
     }
 
+    public function getOrderedBids() {
+        return $this->bids()->orderBy('date', 'desc')->get();
+    }
+
     public function images() {
         return $this->hasMany(AuctionImage::class, "auction_id", "id");
     }
@@ -164,5 +164,18 @@ class Auction extends Model {
         if ($this->ended)
             return "Ended";
         return $this->end_date->shortAbsoluteDiffForHumans();
+    }
+
+    public function getBidDataJson($bids): String {
+        $ret = array();
+        $ret['value'] = array();
+        $ret['timestamp'] = array();
+
+        foreach ($bids as $bid) {
+            array_push($ret['value'], $bid->value);
+            array_push($ret['timestamp'], $bid->date->timestamp);
+        }
+
+        return json_encode($ret);
     }
 }
