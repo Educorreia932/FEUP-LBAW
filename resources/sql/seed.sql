@@ -179,21 +179,18 @@ CREATE TABLE notification (
 );
 
 CREATE TABLE auction_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_auction_id           INTEGER REFERENCES auction(id)
+    auction_id           INTEGER REFERENCES auction(id)
 );
 
 CREATE TABLE user_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_member_id            INTEGER REFERENCES member(id)
+    member_id            INTEGER REFERENCES member(id)
 );
 
 CREATE TABLE message_notification (
-    id                         SERIAL PRIMARY KEY,
     notification_id            INTEGER UNIQUE REFERENCES notification(id),
-    notif_message_id           INTEGER REFERENCES message(id)
+    message_id           INTEGER REFERENCES message(id)
 );
 
 CREATE TABLE auction_image (
@@ -213,26 +210,137 @@ CREATE INDEX bookmark_auction_index on bookmarked_auction USING hash(auction_id)
 CREATE INDEX auction_tsvector_index ON auction USING GIN(ts_search);
 CREATE INDEX member_tsvector_index ON member USING GIN(ts_search);
 CREATE INDEX message_tsvector_index ON message USING GIST(ts_search);
--- Trigger 1
--- There must not exist an Admin with the same username as a Member
+-- Trigger 10
+-- When a user is outbidded in an auction they bidded on, an *Auction Outbid* notification is generated for that user
 
-DROP FUNCTION IF EXISTS admin_member_identity CASCADE;
-CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS 
+DROP FUNCTION IF EXISTS auction_outbid_notification CASCADE;
+CREATE FUNCTION auction_outbid_notification() RETURNS TRIGGER AS
 $BODY$
+DECLARE notif_id INTEGER;
+DECLARE member_id INTEGER;
 BEGIN
-    IF EXISTS (SELECT username FROM member WHERE NEW.username = member.username) THEN
-        RAISE EXCEPTION 'There must not exist an Admin with the same username as a Member.';
+    SELECT bidder_id INTO member_id
+        FROM bid
+        WHERE bid.auction_id = NEW.auction_id
+            AND bid.bidder_id != NEW.bidder_id
+            AND "date" = (
+                SELECT MAX("date")
+                    FROM bid
+                        WHERE bid.auction_id = NEW.auction_id
+                        AND bid.bidder_id != NEW.bidder_id
+                );
+    IF member_id IS NOT NULL THEN
+		INSERT INTO notification(type, member_id)
+			VALUES ('Auction Outbid', member_id)
+            RETURNING id INTO notif_id;
+        INSERT INTO auction_notification(notification_id, auction_id)
+            VALUES (notif_id, NEW.auction_id);
     END IF;
-    RETURN NEW;
+	
+	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS admin_member_identity on admin CASCADE;
-CREATE TRIGGER admin_member_identity
-    BEFORE INSERT OR UPDATE ON admin 
-    FOR EACH ROW 
-    EXECUTE PROCEDURE admin_member_identity();
+DROP TRIGGER IF EXISTS auction_outbid_notification on bid CASCADE;
+CREATE TRIGGER auction_outbid_notification
+    AFTER INSERT ON bid
+    FOR EACH ROW
+    EXECUTE PROCEDURE auction_outbid_notification();
+-- Trigger 11
+-- When a user's bookmarked auction starts, a *Bookmarked Auction* notification is generated for that user
+
+DROP FUNCTION IF EXISTS bookmarked_auction_notification CASCADE;
+CREATE FUNCTION bookmarked_auction_notification() RETURNS TRIGGER AS
+$BODY$
+DECLARE temprow RECORD;
+DECLARE notif_id INTEGER;
+BEGIN
+	FOR temprow IN
+        SELECT member_id
+		FROM bookmarked_auction
+		WHERE auction_id = NEW.id
+    LOOP
+		IF NEW.status::text = 'Open' AND OLD.status::text = 'Scheduled' THEN
+
+            INSERT INTO notification (type, member_id)
+				VALUES ('Bookmarked Auction', temprow.member_id)
+				RETURNING id INTO notif_id;
+
+			INSERT INTO auction_notification (notification_id, auction_id)
+				VALUES (notif_id, NEW.id);
+		END IF;
+	END LOOP;
+
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS bookmarked_auction_notification on auction CASCADE;
+CREATE TRIGGER bookmarked_auction_notification
+	AFTER UPDATE ON auction
+	FOR EACH ROW
+	EXECUTE PROCEDURE bookmarked_auction_notification();
+-- Trigger 12
+-- When a user receives a new follower, a *User Followed* notification is generated for that user
+
+DROP FUNCTION IF EXISTS user_followed_notification CASCADE;
+CREATE FUNCTION user_followed_notification() RETURNS TRIGGER AS
+$BODY$
+DECLARE notif_id INTEGER;
+BEGIN
+	INSERT INTO notification (type, member_id)
+		VALUES ('User Followed', NEW.followed_id)
+		RETURNING id INTO notif_id;
+
+	INSERT INTO user_notification (notification_id, member_id)
+		VALUES (notif_id, NEW.follower_id);
+
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS user_followed_notification on follow CASCADE;
+CREATE TRIGGER user_followed_notification 
+    AFTER INSERT ON follow
+    FOR EACH ROW
+	EXECUTE PROCEDURE user_followed_notification();
+-- Trigger 13
+-- When a user receives a new message, a *Message Received* notification is generated for that user
+
+DROP FUNCTION IF EXISTS message_received_notification CASCADE;
+CREATE FUNCTION message_received_notification() RETURNS TRIGGER AS
+$BODY$
+DECLARE temprow RECORD;
+DECLARE notif_id INTEGER;
+BEGIN
+	FOR temprow IN
+        SELECT participant_id 
+		FROM message_thread_participant
+		WHERE thread_id = NEW.thread_id
+    LOOP
+		IF NEW.sender_id <> temprow.participant_id THEN
+			INSERT INTO notification (type, member_id)
+				VALUES ('Message Received', temprow.participant_id)
+				RETURNING id INTO notif_id; 
+
+			INSERT INTO message_notification (notification_id, message_id)
+			VALUES (notif_id, NEW.id);
+		END IF;
+	END LOOP;
+
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS message_received_notification on message CASCADE;
+CREATE TRIGGER message_received_notification 
+    AFTER INSERT ON message
+    FOR EACH ROW
+    EXECUTE PROCEDURE message_received_notification();
 -- Trigger 14
 -- Pre-calculate auction ts vector
 DROP FUNCTION IF EXISTS auction_tsvector CASCADE;
@@ -417,25 +525,26 @@ CREATE TRIGGER default_next_bid
     BEFORE INSERT ON auction
     FOR EACH ROW
     EXECUTE PROCEDURE default_next_bid();
--- Trigger 2
--- There must not exist a Member with the same username as an Admin
-DROP FUNCTION IF EXISTS member_admin_identity CASCADE;
-CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS 
+-- Trigger 1
+-- There must not exist an Admin with the same username as a Member
+
+DROP FUNCTION IF EXISTS admin_member_identity CASCADE;
+CREATE FUNCTION admin_member_identity() RETURNS TRIGGER AS 
 $BODY$
 BEGIN
-    IF EXISTS (SELECT username FROM admin WHERE NEW.username = admin.username) THEN
-        RAISE EXCEPTION 'There must not exist a Member with the same username as an Admin.';
+    IF EXISTS (SELECT username FROM member WHERE NEW.username = member.username) THEN
+        RAISE EXCEPTION 'There must not exist an Admin with the same username as a Member.';
     END IF;
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
-CREATE TRIGGER member_admin_identity
-    BEFORE INSERT OR UPDATE ON member 
+DROP TRIGGER IF EXISTS admin_member_identity on admin CASCADE;
+CREATE TRIGGER admin_member_identity
+    BEFORE INSERT OR UPDATE ON admin 
     FOR EACH ROW 
-    EXECUTE PROCEDURE member_admin_identity();
+    EXECUTE PROCEDURE admin_member_identity();
 -- Trigger 20
 -- Set the last_message in the thread
 
@@ -458,6 +567,25 @@ CREATE TRIGGER most_recent_message
     AFTER INSERT ON message
     FOR EACH ROW
     EXECUTE PROCEDURE most_recent_message();
+-- Trigger 2
+-- There must not exist a Member with the same username as an Admin
+DROP FUNCTION IF EXISTS member_admin_identity CASCADE;
+CREATE FUNCTION member_admin_identity() RETURNS TRIGGER AS 
+$BODY$
+BEGIN
+    IF EXISTS (SELECT username FROM admin WHERE NEW.username = admin.username) THEN
+        RAISE EXCEPTION 'There must not exist a Member with the same username as an Admin.';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS member_admin_identity on member CASCADE;
+CREATE TRIGGER member_admin_identity
+    BEFORE INSERT OR UPDATE ON member 
+    FOR EACH ROW 
+    EXECUTE PROCEDURE member_admin_identity();
 -- Trigger 3
 -- A message's author must be a participant in the thread to which the message is being sent
 
@@ -583,6 +711,39 @@ CREATE TRIGGER update_rating_delete
     AFTER DELETE ON rating
     FOR EACH ROW
     EXECUTE PROCEDURE update_rating_delete();
+-- Trigger 9
+-- When a new auction is created, a *Created Auction* notification is generated for each user that is following that auction's creator
+
+DROP FUNCTION IF EXISTS created_auction_notification CASCADE;
+CREATE FUNCTION created_auction_notification() RETURNS TRIGGER AS
+$BODY$
+DECLARE temprow RECORD;
+DECLARE notif_id INTEGER;
+BEGIN
+	FOR temprow IN
+        (SELECT follower_id 
+		    FROM follow
+                INNER JOIN auction ON follow.followed_id = auction.seller_id
+		    WHERE follow.followed_id = NEW.seller_id)
+    LOOP
+		INSERT INTO notification (type, member_id)
+			VALUES ('Created Auction', temprow.follower_id)
+			RETURNING id INTO notif_id;
+
+		INSERT INTO auction_notification (notification_id, auction_id)
+		VALUES (notif_id, NEW.id);
+    END LOOP;
+
+	RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS created_auction_notification on auction CASCADE;
+CREATE TRIGGER created_auction_notification
+    AFTER INSERT ON auction
+    FOR EACH ROW
+    EXECUTE PROCEDURE created_auction_notification();
 --------------------------------------------------------------------------------
 --                                   USERS                                    --
 --------------------------------------------------------------------------------

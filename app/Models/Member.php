@@ -16,7 +16,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
 
     protected $guard = 'member';
 
-    public $timestamps  = false;
+    public $timestamps = false;
 
     /**
      * The attributes that should be cast to native types.
@@ -42,7 +42,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
         'password', 'remember_token'
     ];
 
-    public static $default_bio = "This user hasn't developed a stand yet";
+    public static string $default_bio = "This user hasn't developed a stand yet";
 
     public function getHasAuctionsAttribute() {
         return $this->createdAuctions()->count();
@@ -66,7 +66,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
     }
 
     public function createdAuctions() {
-        return $this->hasMany("App\Models\Auction", "seller_id");
+        return $this->hasMany(Auction::class, "seller_id");
     }
 
     public function bookmarkedAuctions() {
@@ -122,7 +122,7 @@ class Member extends Authenticatable implements MustVerifyEmail, CanResetPasswor
     }
 
     public function notifications() {
-
+        return $this->hasMany(Notification::class);
     }
 
     public function getImage($type = 'small') {
