@@ -4,9 +4,9 @@
     <div class="container-fluid big-boy">
         <div class="row big-boy flex-row">
             {{-- Sidebar menu --}}
-            <nav id="sidebar-menu" class="col-md-3 col-lg-2 bg-light sidebar">
-                <div class="position-sticky pt-3">
-                    <h4>Dashboard</h4>
+            <aside id="sidebar-menu" class="col-md-3 col-lg-2 bg-light sidebar">
+                <nav class="position-sticky pt-3" aria-labelledby="dash_title">
+                    <h4 id="dash_title">Dashboard</h4>
 
                     @admin
                         <ul class="nav flex-column">
@@ -18,44 +18,44 @@
                     @endadmin
                    
 
-                </div>
-            </nav>
+                    </nav>
+            </aside>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4" aria-label="main">
                 <div class="container-fluid mb-4">
                     @yield("page_head")
 
                     <div class="row">
                         {{-- search section --}}
-                        <section class="col-12">
+                        <div class="col-12">
                             {{-- search text input --}}
                             <form action="{{route("admin." . $sub)}}" id="search-form" method="GET" role="search" class="row">
                                 <nav class="mb-4 col-10 d-flex flex-row">
                                     {{-- Search bar --}}
-                                    <section class="container input-group w-50">
-                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search"
+                                    <div class="container input-group w-50">
+                                        <input type="search" class="form-control" placeholder="Search" aria-label="search"
                                             aria-describedby="search-addon" name="fts" value="{{ old('fts') }}">
-                                        <button type="submit" class="input-group-text border-0" id="search-addon" >
+                                        <button type="submit" class="input-group-text border-0" id="search-addon" aria-label="search">
                                             <i class="bi bi-search"></i>
                                         </button>
-                                    </section>
+                                    </div>
                                 </nav>
 
                                 @yield("filter_options")
 
-                                <p>Results for: <u class="fst-italic"> @if(isset($detail_search)) {{ $detail_search }} @else {{ old('fts') ? old('fts') : 'All' }} @endif </u> ({{ $reports->total() }})</p>    
+                                <span>Results for: <u class="fst-italic"> @if(isset($detail_search)) {{ $detail_search }} @else {{ old('fts') ? old('fts') : 'All' }} @endif </u> ({{ $reports->total() }})</span>    
                             </form>
-                        <section>
+                        </div>
                         
                         {{-- @each("partials.auction_entry", $auctions, "auction") --}}
                         <div class="table-responsive col-12">
                             <table class="table table-hover table-striped">
-                            <thead>
-                                @yield("columns")
-                            </thead>
-                            <tbody>
-                                @yield("table_body")
-                            </tbody>
+                                <thead>
+                                    @yield("columns")
+                                </thead>
+                                <tbody>
+                                    @yield("table_body")
+                                </tbody>
                             </table>
                         </div>  
                     </div>  
@@ -65,7 +65,7 @@
                         {!! $reports->appends(request()->except('page'))->links() !!}
                     </nav>
                 </div>
-            </main>
+            </section>
         </div>
     </div>
 @endsection

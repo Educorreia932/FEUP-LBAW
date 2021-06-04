@@ -112,9 +112,9 @@
                                 <button class="btn btn-dark dropdown-toggle d-flex flex-row align-items-center" type="button"
                                         id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="me-2">{{ Auth::guard('admin')->user()->username }}</span>
-                                    <div class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
+                                    <picture class="d-flex p-0 align-self-center" style="width: 40px; height: 40px;">
                                         <img style="border-radius:50%;" width="40" height="40" @profilepic(Auth::guard('admin')->user(), small)>
-                                    </div>
+                                    </picture>
                                 </button>
 
                                 {{-- Dropdown menu --}}

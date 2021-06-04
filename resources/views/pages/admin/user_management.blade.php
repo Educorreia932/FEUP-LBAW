@@ -2,7 +2,7 @@
 
 @section('page_head')
 
-    <script defer type="module" src={{ asset("js/admin_dashboard_users.js") }}></script>
+    <script type="module" src={{ asset("js/admin_dashboard_users.js") }}></script>
 
     <div class="my-4">
         @include("partials.breadcrumbs", [
@@ -39,14 +39,14 @@
 @section('table_body')
     {{-- Reported user entries --}}
     @foreach ($reports as $report)
-        <tr class="user-entry align-middle" user_id="{{$report->member_id}}">
+        <tr class="user-entry align-middle" id="{{$report->member_id}}">
             <th scope="row">
                 <a href="{{route("user_profile", ["username" => $report->username])}}" class="text-decoration-none text-dark">{{$report->username}}</a>
             </th>
             <td class="master-checkbox-reverse">
-                @include('partials.check_admin_entry', ["name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
-                @include('partials.check_admin_entry', ["name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])
-                @include('partials.check_admin_entry', ["name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned])
+                @include('partials.check_admin_entry', ["id" => "$report->member_id", "name" => "Banned", "group" => "actions", "value" => "banned", "state" => $report->banned, "master" => true])
+                @include('partials.check_admin_entry', ["id" => "$report->member_id", "name" => "Create Auctions", "group" => "actions", "value" => "sell", "state" => $report->sell_permission, "disabled" => $report->banned])
+                @include('partials.check_admin_entry', ["id" => "$report->member_id", "name" => "Participate on auctions", "group" => "actions", "value" => "bid", "state" => $report->bid_permission, "disabled" => $report->banned])
             </td>
             <td>
                 <div class="d-flex flex-column">
@@ -60,7 +60,9 @@
                     @endif
                 </div>
             </td>
-            <td>{{\Carbon\Carbon::parse($report->joined)->format('d M Y')}}</td>
+            <td>
+                {{\Carbon\Carbon::parse($report->joined)->format('d M Y')}}
+            </td>
         </tr>
     @endforeach
 @endsection
